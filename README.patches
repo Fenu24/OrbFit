@@ -1,0 +1,13 @@
+PATCHES TO DISTRIBUTION 5.0
+
+[these files should be included in every patch, to make sure the patch
+itself is well defined:]
+
+./patchlist           
+./dellist
+./README.patches
+./Makefile
+./notar
+
+
+
