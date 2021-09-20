@@ -1,0 +1,7 @@
+echo 'SIZE OF ORBFIT CODE'
+echo '****distribution******'
+wc suit/*.f90 propag/*.f90 prelim/*.f90 moid/*.f90 fitobs/*.f90 bineph/*.f90 jpleph/*.f90 orbfit/*.f90
+echo '****non distribution**'
+wc allobs/*.f90 astdys/*.f90 neodys/*.f90 newret/*.f90 idconf2/*.f90 triang/*.f90 propneo2/*.f90 orb9/*.f90
+echo '*********headers******'
+wc */*.h90

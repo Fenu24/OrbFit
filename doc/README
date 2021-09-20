@@ -1,0 +1,35 @@
+To learn how to use ORBFIT, you can consult the online help which is
+accessible at ./doc/index.html (use any web browser).  Although this
+online hypertext manual is still incomplete, it is a useful starting point.
+
+ORBFIT consists of three main prograns: Orbfit, Fitobs, and Bineph.
+
+Orbfit is a batch only, no questions asked program; it can even run
+with no input options file, just by giving the asteroid name in the
+standard input (but you need to have the files with the data). 
+
+Fitobs is a menu driven, interactive program, which allows a
+surprising variety of data processing procedures. Use it on some of
+the examples supplied in the ./tests/fitobs directory to learn; use the
+online help at each menu.
+
+Bineph is used only to add perturbations from other asteroids to the
+dynamic model; to be used only for top accuracy.
+
+To install OrbFit:
+
+1) Download the OrbFit distribution. See README.ftp
+
+2) Unpack and compile. See README.compile
+
+3) Install JPL epehemerides and test the installation. See
+   README.tests
+
+After this, OrbFit 2.1.1 is up and ready; you can use it immediately,
+by modifying one of the .fop files in ./tests/fitobs and/or one of the
+.oop files in ./tests/orbfit.
+
+
+
+
+

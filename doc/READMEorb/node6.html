@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>6. STATEMENTS</TITLE>
+<META NAME="description" CONTENT="6. STATEMENTS">
+<META NAME="keywords" CONTENT="READMEorb">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="READMEorb.css">
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="READMEorb.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html68"
+ HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html66"
+ HREF="READMEorb.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html60"
+ HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html69"
+ HREF="node7.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html67"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<B> Previous:</B> <A NAME="tex2html61"
+ HREF="node5.html">5. POSTPROCESSING</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00060000000000000000">
+6. STATEMENTS</A>
+</H1>
+
+<P>
+1. This is free software, which can be copied and distributed by
+anyone interested, but cannot be sold and cannot be incorporated into
+commercial products. The copyright notice, containing the Free
+Software Foundation standard notice, must not be removed from any
+copy.
+
+<P>
+2. This software has been developed by A. Milani, who has in turn
+incorporated some free software developed by other people, mostly by
+M. Carpino (Astronomical Observatory, Milano/Brera). The author cannot
+take any responsability for the performance of this software, nor for
+its upgrade; the software maintenance of these codes must result from
+the collaboration of the users, who are kindly requested to report any
+error and/or limitation not already described here.
+
+<P>
+3.  This software can be modified by the users at their own risk.  The
+best effort has been done to make this not too difficult.  I give here
+an example: suppose you want to manufacture a program to compute the
+orbits of the satellites of Saturn.  Then you should 1) modify the
+right hand side of the differenctial equations (file <I>fct9.f</I>)
+to add the zonal harmonics of Saturn gravitational field; the latter
+will depend upon some parameters, called e.g. <TT>pj2, pj4</TT>. 2)
+modify the common contained in <I>commas.h</I> by adding <TT>pj2,
+pj4</TT>. 3) modify the routines <TT>reamas, wrimas</TT> in such a way that
+they also handle <TT>pj2, pj4</TT> in input and output; there you can
+also change the choice of the units, by replacing Gauss constant <TT>gk</TT> with something else. 4) add new options to <TT>refer</TT> in <I>coord.f</I> to be able to refer the results to the planet's equatorial
+plane. 5) prepare suitable initial conditions files, in which the so
+called planets file will contain also the initial conditions for the
+more massive satellites, the so called asteroid file will contain the
+initial conditions for the small satellites; the inverse mass of
+Saturn must replace the inverse mass of the Sun, and the mass of the
+Sun will appear as the mass of a perturbing body.  All this might
+appear complicated, but starting from scratch and writing all your own
+software is more complicated (although it is an instructive exercice).
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html68"
+ HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html66"
+ HREF="READMEorb.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html60"
+ HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html69"
+ HREF="node7.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html67"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<B> Previous:</B> <A NAME="tex2html61"
+ HREF="node5.html">5. POSTPROCESSING</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Andrea Milani</I>
+<BR><I>1999-10-31</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,37 @@
+To use the HELP facility, just click on the selected button or menu
+item and either open a submenu, or, if you have already reached the
+requested item, read the text which appears in the text-widget below.
+After you select an item, its checkbutton changes its color, so that
+you can keep track of the visited items.
+
+Alternatively, you can browse and invoke all the principal menus on
+the button bar by typing 'Alt-<underlined character>'. Use
+lowercase. To move around in the text-widgets you can type just
+'<underlined character>'. To remove menu press 'Escape'. To exit, if
+necessary first remove hanging menu by pressing 'Escape', and then
+type 'x'.
+ 
+You can browse through the menus by opening one and selecting an item
+by typing the corresponding underlined letter, or by using direction
+arrows and typing 'Return'. In the latter case, to switch from one
+menu to the other, you can use the 'up-arrow' to reach the top of the
+menu widget (dashed line on the top of the widget gets highlighted),
+and then press right/left direction arrow.
+
+The automatic placement of the HELP facility window is optimized for 
+a 17-inch screen, with 1024 x 768 resolution. If you have problems with 
+the positioning of the window and/or the menus (submenus getting out of 
+the screen), just edit the line 186 of the file 'doc/HELP':
+
+wm geometry . +160+20
+
+and change the numbers (in pixels on the display counting from the 
+upper-left corner) until you find an appropriate position for the window 
+on your screen. Similarly, if you need to increase or decrease the size 
+of the window, you have to edit the 15th line in the same file:
+
+text .text -bd 2 -width 80 -height 20 -bg cornsilk -yscrollcommand 
+".scroll set" 
+
+changing the numbers that control width (in characters) and height (in 
+lines) of the window.

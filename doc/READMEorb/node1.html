@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>1. INTRODUCTION</TITLE>
+<META NAME="description" CONTENT="1. INTRODUCTION">
+<META NAME="keywords" CONTENT="READMEorb">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="READMEorb.css">
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="READMEorb.html">
+<LINK REL="up" HREF="READMEorb.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html18"
+ HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html16"
+ HREF="READMEorb.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html10"
+ HREF="READMEorb.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html19"
+ HREF="node2.html">2. INPUT AND TASK</A>
+<B> Up:</B> <A NAME="tex2html17"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<B> Previous:</B> <A NAME="tex2html11"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00010000000000000000">
+1. INTRODUCTION</A>
+</H1>
+
+<P>
+Orbit9 is a software system designed to allow numerical experiments on
+orbits of solar system bodies, with different dynamical models. It was
+developed starting in 1989 (while I was at Cornell University). Orbit9
+is a subsystem designed with user friendlyness as a design parameter,
+with the goal of becoming a public domain system.
+
+<P>
+The purpose of Orbit9 is to compute the orbits of real solar system
+small bodies, within a dynamical model as realistic as possible.  The
+program handles a full gravitational N+M bodies problem, with the Sun
+and N-1 planets fully interacting between them, and M massless
+<I>asteroids</I> attracted by the N mases but not reacting on them.
+To compute the orbit of a known asteroid, initial conditions are taken
+from a catalogue (e.g. the Ephemerides of Minor Planets, or some other
+computer readable catalogue provided e.g. by the Minor Planets
+Center); in this case the only thing the user needs to specify to
+start the integration is the asteroid number.  However, fictitious
+bodies can be handled, provided a suitable initial conditions file is
+provided; this input file can be written in a variety of coordinate
+systems, provided a header is supplied to explain what is meant.
+Unless otherwise requested by the user, all the input and output files
+contain a header with all the information needed to understand the
+content: e.g. which bodies' orbits are these, the initial epoch, the
+starting catalogue, the coordinate systems, etc.
+
+<P>
+The output is written in a standard format, but with choice of
+reference and coordinate systems.  A separate program (Conv9) allows
+to convert the output into a variety of coordinate types, systems,
+references, and units, to be later analyzed either by means of GIFFv
+or by any program capable of reading a flat file.  The output includes
+a sampled time series and a filtered one, with user-specified
+decimation.  On request, the maximum Lyapounov exponent can be
+estimated -by solving a variational equation- for some of the
+asteroids.  The angular variables always include counters for the
+number of revolutions, to allow for the determination of frequencies
+and/or for the monitoring of critical arguments.  All these features,
+however, require some know-how to be used correctly; as an example,
+the choice of the sampling and decimation ratios is critical for the
+correct working of the output.
+
+<P>
+A safety dump feature allows almost always to restart an integration
+from where it was interrupted, regardless of whether this was due to a
+power failure or to a change of mind on the time span required.  The
+computation of an estimate of the maximum Lyapounov exponent can also
+be continued in a consistent way.  The accuracy of this continuation
+is very good, that is the jump -in both position and velocity-
+between the two orbits is at the rounding off level, if the right
+options are chosen.  The output format is always compatible with the
+input format, but the special dump files have to be used to preserve
+full precision of the continuation.
+
+<P>
+This program is not meant to handle very unstable cases, which would
+require regularisation for close approaches; in practice,
+planet-crossing orbits are computed at the user's risk, with all the
+orbits integrated numerically with the same stepsize.  The numerical
+methods include multistep and symplectic Runge-Kutta; the latter is
+generally used only as a starter (being very accurate but very
+inefficient).  The program is not meant for dense output (that is, for
+a number of output times comparable to, or even larger than, the
+number of integration steps).  Many features could be added, but this
+would betray the original purpose, which was (and is) the study of the
+dynamics of the asteroidal belt.
+
+<P>
+Together with Orbit9 the user can also obtain other programs meant to
+analyse the output, including the proper elements generation programs
+by myself and Z. Knezevic, the Graphic Interactive Fourier Filtering
+program (GIFF version v) to perform Fourier analysis and filtering,
+the Multiple Trigonometric Analysis Program (MTRAP) by M.  Carpino,
+the TeXfor documentation system to print the listing with embedded
+T<SMALL>E</SMALL>Xcomments and formulas, and so on.  Everything is
+supplied in a self-service mode which allows at least the UNIX users
+to compile and run all the programs without any need to go into the
+details of the way they have been programmed; for other operating
+systems, although all the programs are machine-independent (apart from
+graphics), some work is needed to compile and install the software.
+Most modules are self explanatory, that is with embedded comments
+which should be enough; I cannot guarantee that everything is
+understandable and well documented.
+
+<P>
+The rest of this  User Guide is organised as follows:
+
+<P>
+<BR>
+<BR>
+
+<P>
+<UL>
+<LI>2. INPUT, that is how to prepare initial conditions and how to
+define the integration task.
+
+<P>
+<LI>3. PROPAGATION, a brief description of what is actually computed
+and how.
+
+<P>
+<LI>4. OUTPUT, explaining the use of different coordinate systems,
+digital filters, and revolution counters.
+
+<P>
+<LI>5. POSTPROCESSING, describing the auxiliary programs to be
+used after the numerical integration (each one also has its own README
+file).
+
+<P>
+<LI>6. STATEMENTS, copyright notice, author's disclaimer and
+instructions on the modification of the software.
+
+<P>
+</UL>
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html18"
+ HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html16"
+ HREF="READMEorb.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html10"
+ HREF="READMEorb.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html19"
+ HREF="node2.html">2. INPUT AND TASK</A>
+<B> Up:</B> <A NAME="tex2html17"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<B> Previous:</B> <A NAME="tex2html11"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Andrea Milani</I>
+<BR><I>1999-10-31</I>
+</ADDRESS>
+</BODY>
+</HTML>

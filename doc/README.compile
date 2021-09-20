@@ -1,0 +1,48 @@
+[Unpack, configure for your computer/operating system/compiler  and compile]
+
+$ ls
+OrbFit3.3.1.tar.gz
+$ gunzip *.gz
+$ tar -xf OrbFit3.3.1.tar 
+$ config
+Usage: config [options] <configuration>
+       where one of the following options must be selected: 
+          -d  (debug)
+          -O  (optimized)
+          -p  (profiling)
+       and <configuration> is one of the following:
+          lf95    (Lahey-Fujitsu fortran95 compiler
+          intel8   (Intel fortran95 compiler vers. 8)
+       the program may compile with the following compilers,
+       but there are problems:
+          intel   (Intel fortran95 vers. 7 compiler)
+          HP90    (HP FORTRAN 90)
+          g95  (g95 free software, http://g95.sourceforge.net)
+          gfortran (GNU compiler under development)
+
+$ config -d intel8
+default library directory is /home/orbmaint/orbfit/lib
+default documentation directory is /home/orbmaint/orbfit/doc
+$ make
+(cd src; make)
+make[1]: Entering directory `/home/orbmaint/orbfit/src'
+(cd suit; make depend)
+make[2]: Entering directory `/home/orbmaint/orbfit/src/suit'
+mkdep *.f *.h ../include/*.h > make.dep
+make[2]: Leaving directory `/home/orbmaint/orbfit/src/suit'
+(cd prelim; make depend)
+
+....
+
+[Note: very long list of compilation messages; should terminate with something
+like:]
+
+ifort -cm -g -CB -traceback -save -assume byterecl -Vaxlib -I../include  -I../suit -I../propag -c ofclrf.f90 -o ofclrf.o 
+ifort -cm -g -CB -traceback -save -assume byterecl -Vaxlib -I../include  -I../suit -I../propag -o orbfit.x orbfit.o rdopt_of.o srtobs.o seltid.o ustsp.o ofiobs.o ofiorb.o ofinod.o ofofit.o ofiden.o ofephe.o ofprop.o ofinip.o ofclrf.o ../lib/libprop.a ../lib/libmoid.a ../lib/libgauss.a ../lib/libsuit.a
+make[2]: Leaving directory `/orbfit/orb331/src/orbfit'
+make[1]: Leaving directory `/orbfit/orb331/src'
+
+[All the main programs are now compiled. Please report unsuccessful
+compilation, on any UNIX platform.]
+
+[Now goto README.tests]

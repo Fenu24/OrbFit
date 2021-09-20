@@ -1,0 +1,250 @@
+#! /usr/bin/perl
+
+# mkdep90: print on standard output the dependencies for the Makefile
+# of a series of FORTRAN90 programs.
+# Usage: mkdep90 [-v] [-L dirlib1 -L dirlib2 ...] [-I dirinc1 -I dirinc2 .. ] <file list>
+# where: - dirlib1, dirlib2 are directories where library modules (.mod) are located
+#        - dirinc1, dirinc2 are directories where include files (.h/.h90) are located
+#        - <file list> is a list of source (.f and/or .f90) and include (.h and/or .h90) files
+#
+# Include files are searched first in the current directory, then in all the include directories
+# specified by -I options in order. Therefore the order of -I options is relevant: if multiple
+# copies of a include file are present in the include directories, the file used is that
+# contained in the directory supplied first
+#
+# Example: mkdep90 -L../lib -I ../inc *.f *.f90 *.h *.h90 > make.dep
+#          (the Makefile should then have a line "include make.dep")
+#
+# Operation: the files whose names are supplied on the command line are
+# scanned for MODULE, INCLUDE and USE statements, and the dependency
+# list is build accordingly. Include (.h or .h90) files are scanned recursively,
+# and all the dependencies encountered are inherited by the source (.f or .f90) file.
+# As an example, if pippo.f contains:
+#     INCLUDE 'alpha.h'
+# and alpha.h contains
+#     INCLUDE 'beta.h'
+#     USE topolino
+# and paperopoli.f contains:
+#     MODULE topolino
+# then the dependency generated would be:
+#     pippo.o: alpha.h beta.h paperopoli.o
+#
+# Library directories are processed in a different way: the directory is
+# simply scanned for finding module (.mod) files, and the dependency
+# is created with respect to .mod rather than .o files.
+# As an example, if minni.f contains:
+#     USE paperone
+# and the directory ../lib contains a file paperone.mod, then the
+# command "mkdep90 -L../lib minni.f" would generate the dependency:
+#     minni.o: ../lib/paperone.mod
+# No attempt is made to keep updated the compilation in library
+# directories, which could be also read-only and are supposed to
+# be maintained by a separate Makefile
+
+$MYNAME  = "mkdep90";
+$VERBOSE = 0;
+
+# Scan arguments for options
+$nlib = 0;
+while (1) {
+    if ($ARGV[0] eq "-v") {$VERBOSE=1; shift (@ARGV); next}
+    if (&get_opt_value("-L")) {
+        $lib = $value;
+        $lib =~ s/\/$//;
+        $lib[$nlib++] = $lib;
+        next;
+        }
+    if (&get_opt_value("-I")) {
+        $inc = $value;
+        $inc =~ s/\/$//;
+        $inc[$ninc++] = $inc;
+        next;
+        }
+    if (&get_opt_value("-l")) {next}
+    $ARGV[0] =~ /^-/ && die "$MYNAME: unknown option $ARGV[0]\n";
+    last;
+    }
+
+# Subroutine get_opt_value: read from $ARGV[0] an option like
+# "-Lvalue" or "-L value", returning "value"; if $ARGV[0] does not
+# begin with the requested option, returns an empty string
+sub get_opt_value {
+    local($flag) = (@_);
+    if ($ARGV[0] =~ /^$flag(.*)$/) {
+        shift (@ARGV);
+        if ($1 eq "") { $value = shift (@ARGV) }
+        else { $value = $1 }
+        return $value;
+        }
+    else {return ""}
+    }
+
+# Build list of .mod files in library directories
+foreach $lib (@lib) {
+    opendir(LIB,$lib) || die "$MYNAME: cannot open directory $lib: $!\n";
+    for (readdir(LIB)) {
+        if (/^(.*)\.mod$/) {
+            defined($moddep{$1}) && die "$MYNAME: module $1 is defined twice:\n" .
+                "             in $moddep{$1}\n" .
+                "         and in $lib/$_\n" ;
+            $moddep{$1} = $lib . "/" . $_ }
+        }
+    closedir(LIB);
+    }
+
+if ($VERBOSE && $nlib) {
+    print "# Module dependencies from libraries:\n#\n";
+    &write_moddep;
+    print "#\n";
+    }
+
+# Analyze source files
+foreach $file (@ARGV) {
+    open (FILE,$file);
+    while (<FILE>) {
+        if (/^\s*use\s+([a-z]\w*)/i) {
+            $module = $1;
+            $module =~ tr/A-Z/a-z/;
+            $req_mod{$file} .= $module . ";" ;
+            $VERBOSE && print "# File $file USEs ",$1," at line ",$.,"\n" ;
+            }
+        elsif (/^\s*include\s*(['"])([^\1]+)\1\s*(!.*)*$/i) {
+            $req_inc{$file} .= $2 . ";" ;
+            $VERBOSE && print "# File $file INCLUDEs ",$2," at line ",$.,"\n" ;
+            $all_inc{$2}++;
+            }
+        elsif (/^\s*module\s+(\S+)\s*(!.*)*$/i) {
+            $module = $1;
+            $module =~ tr/A-Z/a-z/;
+            defined($moddep{$module}) &&
+                die "$MYNAME: module $module is defined twice:\n" .
+                "             in $moddep{$module}\n" .
+                "         and in $file\n" ;
+            $depfile = $file;
+            unless ($depfile =~ s/\.f(90)?$/\.o/) {
+                die "$MYNAME: file $depfile contains a MODULE statement\n" }
+            $moddep{$module} = $depfile;
+            }
+        }
+    close (FILE);
+    }
+
+if ($VERBOSE) {
+    print "#\n# Module dependencies from files and libraries:\n#\n";
+    &write_moddep;
+    print "#\n";
+    }
+
+# Build dependency tree for include files
+$redo = 1;
+while ($redo) {
+    $redo = 0;
+    foreach $file (keys %req_inc) {
+        undef %lis_inc;
+        undef %lis_mod;
+        grep ($lis_inc{$_}++,split(/;/,$req_inc{$file}));
+        grep ($lis_mod{$_}++,split(/;/,$req_mod{$file}));
+        foreach $incf1 (keys %lis_inc) {
+            ($file eq $incf1) && die "$MYNAME: file $file INCLUDEs recursively itself\n";
+            $all_inc{$incf1}++;
+            foreach $module (split(/;/,$req_mod{$incf1})) {
+                unless ($lis_mod{$module}) {
+                    $lis_mod{$module}++;
+                    $VERBOSE && print "# File $file USEs ",$module,
+                        " through ",$incf1,"\n" ;
+                    }
+                }
+            foreach $incf2 (split(/;/,$req_inc{$incf1})) {
+                ($file eq $incf2) && die "$MYNAME: file $file INCLUDEs recursively itself\n";
+                $all_inc{$incf2}++;
+                unless ($lis_inc{$incf2}) {
+                    $lis_inc{$incf2}++;
+                    $redo++;
+                    $VERBOSE && print "# File $file INCLUDEs ",$incf2,
+                        " through ",$incf1,"\n" ;
+                    }
+                foreach $module (split(/;/,$req_mod{$incf2})) {
+                    unless ($lis_mod{$module}) {
+                        $lis_mod{$module}++;
+                        $VERBOSE && print "# File $file USEs ",$module,
+                            " through ",$incf2,"\n" ;
+                        }
+                    }
+                }
+            }
+        undef $req_inc{$file};
+        undef $req_mod{$file};
+DEF_INC: foreach $incf (keys %lis_inc) {
+            unless ($lis_inc{$incf}) {next DEF_INC}
+            $req_inc{$file} .= $incf . ";" ;
+            }
+DEF_MOD: foreach $mod (keys %lis_mod) {
+            unless ($lis_mod{$mod}) {next DEF_MOD}
+            $req_mod{$file} .= $mod . ";" ;
+            }
+        }
+    }
+
+# Check for missing INCLUDE files
+foreach $incf (keys %all_inc) {
+    undef($true_incf);
+    if ( -e $incf ) {
+        $true_incf=$incf;
+    } else {
+        foreach $inc (@inc) {
+            $tmp=$inc . "/" . $incf;
+            if ( -e $tmp ) {
+                $true_incf=$tmp;
+                last;
+            }
+        }
+    }
+    if(defined($true_incf)) {
+        $true_incf{$incf}=$true_incf;
+    } else {
+        die "$MYNAME: cannot find file $incf\n";
+    }
+}
+
+# Building make dependencies
+OUT: foreach $file (@ARGV) {
+    $target = $file;
+    $target =~ s/\.f(90)?$/\.o/ || next OUT;
+    foreach $mod (split(/;/,$req_mod{$file})) {
+        if(defined($moddep{$mod})) {
+            $moddep = $moddep{$mod};
+        } else {
+            ($moduc=$mod) =~ tr/a-z/A-Z/;
+            if(defined($moddep{$moduc})) {
+                $moddep = $moddep{$moduc};
+            } else {
+                die "$MYNAME: cannot find module $mod\n" ;
+            }
+        }
+        $deplist{$moddep}++;
+        }
+    foreach $incf (split(/;/,$req_inc{$file})) {
+        if(!defined($true_incf{$incf})) { die "$MYNAME: internal error (01)\n" }
+        $tmp=$true_incf{$incf};
+        $deplist{$tmp}++;
+        }
+    &write_target;
+    }
+
+# SUBROUTINES
+sub write_moddep {
+    foreach $module (sort keys(%moddep)) {
+        print "# MODULE ",$module,": ",$moddep{"$module"},"\n"
+        }
+    }
+
+sub write_target {
+    local($wr_target);
+    $wr_target = 1;
+    foreach $dep (sort keys %deplist) {
+        if ($wr_target) { print "\n$target: "; $wr_target = 0 }
+        print "\\\n\t$dep " ;
+        }
+    $wr_target || print "\n" ;
+    undef %deplist;
+    }

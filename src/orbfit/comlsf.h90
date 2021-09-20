@@ -1,0 +1,12 @@
+! Copyright (C) 1997-1998 by Mario Carpino (carpino@brera.mi.astro.it)
+! Version: December 7, 1998
+! ---------------------------------------------------------------------
+! Options for least squares orbital fit
+!
+! delcr       -  Convergency control (correction norm)
+! iiclsf      -  Initialization check
+!
+      INTEGER iiclsf
+!      DOUBLE PRECISION delcr
+      COMMON/cmlsf1/iiclsf
+!      COMMON/cmlsf2/delcr

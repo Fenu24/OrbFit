@@ -1,0 +1,13 @@
+
+bineph2.o: \
+	../include/parobx.h90 \
+	../propag/dyn_param.mod \
+	../propag/force_model.mod \
+	../propag/least_squares.mod \
+	../propag/orbit_elements.mod \
+	../propag/propag_state.mod \
+	../suit/astrometric_observations.mod \
+	../suit/fund_const.mod \
+	../suit/output_control.mod \
+	../suit/reference_systems.mod \
+	dim.h90 

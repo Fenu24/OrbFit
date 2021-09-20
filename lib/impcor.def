@@ -1,0 +1,9 @@
+INPUT: propag.def
+
+impcor.
+       .dt_closeapp = 0.d0         ! propagation after/before close approach time (days)
+       .sigma       = 3.d0         ! confidence level for the linear ellipse
+       .npo         = 1000         ! n. of points for the ellipse contour sampling
+       .eph_step    = 2.d-3        ! step for ephemerides (days)
+       .eph_dt      = 14.d0	   ! ephemerides duration (days)
+       

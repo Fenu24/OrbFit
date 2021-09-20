@@ -1,0 +1,3 @@
+! data on libration center for Trojans 
+      DOUBLE PRECISION dcen(nastx)
+      COMMON /librac/dcen

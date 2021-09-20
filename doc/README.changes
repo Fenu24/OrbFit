@@ -1,0 +1,20 @@
+22 June 2005 A. Milani
+
+obsvarie.f90 provision for numbered asteroid 100000 
+io_elements.f90 orbit_elements.f90 I/O of ATT elements (OK in ML format)
+
+12 September 2005 M.E. Sansaturio
+
+iers_ser.f90 use of a single file for IERS Earth rotation data
+
+15 September 2005 A. Milani
+
+./suit/newobsformat/astrometric_observations.f90 to handle new MPC format
+
+4 October 2005 A. Milani
+
+./doc/*.help revised the help files, taking into account the comments by Manca
+(Sormano).
+
+?????
+./src/suit/io_elems.f90 provision for numbered asteroid 100000 

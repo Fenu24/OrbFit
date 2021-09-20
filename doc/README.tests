@@ -1,0 +1,59 @@
+[Note: the link to JPL ephemerides MUST be set up in ./lib with name
+"jpleph". The location of the binary JPL ephemerides file is site
+dependent. A binary file, but only for LINUX or Windows, can be
+downloaded from our site.]
+
+% cd ..
+/prop/orbfit/orb331
+% cd lib
+/prop/orbfit/orb331/lib
+% ln -s ../../jpleph jpleph
+[REMARK: ../../jpleph should be replaced with the actual path and file
+for the binary JPL ephemerides for your system.]
+% cd ..
+/prop/orbfit/orb331
+% make tests
+        (cd tests; make)
+        (cd bineph; make)
+        echo CPV | bineph.x
+ Run name =
+ Run name = CPV
+ Epoch of initial conditions:  50400.00000 (MJD, TDT)
+
+.....
+
+        (cd fitobs; make)
+
+[This is the test sequence for all the main programs, orbfit, fitobs, catpro
+and bineph, also for the test programs of the moid library; could take several
+minutes; much longer message, terminating with:]
+
+.....
+==============================================================================
+ 
+ minimum point label =           2   local MOID =  2.556281035576416E-002
+  
+ Asteroid cartesian coordinates at this minimum point
+       x             y              z
+    -0.697763     0.717089     0.021482
+ Earth cartesian coordinates at this minimum point 
+       xpl           ypl            zpl
+    -0.688189     0.707080    -0.000003
+ ==============================================================================
+ Name (Ctrl-D to quit)?
+
+real    0m0.271s
+user    0m0.020s
+sys     0m0.020s
+
+
+
+[If you get any error message from the tests, please send a complete
+copy of the standard output to some of the members of the ORBFIT
+consortium, e.g. milani@dm.unipi.it]
+
+[Now ORBFIT 3.3.1 is up and ready; you can use it immediately, by
+modifying one of the .fop files in ./tests/fitobs and/or one of the
+.oop files in ./tests/orbfit]
+
+

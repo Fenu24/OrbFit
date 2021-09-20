@@ -1,0 +1,207 @@
+#!/usr/bin/wish
+
+# Learn the path to the doc/ directory
+set u [open doclib.h90 r]
+while {[gets $u line] >= 1} {
+  set i1 [string first "'" $line]
+  set i2 [string last "'" $line]
+    if {$i1&&$i2} {
+      set dir [string range $line [expr $i1+1] [expr $i2-1]]
+}   }
+close $u
+
+# Main widget
+label .mbar
+text .text -bd 2 -width 80 -height 20 -bg cornsilk -yscrollcommand ".scroll set" 
+scrollbar .scroll -command ".text yview"
+pack .mbar -side top -fill x 
+pack .scroll -side right -fill y
+pack .text
+
+# Buttons
+button .mbar.ext -relief raised -bg LightSteelBlue3  -text "EXIT" -underline 1 -command exit
+menubutton .mbar.general -relief ridge  -text "General" -underline 0  -menu .mbar.general.menu
+menubutton .mbar.orbfit -relief ridge  -text "Orbfit" -underline 0 -menu .mbar.orbfit.menu
+menubutton .mbar.fitobs -relief ridge  -text "Fitobs"  -underline 0 -menu .mbar.fitobs.menu
+menubutton .mbar.bineph -relief ridge  -text "Bineph" -underline 0 -menu .mbar.bineph.menu
+menubutton .mbar.orbit9 -relief ridge  -text "Orbit9" -underline 1 -menu .mbar.orbit9.menu
+menubutton .mbar.usergu -relief ridge  -text "UsrGuid" -underline 0 -menu .mbar.usergu.menu
+menubutton .mbar.help -relief raised -bg ivory -text "ABOUT" -underline 0 -menu .mbar.help.menu
+pack .mbar.ext .mbar.general .mbar.orbfit .mbar.fitobs .mbar.bineph \
+	.mbar.orbit9 .mbar.usergu -side left -padx 2m
+#pack .mbar.ext .mbar.general .mbar.orbfit .mbar.fitobs .mbar.bineph \
+#	.mbar.usergu -side left -padx 2m
+pack .mbar.help -side right -padx 2m
+
+# ============================================================================
+# GENERAL 
+# ============================================================================
+
+menu .mbar.general.menu
+.mbar.general.menu add checkbutton -label "GNU License" -underline 0 -command {eval loadFile [join {$dir GNUPUB.LIC} /]}
+.mbar.general.menu add cascade -label "Readme" -underline 0 -menu .mbar.general.menu.readme
+menu .mbar.general.menu.readme 
+.mbar.general.menu.readme add checkbutton -label "HowTo" -underline 0 -command {eval loadFile [join {$dir README} /]}
+.mbar.general.menu.readme add checkbutton -label "Compilation"  -underline 0 -command {eval loadFile [join {$dir README.compile} /]}
+.mbar.general.menu.readme add checkbutton -label "Download OrbFit"  -underline 0 -command {eval loadFile [join {$dir README.ftp} /]}
+.mbar.general.menu.readme add checkbutton -label "FTP JPL ephemerides"  -underline 4 -command {eval loadFile [join {$dir jpl.ftp} /]}
+.mbar.general.menu.readme add checkbutton -label "Options"  -underline 0 -command {eval loadFile [join {$dir README.options} /]}
+.mbar.general.menu.readme add checkbutton -label "Patches" -underline 0 -command {eval loadFile [join {$dir README.patches} /]}
+.mbar.general.menu.readme add checkbutton -label "Test"  -underline 0 -command {eval loadFile [join {$dir README.tests} /]}
+#.mbar.general.menu.readme add checkbutton -label "Unix"  -underline 0 -command {eval loadFile [join {$dir README.unix} /]}
+#.mbar.general.menu.readme add checkbutton -label "Windows" -underline 0 -command {eval loadFile [join {$dir ../README.windows} /]}
+#.mbar.general.menu.readme add checkbutton -label "Dos"  -underline 0 -command {eval loadFile [join {$dir README.dos} /]}
+.mbar.general.menu.readme add checkbutton -label "Work-in-progress" -underline 2 -command {eval loadFile [join {$dir README.workinprog} /]}
+.mbar.general.menu.readme add checkbutton -label "Graphical interface" -underline 2 -command {eval loadFile [join {$dir README.tcl} /]}
+.mbar.general.menu.readme add cascade -label "Add-on's" -underline 5  -menu .mbar.general.menu.readme.addon
+
+menu .mbar.general.menu.readme.addon
+.mbar.general.menu.readme.addon add checkbutton  -label "Orbit9" -underline 0 -command {eval loadFile [join {$dir README.orbit9} /]}
+
+# Bindings 
+bind . <x> {exit}
+
+# =========================================================================
+# ORBFIT
+# =========================================================================
+
+menu .mbar.orbfit.menu
+.mbar.orbfit.menu add checkbutton -label "Options" -underline 0 -command {eval loadFile [join {$dir ../tests/orbfit/README.options} /]}
+.mbar.orbfit.menu add checkbutton -label "Examples" -underline 0 -command {eval loadFile [join {$dir ../tests/orbfit/README.examples} /]}
+
+# =========================================================================
+# FITOBS
+# =========================================================================
+
+menu .mbar.fitobs.menu
+.mbar.fitobs.menu add checkbutton -label "Main menu" -underline 0 -command {eval loadFile [join {$dir mainmenu.help} /]}
+.mbar.fitobs.menu add cascade -label "Help on choices" -menu .mbar.fitobs.menu.main
+
+menu .mbar.fitobs.menu.main
+.mbar.fitobs.menu.main add checkbutton -label "Input observations" -underline 1 -command {eval loadFile [join {$dir inputobs.help} /]}
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "Acquire elements" -underline 0 -command {eval loadFile [join {$dir inputele.help} /]}
+.mbar.fitobs.menu.main add cascade -label "Help on choices"  -menu .mbar.fitobs.menu.main.acele
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "Differential corrections" -underline 1 -command {eval loadFile [join {$dir diffcorr.help} /]}
+.mbar.fitobs.menu.main add cascade -label "Help on choices" -menu .mbar.fitobs.menu.main.difco
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "First guess" -underline 0 -command {eval loadFile [join {$dir firstgue.help} /]}
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "State propagation" -underline 0 -command {eval loadFile [join {$dir propagat.help} /]}
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "Predict observations" -underline 0 -command {eval loadFile [join {$dir prediobs.help} /]}
+.mbar.fitobs.menu.main add cascade -label "Help on choices" -menu .mbar.fitobs.menu.main.predobs
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "Multiple solutions" -underline 0 -command {eval loadFile [join {$dir multisol.help} /]}
+.mbar.fitobs.menu.main add cascade -label "Help on choices" -menu .mbar.fitobs.menu.main.mulsol
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "Close approach analysis" -underline 0 -command {eval loadFile [join {$dir closapan.help} /]}
+.mbar.fitobs.menu.main add cascade -label "Help on choices" -menu .mbar.fitobs.menu.main.closap
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "Status" -underline 1 -command {eval loadFile [join {$dir null.help} /]}
+.mbar.fitobs.menu.main add separator
+.mbar.fitobs.menu.main add checkbutton -label "Date conversion" -underline 0  -command {eval loadFile [join {$dir null.help} /]}
+
+menu .mbar.fitobs.menu.main.acele
+.mbar.fitobs.menu.main.acele add checkbutton -label "Which method to use?" -underline 0 -command {eval loadFile [join {$dir prelimet.help} /]}
+menu .mbar.fitobs.menu.main.difco
+.mbar.fitobs.menu.main.difco add checkbutton -label "Select correction and reject mode" -underline 0 -command {eval loadFile [join {$dir difcomod.help} /]}
+menu .mbar.fitobs.menu.main.predobs
+.mbar.fitobs.menu.main.predobs add checkbutton -label "What is required?" -underline 0 -command {eval loadFile [join {$dir predicbd.help} /]}
+.mbar.fitobs.menu.main.predobs add cascade -label "Help on choices" -menu .mbar.fitobs.menu.main.predobs.prednonl
+menu .mbar.fitobs.menu.main.mulsol
+.mbar.fitobs.menu.main.mulsol add checkbutton -label "What to do?" -underline 0 -command {eval loadFile [join {$dir multiuse.help} /]}
+menu .mbar.fitobs.menu.main.closap
+.mbar.fitobs.menu.main.closap add checkbutton -label "How to handle nonlinearity?" -underline 0 -command {eval loadFile [join {$dir closnonl.help} /]}
+
+
+menu .mbar.fitobs.menu.main.predobs.prednonl
+.mbar.fitobs.menu.main.predobs.prednonl add checkbutton -label "Nonlinearity handling" -underline 0 -command {eval loadFile [join {$dir prednonl.help} /]}
+
+
+# =========================================================================
+# BINEPH
+# =========================================================================
+
+menu .mbar.bineph.menu
+.mbar.bineph.menu add checkbutton -label "Usage" -underline 0 -command {eval loadFile [join {$dir  ../tests/bineph/README.bineph} /]}
+
+
+# =========================================================================
+# ORBIT9
+# =========================================================================
+
+menu .mbar.orbit9.menu
+.mbar.orbit9.menu add checkbutton -label "README" -underline 0 -command {eval loadFile [join {$dir README.orbit9} /]}
+.mbar.orbit9.menu add checkbutton -label "Usage" -underline 0 -command {eval loadFile [join {$dir orbit9.help} /]}
+
+
+# =========================================================================
+# USER GUIDE
+# =========================================================================
+
+menu .mbar.usergu.menu
+.mbar.usergu.menu add checkbutton -label "What is OrbFit?" -underline 0 -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "1. What"}
+.mbar.usergu.menu add checkbutton -label "Can I test OrbFit?" -underline 0 -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "2. Can I"}
+.mbar.usergu.menu add checkbutton -label "How to get?" -underline 0 -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "3. How to"}
+.mbar.usergu.menu add checkbutton -label "How to install?" -underline 7 -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "4. How to"}
+.mbar.usergu.menu add checkbutton -label "How to start?" -underline 7 -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "5. How to"}
+.mbar.usergu.menu add checkbutton -label "What can I do with OrbFit?" -underline 11  -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "6. What can"}
+.mbar.usergu.menu add checkbutton -label "Graphical interface." -underline 0  -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "7. Graphical"}
+.mbar.usergu.menu add checkbutton -label "What is new?" -underline 8  -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "8. What is"}
+.mbar.usergu.menu add checkbutton -label "Frequently Asked Questions" -underline 0  -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "9. Freq"}
+.mbar.usergu.menu add checkbutton -label "Where to find additional documentation?" -underline 1 -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "10. Where to"}
+.mbar.usergu.menu add checkbutton -label "Free software license" -underline 1 -command {eval loadFile [join {$dir usg.help} /]; searchMatches .text "11. Free"}
+.mbar.usergu.menu add separator
+.mbar.usergu.menu add cascade -label "Browse HTML" -menu .mbar.usergu.menu.browse
+
+menu .mbar.usergu.menu.browse
+#.mbar.usergu.menu.browse add checkbutton -label "How to browse?" -underline 0 -command {eval loadFile [join {$dir browse.help} /]}
+.mbar.usergu.menu.browse add checkbutton -label "Netscape" -underline 0 -command {eval exec netscape [join {$dir index.html} /] &}
+
+# =========================================================================
+# ABOUT
+# =========================================================================
+
+menu .mbar.help.menu
+.mbar.help.menu add checkbutton -label "Who writes OrbFit and why?" -underline 0 -command {eval loadFile [join {$dir about.help} /]}
+.mbar.help.menu add checkbutton -label "Help on Help" -underline 0 -command {eval loadFile [join {$dir help.help} /]}
+
+# ========================================================================
+# =========================================================================
+
+tk_menuBar .mbar .mbar.ext .mbar.general .mbar.orbfit .mbar.fitobs \
+	.mbar.bineph .mbar.orbit9 .mbar.usergu .mbar.help
+focus .mbar
+
+proc loadFile file {
+    .text delete 1.0 end
+    set f [open $file]
+    while {![eof $f]} {
+       .text insert end [read $f 1000]
+    }
+close $f
+}
+wm geometry . +160+20
+
+# =========================================================================
+# HYPERTEXT 
+# =========================================================================
+
+# Procedure to display the requested item 
+
+proc searchMatches {w pattern} {
+    scan [$w index end] %d numLines
+    for {set i 1} {$i < $numLines} {incr i} {
+       $w mark set here $i.0
+       if [regexp $pattern [$w get here "here lineend"]] {
+           $w yview [expr $i - 2]
+           return}
+       }
+}
+
+# ======================================================================
+# Display the opening screen
+
+eval loadFile [join {$dir open.help} /]

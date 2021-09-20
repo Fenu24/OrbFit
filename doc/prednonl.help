@@ -1,0 +1,27 @@
+% help file, orbfit 1.7.1 and later
+% this is the predcition of observations, selection of nonlinear
+% approximation menu
+
+MENU PREDNONL
+
+This menu selects among the algortihms described in ``The asteroid
+identification problem I'' to approximate the confidence boundary on
+the celestial sphere.
+
+How to handle nonlinearity?
+
+1 = linear map ...in the simplest approximation, the nonlinear map
+from the confidence ellipsoid in the orbital elements space to the
+celestial sphere is approximated by a linear map (the differential);
+then the confidence boundary is an ellipse, the variations line is a
+straight line segment.
+
+2 = 2-body nonlinearity ...the nonlinearity is fully accounted for,
+but the differences with respect to the nominal prediction are
+computed by 2-body propagation of the asteroid orbit.
+
+3 = full n-body nonlinearity ...the nonlinearity is fully accounted
+for, by performing for each point an accurate N-body propagation.
+
+0 = exit ...not allowed; the nonlinearity needs to be handled
+somehow.

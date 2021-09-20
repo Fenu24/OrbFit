@@ -1,0 +1,86 @@
+Format of orbital element files
+
+Orbital element files consists of a header namelist (containing
+general information about the content of the file) + a sequence of
+orbit descriptors (containing information about individual orbits).
+
+An orbital element file can contain an arbitrary number of orbit
+descriptors, which can be of two different types: single-line (the
+description of each orbit is contained in a single record) or
+multi-line. Single-line records are more compact (more suitable to
+large catalogues) but less flexible than multi-line. Single-line and
+multi-line records cannot be mixed within the same file.
+
+
+HEADER NAMELIST
+
+The header namelist contains the following keywords:
+
+format (character string): specifies the format of the file; the
+format described in this document is 'OEF1.0' and is the only format
+supported by now; different formats can be supported in future
+releases.
+
+rectype (character string): specifies the type of record contained in
+the file; its value can be '1L' (single-line) or 'ML' (multi-line).
+[NOTE: if this keyword is not supplied, input routine try to guess
+the format of the file].
+
+elem (character string, necessary only if rectype='1L'): type of
+orbital elements (supported values: KEP, EQU, CAR).
+
+refsys (reference system descriptor): specifies the default reference
+system in which orbital elements are given (see comments in SUBROUTINE
+ROTPN); in multi-line records, the default reference system can be
+overridden by a keyword RSY (not yet implemented).
+
+epoch (time specification, optional): specifies the default epoch of
+orbital elements. In multi-line records, the default epoch can be
+overridden by a keyword MJD/JD/CAL. In single-line records, the
+epoch must be specified on each record if this keyword is not given
+
+
+SINGLE-LINE DESCRIPTOR
+
+A single-line desrciptor contains all the information related to an
+object within a single record of the file, in the following order:
+
+name [t0] elem(6) [h g]
+
+where:
+
+name (character string): name of the object
+
+t0 (epoch of elements, MJD-TDT): must be specified if and only if no
+keyword "epoch" is present in the header namelist
+
+elem (real, 6-dim vector): orbital elements
+
+h g (real, 2-dim vector): H and G magnitude parameters (optional)
+
+
+MULTI-LINE DESCRIPTOR
+
+In multi-line descriptors, the information on each orbit is given by
+several successive records. The first record of each descriptor
+(starting at column 1) must contain the name of the object, the
+following records (always beginning with a blank) contains additional
+information, labelled by suitable keywords. The additional records
+can be given in any order and are optional (with the only exception of
+orbital elements, which are mandatory and must follow immediately the
+record with the object name).
+
+Valid keword names are:
+
+KEP/CAR/EQU: orbital elements
+
+MJD/JD/CAL: epoch of orbital elements
+
+MAG: H and G magnitude parameters
+
+MAS: mass (solar masses)
+
+STD: standard deviations of orbital elements (6-dim vector)
+
+CR1: 1-correlations between orbital elemets (3 lines with 5 values
+each)

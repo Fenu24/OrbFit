@@ -1,0 +1,65 @@
+Changes to the software for initial orbit determination (June 9, 2000)
+with respect to version 2.1.1
+
+- gaussn now can deal also with hyperbolic orbits: in order to avoid producing crazy
+solution, I have put anyway an artificial limitation to the eccentricity (parameter
+init_orbdet.gauss.max_ecc with a default value of 10). Presently the possible reasons
+for failure are now:
+
+	SingS		(singular S matrix)
+	coef(0)=0	(this should never happen)
+	NoPolSol	(the 8-th degree polynomial has no positive root)
+	NoAccSol	(no acceptable solution found)
+
+the last case happens only when all the solutions have eccentricity larger than max_ecc,
+because in all other cases the correction of the roots always find a result (failure
+of convergency is notified as a warning, but the corresponding solution is passed on
+output).
+
+Hyperbolic orbits are handled through particular routines for coordinate transformation
+(mainly ccek1 and ekcc1) which could be later included in coocha) but are
+presently discarded by iodet
+
+- initial orbit determination is tried several times, using nested loops like:
+
+    LOOP on different triplets of observations
+        LOOP on different random Dalpha/Ddelta on observations
+            LOOP on different methods (Gauss, Vaisala, ...)
+
+iodet selects only one solution according to the RMS with respect to observations
+over a timespan centered on the triplet used (the list of observations over which the
+test is done therefore depends on the triplet: the way in which this selection is
+done is controlled by the options init_orbdet.check_dt.expand and
+init_orbdet.check_dt.maxdtexp). Other related options:
+
+init_orbdet.n_triplets:
+	max number of triplets of observations to be tried; default = 10
+
+init_orbdet.rms_val.max:
+	max acceptable value of residual RMS (solutions having an RMS larger than
+	this value are discarded; default = 1E4 arcsec)
+
+init_orbdet.rms_val.ok:
+	value of residual RMS at which iterations are stopped, accepting current
+	solution without any other trial (default = 2 arcsec)
+	NOTE: this is meant only to speed up the computation; if you don't like
+	this system, siply put it to a negative value
+
+init_orbdet.noise.ksigma:
+	value of the noise to be added to each coordinate (RA/DEC) in units of
+	the a-priori RMS (default = 1)
+
+init_orbdet.noise.ntrials:
+	number of trials with noise for each triplet (default = 10)
+	a value of 0 means that only the original observations (with no added noise)
+	are used
+
+- I have revised the system of messages/reports; however, due to the iterative
+behaviour, it is not easy to give information on each trial. As a consequence,
+I have introduced a "verbosity level" (init_orbdet.verbose) with the following
+meaning:
+
+1 = only summary (statistic) information on all the trials, and synthetic information
+    on the solution found (this is the default)
+2 = synthetic information on each trial
+3 = verbose information (for debugging)

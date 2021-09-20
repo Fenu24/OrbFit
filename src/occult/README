@@ -1,0 +1,24 @@
+README file for OrbFit directory "./src/occult"
+------------------------------------------------
+
+This directory contains a plugin to OrbFit meant to simulate
+transits/occultations by disks with arbitrary semiaxes, orientation and
+displacement in the orthogonal direction with respect to the star's equator.
+
+The following conventions apply: the unit of length is the star's
+radius; the star's cross section is assumed to be the unit radius
+circular disk (no limb darkening, althout it could be added easily).
+The tranditing disk cross section is described by an ellipse, with
+parameters assigned in the occult.opt option file. The unit of time is
+1 day, the velocity of the transit is in  (star radius)/day.
+
+The output is in a flat file occultation.fla, it can be processed by
+the matlab macro occult.m, providing figures with both the star
+luminosity (relative, that is normalized to 1 when no occultation is
+taking place) and its time derivative as a function of the time,
+restricted to a short timespan around the transit.
+
+
+Andrea Milani 
+
+Pisa 14/11/2016

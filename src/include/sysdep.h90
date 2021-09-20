@@ -1,0 +1,10 @@
+! Copyright (C) 1996 by Mario Carpino (carpino@brera.mi.astro.it)
+! Version: August 29, 1996
+! ---------------------------------------------------------------------
+! System dependent parameters
+! Bell character
+      INTEGER icbell
+      PARAMETER (icbell=7)
+! Character for the indication of directories
+      CHARACTER*1 dircha
+      PARAMETER (dircha='/')

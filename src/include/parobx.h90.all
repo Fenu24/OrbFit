@@ -1,0 +1,12 @@
+! ============================
+!  parobx.h max number of observations
+ integer nobx,nob2x
+ parameter (nobx=8000,nob2x=nobx*2)
+! INTERFACE WITH blocks etc.
+! block variables: max no blocks, max no residuals in block   
+! block allocation:
+INTEGER, PARAMETER :: nblx= 1000 ! max number of passages for one asteroid
+DOUBLE PRECISION, PARAMETER ::  dtblock= 30.d0 ! min gap for block termination
+INTEGER, PARAMETER :: nxinbl=80 ! 2*max number of observations in one passage
+!INTEGER, PARAMETER :: nxinbl_large=800, nbl_large=50 ! 2*max no obs, number of exceptional cases
+INTEGER, PARAMETER :: nxinbl_large=400, nbl_large=50 ! 2*max no obs, number of exceptional cases

@@ -1,0 +1,67 @@
+
+adds3p.o: \
+	pars3m.h90 \
+	sel3m.h90 
+
+ccek1.o: \
+	../suit/fund_const.mod 
+
+gauini.o: \
+	comgau.h90 
+
+gaussn.o: \
+	../include/parobx.h90 \
+	../suit/fund_const.mod \
+	../suit/output_control.mod \
+	../suit/reference_systems.mod \
+	comgau.h90 
+
+gaussn2.o: \
+	../include/parobx.h90 \
+	../suit/fund_const.mod \
+	../suit/output_control.mod \
+	../suit/reference_systems.mod 
+
+io_det.o: \
+	../include/comiod.h90 \
+	../include/pariod.h90 \
+	../suit/ades.mod \
+	../suit/astrometric_observations.mod \
+	../suit/fund_const.mod 
+
+iod_rms.o: \
+	../suit/astrometric_observations.mod \
+	../suit/fund_const.mod \
+	../suit/reference_systems.mod 
+
+iodini.o: \
+	../include/comiod.h90 \
+	../include/pariod.h90 \
+	../suit/fund_const.mod \
+	pars3m.h90 
+
+sel3_mc.o: \
+	../include/parobx.h90 \
+	../suit/fund_const.mod \
+	pars3m.h90 \
+	sel3m.h90 
+
+sel3g.o: \
+	../suit/fund_const.mod 
+
+sel3mg.o: \
+	pars3m.h90 \
+	sel3m.h90 
+
+vaisala.o: \
+	../include/parobx.h90 \
+	../suit/fund_const.mod \
+	../suit/reference_systems.mod \
+	comvais.h90 
+
+vaisub.o: \
+	comvais.h90 \
+	parrho.h90 
+
+vel_iterate.o: \
+	../suit/ever_pitkin.mod 

@@ -1,0 +1,7 @@
+! ===========================
+! {\bf comnbo.h} : pardim.h ORBIT9
+! number of massive bodies, of massless particles, of var.eq.
+      integer nbod,na,nvz
+      CHARACTER*9 ida(nastx)
+      common/numbod/nbod,na,nvz
+      common/astidn/ida

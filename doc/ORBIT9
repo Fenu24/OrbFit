@@ -1,0 +1,432 @@
+#!/usr/bin/wish
+
+# ===========================================================================
+# Learn the path to the doc/ directory
+
+  set a [open doclib.h90 r]
+  while {[gets $a line] >= 1} {
+    set i1 [string first "'" $line]
+    set i2 [string last "'" $line]
+      if {$i1&&$i2} {
+        set dir [string range $line [expr $i1+1] [expr $i2-1]]
+  }   }
+  close $a
+
+# ===========================================================================
+
+# ===========================================================================
+# Open the options file
+
+  set u [open orb9.opt r]
+# ===========================================================================
+
+# =========================================================================== 
+# Prepare widget frames, set static and status message widgets, manage window
+
+  frame .left
+  frame .middle
+  frame .right
+  frame .but
+
+  gets $u fline
+  set linetr [string range $fline 1 end]
+  label .lng -textvariable linetr
+  label .warn -text "Warning: Always press RETURN to accept changes !!"
+
+  pack .lng .warn -padx 1m -pady 2m
+
+  label .msg -width 20 -text "Set options and run!"
+  label .stat -width 20 -text "STATUS:"
+
+  pack .stat -in .but -anchor w -pady 0m  -fill x
+  pack .msg -in .but -anchor w -pady 3m -fill x
+
+  wm title . "ORBIT9"
+  wm geometry . -30-100
+# ===========================================================================
+
+# ===========================================================================
+# Read options file and set corresponding widgets
+
+  set wid 1
+  set lstout fline
+  set cont 1
+  set priv 1
+
+while {$cont!=0} {
+  gets $u line
+  set cont [string compare $line "; END OF INPUT"]
+  set oulin($wid) $line
+  set i1 [string first "=" $line]
+  set i2 [string first ";" $line]
+
+    if {$i2>1} {
+      set sf($wid) [string range $line 0 $i1]
+      set inp($wid) [string range $line [expr $i1+1] [expr $i2-1]]
+      set sl($wid) [string range $line $i2 end]
+      set tm [string compare [string range $line 0 $i1] "v1="]
+      if {$tm==0} {set priv 0}
+      if {$priv!=0} {
+        label .lf($wid) -text [string trim [string range $line 0 [expr $i1-1]]]
+        entry .inp($wid) -width 20 -bg cornsilk -relief sunken -textvariable inp($wid)
+        label .ll($wid) -text [string trim [string range $line [expr $i2+1] end]]
+
+        pack .left -side left -padx 2m -pady 3m
+        pack .middle -side left -padx 2m 
+        pack .right -side left -padx 2m -pady 3m
+        pack .but -side bottom -padx 2m -pady 3m
+        pack .lf($wid) -in .left -anchor w  -pady 2m
+        pack .inp($wid) -in .middle -pady 1.7m
+        pack .ll($wid) -in .right -anchor w -pady 2m
+  }   }  
+  lappend lstinp .inp($wid)
+  lappend lstout oulin($wid)
+  if {$wid == 7} {
+    label .mbar -text "Asteroid Id"
+    text .inp(8) -relief sunken -background cornsilk -width 15 -height 10
+    pack .mbar .inp(8)
+    set i 1
+      set lst [list {1}] 
+    set con 1
+      while {$con!=0} {
+      gets $u line
+      if {[string length [string trim $line " "]] > 0} {      
+	set ouast($i) $line
+        incr i
+        set lst [concat $lst $i] 
+      } else {
+	  set con 0}
+      }
+      set lr [expr [llength $lst] - 2]
+      set ls [lrange $lst 0 $lr]
+      foreach j $ls {
+	  .inp(8) insert end $ouast($j)\n
+          }
+      set tmp [string trimright [.inp(8) get 1.0 end]]
+      set oulin(8) "$tmp \n \ "
+      incr wid
+      lappend lstinp .inp($wid)
+      lappend lstout oulin($wid)
+      }
+    incr wid
+# ==========================================================================
+# Safety feature to prevent endless reading loop
+  if {$wid > 100} {
+     puts "; END OF INPUT not found in orb9.opt"
+     exit
+  }
+}
+  close $u    
+
+  label .dummy1 -text " " 
+  label .dummy2 -text "                         NOTE:" 
+  label .more -text "FOR OTHER, SELDOM NEEDED OPTIONS SEE orb9.opt." 
+  pack .dummy1 -in .left -expand 1 -anchor w -pady 10m
+  pack .dummy2 -in .middle -expand 1 -anchor w -pady 10m
+  pack .more -in .right -expand 1 -anchor w -pady 10m
+ 
+# ===========================================================================
+
+# ===========================================================================
+# Set bindings for the entries
+
+bind .inp(2) <Return> {
+    set oulin(2) [concat $sf(2) $inp(2) $sl(2)]
+    .inp(2) configure -bg PeachPuff
+}
+bind .inp(3) <Return> {
+    set oulin(3) [concat $sf(3) $inp(3) $sl(3)]
+    .inp(3) configure -bg PeachPuff
+}
+bind .inp(4) <Return> {
+    set oulin(4) [concat $sf(4) $inp(4) $sl(4)]
+    .inp(4) configure -bg PeachPuff
+}
+bind .inp(5) <Return> {
+    set oulin(5) [concat $sf(5) $inp(5) $sl(5)]
+    .inp(5) configure -bg PeachPuff
+}
+bind .inp(7) <Return> {
+    set oulin(7) [concat $sf(7) $inp(7) $sl(7)]
+    .inp(7) configure -bg PeachPuff
+}
+bind .inp(8) <Return> {
+    set tmp [string trimright [.inp(8) get 1.0 end]]
+    set oulin(8) "$tmp \n \ "
+    .inp(8) configure -bg PeachPuff
+}
+bind .inp(10) <Return> {
+    set oulin(10) [concat $sf(10) $inp(10) $sl(10)]
+    .inp(10) configure -bg PeachPuff
+}
+bind .inp(11) <Return> {
+    set oulin(11) [concat $sf(11) $inp(11) $sl(11)]
+    .inp(11) configure -bg PeachPuff
+}
+bind .inp(12) <Return> {
+    set oulin(12) [concat $sf(12) $inp(12) $sl(12)]
+    .inp(12) configure -bg PeachPuff
+}
+bind .inp(13) <Return> {
+    set oulin(13) [concat $sf(13) $inp(13) $sl(13)]
+    .inp(13) configure -bg PeachPuff
+}
+bind .inp(14) <Return> {
+    set oulin(14) [concat $sf(14) $inp(14) $sl(14)]
+    .inp(14) configure -bg PeachPuff
+}
+bind .inp(15) <Return> {
+    set oulin(15) [concat $sf(15) $inp(15) $sl(15)]
+    .inp(15) configure -bg PeachPuff
+}
+bind .inp(16) <Return> {
+    set oulin(16) [concat $sf(16) $inp(16) $sl(16)]
+    .inp(16) configure -bg PeachPuff
+}
+# ===========================================================================
+
+# ===========================================================================
+# Buttons: help, go, redo, save, exit
+
+button .help -relief raised -bg cornsilk -width 5 -text "Help" -underline 0 -command "exec [join {$dir ORBHELP} /] &"
+
+  button .go -relief raised -bg cornsilk -width 5 -text "Go!" -underline 0 -command { 
+    .go configure -bg cornsilk -text "Cancel" -underline 0 -command {
+       exec kill -9 $p
+       .msg configure -text "Execution aborted!"
+       .go configure -bg PeachPuff -text "Idle" -underline 5
+       update idletasks
+       tkwait variable x
+       set q 0
+       exec rm -f temp
+    }
+    .msg configure -text "Running!"
+    update idletasks
+    set p [exec >@stdout time orbit9 &]
+    set q [probe 3000]
+    if {$q == 99} {
+    .msg configure -text "Execution completed!"
+    .go configure -bg PeachPuff -relief sunken -text "Done" -underline 5
+    update idletasks
+    exec rm -f temp
+    }
+}
+  button .redo -relief raised -bg cornsilk -width 5 -text "Redo" -underline 0 -command {
+    .save configure -bg cornsilk -text "Save" -underline 0
+    .msg configure -text "Set options and run!"
+    .go configure -relief raised -bg cornsilk -text "Go!" -underline 0 -command {
+      .go configure -text "Cancel" -underline 0 -command {
+         exec kill -9 $p
+         .msg configure -text "Execution aborted!"
+         .go configure -bg PeachPuff -text "Idle" -underline 5
+         update idletasks
+         tkwait variable p
+         set q 0
+         exec rm -f temp
+      }
+      .msg configure -text "Running!"
+      update idletasks
+      set p [exec >@stdout time orbit9 &]
+      set q [probe 3000]
+      if {$q == 99} {
+        .msg configure -text "Execution completed!"
+        .go configure -bg PeachPuff -relief sunken -text "Done" -underline 5
+        update idletasks
+        exec rm -f temp
+      }
+}
+  foreach i {2 3 4 5 7 8 10 11 12 13 14 15 16} {.inp($i) configure -bg cornsilk}
+}
+  button .save -relief raised -bg cornsilk -width 5 -text "Save" -underline 0 -command {
+    set v [open orb9.opt w]
+    .save configure -bg PeachPuff -width 5 -relief sunken -text "Done" -underline 5
+  foreach j $lstout {
+     set zz [eval set z "\$$j"]
+     puts $v $zz} 
+  close $v
+}
+
+  button .ext -relief raised -bg cornsilk -width 5 -text "Exit" -underline 1 -command {exec rm -f temp
+     exit} 
+
+  pack .help .go .redo .save .ext -in .but -pady 4.5m
+# ===========================================================================
+
+# ===========================================================================
+# Bindings for keyboard controls
+
+  bind . <Alt-h> {eval exec [join {$dir ORBHELP} /] &}
+
+  bind .help <Return> {eval exec [join {$dir ORBHELP} /] &}
+
+# ===================================
+
+  bind . <Alt-g> {
+    .go configure -bg cornsilk -text "Cancel" -underline 0 -command {
+       exec kill -9 $p
+       .msg configure -text "Execution aborted!"
+       .go configure -bg PeachPuff -text "Idle" -underline 5
+       update idletasks
+       tkwait variable x
+       set q 0
+       exec rm -f temp
+    }
+    .msg configure -text "Running!"
+    update idletasks
+    set p [exec >@stdout time orbit9 &]
+    set q [probe 3000]
+    if {$q == 99} {
+    .msg configure -text "Execution completed!"
+    .go configure -bg PeachPuff -relief sunken -text "Done" -underline 5
+    update idletasks
+    exec rm -f temp
+    }
+}
+
+  bind .go <Return> {
+    .go configure -bg cornsilk -text "Cancel" -underline 0 -command {
+       exec kill -9 $p
+       .msg configure -text "Execution aborted!"
+       .go configure -bg PeachPuff -text "Idle" -underline 5
+       update idletasks
+       tkwait variable x
+       set q 0
+       exec rm -f temp
+    }
+    .msg configure -text "Running!"
+    update idletasks
+    set p [exec >@stdout time orbit9 &]
+    set q [probe 3000]
+    if {$q == 99} {
+    .msg configure -text "Execution completed!"
+    .go configure -bg PeachPuff -relief sunken -text "Done" -underline 5
+    update idletasks
+    exec rm -f temp
+    }
+}
+
+# =================================
+
+  bind . <Alt-c> {
+       exec kill -9 $p
+       .msg configure -text "Execution aborted!"
+       .go configure -bg PeachPuff -text "Idle" -underline 5
+       update idletasks
+       tkwait variable x
+       set q 0
+       exec rm -f temp
+    }
+
+# =================================
+
+  bind . <Alt-r> {
+    .save configure -bg cornsilk -text "Save" -underline 0
+    .msg configure -text "Set options and run!"
+    .go configure -relief raised -bg cornsilk -text "Go!" -underline 0 -command {
+    .go configure -text "Cancel" -underline 0 -command {
+       exec kill -9 $p
+       .msg configure -text "Execution aborted!"
+       .go configure -bg PeachPuff -text "Idle" -underline 5
+       update idletasks
+       tkwait variable p
+       set q 0
+       exec rm -f temp
+    }
+    .msg configure -text "Running!"
+    update idletasks
+    set p [exec >@stdout time orbit9 &]
+    set q [probe 3000]
+    if {$q == 99} {
+      .msg configure -text "Execution completed!"
+      .go configure -bg PeachPuff -relief sunken -text "Done" -underline 5
+      update idletasks
+      exec rm -f temp
+    }
+}
+    foreach i $lstinp {$i configure -bg cornsilk}
+}
+
+  bind .redo <Return> {
+    .save configure -bg cornsilk -text "Save" -underline 0
+    .msg configure -text "Set options and run!"
+    .go configure -relief raised -bg cornsilk -text "Go!" -underline 0 -command {
+    .go configure -text "Cancel" -underline 0 -command {
+       exec kill -9 $p
+       .msg configure -text "Execution aborted!"
+       .go configure -bg PeachPuff -text "Idle" -underline 5
+       update idletasks
+       tkwait variable p
+       set q 0
+       exec rm -f temp
+    }
+    .msg configure -text "Running!"
+    update idletasks
+    set p [exec >@stdout time orbit9 &]
+    set q [probe 3000]
+    if {$q == 99} {
+      .msg configure -text "Execution completed!"
+      .go configure -bg PeachPuff -relief sunken -text "Done" -underline 5
+      update idletasks
+      exec rm -f temp
+    }
+}
+    foreach i $lstinp {$i configure -bg cornsilk}
+}
+
+# =================================
+
+  bind . <Alt-s> {
+    set v [open orb9.opt w]
+    .save configure -bg PeachPuff -width 5 -relief sunken -text "Done" -underline 5
+    foreach j $lstout {
+      set zz [eval set z "\$$j"]
+      puts $v $zz} 
+    close $v
+  }
+
+  bind .save <Return> {
+    set v [open orb9.opt w]
+    .save configure -bg PeachPuff -width 5 -relief sunken -text "Done" -underline 5
+    foreach j $lstout {
+      set zz [eval set z "\$$j"]
+      puts $v $zz} 
+    close $v
+  }
+
+# =================================
+
+  bind . <Alt-x> {exec rm -f temp
+                  exit}
+
+  bind .ext <Return> {exec rm -f temp
+                  exit}
+
+#===========================================================================
+
+
+# ===========================================================================
+# Procedure to check whether "orbit9" runs.
+
+  proc probe inval {
+    open temp w
+    set cc 0 
+    while {$cc == 0} {
+      update
+      after $inval
+      exec ps aux > temp
+      set cc [catch {exec grep "orbit9" temp}]
+    }
+    return 99
+}
+
+
+
+
+#===========================================================================
+# Does not work properly - window automatically closes down upon completing
+# the execution of the program
+#===========================================================================
+#button .go -relief raised -bg cornsilk -width 5 -text "Go!" -underline 0 -command {
+#exec /usr/bin/X11/color_xterm -geometry 30x20+320+150 -sb -sl 500 -bg cornsilk -T "Program SHORT" -j -fn 10x20 -e short8
+#.go configure -bg PeachPuff -width 5 -relief sunken -text "Done"
+#}

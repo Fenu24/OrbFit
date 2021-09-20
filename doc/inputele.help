@@ -1,0 +1,63 @@
+% help file, orbfit 3.4.2 and later
+% this is the input orbital elements menu
+
+MENU INPUTELE
+
+From this menu you can either input or compute some first
+approximation orbital elements set, to be later refined from menu
+DIFFCORR.
+
+Which orbital elements to input/compute?
+  
+1 = input arc 1 ...elements are read from the asteroid/comet catalogue file
+elefi0, provided this file name is assigned in the file runname.fop, and
+provided the format of the file is recognized by the automatic format
+identification routines. Currently our own OrbFit format, the MPC and the
+Lowell Observatory formats are automatically identified and read. In the
+catalogue file elefi0, the asteroid is identified by the identifier astna0
+(blanks in the name do not matter). Do not confuse the identifier with the
+name of a numbered asteroid: a numbered asteroid is identified by its number.
+
+2 = input arc 2 ...same rules apply as for arc 1, provided the
+catalogue file elefip and the asteroid identifier astnap are given
+in runname.fop.
+
+3 = input both arcs ...same as performing first 1 then 2.
+
+4 = compute arc 1 by Gauss/Vaisala method ...provided at least 3
+astrometric observations are available for arc 1, Gauss/Vaisala method
+is used to compute a first approximation orbit. If there are more than
+3 observations, the 3 selected ones are indicated by the value 2 of
+the selection flag in the obsdir0/nam0.frw file; if these flags are
+not set manually by the user, a routine selects them automatically
+(this is the default if the user does nothing).
+
+5 = compute arc 2 by Gauss/Vaisala method ..same as 4, but for 3
+observations selected from obsdirp/namp.obs, according to the
+selection flags in obsdirp/namp.frw.
+
+6 = compute both arcs by Gauss/Vaisala ...same as perrforming first 4
+then 5.
+
+7 = find multiple solutions of deg. 8 equation, arc 1...use first
+approximation equation of Gauss method to have information on possible 
+alternate solutions.
+
+8 = find multiple solutions of deg. 8 equation, arc 2...use first
+approximation equation of Gauss method to have information on possible 
+alternate solutions.
+
+9 = find multiple solutions of deg. 8 equation, by using Laplace's method
+with Poincare'-style topocentric correction, for arc 1.
+
+10 = find multiple solutions of deg. 8 equation, by using Laplace's method
+with Poincare'-style topocentric correction, for arc 2.
+
+11 = give to arc 2 ele of arc 1 ...if arc 2 has too few observations,
+and an orbit can not be reliably computed from the observations in
+obsdirp/namp.obs, while the orbit of arc 1 has already been
+accurately computed (menu DIFFCORR), then it is sometimes appropriate
+to just use the arc 1 orbit as first guess for the arc 2 orbit.
+
+0 = exit ...back to main menu.
+

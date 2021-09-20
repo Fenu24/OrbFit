@@ -1,0 +1,2 @@
+MODDEP= -I../suit
+FFLAGS+=$(MODDEP)

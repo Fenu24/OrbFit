@@ -1,0 +1,48 @@
+% help file, orbfit 1.7.1 and later
+% this is the select confidence boundary method menu
+
+MENU PREDICBD
+
+This menu selects how to represent the predicted observations, and
+their uncertainty.
+
+What is required?
+
+1 = observations (alpha, delta) only ...the data supplied are: right
+ascension, declination; proper motion (topocentric); distance from
+Earth, elongation with respect to the Sun; apparent magnitude,
+observatory code.
+
+2 = also covariance matrix ...all the data as in 1, plus the length
+and orientation of the confidence ellipse (linear approximation of the
+confidence region on the celestial sphere), and the full 2x2
+covariance matrix of the predicted alpha, delta. Requires the
+availability of the normal/covariance matrix of the orbital elements
+at time t0.
+
+3 = confidence boundary ...all the data as in 2, plus a plot showing
+the confidence boundary for the predicted observations in the alpha,
+delta plane. The nominal prediction is plotted as a cross. The
+predicted observations of all the plotted points can be found in the
+file namast.cbd where namast=nam0, namp and nam0=namp if the
+answer to the PREDIOBS menu was 1,2 and 3 respectively.
+  
+4 = compare CB with observations ...all the data as in 3, plus the
+actual recovery/precovery observation (plotted as a cross). The user
+is asked for the number of the actual observation to be compared with
+the predictions.  
+
+0 = exit ...back to the PREDIOBS menu.
+
+WARNING: after answering 1-3, the user will be asked for the epoch
+time t1, for which the prediction should be computed, in Modified
+Julian Days (MJD). To convert calendar dates to MJD, use the DATE
+CONVERSION option in the main menu. The user is also asked to select
+the observatory from which the observation is upposed to take place,
+by giving the observatory code (see file ./lib/OBSCODE.dat for names
+and position; geocentric=500; 0=default=Campo Imperatore, Italy).
+
+
+
+
+

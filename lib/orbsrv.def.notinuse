@@ -1,0 +1,12 @@
+! Keywords specifiche di orbsrv.
+orbsrv.
+        .rms_control=  1.8d0   ! control on astrometric RMS of the fit
+        .rmsh_control= 1.5d0   ! control on photometric RMS of the fit
+        .bias_control= 2.d0    ! control on bias of the fit
+        .span_control= 2.d0    ! control on linear trends in the fit
+        .curv_control= 2.d0    ! control on residual curvature of the fit
+        .delnorxx=     6.d0    ! difference norm for orbits to be compatible
+        .margin_constr=5.d0    ! use constrained sol. as first guess if RMS<rms_control*
+! see later        .error_model=' '     ! error model file (defaults to ' ')
+
+

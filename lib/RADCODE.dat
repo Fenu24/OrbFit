@@ -1,0 +1,10 @@
+! Data provided by Paul Chodas, JPL (paul.chodas@jpl.nasa.gov)
+! Note that the data format is different from the MPC provided OBSCODE.dat
+! Code, Long., rho_xy, rho_z (10^-10 AU), name
+251 293.2473  404850  133340 Arecibo
+252 243.2055  348636  244717 DSS13 
+253 243.1105  347866  245796 DSS14
+255  33.1869  300990  300956 Evpatoria
+256 280.1602  334455  263624 Greenbank
+257 243.1246  348243  245260 DSS25
+273  19.2259  149150  398080 EISCAT

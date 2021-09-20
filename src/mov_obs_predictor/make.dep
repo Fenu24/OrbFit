@@ -1,0 +1,17 @@
+
+mov_obs_predictor.o: \
+	../propag/close_app.mod \
+	../propag/dyn_param.mod \
+	../propag/orbit_elements.mod \
+	../propag/pred_obs.mod \
+	../propag/propag_state.mod \
+	../suit/fund_const.mod \
+	../suit/name_rules.mod \
+	../suit/output_control.mod \
+	mov_obs_predictor_util.o 
+
+mov_obs_predictor_util.o: \
+	../suit/char_str.mod \
+	../suit/fund_const.mod \
+	../suit/output_control.mod \
+	../suit/station_coordinates.mod 

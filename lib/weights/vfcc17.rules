@@ -1,0 +1,79 @@
+ALL t=PAN   c=*          p=    >            < 1890-01-01 @ 10.00, 10.00
+ALL t=PAN   c=*          p=    > 1890-01-01 < 1950-01-01 @  5.00,  5.00
+ALL t=PAN   c=*          p=    > 1950-01-01 <            @  2.50,  2.50
+ALL t=cCVn  c=*          p=    >            <            @  1.00,  1.00 ! Unknown catalog
+ALL t=E     c=*          p=    >            <            @  0.20,  0.20 ! Occultations
+ALL t=H     c=*          p=    >            <            @  0.40,  0.40 ! Hipparcos
+ALL t=T     c=*          p=    >            <            @  0.50,  0.50 ! Transit circle
+ALL t=e     c=*          p=    >            <            @  0.75,  0.75 ! Encoder
+ALL t=M     c=*          p=    >            <            @  3.00,  3.00 ! Micrometer
+ALL t=S     c=*          p=    >            <            @  1.50,  1.50 ! Satellite
+ALL t=cC    c=UV         p=    >            <            @  0.60,  0.60 ! Gaia astrometric catalogs
+F51 t=cC    c=*          p=    >            <            @  0.20,  0.20
+F52 t=cC    c=*          p=    >            <            @  0.20,  0.20
+G96 t=cC    c=*          p=    >            <            @  0.50,  0.50 
+703 t=cC    c=*          p=    >            < 2014-01-01 @  1.00,  1.00
+703 t=cC    c=*          p=    > 2014-01-01 <            @  0.80,  0.80
+E12 t=cC    c=*          p=    >            <            @  0.75,  0.75
+704 t=cC    c=*          p=    >            <            @  1.00,  1.00
+691 t=cC    c=*          p=    >            < 2003-01-01 @  0.60,  0.60
+691 t=cC    c=*          p=    > 2003-01-01 <            @  0.50,  0.50
+291 t=cC    c=*          p=    >            < 2003-01-01 @  0.60,  0.60  ! Updated
+291 t=cC    c=*          p=    > 2003-01-01 <            @  0.50,  0.50  ! Updated   
+644 t=cC    c=*          p=    >            < 2003-09-01 @  0.60,  0.60
+644 t=cC    c=*          p=    > 2003-09-01 <            @  0.40,  0.40
+699 t=cC    c=*          p=    >            <            @  0.80,  0.80
+G45 t=cC    c=*          p=    >            <            @  0.60,  0.60
+D29 t=cC    c=*          p=    >            <            @  0.75,  0.75
+T05 t=cC    c=*          p=    >            <            @  0.80,  0.80
+568 t=cC    c=*          p=    >            <            @  0.50,  0.50  ! Generic
+568 t=cC    c=tq         p=_   >            <            @  0.20,  0.20  ! Micheli updated 
+568 t=cC    c=UV         p=_   >            <            @  0.10,  0.10  ! Micheli updated 
+568 t=cC    c=t          p=2   >            <            @  0.20,  0.20  ! Tholen
+568 t=cC    c=UV         p=2   >            <            @  0.10,  0.10  ! Tholen
+568 t=cC    c=os         p=2   >            <            @  0.50,  0.50  ! Tholen
+568 t=cC    c=UV         p=^   >            <            @  0.20,  0.20  ! Weryk new
+T09 t=cC    c=*          p=    >            <            @  0.10,  0.10  ! Tholen
+T12 t=cC    c=*          p=    >            <            @  0.10,  0.10  ! Tholen
+T14 t=cC    c=*          p=    >            <            @  0.10,  0.10  ! Tholen
+H01 t=cC    c=LtUV       p=    >            <            @  0.30,  0.30
+673 t=cC    c=*          p=    >            <            @  0.30,  0.30
+645 t=cC    c=*          p=    >            <            @  0.30,  0.30
+689 t=cC    c=*          p=    >            <            @  0.50,  0.50
+J04 t=cC    c=UVtLqrue   p=    >            <            @  0.40,  0.40  ! Updated
+Z84 t=cC    c=UVtLqrue   p=    >            <            @  0.40,  0.40  ! New
+W84 t=cC    c=*          p=    >            <            @  0.50,  0.50
+950 t=cC    c=UVtLqrue   p=    >            <            @  0.50,  0.50
+F65 t=cC    c=*          p=    >            <            @  0.40,  0.40
+E10 t=cC    c=*          p=    >            <            @  0.40,  0.40
+W85 t=cC    c=*          p=    >            <            @  0.40,  0.40
+W86 t=cC    c=*          p=    >            <            @  0.40,  0.40
+W87 t=cC    c=*          p=    >            <            @  0.40,  0.40
+Q63 t=cC    c=*          p=    >            <            @  0.40,  0.40
+Q64 t=cC    c=*          p=    >            <            @  0.40,  0.40
+K91 t=cC    c=*          p=    >            <            @  0.40,  0.40
+K92 t=cC    c=*          p=    >            <            @  0.40,  0.40
+K93 t=cC    c=*          p=    >            <            @  0.40,  0.40
+V37 t=cC    c=*          p=    >            <            @  0.40,  0.40
+Y28 t=cC    c=tUV        p=    >            < 2015-01-01 @  1.00,  1.00  ! New
+Y28 t=cC    c=tUV        p=    > 2015-01-01 <            @  0.30,  0.30  ! New
+309 t=cC    c=UV         p=&%  >            <            @  0.20,  0.20
+309 t=cC    c=tq         p=&%  >            <            @  0.30,  0.30
+G83 t=cC    c=UV         p=2   >            <            @  0.20,  0.20
+G83 t=cC    c=tq         p=2   >            <            @  0.30,  0.30
+248 t=*     c=*          p=    >            < 1991-01-01 @  0.20,  0.20  ! Hipparcos
+248 t=*     c=*          p=    > 1991-01-01 <            @  0.15,  0.15  ! Hipparcos
+250 t=*     c=*          p=    >            <            @  1.30,  1.30  ! HST
+249 t=*     c=*          p=    >            <            @ 60.00, 60.00  ! SOHO
+C49 t=*     c=*          p=    >            <            @ 60.00, 60.00  ! STEREO-A
+C50 t=*     c=*          p=    >            <            @ 60.00, 60.00  ! STEREO-B
+C51 t=*     c=*          p=    >            <            @  1.00,  1.00  ! WISE
+608 t=cC    c=*          p=    >            <            @  0.60,  0.60  ! New
+Z18 t=cC    c=tq         p=1   >            <            @  0.30,  0.30  ! Micheli New
+Z18 t=cC    c=UV         p=1   >            <            @  0.20,  0.20  ! Micheli New
+T08 t=cC    c=*          p=    >            <            @  0.80,  0.80  ! New
+258 t=cC    c=*          p=    >            <            @  0.50,  0.50  ! GAIA new
+C65 t=cC    c=UV         p=3   >            <            @  0.20,  0.20  ! Micheli new
+094 t=cC    c=UV         p=9   >            <            @  0.50,  0.50  ! Micheli new
+181 t=cC    c=UV         p=    >            < 2019-01-01 @  1.00,  1.00  ! New
+181 t=cC    c=UV         p=    > 2019-01-01 <            @  0.50,  0.50  ! New

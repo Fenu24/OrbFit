@@ -1,0 +1,10 @@
+# Makefile options for the INTEL compiler for MAC, optimized
+
+# Fortran compiler
+FC=ifort
+# Options for Fortran compiler:
+FFLAGS= -warn nousage -O -mp1 -save -assume byterecl -Vaxlib -I../include 
+# "ranlib" command: if it is not needed, use "RANLIB=touch"
+RANLIB=ranlib -c
+VPATH=../include
+

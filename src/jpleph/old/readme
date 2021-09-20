@@ -1,0 +1,479 @@
+                                                                                
+================================================================================
+                                                                                
+              JPL PLANETARY AND LUNAR EPHEMERIDES                               
+                                                                                
+                                                      E M Standish, JPL         
+                                                                                
+                                                                                
+Copyright 1997, The Jet Propulsion Laboratory, California Institute of          
+Technology, All Rights Reserved.                                                
+                                                                                
+Published by Willmann-Bell, Inc., P.O. Box 35025, Richmond, VA 23235.           
+                                                                                
+The programs and data provided in this CD-ROM are based upon on a long-term and 
+ongoing scientific program of analysis and refinement. What is presented here   
+has been tested with care but is not guaranteed for any particular purpose.     
+Neither The Jet Propulsion Laboratory nor Willmann-Bell, Inc. offer any         
+warranties or representations, nor do they accept any liabilities with respect  
+to the contents of this CD-ROM.                                                 
+                                                                                
+==============================  I. Introduction   ==============================
+                                                                                
+  This CD contains JPL Planetary and Lunar Ephemerides along with associated    
+  reading and interpolating routines.  These allow a competent user to obtain   
+  the rectangular coordinates of the sun, moon, and nine major planets by means 
+  of a subroutine written in standard fortran.                                  
+                                                                                
+  We suggest for the more casual user, JPL's interactive "telnet" site,         
+  "Horizons", which provides a wide variety of astronomical information and     
+  which uses the full precision of our ephemerides.  See Section X.             
+                                                                                
+  The final goal of the installation process is the successful execution of the 
+  main program "TESTEPH.F".  This program reads and interpolates planetary and  
+  lunar coordinates from a binary direct-read ephemeris file and compares these 
+  results against corresponding numbers produced at JPL.  "TESTEPH.F" uses the  
+  subroutines which are of eventual interest to the user.                       
+                                                                                
+  It is strongly suggested that a potential user first read through this README 
+  in its entirety.  This will provide an idea of what is involved in both the   
+  installation and in the usage of the ephemeris package.                       
+                                                                                
+  This README contains the following sections:                                  
+                                                                                
+      I. Introduction                                                           
+     II. How to Proceed                                                         
+    III. Brief Description of Items on the CD                                   
+     IV. Available Ephemerides                                                  
+      V. Software Description                                                   
+     VI. Software Usage                                                         
+    VII. Constants on the Ephemeris File                                        
+   VIII. Documentation and References                                           
+     IX. C-Versions of the Software                                             
+      X. Horizons - JPL's Interactive Ephemeris System                          
+     XI. Format of the Ephemeris Files                                          
+    XII. Assistance                                                             
+                                                                                
+                                                                                
+============================   II.  How to Proceed   ===========================
+                                                                                
+There are two different paths:                                                  
+                                                                                
+  For UNIX-based users,                                                         
+                                                                                
+    the actual ephemeris files are available in binary form, ready for immediate
+    installation on the user's computer or for use directly from the CD itself. 
+                                                                                
+  For all NON-UNIX-based users,                                                 
+                                                                                
+    the ephemeris is supplied in ASCII format and must be converted (a one-time 
+    only process) into binary format for installation; software is supplied for 
+    this conversion.  (Sorry, we have tried to export binary files for other    
+    types of platforms, but the lack of uniformity from one computer and/or     
+    compiler to the next made this too difficult.)                              
+                                                                                
+    Therefore, the non-UNIX-based user, using the program "ASC2EPH", must create
+    a binary file by combining the desired choices of "ascSYYYY.XXX" preceded by
+    the proper corresponding "HEADER.XXX".                                      
+                                                                                
+                                                                                
+  ALL USERS,                                                                    
+                                                                                
+    must tailor the program "TESTEPH" according to the instructions in          
+    "USRGUIDE", paying attention to the parts about "NRECL" and "FSIZER".       
+                                                                                
+    Run "TESTEPH" as described in "USRGUIDE".                                   
+                                                                                
+  If "TESTEPH" works, you are done: "TESTEPH" uses the subroutines of interest  
+  (which are described in Sections V and VI).                                   
+                                                                                
+                                                                                
+===================   III. Brief Description of Items on the CD   ==============
+                                                                                
+  "USRGUIDE"     : User's Guide containing instructions for obtaining and/or    
+                   creating the binary direct-read ephemeris file, tailoring the
+                   software, and testing the software package.                  
+                                                                                
+  "TESTEPH"      : The main program which uses, and therefore tests, the reading
+                   and interpolating subroutines.  This program compares the    
+                   results with similar runs made at JPL in order to ensure     
+                   that the ephemeris is installed and being read correctly.    
+                                                                                
+                   The reading and interpolating subroutines included in        
+                   "TESTEPH", along with the ephemeris file(s) themselves, are  
+                   the items which are of eventual interest to the user.        
+                                                                                
+  "TESTPO.XXX"   : Test results computed at JPL using the ephemeris DEXXX.      
+                   These are input by the program "TESTEPH" and are used for    
+                   testing the ephemeris installation.  There is a different    
+                   "TESTPO" for each different ephemeris; they must match or the
+                   test will not work correctly.                                
+                                                                                
+  "BINMERGE"     : Program to merge two adjoining binary ephemerides.           
+                                                                                
+  "BINSHORT"     : Program to extract a portion of an ephemeris from a larger   
+                   file.                                                        
+                                                                                
+  for UNIX users                                                                
+  --------------                                                                
+                                                                                
+  "unix.XXX"     :  The full binary ephemeris file of JPL Ephemeris DEXXX.      
+                    The file may be used straight from the CDrom by the         
+                    program "testeph", or it may be copied onto a hard disk.    
+                    A shorter-span ephemeris may be extracted from a longer     
+                    one using the program, "BINSHORT.F".                        
+                                                                                
+  for non-UNIX users                                                            
+  --------------                                                                
+                                                                                
+  "ASC2EPH.F"    : A one-time conversion program which converts the ephemeris   
+                   from ASCII format into binary form (described in "USRGUIDE").
+                                                                                
+  "ascSYYYY.XXX" : ASCII ephemeris files from JPL Ephemeris DEXXX, covering 20  
+                   years, starting in the year SYYYY (where "S" is "m" or "p",  
+                   indicating "-" or "+"; i.e., for "BC" or "AD").  The 20-year 
+                   blocks may be converted separately into binary ephemeris     
+                   files using "ASC2EPH", or they may be combined into a single 
+                   ASCII file and then converted into a single binary file.     
+                   Subsequently, separate binary files may be merged into a     
+                   single ephemeris file using the program, "BINMERGE.F".  Also,
+                   a shorter-span ephemeris may be extracted from a longer one  
+                   using the program, "BINSHORT.F".                             
+                                                                                
+  "header.XXX"   : Header info for ephemeris deXXX, needed by "ASC2EPH.F".      
+                                                                                
+                                                                                
+=======================  IV.  Available Ephemerides   ==========================
+                                                                                
+DE200 : (includes nutations but not librations)                                 
+                                                                                
+     JED 2305424.5 (1599 DEC 09)  to  JED 2513360.5  (2169 MAR 31)              
+                                                                                
+     This ephemeris has been the basis of the Astronomical Almanac since        
+     1984.  It is based upon the dynamical equator and equinox of J2000         
+     (see Standish, 1982 and Standish, 1990).                                   
+                                                                                
+                                                                                
+DE405 : (includes both nutations and librations)                                
+                                                                                
+     JED 2305424.50  (1599 DEC 09)  to  JED 2525008.50  (2201 FEB 20)           
+                                                                                
+     Our latest ephemeris, created in May-June, 1997.  DE405 is based upon the  
+     International Celestial Reference Frame (ICRF), the newly-adopted reference
+     frame of the International Astronomical Union (IAU).  The frames of DE200  
+     and DE405 differ by no more than about 0.01 arcseconds.                    
+                                                                                
+                                                                                
+DE406 : the New "JPL Long Ephemeris" (includes neither nutations nor librations)
+                                                                                
+     JED 0625360.50 (-3000 FEB 23) to 2816912.50 (+3000 MAY 06)                 
+                                                                                
+     DE406 is the same ephemeris as DE405, though the accuracy of the interp-   
+     olating polynomials has been lessened (interpolation on the 64-day mesh    
+     points remains exact, however).  For DE406/LE406, the interpolating        
+     accuracy is no worse than 25 meters for any planet and no worse than       
+     1 meter for the moon.                                                      
+                                                                                
+  Ephemeris items                        de200    de405     de406               
+  ---------------                       ------   ------    -------              
+                                                                                
+UNIX binary                       :     55 Mb     62 Mb     199 Mb              
+                                                                                
+ASCII (each 20-year block)        :     5.2 Mb   6.4 Mb                         
+                                                                                
+                                                                                
+=========================  V. Software Description   ===========================
+                                                                                
+The software package (apart from the programs used to initially construct the   
+ephemeris, ASC2EPH, BINMERGE, and BINSHORT) consists of a main test program     
+("TESTEPH") which uses the reading and interpolating routines in order to       
+retrieve the ephemeris data and to compare the results against the test data.   
+                                                                                
+Two of the subroutines contained in "TESTEPH" are of primary interest to the    
+user: "PLEPH" and "SELCON".  Three others, "CONST", "DPLEPH", and "STATE" may   
+also be useful.                                                                 
+                                                                                
+    PLEPH  :  Get the state vector (position and velocity) of one body with     
+              respect to another at any given time within the interval covered  
+              by the ephemeris.                                                 
+                                                                                
+    SELCON :  Retrieve values of user-requested constants on the ephemeris file.
+                                                                                
+    CONST  :  Retrieve values of all of the constants on the ephemeris file.    
+                                                                                
+    DPLEPH :  Same as PLEPH, but with increased precision in the input time.    
+                                                                                
+    STATE  :  Read and interpolate the ephemeris file. (Called by PLEPH).       
+                                                                                
+                                                                                
+==========================   VI. Software Usage   ==============================
+                                                                                
+ PLEPH  ********  subroutine PLEPH( tdb, npl, nctr, pv)  **********             
+                                                                                
+    Input                                                                       
+    -----                                                                       
+          tdb [d.p.]  : julian ephemeris date                                   
+          npl [int.]  : planet number                                           
+          nctr [int.] : center number                                           
+                                                                                
+             identifications for "npl" and "nctr"                               
+             ------------------------------------                               
+              1 = mercury           8 = neptune                                 
+              2 = venus             9 = pluto                                   
+              3 = earth            10 = moon                                    
+              4 = mars             11 = sun                                     
+              5 = jupiter          12 = solar-system barycenter                 
+              6 = saturn           13 = earth-moon barycenter                   
+              7 = uranus           14 = nutations in longitude and obliquity    
+                                   15 = librations (if they exist on the file)  
+                 (for nutations and librations, nctr=0)                         
+    Output                                                                      
+    ------                                                                      
+          pv(6) [d.p.]  : x,y,z,x-dot,y-dot,z-dot [au, au/day]                  
+                   for nutations, d(psi), d(eps), d(psi)-dot, d(eps)-dot        
+                                  [rads, rads/day]                              
+                   for librations, (Euler angles and rates, w.r.t. the ephemeris
+                                   reference frame)   [rads, rads/day]          
+                                                                                
+  Note : Over the years, different versions of PLEPH have had a fifth argument: 
+  sometimes, an error return statement number; othertimes, a logical denoting   
+  whether or not the requested date is covered by the ephemeris.  We apologize  
+  for this inconsistency; in this version, we use only the four necessary       
+  arguments and do the testing outside of the subroutine.                       
+                                                                                
+                                                                                
+ SELCON  ********  subroutine SELCON ( nams, nmbr, vals)  **********            
+                                                                                
+    Input                                                                       
+    -----                                                                       
+    nams(nmbr) [char*6] : names for which values are requested (a list of the   
+                          possible choices is given below)                      
+    nmbr [int.]         : the number of names in 'nams'                         
+                                                                                
+    Output                                                                      
+    ------                                                                      
+    vals(nmbr) [d.p.]   : values corresponding to the names in 'nams'           
+                                                                                
+                                                                                
+ CONST  ********  subroutine const(nmv,vlv,sss,nrv)  **********                 
+                                                                                
+    Input   (none)                                                              
+    -----                                                                       
+                                                                                
+    Output                                                                      
+    ------                                                                      
+     nmv(nrv) [char*6] : names of the constants used in creating the ephemeris  
+     vlv(nrv) [d.p.]   : values of the constants used in creating the ephemeris 
+     nrv [int.]        : number of names and values in nmv and vlv              
+     sss(3) [d.p.]     :    sss(1) : starting jed of the ephemeris file         
+                            sss(2) : ending jed of the ephemeris file           
+                            sss(3) : number of days covered by each block       
+                                     of Chebychev coefficients                  
+                                                                                
+                                                                                
+ STATE  ********  subroutine state(jed,list,pv,nut,*)  **********               
+                                                                                
+  [This subroutine is identical to that provided in the past; it is still       
+   provided to give previous users compatibility; it is not recommended for use 
+   by first-time users.]                                                        
+                                                                                
+ DPLEPH  ********  entry DPLEPH( tdb2, npl, nctr, pv)  **********               
+                                                                                
+  This entry is identical to "PLEPH", except that the input time, tdb2, is      
+  doubly-dimensioned for increased precision  [ double precision tdb2(2) ].     
+                                                                                
+                    Any combination of tdb2(1)+tdb2(2) which falls within       
+                    the time span on the file is a permissible epoch.           
+                                                                                
+                    For ease in programming, the user may put the entire        
+                    date into tdb2(1) and set tdb2(2)=0.                        
+                                                                                
+                    However, for maximum interpolation accuracy, set            
+                    tdb2(1) equal to the most recent midnight at or before      
+                    interpolation epoch (i.e., xxxxxxx.5d0) and set             
+                    tdb2(2) equal to the remaining fractional part of the       
+                    day.                                                        
+                                                                                
+                    As an alternative, it may prove convenient to set           
+                    tdb2(1) equal to some fixed epoch, and set tdb2(2) equal    
+                    to the time since that epoch.                               
+                                                                                
+                                                                                
+======================  VII. Constants on the Ephemeris File   =================
+                                                                                
+The following is a partial list of constants found on the ephemeris file:       
+                                                                                
+  DENUM           Planetary ephemeris number.                                   
+  LENUM           Lunar ephemeris number.                                       
+  TDATEF, TDATEB  Dates of the forward and backward integrations                
+  CLIGHT          Speed of light (km/s).                                        
+  AU              Number of kilometers per astronomical unit.                   
+  EMRAT           Earth-Moon mass ratio.                                        
+  GMi             GM for ith planet [au**3/day**2].                             
+  GMB             GM for the Earth-Moon Barycenter [au**3/day**2].              
+  GMS             GM for the Sun (= k**2) [au**3/day**2].                       
+  X1, ..., ZD9    Initial conditions for the numerical integration,             
+                  given at "JDEPOC", with respect to "CENTER". [au and au/day]  
+  JDEPOC          Epoch (JED) of initial conditions, normally JED 2440400.5.    
+  CENTER          Reference center for the initial conditions.                  
+                  (Sun: 11,  Solar System Barycenter: 12)                       
+  RADi            Radius of ith planet [km].                                    
+  MA0001...MA0324 GM's of asteroid number 0001 ... 0234 [au**3/day**2].         
+  PHASE           The phase angle of the moon's rotation.                       
+  LOVENO          The Love Number, k2, for the moon.                            
+  XL...ZDL        Initial conditions of the libration angles.                   
+                                                                                
+                                                                                
+=====================  VIII. Documentation and References   ====================
+                                                                                
+A copy of the JPL Inter Office Memorandum describing DE405 and DE406 is         
+available in TeX and the figures are available in postscript, both in the       
+file, "/usr1/ftp/ephem/export/de405.iom/", on the anonymous ftp site,           
+"navigator.jpl.nasa.gov".                                                       
+                                                                                
+The following references also apply to the JPL Ephemerides:                     
+                                                                                
+  Newhall, X X, Standish, E.M. and Williams, J.G.: 1983, "DE102: a numerically  
+   integrated ephemeris of the Moon and planets spanning forty-four centuries", 
+   Astronomy & Astrophysics, vol. 125, pp. 150-167.                             
+                                                                                
+  Standish, E.M.: 1982, "Orientation of the JPL Ephemerides, DE200/LE200, to the
+   Dynamical Equinox of J2000", Astronomy & Astrophysics, vol. 114, pp. 297-302.
+                                                                                
+  Standish, E.M.: 1990, "The Observational Basis for JPL's DE200, the planetary 
+   ephemeris of the Astronomical Almanac", Astronomy & Astrophysics, vol. 233,  
+   pp. 252-271.                                                                 
+                                                                                
+=======================  IX. C-Versions of the Software   ======================
+                                                                                
+There are C-versions of the software, written by outside users.  Access to them 
+is described in the file,  "/usr1/ftp/ephem/export/README", on the anonymous ftp
+site, "navigator.jpl.nasa.gov"]                                                 
+                                                                                
+                                                                                
+=============  X. Horizons : JPL's Interactive Ephemeris System   ==============
+                                                                                
+ Horizons, JPL's Interactive Ephemeris System, is now being made available as a 
+ WWW site (July, 1997):  http://ssd.jpl.nasa.gov                                
+                                                                                
+ At present, the on-line ephemeris system is a telnet service.  From a telnet-  
+ capable machine, telnet to "ssd.jpl.nasa.gov 6775", where 6775 is a port.  From
+ within a web-browser, such as Netscape, type "telnet://ssd.jpl.nasa.gov:6775". 
+ The system will start automatically.  No user-ID or password is required.      
+                                                                                
+ Reasons for being denied access are:                                           
+                                                                                
+     1) You typed the wrong machine address or port number.                     
+     2) The maximum allowed number of users are already connected.  Try later.  
+     3) The system is down (should be rare; 24/7 service is planned)            
+                                                                                
+ If a user-name/password is requested, you did not specify the port number.     
+                                                                                
+ The system will automatically negotiate the terminal type.  If this fails      
+ (common), the default will be a vt100 display.                                 
+                                                                                
+ The system will also attempt to determine your window size.  If this fails     
+ also common), it will default to a 24 row by 79 column screen display.  If     
+ this is inappropriate, and your display paging is choppy, manually set your    
+ screen size by using the command "TTY {rows} {columns}", where {rows} and      
+ {columns} are replaced by appropriate integers.                                
+                                                                                
+  Address inquires concerning Horizons to : jon.giorgini@jpl.nasa.gov           
+                                                                                
+                                                                                
+====================  XI. Format of the Ephemeris Files   ======================
+                                                                                
+ It is not necessary to know the information contained in this section in order 
+ to install and use the JPL ephemerides.  Some users, however, have requested   
+ parts of the following information, so it is provided here.                    
+                                                                                
+ The first two records of the binary files contain header information; the rest 
+ of the records contain the main ephemeris data.  Each ephemeris data record    
+ contains a block of 32 days (DE200 and DE405) or of 64 days (DE406) of         
+ ephemeris polynomials.                                                         
+                                                                                
+ For the ascii versions, the main ephemeris data come in 20-year pieces; each   
+ piece is composed of a number of 32-day blocks or of 64-day blocks.            
+                                                                                
+ The first two words in each data record contain the JED of the beginning of the
+ data in the block and the JED of the ending of the data in the block.          
+ The remaining data are chebychev position coefficients for each component of   
+ each body on the tape.  The chebychev coefficients for the planets represent   
+ the solar system barycentric positions of the centers of the planetary systems.
+                                                                                
+ The roadmap to the contents of the 32-day or 64-day blocks is given by         
+ "pointers", contained in the first record of the binary files or in the        
+ "GROUP 1050" of the ascii headers.  The pointers consist of 3 sets of 13       
+ integers each. (In the binary version, the first 12 members of the three sets  
+ are stored together; the 13th members of each set are stored later in the      
+ record.)  The 13 triplets give information about the location, order and, time-
+ coverage of the chebychev polynomials corresponding to the following 13 items: 
+                                                                                
+       Mercury                                                                  
+       Venus                                                                    
+       Earth-Moon barycenter                                                    
+       Mars                                                                     
+       Jupiter                                                                  
+       Saturn                                                                   
+       Uranus                                                                   
+       Neptune                                                                  
+       Pluto                                                                    
+       Moon (geocentric)                                                        
+       Sun                                                                      
+       Nutations                                                                
+       Librations                                                               
+                                                                                
+ For the ith item, pointer(1,i) is the starting location in each data record of 
+ the chebychev coefficients; pointer(2,i) is the number of coefficients per     
+ component; pointer(3,i) is the number of complete sets of coefficients in each 
+ data record.                                                                   
+                                                                                
+   For example, the pointers for DE405 look like,                               
+                                                                                
+     3   171   231   309   342   366   387   405   423   441   753   819   899  
+    14    10    13    11     8     7     6     6     6    13    11    10    10  
+     4     2     2     1     1     1     1     1     1     8     2     4     4  
+                                                                                
+   For the moon, starting in the 441st double precision word, there are 13      
+   coefficients for the x-coordinate which apply over the first 4 (32/8) days of
+   the 32-day interval covered by this block of data.  The next 13 coefficients 
+   are for the y-coordinate; then, 13 for z.  Seven similar sets follow for the 
+   moon, making 13x3x8=312 words in all.  The coefficients for the Sun follow   
+   the moon, starting in the 753rd location.                                    
+                                                                                
+ There are three cartesian components (x, y, z), for each of the items #1-11;   
+ there are two components for the 12th item, nutations : d(psi) and d(epsilon); 
+ there are three components for the 13th item, librations : three euler angles. 
+ Velocites are obtained by interpolating the position polynomials.              
+                                                                                
+ Planetary positions are given in kilometers on the file, but are translated    
+ automatically into AU's by the software unless overridden by the user.  The    
+ nutations and librations are given in radians.                                 
+                                                                                
+ DE200 is nominally with respect to the mean equator and equinox of J2000,      
+ coinciding with the origin of FK5.  DE405 is based upon the Intermational      
+ Celestial Reference Frame (ICRF), the newly-adopted reference frame of the     
+ International Astronomical Union (IAU).  The frames of DE200 and DE405 differ  
+ by no more than about 0.01 arcseconds.                                         
+                                                                                
+                                                                                
+=================================   XII. Assistance   ==========================
+                                                                                
+If you are really stuck, direct your questions to                               
+                                                                                
+    *********************************************************                   
+    * Dr E Myles Standish; JPL 301-150; Pasadena, CA  91109 *                   
+    * TEL: 818-354-3959                   FAX: 818-393-6388 *                   
+    * Internet:  ems@smyles.jpl.nasa.gov    [128.149.23.23] *                   
+    *********************************************************                   
+                                                                                
+   Please include your name, address, phone number, and e-mail address on       
+   all correspondence.                                                          
+                                                                                
+I shall try to answer your questions when I'm free from my normal obligations.  
+                                                                                
+However, I'm not in business to supply ephemerides to the outside world;        
+please realize that I cannot provide customized service to each individual user.
+                                                                                
+================================================================================
+================================================================================

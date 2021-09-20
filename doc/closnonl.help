@@ -1,0 +1,47 @@
+% help file, orbfit 1.7.1 and later
+% this is the predcition of observations, selection of nonlinear
+% approximation menu
+
+MENU CLOSNONL
+
+This menu selects among the algortihms described in ``The asteroid
+identification problem III'' to approximate the confidence boundary on
+the Modified Target Plane. In simple terms, this part of the software
+is used to decide whether an impact on some planet (e.g. Earth) is
+possible. WARNING: to use this software might be dangerous for your
+mental health. Do not use if you can get scared, without really
+understanding what you are doing. Do not cry wolf in public (e.g. on
+some internet mailing list) without first consulting somebody who
+really understands the mathematical theory behind impact risk
+assessment.
+
+How to handle nonlinearity?
+
+1 = linear map ...in the simplest approximation, the nonlinear map
+from the confidence ellipsoid in the orbital elements space to the
+MTP is approximated by a linear map (the differential);
+then the confidence boundary is an ellipse, the variations line is a
+straight line segment.
+
+2 = full n-body nonlinearity ...the nonlinearity is fully accounted
+for, by performing for each point an accurate N-body propagation. The
+points on the close approach manifold are also computed.
+
+0 = exit ...no analysis, go back to the main menu.
+
+WARNING: after completion of the plotting of the confidence
+boundary/variations line on the MTP by one of the two algorithms, the
+program returns to this same menu. This allows to first compute the
+linear approximation anyway, and then, if necessary, to perform the
+slower nonlinear computation.
+
+To decide how important is to use the computationally expensive
+nonlinear approximation, you should look at the data presented just
+above: they include the length and directions of the axes of the
+target ellipse (1-sigma, linear approximation). IF the long axis of
+the the confidence ellipse (which typically corresponds to a sigma
+value of 3 to 4) is longer than the nominal closest approach distance,
+AND the direction of the axis is towards the Earth (which is along the
+negative eta axis), then you should worry, and do the nonlinear test.
+To read ``The asteroid identification problem III'' is likely to be
+necessary to understand the above discussion.

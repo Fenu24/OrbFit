@@ -1,0 +1,14 @@
+! Options for automatic outlier rejection/recovery
+
+reject.
+	.auto=.F.	        ! Automatic rejection flag
+	.rejopp=.F.             ! Permit the rejection of an entire opp.
+	.chi2_reject=8.0D0      ! Chi-square threshold for rejection
+	.chi2_recover=7.0D0     ! Chi-square threshold for recovery
+	.chi2_frac=0.25D0       ! Fraction of max chi2 at which start rejection
+	.conv_cntr=1.D-1        ! Convergency control (correction norm)
+	.nit_max=15             ! Max number of rejection iterations
+	.max_perc=50.D0         ! Max percentage of outliers
+	.chi2_mag_rej=8.0D0     ! Chi-square threshold for magnitude rejection
+	.chi2_mag_rec=7.0D0     ! Chi-square threshold for magnitude recovery
+!

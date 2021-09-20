@@ -1,0 +1,173 @@
+                                                                                
+================================================================================
+                                                                                
+      USER GUIDE FOR THE JPL PLANETARY AND LUNAR EPHEMERIS EXPORT PACKAGE       
+                                                                                
+                                                      E M Standish, JPL         
+                                                                                
+====================   I. Introduction   =======================================
+                                                                                
+This User Guide is intended for the competent user who wishes to install the    
+JPL ephemerides onto his computer.  We hope that the ephemeris procedure        
+described below will be as painless as possible.  A number of people have       
+written to say that they have had good success with it.   Certainly, though, we 
+shall continue to try to improve it and welcome any suggestions.                
+                                                                                
+This guide contains the following sections:                                     
+                                                                                
+    I . Introduction                                                            
+    II. ASCII to BINARY (for non-UNIX users)                                    
+   III. Testing the Binary File                                                 
+    IV. Tailoring the Software                                                  
+     V. Final Product                                                           
+    VI. Assistance                                                              
+                                                                                
+We suggest that you initially read through the whole guide so that you will have
+an idea of the overall process.                                                 
+                                                                                
+It is assumed that you have read the README from this CD.  For the installation 
+of the ephemerides, there are two modes:                                        
+                                                                                
+   1) UNIX users who will use the binary files;                                 
+   2) All other users; i.e., those who will convert the ascii files in binary.  
+                                                                                
+The object is to have a binary file(s), written in the specific binary format of
+your computer.  For UNIX users, the binary file(s) on the CD are already in that
+format.  For the others, you must convert the ascii blocks into a binary file.  
+                                                                                
+The blocks cover specific intervals of time.  They may be used separately, or   
+they may be merged together into a single large file.                           
+                                                                                
+                                                                                
+====================   II. ASCII to BINARY (for non-UNIX users)   ==============
+                                                                                
+To convert the ascii blocks into a binary ephemeris, you must first compile and 
+run (one-time only) the program "ASC2EPH".  This program accepts, via standard  
+input, a header file followed by one or more of the ascii ephemeris blocks.     
+Thus, the input is "header.XXX" and (a series of) "ascSYYYY.XXX".  (The "S"     
+stands for the "sign": "m" or "p" for "-" or "+"; i.e., "BC" or "AD".  "YYYY" is
+the starting year of the block, and "XXX" is the ephemeris number.)  The blocks 
+must be in order with no gaps in the intervals of time-coverage.  The binary    
+output ephemeris is written onto a file called "JPLEPH".                        
+                                                                                
+An example for running ASC2EPH on a PC is the following:                        
+                                                                                
+   C:\> copy header.200+ascp1980.200+ascp2000.200+ascp2020.200  infile.200      
+                                                                                
+   C:\> ASC2EPH < infile.200                                                    
+                                                                                
+In UNIX, one would use:                                                         
+                                                                                
+  cat header.200 ascp1980.200 ascp2000.200 ascp2020.200 ascp2040 | ASC2EPH.e    
+                                                                                
+Alternatively, you may make an individual binary file for each of the ascii     
+blocks, by running "ASC2EPH" separately for each ascii block.  These separate   
+binary files may later be merged together by using "binmerge".  This method     
+has the advantage of requiring less storage during the creation process, since  
+an ascii file requires about three times as much storage as the equivalent      
+binary file.                                                                    
+                                                                                
+                                                                                
+====================   III. Testing the Binary File  ===========================
+                                                                                
+Once you have a binary ephemeris file, you may test it using the program,       
+"TESTEPH".  This program computes ephemeris positions and compares the          
+results with equivalent values computed at JPL, contained in the file           
+"TESTPO.XXX".  So, compile "TESTEPH", assign the name "JPLEPH" to the binary    
+ephemeris file that you are testing, and then run "TESTEPH", sending            
+"TESTPO.XXX" to the executable via standard input.                              
+                                                                                
+  The program "TESTEPH" will print out the list of ephemeris constants          
+  (retrieved by the subroutine "CONST") and will then use the subroutine        
+  "PLEPH" to read and interpolate the ephemeris for coordinates                 
+  corresponding to the sample ones in "TESTPO.XXX".  If any comparison          
+  yields a difference larger than 10**(-13) [in units of au or au/day],         
+  an error message will be printed out.  Further, a line will be printed        
+  every 100 comparisons in any case, so that the progress can be monitored.     
+                                                                                
+                                                                                
+====================   IV.  Tailoring the Software   ===========================
+                                                                                
+     The software was written in standard Fortran-77.  It should work on        
+     any machine with a standard compiler.                                      
+                                                                                
+     HOWEVER, there are two parts which are compiler dependent; both have       
+     to do with opening and reading a direct-access file.  They are dealt       
+     with in the subroutine FSIZERi, i=1,3.  (There are three versions of       
+     this subroutine.)                                                          
+                                                                                
+     1) The parameter RECL in an OPEN statement is the number of units per      
+        record.  For some compilers, it is given in bytes; in some, it is given 
+        in single precision words.  Therefore, the parameter NRECL must be set  
+        by the user to 4, if RECL is given in bytes; to 1, if RECL is given     
+        in words.  (If in doubt, use 4 for UNIX; 1 for VAX and PC)              
+                                                                                
+     2) Also for an OPEN statement, the program needs to know the exact value   
+        of RECL (number of single precision words times NRECL).  Since this     
+        varies from one JPL ephemeris to another, RECL must be determined       
+        somehow and given to the OPEN statement.  There are three methods,      
+        depending upon the compiler.  We have included three versions of the    
+        subroutine FSIZER, one for each method.                                 
+                                                                                
+    ***********************************************************************     
+    *                                                                     *     
+    *  Therefore, the user must choose which version of FSIZER to use by  *     
+    *  un-commenting one of the CALL statements near line 846 in TESTEPH. *     
+    *  The user must then set the value of NRECL within that version.     *     
+    *                                                                     *     
+    ***********************************************************************     
+                                                                                
+     The following are the three choices of FSIZER:                             
+                                                                                
+        1)  Use the INQUIRE statement to find the length of the records         
+            automatically before opening the file.  This works for VAX's;       
+            not in UNIX.                                                        
+                                                                                
+        2)  Open the file with a value of RECL which is just large enough to    
+            enable the reading of the pointers from the first record, use the   
+            information from the pointers to determine the exact value of RECL, 
+            close the file, and re-open it with the exact value.  This seems to 
+            work for UNIX compilers.  (For other compilers, this doesn't work   
+            since you can open a file only with the exact value of RECL.)       
+                                                                                
+        3)  Hardwire the value of RECL.  This number is NRECL*1652 for DE200,   
+            NRECL*2036 for DE405, and NRECL*1456 for DE406.                     
+                                                                                
+    If in doubt, use #1 for a VAX, #2 for UNIX.  The use of #3 is the least     
+    desirable, for the subroutine must be changed when a different ephemeris is 
+    used.                                                                       
+                                                                                
+                                                                                
+====================   V. Final Product   ======================================
+                                                                                
+When "TESTEPH" has run successfully, you are done, because "TESTEPH" contains   
+and uses the subroutines that are of primary interest to you.                   
+                                                                                
+   1.  PLEPH reads and interpolates the direct access ephemeris file, and       
+                                                                                
+   2.  CONST extracts the constants used in making the ephemeris (planetary     
+       masses, length of the au, etc.)                                          
+                                                                                
+These subroutines and three others of interest are described more fully in the  
+README.                                                                         
+                                                                                
+                                                                                
+====================   VI. Assistance   ========================================
+                                                                                
+If you are really stuck, direct your questions to                               
+                                                                                
+    **********************************************************                  
+    * Dr E Myles Standish; JPL 301-150; Pasadena, CA  91109  *                  
+    * TEL: 818-354-3959                    FAX: 818-393-6388 *                  
+    * Internet:  ems@smyles.jpl.nasa.gov  [128.149.23.23]    *                  
+    **********************************************************                  
+                                                                                
+   Please include your name, address, phone number, and e-mail address on       
+   all correspondence.                                                          
+                                                                                
+I shall try to answer your questions when I'm free from my normal obligations.  
+                                                                                
+However, I'm not in business to supply ephemerides to the outside world;        
+please realize that I cannot provide customized service to each individual user.
+                                                                                
+================================================================================

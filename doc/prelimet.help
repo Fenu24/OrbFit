@@ -1,0 +1,40 @@
+% help file, orbfit 1.7.2 and later
+% this is the input orbital elements menu
+
+MENU INPUTMETH
+
+From this menu you can compute some first approximation orbital
+elements set, provided at least 3 astrometric observations are
+available. These elements have to be later refined from menu DIFFCORR.
+
+The two methods available for a preliminary orbit computation are
+essentially equivalent from the point of view of their performance,
+but giving somewhat different initial conditions for subsequent orbit
+refinement. Thus, if you do not achieve convergence starting from one
+of the two, you should try again starting from the other one. The
+success of the computation critically depends on the availability of
+suitably spaced, good quality observations. 
+
+The output of the computation is found in the file nam0.fou or
+namp.fou. It consists of the information regarding the method used,
+selected observations, some auxiliary data on the type of the elements
+and reference system, and finally of the elements themselves.
+
+In case of failure of the preliminary orbit determination, an
+indication on possible reasons for the failure might be printed on the
+screen, and in a corresponding .fou file. In case of success of the
+preliminary orbit determination, before the orbit refinement,
+the residuals from the preliminary determination are available in
+obsdir0/nam0.frw or obsdirp/namp.frw.
+
+Which method to use?
+
+1 = automatic selection of the method. Gauss is attempted first, if it fails
+a second attempt is made with vaisala.
+  
+2 = elements are computed by means of the Gauss method. 
+
+3 = elements are computed by means of the Vaisala method
+
+0 = exit ...back to previous menu.
+

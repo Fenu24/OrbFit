@@ -1,0 +1,19 @@
+% help file, orbfit 3.1 and later
+% this is the orbit selection menu
+
+MENU ORBSEL
+
+Which orbit?
+
+1 = arc 1 ...prediction based upon the current orbit for arc 1, and if
+available upon the normal/covariance matrix resulting from the fit to
+the observations of the first arc only.
+
+2 = arc 2 ...the same for the second arc.
+
+3 = joint computed orbit ...the same for the current orbit, and if
+available for the covariance/normal matrices, fitting both sets of
+observations.
+
+0 = exit ...back to the main menu.
+

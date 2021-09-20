@@ -1,0 +1,44 @@
+% help file, orbfit 3.3.1 and later
+% this is the first guess menu
+
+MENU FIRSTGUE
+
+The process of orbit identification is higly nonlinear, because the
+two arcs to be possibly identified are widely separated in time, and
+orbit propagation has a nonlinearity increasing with time. Thus a
+crucial step for identification is to define a first guess set of
+orbital elements, to be later improved by the iterative differential
+correction procedure, in such a way that the residuals from the
+observations of both arcs are not too large at the first iteration.
+
+We have experimented with a number of procedures, all described in the
+paper Milani et al., Icarus, 144, 39-53, 2000,  to define a suitable
+first guess; we can not, however, propose a method which would work
+perfectly in all cases. 
+
+Whichl initial guess?
+  
+1 = use averages, fit longitudes ...for the equinoctal elements h,k,p,q
+(related to eccentricity and inclination) the first guess is just the average
+of the values of the orbits of the two arcs. For the semimajor axis a and for
+the mean longitude lambda, a value is found allowing to fit the longitude
+lambda0 at time t0 and the longitude lambdap at time tp; this, once the number
+of revolutions has been estimated, implies a value for the mean motion, hence
+for a. For this option, the orbital elements of the two arcs have to be
+available for epochs close to the time of the observed arcs. WARNING: this
+method only works in equinoctial elements.
+
+2 = use elements of arc 1 ...when the first arcs has elements
+determined in a much stronger way than the second one, it is better to
+use the orbital elements of the first arc as first guess. This always
+applies in the attribution case, when the second arc has less than 3
+observations.
+
+3 = use elements of arc 2 ...as with 2, when the second arc is much
+better determined that the first one.
+
+4 = recompute ident ...use the 6x6 covariance metric to compute a first
+guess; see the paper cited above, Section 2.2.
+
+0 = exit ...back to the main menu.
+

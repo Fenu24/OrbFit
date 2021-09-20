@@ -1,0 +1,2 @@
+! Program version
+      CHARACTER*17, PARAMETER :: pvers='5.0.5, 20/04/2017'

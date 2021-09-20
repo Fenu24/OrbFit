@@ -1,0 +1,45 @@
+#!	/bin/sh
+
+# Generates dependencies for searching F90 .mod files
+# in external directories
+
+usage () {
+	echo "Usage: mkmoddep -f <comp_file> <dir1> [ <dir2> ... ]
+    or mkmoddep -c <comp_name> <dir1> [ <dir2> ... ]" 1>&2
+	exit 1
+}
+
+if [ $# -lt 3 ]; then
+	usage
+fi
+
+case $1 in
+	-c)	compiler=$2
+		shift
+		shift ;;
+	-f)	file=$2
+		if [ ! -f $file ]; then
+			echo "mkmoddep: cannot find file $file" 1>&2
+			exit 2
+		fi
+		compiler=`cat $file`
+		shift
+		shift ;;
+	*)	usage ;;
+esac
+
+result=""
+case $compiler in
+	lf95|g95|intel|intel-Xeon|intelhifi|HP90|gfortran)	for dir
+		do
+			if [ ! -d $dir ]; then
+				echo "mkmoddep: directory $dir not found" 1>&2
+				exit 4
+			fi
+			result="$result -I$dir"
+		done ;;
+	*)	echo "mkmoddep: unknown compiler $compiler" 1>&2
+		exit 3 ;;
+esac
+echo "MODDEP=$result"
+echo 'FFLAGS+=$(MODDEP)'

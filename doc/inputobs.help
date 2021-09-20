@@ -1,0 +1,46 @@
+% help file, orbfit 3.3.1 and later
+% this is the input observations menu
+
+MENU INPUTOBS
+
+From this menu it is possible to input the astrometric observations,
+from which the orbits can be computed. The data have to be available,
+in a standard MPC format, in the files whose names are specified in
+the runname.fop file. 
+
+Which data to input?
+  
+1 = first arc ...the observations from the file 'obsdir0/astna0'; if
+also the variable nam0 has been given in runname.fop, the file is
+'obsdir0/nam0' (this allows for observation files with names
+different from the official asteroid designator, e.g. short names).
+
+2 = second arc ...the observations from the file 'obsdirp/astnap';
+if also the variable namp has been given in runname.fop, the file is
+'obsdirp/namp'.
+
+3 = both ...input of the data on both arcs, if the names of the files
+for both arcs are available. 
+
+4 = undiscard outliers, arc 1 ...reset the observation discard flags;
+next time the differential corrections are perofrmed on the first arc,
+the fit will be to all observations.
+
+5 = undiscard outliers, arc 2 ... the same for the second arc.
+
+0 = exit ...back to the main menu.
+
+WARNING: for each observation file, e.g. nam0.obs, an observations, residuals
+and weights file nam0.rwo is created each time the observations are read and
+each time a differential correction is performed on the same data.  The .rwo
+file contains a ``selection flag'', which is 0 for a discarded observation, 2
+for an observation selected for the initial orbit determination with Gauss's
+method, 1 otherwise. Two functions of fitobs modify the selection flag: the
+Gauss' method automatic selection sets 3 flags equal to 2, and the ``discard
+outliers'' procedure at the end of differential corrections sets the flag to 0
+for outliers. To reset these flags (all to 1) you can either remove the .rwo
+file and use options 1 and/or 2, or simply use options 4 and/or 5 in this
+menu; to change them, edit the .rwo file and then reread the observation (from
+this menu).
+
+

@@ -1,0 +1,38 @@
+This file describes the changes to the software actually being implemented
+and not yet included in the public distribution. It also decsribes the known
+problems and bugs. (Updated 3 June 2011).
+
+1) The problem of non gravitational perturbations is still unsolved in
+   the stable version of the code. The merge of the non-gravitational
+   aware version with the stable version is due, but we do not have a
+   date yet.
+
+2) The full error model with correlations, according to the formalism
+   of Carpino et al. (2003), but with the new model and coefficients
+   computed by Baer et al. 2011, is not yet implemented in 4.2,
+   although most of the code is there, where it is not possible to
+   reach it.
+
+3) There are too many developments which are not yet included in the
+   distribution, contrary to our promise that stable improvements
+   would become available. The problem is, a lot of work would be
+   needed for this, as well as solving some complications with
+   different licenses, including "scienceware" type licenses.
+
+
+KNOWN PROBLEMS
+
+1) Documentation: the project of a "Mathematical Specification" document has
+   been abandoned, to be replaced by Milani and Gronchi, "Orbit
+   Determination", Cambridge University Press 2010, 392 pages.
+
+2) References. A serious work in providing references could to a large extent
+   replace the ad hoc documentation. Just our own papers are dozens. The
+   problem is how to link the subrotuines, and the algorithms used in them, to
+   the references. Possible to use some BiBTeX machinery?
+
+2) Cometary orbits. The module ever_pitkin is now quite stable, even if the
+   "universal" variables are NOT universal (unless we have a computer with
+   infinite mantissa). Still observing a Sun-grazing comet while very far from
+   the Sun is not possible numerically, for our good luck it is also
+   impossible astronomically.

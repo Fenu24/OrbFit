@@ -1,0 +1,52 @@
+% help file, orbfit 3.3.1
+% this is the differential corrections menu
+
+MENU DIFCOMOD
+
+Differential correction can be applied at once to all orbital elements;
+it can also correct only some of the siz orbital elements, leaving the
+others fixed at the first guess value. This is often used for either
+very short observed arcs, or for difficult orbit identifications, but
+the normal procedure is to correct all.
+
+The observations sometimes contain incorrect data, which result in abnormally
+high residuals. It is beneficial to remove these isolated wrong data, although
+this needs to be done with caution, not to remove real information. ORBFIT
+provides a fully automated algorithm for outlier rejection, but as an
+alternative the user may decide not to reject any observation. It is also
+possible to perform the rejectiosn manually, but this can be done only by
+editong the file astname.rwo. 
+
+A 'constrained solution on LOV' is essentially a 5-parameter fit, with one
+coordinate kept fixed. However, the direction along which there is no
+correction is selected automatically as the 'weak direction', the longest axis
+of the confidence ellipsoid. To understand this better, please consult Milani
+et al., Astronomy & Astrophysics 431, 729-746, 2005.
+
+  select correction and reject mode
+
+1 = correct all, autoreject
+
+2 = correct all, no rejections
+
+3 = constrained solution on LOV (no rejections)
+
+4 = correct only some elements (no rejections)
+
+5 = compute residuals and covariance (no corrections)
+
+0 = exit; -1=help
+
+
+WARNING: after chosing option 3 in this menu, the user will be asked:
+
+ Element:   1 1=correct, 0=no
+
+and so on for all six elements. To know which elements are in use, use
+'status' from the main menu. To change the elements being used, use the menu
+'coordinate change'.
+
+
+
+
+

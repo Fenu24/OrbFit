@@ -1,0 +1,63 @@
+Orbit9 is an add-on package you can download and incorporate into
+the Orbfit software on Unix machines.
+
+Orbit9 is a multistep numerical integrator with symplectic starter
+intended for propagation of asteroid orbits over the long time spans
+(tens of millions of years for the main belt objects). The basic
+dynamical model includes direct effects of the four giant outer
+planets, and an optional barycentric correction to account for the
+indirect effect of the inner planets. Other important features are: a
+capability of accomodating diverse dynamical models, choice of the
+integration methods, an on-line removal of the short periodic effects,
+computation of the maximum Lyapounov Characteristic Exponents,
+close-approach monitoring, tools for post-processing, etc.
+
+You can download the Orbit9 software package from our site:
+
+http://hamilton.dm.unipi.it/astdys/orbit9
+
+Place it in the root directory of your Orbfit installation, unzip and
+untar:
+
+tar -xzf orbit9.tar.gz
+
+This will automatically produce two subdirectories:
+
+/somewhere/orb211/src/orb9
+
+containing the source code, and:
+
+/somewhere/orb211/tests/orbit9
+
+containing examples to test the installation.
+
+To test orbit9, you should first produce the necessary executables. Go
+to the subdirectory containg the code (./src/orb9) and compile using
+the residing Makefile (simply type: make). Now go to the subdirectory
+containg the ready-made tests (./tests/orbit9) and necessary links and
+run the test (again simply type: make).
+
+The differences you will see between the output of your test and the
+precomputed test values contained in the 'testout' subdirectory should
+be minute, and typically you will see the differences at the last
+significant digit in the mean longitude, or these due to the rounding
+off. In addition differences can arise due to your local compiler's
+represenation of the real numbers in an exponential format (either
+with "D" or with "E").
+
+Orbit9 has been written by Andrea Milani, with the assistance of Mario
+Carpino and Zoran Knezevic. It has been used intensively for nearly 10
+years in various reasearch projects and on diverse machines and
+operating systems. In all these different applications and
+circumstances it proved to be a reliable and robust tool, with
+performance meeting even the most complex demands of scientific
+research.
+
+Copyright (C) 1998-2008 by Andrea Milani.
+
+
+
+
+
+
+

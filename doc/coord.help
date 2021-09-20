@@ -1,0 +1,25 @@
+% help file, orbfit 3.4 and later
+% this is the coordinate changes menu
+
+COORDINATE CHANGE MAIN
+
+Conversion of orbital elements, from the current coordinates to:
+
+  1 = KEPlerian... a,e, I, Omega, omega, mean anomaly
+
+  2 = EQUinoctal... a, h,k,p,q, mean longitude (non singular for e=0
+      and for I=0)
+
+  3 = CARtesian... position and velocity vectors
+
+  4 = COMetary... perihelion distance, e, I, Omega, omega, time of perihelion
+                  (non singular for e=1)
+  5 = COmetary True anomaly... as COM, but True anomaly instead of time of
+              perihelion (more stable far from perihelion)
+    
+  6 = ATTributables...alpha, delta, d(alpha)/dt, d(delta)/dt, range, range rate
+
+0 = back to the main menu
+
+NOTE: once the elements have been converted, all the operation of the main menu
+      refer to the new variables, e.g., propagation, differential correction.

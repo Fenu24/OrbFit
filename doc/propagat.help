@@ -1,0 +1,69 @@
+% help file, orbfit 1.8.1 and later
+% this is the orbit propagation menu
+% Modified 22 Dec. 1998, Steven Chesley
+
+MENU PROPAGAT
+
+From this menu it is possible to propagate the currectly available
+orbital elements in one of two modes:
+
+1) Propagate the object to some other epoch. The propagated elements
+will appear on the standard output, but also be written in a file
+ASTNAME.fel. After propagation the "current" time and elements of the
+object will be those at the requested epoch.
+
+2) Create an ephemerides file. The ephemerides will be written in a
+file ASTNAME.eph. After ephemerides generation the "current" time and
+elements of the object remain unchanged.
+
+What to propagate?
+
+1 = propagate arc 1, variable time ...the user will be asked for the
+epoch time to which the orbit should be updated, in Modified Julian
+Days (MJD). To convert calendar dates to MJD, use the DATE CONVERSION
+option in the main menu.
+
+2 = propagate arc 2, variable time ...the same for the second arc.
+
+3 = propagate identified orbit, variable time ...the same for the
+orbit for the fit to the observations of both arcs.
+
+4 = propagate arc 1, weighted center of observations ...for the first
+arc, the orbit is propagated to a time which is at the barycenter of
+the available observation; this is an epoch suitable to improve the
+orbital elements by differential corrections (menu DIFFCORR).
+
+5 = propagate arc 2, weighted center of observations ...similar to #4
+
+6 = generate time history of orbital elements, arc 1 ...creates a file
+(*.ele) containing times and equinoctial elements. After selecting
+this option, the user will be asked to input the start time, end time,
+and step size. Covariance will not be propagated, but the "current"
+orbital information will not be altered by this operation. Also
+creates a MOID time history (*.moid).
+
+7 = generate time history of orbital elements, arc 2 ...the same for
+the second arc
+
+8 = generate time history of orbital elements, identified orbit ...the
+same for the orbit available/computed for the fit to the observations
+of both arcs.
+
+0 = exit ...back to the main menu.
+
+WARNING: after selecting 1-5 in this menu, the user will be asked to
+select between propagation of the state vector (6 orbital elements)
+and propagation of the covariance (and normal) 6x6 matrices,
+expressing the uncertianty of the orbit as determined by fit to the
+observations. The latter option is possible only if a covariance
+matrix is already available, as a result of the use of menu DIFFCORR.
+
+WARNING: if initial conditions, and covariance matrix if its
+propagation is required, are not available for the current epoch, the
+propagation is not possible; menu INPUTELE, DIFFCORR, FIRSTGUE have to
+be used first.
+
+
+
+
+

@@ -1,0 +1,10 @@
+ number of sample points inside the disk =       100000
+ long semiaxis of ellipse =   0.222200000000000     
+ short semiaxis of ellipse =   0.180000000000000     
+ angle between X axis and long axis (degrees) =    45.0000000000000     
+ displacement in Y =   0.700000000000000     
+ relative velocity in star radius/day =    1.60000000000000     
+ reference time (occulter at center) =   0.000000000000000E+000
+ time step for luminosity measurement =   2.000000000000000E-002
+ limb darkening, linear coef. =  -0.392300000000000     
+ limb darkening, quadratic coef. =  -0.262500000000000     

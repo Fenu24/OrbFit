@@ -1,0 +1,74 @@
+#!/usr/bin/wish
+
+# Learn the path to the doc/ directory
+set u [open doclib.h90 r]
+while {[gets $u line] >= 1} {
+  set i1 [string first "'" $line]
+  set i2 [string last "'" $line]
+    if {$i1&&$i2} {
+      set dir [string range $line [expr $i1+1] [expr $i2-1]]
+}   }
+close $u
+
+# Widgets 
+frame .mbar
+text .text
+pack .mbar .text -side top -fill x
+
+set p 0
+
+# Buttons
+button .mbar.go -relief raised -text "Go" -underline 0 -command {
+    set p [eval exec >@stdout time [join {$dir ../bin/bineph.x} /] &]}
+button .mbar.stop -relief raised -text "Stop" -underline 0 -command {
+    catch {exec kill -9 $p}
+    set p 0
+    .mbar.go configure -text "Restart"}
+button .mbar.ext -relief raised -bg LightSteelBlue3 -text "Exit" -underline 1 -command {
+    if {$p>0} {
+       catch {exec kill -9 $p}
+    }
+    exit}
+
+# Packer
+pack .mbar.go  -side left -padx 1m
+pack .mbar.ext -side right
+pack .mbar.stop -side left
+
+# Bindings
+bind . <g> {set p [eval exec >@stdout time [join {$dir ../bin/bineph.x} /] &]}
+bind . <r> {set p [eval exec >@stdout time [join {$dir ../bin/bineph.x} /] &]}
+bind . <s> {catch {exec kill -9 $p}
+    set p 0
+    .mbar.go configure -text "Restart"}
+bind . <x>  {if {$p>0} {
+    catch {exec kill -9 $p}
+}
+    exit}
+
+# Image widget
+image create photo image3a -file [eval file join [join {$dir dactyl.gif} /]]
+label .text.l1 -image image3a
+
+# Packer
+pack .text.l1 -side top
+
+# Window manager
+wm title . "BINEPH" 
+wm geometry . +10+390
+
+
+
+
+
+#==============================================================================
+# Special window if opened closes down automatically on error or after the job is completed
+
+
+# button .mbar.go -relief raised -text "Go" -underline 0 -command {exec /usr/bin/X11/color_xterm -geometry 60x20+320+150  -sb -sl 500 -bg cornsilk -T BINEPH -j -fn 10x20 -e bin/bineph.x}
+
+
+#bind . <g> {exec /usr/bin/X11/color_xterm -geometry 60x20+320+150  -sb -sl 500 -bg cornsilk -T BINEPH -j -fn 10x20 -e bin/bineph.x}
+
+
+

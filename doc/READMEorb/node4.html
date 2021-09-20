@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4. OUTPUT</TITLE>
+<META NAME="description" CONTENT="4. OUTPUT">
+<META NAME="keywords" CONTENT="READMEorb">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="READMEorb.css">
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="READMEorb.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html48"
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html46"
+ HREF="READMEorb.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html40"
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html49"
+ HREF="node5.html">5. POSTPROCESSING</A>
+<B> Up:</B> <A NAME="tex2html47"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<B> Previous:</B> <A NAME="tex2html41"
+ HREF="node3.html">3. PROPAGATION</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+4. OUTPUT</A>
+</H1>
+
+<P>
+The main choices involved in the design of the output are: the
+coodinate type, system, and reference; the filter decimation; and the
+most critical parameter of them all, the quantity of output.
+
+<P>
+The choices of coordynate types and systems are described in the
+comment on top of <I>coord.f</I>; at present, you can get output in
+cartesian coordinates (CAR), keplerian elements (KEP) and equinoctal
+non singular elements (EQU), the latter as defined by Broucke and
+Cefola (1982).  Parabolic and hyperbolic elements are not currently
+supported.  To add a new option, modify <TT>coocha</TT> in <I>coord.f</I>.  The coordynate systems available are currently
+heliocentric (HEL), jacobian (JAC), barycentric (BAR) and heliocentric
+canonical (HEC).  The reference systems are mean ecliptic of B1950.0
+(ECLM50), mean equator of B1950.0 (EQUM50), mean equator of J2000.0
+(EQUM00), mean ecliptic of J2000.0 (ECLM00), invariable plane of the
+outer solar system according to LONGSTOP 1B (INVL1B); in the first
+four cases, the x axis is defined by the corresponding mean gamma
+point.  New reference systems can be added by modifying <TT>refer</TT> in
+<I>coord.f</I>.  There is also a choice for the units to be used for
+the angle variables, between radiants (RAD), degrees (DEG) and
+revolutions (REV).  Warning: these units also apply to the inclination
+in keplerian variables, although the inclination is not an angle
+variable.
+
+<P>
+Not all these choices are available directly in the orbit9 output,
+which is always EQU RAD; the output has to be converted by running
+Conv9.  The options for Conv9 can be provided in the file
+<B>conv9.inp</B>, as well as interactively; the result is always a
+number of files, each containing the data on a single orbit, with or
+without header, and in the required coordynate system, reference
+system, etc.
+
+<P>
+On the contrary, digital filtering has to be performed on line,
+because post-filtering of the output (e.g. from within Giffv) does not
+produce the same effect.  To understand this fully, you should read
+the filtering manual which is in the <I>doc</I> directory and/or
+Carpino, Milani and Nobili (1987).  In short, the filter is capable of
+removing the oscillations with periods between <TT>2*dt/isamp</TT> and
+<TT>2*dt</TT>, but may not remove the ones with periods shorter than
+<TT>2*dt/isamp</TT>; some of these, as a result of sampling with
+interval <TT>dt/isamp</TT>, can generate aliases with comparatively
+long periods, which could well escape the filtering.  To make all this
+understandable by the novice user, let us take an example: suppose
+that <TT>dt=100</TT> and <TT>isamp=100</TT>; then an oscillation with
+a period of 1.001 years, sampled at 1 year interval, will appear at
+the filter input as an oscillation with a period of 1,000 years, and
+it will be preserved in the output.  To correctly filter out the short
+period effects, we need on the contrary to make sure that no
+significant effect occurs with a period shorter than 2 years, or at
+least not with periods close to 1 year, 1/2 year, 1/3 year, etc.
+
+<P>
+Another pitifall of digital filtering is avoided by remembering that
+any nonlinear transformation changes the spectrum of a function; as a
+simple example, if the equinoctal variables <Tt>h,k</TT> contain 
+the frequencies 
+<!-- MATH: $g_5, g_6, g_7\ldots$ -->
+<IMG
+ WIDTH="72" HEIGHT="24" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.gif"
+ ALT="$g_5, g_6, g_7\ldots$">,
+the eccentricity 
+<!-- MATH: $e=\sqrt{h^2+k^2}$ -->
+<IMG
+ WIDTH="85" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.gif"
+ ALT="$e=\sqrt{h^2+k^2}$">contains the difference frequencies 
+<!-- MATH: $g_5-g_6, g_5-g_7, g_6-g_7\ldots$ -->
+<IMG
+ WIDTH="161" HEIGHT="24" ALIGN="MIDDLE" BORDER="0"
+ SRC="img6.gif"
+ ALT="$g_5-g_6, g_5-g_7, g_6-g_7\ldots$">.
+As long as all these are slow frequencyes, there is no problem;
+however, the difference of two fast frequencies can be a slow
+frequency, thus filtering <TT>e</TT> and filtering <TT>h.k</TT> does
+not give the same result; in orbit9 the filter is always applied to
+the equinoctal elements.  Another example of this can be obtained by
+filtering the orbital elements in jacobian coordinates, then
+converting them to heliocentric coordinates: in the filtered jacobian
+output the short periodic perturbations are removed, but in the
+heliocentric transformation they appear again, because it is the
+transformation between jacobian and heliocentric coordinates which
+contains most of the short periodic effects (mostly through the motion
+of the Sun).
+
+<P>
+Thus you need to decide before performing a long integration which
+coordinate system is going to be used in the analysis of the output,
+which is the range of short periodic perturbations which you want to
+remove by filtering, and which is the band of interest, that is, which
+frequencies have to be preserved.  This is needed not only for the
+filter, but also for the determination of frequencies and to maintain
+the revolution counters.  As an example, if the output is transformed
+in keplerian coordinates, the number of revolutions of the perihelion
+and of the node can be computed correctly if and only if these two
+angles never change by more than <IMG
+ WIDTH="12" HEIGHT="11" ALIGN="BOTTOM" BORDER="0"
+ SRC="img7.gif"
+ ALT="$\pi$">
+in the interval <TT>dt</TT>.  If
+this is done correctly, then the frequency of the perihelion can be
+obtained by a linear fit (a menu choice in GIFFv); otherwise there
+could be a significant problem in reconstructing the frequency.  Thus
+the filter output interval must be longer than the longest short
+period to be removed and shorter than half the shortest long period to
+be studied.  As an example, <TT>isamp=50</TT> and <TT>dt=50</TT> is good 
+for the orbit of a Trojan asteroid computed without the inner planets 
+(but do not forget the barycentric correction!) because the oscillations
+with period close to the libration period (
+<!-- MATH: $\simeq 150$ -->
+<IMG
+ WIDTH="40" HEIGHT="12" ALIGN="BOTTOM" BORDER="0"
+ SRC="img8.gif"
+ ALT="$\simeq 150$">
+years) are
+preserved and the short periodic perturbations with periods of the
+order of 1 year are negligible. However, the other constraint, that is
+the size of the output, has to be taken into account, since an
+integration for 1 million years with the above parameters results in
+20,001 output data points and roughly 4 Megabytes per asteroid.
+
+<P>
+In practice, not even I am able to make all these choices right at the
+first attempt; given a dynamical problem, some test integrations and
+their analysis (e.g. with GIFFv) are required to understand the basic
+spectrum and to choose the parameters for a longer integration.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html48"
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html46"
+ HREF="READMEorb.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html40"
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html49"
+ HREF="node5.html">5. POSTPROCESSING</A>
+<B> Up:</B> <A NAME="tex2html47"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<B> Previous:</B> <A NAME="tex2html41"
+ HREF="node3.html">3. PROPAGATION</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Andrea Milani</I>
+<BR><I>1999-10-31</I>
+</ADDRESS>
+</BODY>
+</HTML>

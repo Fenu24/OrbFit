@@ -1,0 +1,22 @@
+#!	/bin/sh
+
+# Deinstall (erase) sources contained in .dist/* directories
+
+if [ ! -d .dist ]; then
+	exit 0
+fi
+
+# List of subdirectories of .dist
+listdir=`ls .dist`
+
+# List of files contained in subdirectories of .dist
+list=`(for dir in $listdir
+do
+	ls .dist/$dir
+done) | sort -u`
+
+# Erasing installed file
+for file in $list
+do
+	rm -f $file
+done

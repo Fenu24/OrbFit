@@ -1,0 +1,1 @@
+CHARACTER(LEN=1), PARAMETER :: comcha = '!' ! Comment character in a namelist

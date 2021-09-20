@@ -1,0 +1,82 @@
+Orbit9 is a software system designed to allow numerical experiments on
+orbits of solar system bodies, with different dynamical models. It was
+developed starting in 1989, and from then on continuously improved and
+upgraded. Orbit9 is created with user friendlyness as a design
+parameter, with the goal of being used as a public domain system.
+
+The purpose of Orbit9 is to compute the orbits of small solar system
+bodies, in particular of asteroids, within a dynamical model as
+realistic as possible.  The program handles a full gravitational N+M
+bodies problem, with the Sun and N-1 planets fully interacting between
+them, and M massless bodies attracted by the N mases but not reacting
+on them.  To compute the orbit of a known asteroid, for example,
+initial conditions are taken from a catalogue (e.g. the Ephemerides of
+Minor Planets, or some other computer readable catalogue provided
+e.g. by the Minor Planets Center); in this case the only thing the
+user needs to specify to start the integration is the asteroid number.
+However, fictitious bodies and space debris can be handled as well,
+provided a suitable initial conditions file is available; this input
+file can be written in a variety of coordinate systems, with a header
+supplied to explain what is meant.  Unless otherwise requested by the
+user, all the input and output files contain a header with all the
+information needed to understand the content: e.g. which bodies'
+orbits are these, the initial epoch, the starting catalogue, the
+coordinate systems, etc.
+
+The output is written in a standard format, but with choice of
+reference and coordinate systems.  A separate program (conv9) allows
+to convert the output into a variety of coordinate types, systems,
+references, and units, to be later analyzed either by means of our
+program for the output post processing (giffv) or by any program
+capable of reading a flat file.  The output includes a sampled time
+series and a filtered one, with user-specified decimation.  On
+request, the maximum Lyapounov exponent can be estimated -by solving a
+variational equation- for all of the asteroids.  The angular variables
+always include counters for the number of revolutions, to allow for
+the determination of frequencies and/or for the monitoring of critical
+arguments.  All these features, however, require some know-how to be
+used correctly; as an example, the choice of the sampling and
+decimation ratios is critical for the correct computation of the
+output.
+
+A safety dump feature allows almost always to restart an integration
+from where it was interrupted, regardless of whether this was due to a
+power failure or to a change of mind on the time span required.  The
+computation of an estimate of the maximum Lyapounov exponent can also
+be continued in a consistent way.  The accuracy of this continuation
+is very good, that is the jump --in both position and velocity--
+between the two orbits is at the rounding off level, if the right
+options are chosen.  The output format is always compatible with the
+input format, but the special dump files have to be used to preserve
+full precision of the continuation.
+
+This program is not meant to handle very unstable cases, which would
+require regularisation for close approaches; in practice,
+planet-crossing orbits are computed at the user's risk, with all the
+orbits integrated numerically with the same stepsize.  The numerical
+methods include multistep and symplectic Runge-Kutta; the latter is
+generally used only as a starter (being very accurate but very
+inefficient).  The program is not meant for dense output (that is, for
+a number of output times comparable to, or even larger than, the
+number of integration steps).  Many features could be added, but this
+would betray the original purpose, which was (and is) the study of the
+dynamics of the asteroidal belt.
+
+Together with Orbit9 the user can also obtain other programs meant to
+analyse the output, including the proper elements generation programs
+by Andrea Milani and Z. Knezevic, the Graphic Interactive Fourier Filtering
+program (GIFF version v) to perform Fourier analysis and filtering,
+the Multiple Trigonometric Analysis Program (MTRAP) by M.  Carpino,
+the TeXfor documentation system to print the listing with embedded TeX
+comments and formulas, and so on.  Everything is supplied in a
+self-service mode which allows at least the UNIX users to compile and
+run all the programs without any need to go into the details of the
+way they have been programmed; for other operating systems, although
+all the programs are machine-independent (apart from graphics), some
+work is needed to compile and install the software.  Most modules are
+self explanatory, that is with embedded comments which should be
+enough; we  do not guarantee that everything is understandable and well
+documented.
+
+
+

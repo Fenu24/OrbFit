@@ -1,0 +1,13 @@
+! Copyright (C) 1996 by Mario Carpino (carpino@brera.mi.astro.it)
+! Version: August 29, 1996
+! ---------------------------------------------------------------------
+! Default library directory
+!
+! libdir      -  default library directory
+! lenld       -  length of default library directory string
+! iiclib      -  initialization check
+!
+      CHARACTER*100 libdir
+      INTEGER lenld,iiclib
+      COMMON/cmlib1/libdir
+      COMMON/cmlib2/lenld,iiclib

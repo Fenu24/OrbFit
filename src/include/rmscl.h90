@@ -1,0 +1,47 @@
+! Copyright (C) 1999-2000 by Mario Carpino (carpino@brera.mi.astro.it)
+! Version: October 31, 2000
+! ---------------------------------------------------------------------
+! RMS classes of astrometric observations
+!
+! SECTION 1: RMS classes of single observatory codes
+! crmad       -  Accuracy descriptor
+! crmotd      -  Observation type descriptor (character)
+! crmoti      -  Observation type descriptor (integer)
+! crmot1      -  Starting time (MJD, TDT)
+! crmot2      -  Ending time (MJD, TDT)
+! crmrms      -  Observation RMS (arcsec) before sub. average
+! crmave      -  Residual average (arcsec)
+! crmrma      -  Observation RMS (arcsec) after sub. average
+! crmobp      -  Pointer to records belonging to a given observatory
+! ncrm        -  Total number of classes (RA and DEC)
+!
+! SECTION 2: RMS classes of mixed observatory codes
+! crx1ad      -  First index: accuracy descriptor
+! crx1pt      -  First index: pointer to second index
+! crx1n       -  First index: number of entries
+! crx2ty      -  Second index: type of observation
+! crx2pt      -  Second index: pointer to third index
+! crx2n       -  Second index: number of entries
+! crx3t       -  Third index: starting and ending time (MJD, TDT)
+! crx3r       -  Third index: Observation RMS (arcsec) before sub. average
+! crx3a       -  Third index: Residual average (arcsec)
+! crx3ra      -  Third index: Observation RMS (arcsec) after sub. average
+! crx3n       -  Third index: number of entries
+! iiccrm      -  Initialization check
+!
+      INTEGER ncrm(2),crmobp(2,obsc1:obsc2,2),crmoti(ncrmx,2)
+      INTEGER crx1pt(2,crx1nx,2),crx1n(2),crx2pt(2,crx2nx,2),crx2n(2)
+      INTEGER crx3n(2),iiccrm
+      COMMON/cmcrm1/ncrm,crmobp,crmoti,crx1pt,crx1n,crx2pt,crx2n,crx3n,iiccrm
+
+      DOUBLE PRECISION crmrms(ncrmx,2),crmave(ncrmx,2),crmrma(ncrmx,2)
+      DOUBLE PRECISION crmot1(ncrmx,2),crmot2(ncrmx,2)
+      DOUBLE PRECISION crx3t(2,crx3nx,2),crx3r(crx3nx,2)
+      DOUBLE PRECISION crx3a(crx3nx,2),crx3ra(crx3nx,2)
+      COMMON/cmcrm2/crmrms,crmave,crmrma,crmot1,crmot2,crx3t,crx3r,crx3a,crx3ra
+
+      CHARACTER*5 crmad(ncrmx,2),crx1ad(crx1nx,2)
+      COMMON/cmcrm3/crmad,crx1ad
+
+      CHARACTER*1 crmotd(ncrmx,2),crx2ty(crx2nx,2)
+      COMMON/cmcrm4/crmotd,crx2ty

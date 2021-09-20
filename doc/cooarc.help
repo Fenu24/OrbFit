@@ -1,0 +1,18 @@
+% help file, orbfit 3.1
+% this is a submneu of the coordinate change menu
+
+MENU COOARC
+
+Elements of which  arc to be converted ?
+  
+1 = first arc ...starting from the current value of the
+orbital elements and for the current initial condition epoch t0 for the
+first arc.
+
+2 = second arc ...same for the second arc,
+
+3 = both ...same as performing first 1 then 2.
+
+4 = identification ...for the orbit fitting both sets of observations
+
+0 = exit ...back to main menu.

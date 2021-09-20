@@ -1,0 +1,81 @@
+astrometric_observations.f90:INCLUDE 'parcmc.h90'     ! comment character
+astrometric_observations.f90:INCLUDE 'parcmc.h90'     ! comment character
+astrometric_observations.f90:INCLUDE 'parobx.h90'
+astrometric_observations.f90:INCLUDE 'sysdep.h90'
+
+
+attributable.f90:  INCLUDE 'parobx.h90'
+
+IN MODULE IN SAME FILE: 'spaces1.h90' 'spaces2.h90' 'parch.h90'
+char_str.f90
+
+fidinam4.f90:  INCLUDE 'sysdep.h90'
+ 
+MODULE IN THE SAME FILE: 'comfil.h90'
+file_oper.f90:  INCLUDE 'comlib.h90' 
+file_oper.f90:  INCLUDE 'sysdep.h90' 
+file_oper.f90:  INCLUDE 'parlib.h90' 
+file_oper.f90:  INCLUDE 'comlib.h90' 
+file_oper.f90:  INCLUDE 'comlib.h90' 
+file_oper.f90:  INCLUDE 'sysdep.h90' 
+
+IN MODULE IN SAME FILE: 'parnam.h90' 'comfnm.h90'  'comnam.h90' 'comkls.h90' 
+option_input.f90:  INCLUDE 'parcmc.h90' 
+option_input.f90:  INCLUDE 'parcmc.h90' 
+option_input.f90:  INCLUDE 'parcmc.h90' 
+option_input.f90:  INCLUDE 'parcmc.h90' 
+option_input.f90:  INCLUDE 'parcmc.h90' 
+option_input.f90:  INCLUDE 'parcmc.h90' 
+
+header_input.f90:      INCLUDE 'parcmc.h90' 
+header_input.f90:      INCLUDE 'parcmc.h90' 
+header_input.f90:      INCLUDE 'parcmc.h90' 
+
+iers_ser.f90:      INCLUDE 'comlib.h90' 
+
+IN A MODULE IN THE SAME FILE: 'comorb.h90'
+io_elems.f90:  INCLUDE 'parcmc.h90'
+io_elems.f90:  INCLUDE 'parcmc.h90'
+io_elems.f90:  INCLUDE 'parcmc.h90'
+io_elems.f90:  INCLUDE 'parcmc.h90'
+
+iorwo_old.f90:      INCLUDE 'parcmc.h90' 
+iorwo_old.f90:      INCLUDE 'jplhdr.h90' 
+iorwo_old.f90:      INCLUDE 'parobx.h90' 
+iorwo_old.f90:      INCLUDE 'parcmc.h90' 
+
+COULD BE IN A MODULE IN THE SAME FILE: 'jplhdr.h90' but used in 
+moid/writemin.f90:      INCLUDE 'jplhdr.h90' 
+propag/force_model.f90:    include 'jplhdr.h90' 
+propag/force_model.f90:     include 'jplhdr.h90' 
+suit/iorwo_old.f90     INCLUDE 'jplhdr.h90'
+
+jpl_ephem.f90:      INCLUDE 'jplhdr.h90' 
+jpl_ephem.f90:      INCLUDE 'jplhdr.h90' 
+jpl_ephem.f90:      INCLUDE 'comlib.h90' 
+jpl_ephem.f90:      include 'jplhdr.h90' 
+jpl_ephem.f90:      include 'jplhdr.h90' 
+jpl_ephem.f90:      include 'jplhdr.h90' 
+jpl_ephem.f90:      include 'timespan.h90' 
+jpl_ephem.f90:      include 'jplhdr.h90' 
+
+COULD BE IN A MODULE IN THE SAME FILE: 'parrms.h90''parobc.h90' 'rmscl.h90'
+but used in
+stat/stat2.f90:      INCLUDE 'parrms.h90' 
+stat/stat3b.f90:      INCLUDE 'parrms.h90' 
+stat/stat2.f90:      INCLUDE 'parobc.h90' 
+stat/stat2.f90:      INCLUDE 'rmscl.h90'
+
+observ_rms.f90:      INCLUDE 'parobc.h90'
+observ_rms.f90:      INCLUDE 'parrms.h90'
+observ_rms.f90:      INCLUDE 'rmscl.h90'
+observ_rms.f90:      INCLUDE 'parobc.h90'
+observ_rms.f90:      INCLUDE 'parrms.h90'
+observ_rms.f90:      INCLUDE 'rmscl.h90'
+observ_rms.f90:      INCLUDE 'parobc.h90'
+observ_rms.f90:      INCLUDE 'parrms.h90'
+observ_rms.f90:      INCLUDE 'rmscl.h90'
+
+time_scales.f90:      INCLUDE 'timespan.h90' 
+
+util_suit.f90:  INCLUDE 'doclib.h90' 

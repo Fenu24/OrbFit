@@ -1,0 +1,950 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.07 [en] (X11; I; Linux 2.0.36 i586) [Netscape]">
+   <title>OrbFit: online help</title>
+<!-- Created by A. Milani, February 13, 1999 -->
+</head><body bgcolor="#ffffff">
+
+<center><font color="#0c0e80"><font size="+1">OrbFit</font></font></center>
+
+<p>
+</p><hr>
+<ul>
+<li>
+<a href="#whatis">What is OrbFit?</a></li>
+
+<br><i>A short, top level presentation.</i>
+<br><i></i>&nbsp;
+<li>
+<a href="#testrun">Can I test OrbFit?</a></li>
+
+<br><i>Yes, you can, even without installation.</i>
+<br><i></i>&nbsp;
+<li>
+<a href="#get">How to get?</a></li>
+
+<br><i>Anonymous ftp upload instructions, free software license.</i>
+<br>&nbsp;
+<li>
+<a href="#install">How to install?</a></li>
+
+<br><i>Step by step instructions, for UNIX and WINDOWS.</i>
+<br><i></i>&nbsp;
+<li>
+<a href="#start">How to start?</a></li>
+
+<br><i>The data you need to have to begin running, and how to get them
+from the Internet.</i>
+<br>&nbsp;
+<li>
+<a href="#cando">What can I do with OrbFit?</a></li>
+
+<br><i>Orbit determination, observations prediction, attribution, close
+approach monitoring, and more.</i>
+<br><i></i>&nbsp;
+<li>
+<a href="#conven">Graphical interface.</a></li>
+
+<br><i>Tcl/Tk graphical interface to run the programs, on-line help facility.</i>
+<br><i></i>&nbsp;
+<li>
+<a href="#whatsnew">What is new?</a></li>
+
+<br><i>New features available from the last upgrades, and work in progress
+for planned extensions.</i>
+<br>&nbsp;
+<li>
+<a href="#authors">Who writes OrbFit and why?</a></li>
+
+<br><i>The OrbFit consortium is formed by scientists willing to provide
+public access, and external checking, to all their research tools. How
+to contact us.</i>
+<br>&nbsp;
+<li>
+<a href="#faq">FAQ (Frequently Asked Questions)</a></li>
+
+<br><i>Many other questions asked by the users.</i>
+<br>&nbsp;
+<li>
+<a href="#adddoc">Where to find additional documentation?</a></li>
+
+<br><i>Mathematical specifications, papers describing the algorithms.</i></ul>
+
+<hr>
+<p><a name="whatis"></a>
+</p><h3>
+What is OrbFit?</h3>
+
+OrbFit is a software system allowing one to compute the orbits of asteroids
+(soon also comets) starting from the observations, to propagate these orbits,
+and to compute predictions on the future (and past) position on the celestial
+sphere. It is a tool to be used to find a well known asteroid, to recover
+a lost one, to attribute a small group of observations, to identify two
+orbits with each other, to study the future (and/or past) close approaches
+to Earth, thus to assess the risk of an impact, and more.
+
+<p>&nbsp;OrbFit has been developed by a team of professional
+scientists, working in the field of asteroid and comet dynamics, orbit
+determination, nonlinear and chaotic dynamics, and astrometry. The
+composition of the OrbFit consortium, and the motivations for this
+work, are described <a href="#authors">below</a>.
+
+</p><p>&nbsp;OrbFit is free software, which means you can have your own
+copy running on your computer at zero cost. However, the software is
+copyrighted, and there are limitations to what you can do with it:
+most importantly, you cannot incorporate it in products which you sell
+to others. More details <a href="#licence">below</a>.  
+<br>&nbsp;
+</p><p>
+</p><hr>
+<p><a name="testrun"></a> </p><h3> Can I test OrbFit?</h3> OrbFit is used
+as the engine of the online information systems on numbered and
+multiopposition asteroids <a href="http://hamilton.dm.unipi.it/astdys"> AstDyS</a> and on Near
+Earth Objects <a href="http://newton.dm.unipi.it/neodys">NEODyS</a>.
+Specially adapted versions of the same programs you can get from the
+free distribution are used to establish and maintain daily a data base
+of orbits, observations, and close approaches for all the objects with
+perihelion at less than 1.3 Astronomical Units. By accessing this
+system you are in fact using OrbFit.
+
+<p>Moreover, special programs performing some of the tasks of OrbFit
+have been set up in such a way that you can run them directly from the
+web page (in computerese, these are cgi-bin). You can ask for a
+prediction of an observation you would like to perform tonight (also
+20 years ago, looking at an old plate in your archive), you can ask
+for ephemerides, and more (the system is continuously improved, more
+or less in parallel with the upgrades of OrbFit).
+
+</p><p>Thus you can in fact test OrbFit even before having a copy of the
+software on your computer. You can in this way decide whether OrbFit
+is useful for you before wasting any time with the download and
+installation procedure.
+
+<br>&nbsp;
+</p><p>
+</p><hr>
+<p><a name="get"></a>
+</p><h3>
+How to get?</h3>
+
+OrbFit is available on the Internet through our web server. Thus you can have
+all the software (source code, executables and documentation) and the data
+files necessary to use it from our site.
+
+<p><b>Dowloading instructions</b>
+
+</p><p>&nbsp;From your web browser you should open the location (URL):
+
+</p><p>&nbsp;<tt><a href="http://newton.dm.unipi.it/orbfit/" target="refwin">
+http://newton.dm.unipi.it/orbfit/</a></tt>
+
+</p><p>You are now offered the following choices:
+</p><ol>
+
+<li> You can browse the directory structure, and have an idea of the
+system, by entering in <tt><a href="http://newton.dm.unipi.it/orbfit/OrbFit/">
+http://newton.dm.unipi.it/orbfit/OrbFit/</a></tt>
+
+</li><li> You can upload a 
+<a href="http://newton.dm.unipi.it/orbfit/unixtar.tar.gz"> tarball</a>
+file containing a complete distribution for all UNIX systems
+(including LINUX). The tarball contains all the necessary source
+files, and the Makefiles for automated compilation on every UNIX
+system with its own Fortran compiler.  You can also compile under
+WINDOWS from the same sources, but you need to have the Fortran
+compiler Digital Visual Fortran 6.0 installed on your computer.</li>
+
+<li>
+You can upload data files containing, e.g., catalogs of precomputed asteroid
+orbits. This is in more detail described <a href="#inpdata">below</a>.</li>
+</ol>
+
+<b>Upgrades</b>
+<p>&nbsp;OrbFit is continuously updated and upgraded. The authors use
+modified versions of the same software for their own research, and as
+soon as some new algorithm has been validated, and the corresponding
+software has been tested enough to be considered reliable, a new
+feature is added to the OrbFit distribution. Moreover, small bugs are
+removed, and suggestions from the users result in more user friendly
+interfaces. This results in a new upgrade being available typically
+once every few months.
+
+</p><p>&nbsp; Minor upgrades are such that a few new sources have to be added,
+or maybe overwrite a previous source file. They are indicated with a patch
+number, e.g. the first patch after distribution 3.1 shall be 3.1.1 Major
+upgrades require to remove the old sources. 
+
+</p><p>&nbsp;Although you are by no means obliged to upgrade, if you want
+to do so you need to connect again to the 
+<a href="http://newton.dm.unipi.it/orbfit/"> distribution site</a> and
+get the new archives containing the changed sources.  
+
+</p><p>In that directory, their name is something like
+<tt>patch3.1.Xtar.gz</tt>.  Once this file is on your hard disk, use
+the <a href="#upgrunix">upgrade procedure</a>.
+
+<br>&nbsp; </p><p><a name="licence"></a><b>Free software license</b>
+
+</p><p>OrbFit is distributed as free software. This implies that it is
+supplied with the source code, free of charge. You can use, copy,
+redistribute and even modify the software, but the software is
+copyrighted by its authors, and there are restrictions on what you are
+allowed to do with it. These restrictions are exactly specified in the
+<a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/doc/GNUPUB.LIC">GNU General Public License</a>.
+
+</p><p>&nbsp;OrbFit, Copyright (C) 1997-2004 by the members of the <a href="#consortium">OrbFit Consortium</a>.
+
+</p><p>&nbsp;This program is free software, you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published
+by the Free Software Foundation, either version 2 of the License, or (at
+your option) any later version.
+
+</p><p>&nbsp;This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY, without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+for more details.
+
+</p><p>&nbsp;You have received a copy of the GNU General Public License along
+with this program. For further information, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+<br>&nbsp;
+
+</p><p>
+</p><hr>
+
+<p><a name="install"></a>
+</p><h3>
+How to install?</h3>
+The installation of OrbFit is highly automated, and should be easy. Please
+let us know if you have difficulty or suggestions.
+<p>&nbsp;The installation involves three steps: installation/compilation
+of the executable programs, installation of the planetary ephemerides,
+and tests. Under UNIX a special procedure is available to apply a minor
+upgrade, stored in a patch file, without repeating the installation.
+
+</p><p><a name="instunix"></a><b>UNIX installation</b>
+
+</p><p>&nbsp;On a computer running a dialect of UNIX, you need to
+<tt>cd</tt> to the directory where the archive
+<tt>OrbFit3.1.tar.gz</tt> has been deposited, and unpack:
+</p><pre>$gunzip *.gz&nbsp; $tar -xf OrbFit3.1.tar</pre>
+
+Then you have to configure for the specific Fortran compiler in use (each
+compiler requires some non-standard flags): to do this you have to give
+the command <tt>config</tt>. If you type <tt>config</tt> without arguments,
+you get the online help, with the currenttly supported options:
+<pre>$ config
+Usage: config [options] [configuration]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; where options can be:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -d&nbsp; (debug)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -O&nbsp; (optimized)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -p&nbsp; (profiling)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and [configuration] is one of the following:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SunOS&nbsp; (SunOS, Fortran 77/90)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; intel (INTEL compiler)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lf95&nbsp;&nbsp;&nbsp; (Lahey-Fujitsu compiler)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ALPHA&nbsp; (Digital alpha f90 compiler)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HP90&nbsp;&nbsp; (HP Fortran 90)</pre>
+
+If you find either that compilation cannot be completed, or that the executable
+does not perform as it should (e.g., it fails the tests), please let us
+know exactly which processor, which version of UNIX, and which compiler
+you were using. If, on the contrary, you succeed in compiling correctly
+under some other configuration, please supply us the <tt>make.flags</tt>
+file you have used and we will incorporate this into the <tt>config</tt>
+utility.
+
+<p>Having selected the configuration suitable for your
+hardware/operating system environment, e.g. for Linux: 
+<br>&nbsp;
+</p><pre>$ config -O intel 
+default library directory is /home/milani/orbfit/orb31/lib 
+default documentation directory is /home/milani/orbfit/orb31/doc
+</pre> 
+
+you can proceed to the compilation, by giving the <tt>make</tt>
+command. For an example of the output, see the file <tt><a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/doc/readme.compile">readme.compile</a></tt>.
+
+<p>&nbsp;For your convenience, all the executables
+<tt><i>progname</i>.x</tt> have been linked from the directory
+<tt>./bin</tt>: to execute, you may add this directory to your
+path. The location on your disk of the <tt>./lib</tt> and
+<tt>./doc</tt> directories, which need to be known by the executables,
+have been set at compilation time, using the header files prepared by
+the <tt>config</tt> shell script.
+
+</p><p>
+<a name="jplephunix"></a><b>JPL Ephemerides installation under UNIX.</b>
+
+</p><p>&nbsp;The dynamical
+model of the Solar System used by OrbFit is based on the position of
+the planets supplied by the so-called JPL ephemerides, created and
+made public by the <a href="http://www.jpl.nasa.gov/">Jet Propulsion
+Laboratory</a> (Pasadena, California). In order to use OrbFit you need
+to install at least a part of the JPL ephemerides in
+subdirectory<tt>./lib</tt>, under the name '<tt>jpleph</tt>', and in
+binary form. Although, in principle you can use any of the currently
+available releases (200, 403, 405), we recommend the latest one, that
+is release 405.
+
+</p><p>&nbsp;For the LINUX users who would like to have OrbFit up and running
+immediately, we have prepared some binary ephemerides files. These can
+be downloaded from this link <tt> 
+<a href="http://newton.dm.unipi.it/orbfit/JPLEPH/">linux/jpleph</a></tt>.
+
+</p><p>As an alternative, necessary if you want to run the program over a longer
+time span, you can retrieve the JPL ephemerides in two ways: either by
+purchasing a CDROM, or from the Internet. For the CDROM version you should
+visit <a href="http://www.willbell.com/">http://www.willbell.com</a>. There
+you click on 'SOFTWARE' and on the image of a CDROM with JPL ephemerides.
+There is plenty of information on the ephemerides themselves to be found
+at the site, as well as an on-line ordering form.
+
+</p><p>&nbsp;The other possibility is to retrieve the ephemerides directly
+from the JPL FTP site. However, bear in mind that each package of
+ephemerides, covering a period of 20 or 25 years, depending on the
+ephemerides release, is typically about 6 MB in size. Thus, we
+recommend this method only for partial installation (cf. for software
+testing purpose, in which case you can download, say, only two
+packages, covering the period from 1950/60 to 2000), unless you have a
+very good network connection to JPL. In practice, you can use the FTP
+facility of the Web browser by accessing 
+<a href="ftp://navigator.jpl.nasa.gov/ephem/export"> 
+ftp://navigator.jpl.nasa.gov/ephem/export</a>
+and you can also start an anonymous ftp session. We have prepared a <a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/doc/jpl.ftp">sample ftp session</a> to assist in obtaining the files
+this way.
+
+</p><p>&nbsp;Once you have downloaded the ephemerides, you have to run the
+<tt>asc2eph</tt> conversion routine to produce a binary ephemerides
+file <tt>jpleph</tt>.  Starting with version 1.9.0 we are distributing
+a Makefile and suitably modified Fortran files to assist with the
+task. See the file 
+<tt><a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/src/jpleph/readme.OrbFit"> src/jpleph/readme.OrbFit</a></tt>
+for more information. To test your ephemerides see the JPL
+<tt>usrguide</tt>.
+
+</p><p>&nbsp;<b>Test suite (UNIX)</b>
+
+</p><p>&nbsp;You need first to set the appropriate symbolic link to JPL
+Digital Ephemeris file in the lib/ directory: </p><pre>$ln -s
+/<i>somepath</i>/DE<i>nnn</i>.dat lib/jpleph</pre> and then give the
+command: <pre>$make tests</pre> The output should look like the
+example in the <tt><a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/doc/readme.tests">readme.tests</a></tt>.  If
+it does not, please let us know.
+
+<p><a name="upgrunix"></a><b>UNIX upgrade</b>
+
+</p><p>&nbsp;Patches are as gzipped tar files, containing all the files which
+are changed with respect to the last complete distribution (e.g. to apply
+patch 2.1.2 you do <b>not</b> need to apply first the patch 2.1.1). In
+order to install a patch, you have to untar the corresponding file in the
+root directory of the software:
+</p><pre>$gunzip patch2.1.3.tar.gz
+$tar -xf patch2.1.3.tar</pre>
+then erase obsolete files, no longer used, with the command:
+<pre>$make del_obsolete_files</pre>
+After that, it is necessary to rebuild from scratch the executables, using
+the commands:
+<pre>$make clean
+$make</pre>
+
+<p>
+</p><hr>
+<p><a name="start"></a>
+</p><h3>
+How to start?</h3>
+OrbFit consists of four main programs: Orbfit, Fitobs, Catpro and Bineph.
+
+<p>&nbsp;Orbfit is a batch only, no questions asked by program. It can even
+run with no input options file, just by giving the asteroid name in the
+standard input (but you need to have the files with the data). Look at
+the <tt>*.oop</tt> files provided in the <tt>./tests/orbfit/</tt> directory
+as examples.
+
+</p><p>&nbsp;Fitobs is a menu driven, interactive program, which allows a
+surprising variety of data processing procedures. Use it on some of
+the examples supplied in the <tt>./tests/fitobs</tt> directory to
+learn: you need only to change the <tt>*.fop</tt> file to run your own
+test case. Use the online help at each menu.
+
+P&gt;&nbsp;Catpro is a propagator to move the reference epoch of an orbit
+catalog to another epoch.
+
+</p><p>&nbsp;Bineph is used to add perturbations from other asteroids to the
+dynamic model: to be used only for top accuracy.
+
+</p><p>&nbsp;<b>What you need to start</b>
+
+</p><p>&nbsp;To begin working with OrbFit, you need exactly three things:
+
+</p><ul>
+<li>the executables for the main programs fitobs, orbfit (and possibly
+bineph),
+
+</li><li>the files containing the input data,
+
+</li><li>an idea of what you want to do.
+</li></ul>
+
+The executables are stored on your hard disk by the <a href="#install">installation procedure</a>. What you can do is
+outlined in the <a href="#cando">next section</a>. In the rest of this
+section we shall describe the input files, and how to procure them.
+
+<p>&nbsp;<b>Input data files</b> 
+
+</p><p>To understand the input data files that you need, you have to bear
+with us for a small bit of theory. When an asteroid/comet is
+discovered, some <b>observations</b> become available, but the
+<b>orbit </b>is not known. Once the orbit has been computed by fitting
+the observations, it can be propagated to an epoch different from the
+one of the observations, provided a
+<b>dynamic model </b>of the Solar System is available. Thus there are
+exactly three types of data files you might need to run OrbFit:
+<br>&nbsp; 
+<br>&nbsp;
+</p><ol>
+<li>
+An observation file, containing the position of one asteroid/comet on the
+sky at different times, as recorded by some observatories. In the OrbFit
+system, these files have names such as
+<tt><i>astname</i>.rwo</tt>, <tt><i>astname</i>.obs</tt>,
+<tt><i>astname</i>.rad</tt>,
+and they are stored in some directory
+<i><tt>obsdir</tt></i>.</li>
+
+<li>
+An orbital elements file <i><tt>elefil</tt></i>, containing either the
+sets of six numbers defining the orbit of one object at some epoch, or
+possibly a list of orbital elements for many asteroids and/or comets (a
+so called <b>orbit catalog</b>).</li>
+
+<li>
+Files allowing to compute the positions of all the bodies which can, with
+their gravitational attraction, change the orbit of the asteroids/comets.
+These files specify the dynamic model of the Solar System to be used for
+orbit propagation. The positions of the planets are provided by the JPL
+ephemerides, which are installed on your hard disk as part of the 
+<a href="#jplephunix">installation
+procedure.</a> If you need to take into account even the gravitational
+pull of some asteroids for extremely accurate computations you must generate
+the corresponding <a href="#bineph">ephemerides files using bineph</a>.</li>
+
+<br>&nbsp;</ol>
+The instruction on how to procure the input data files are below: let us
+now assume you have them. Then the only requirement to be able to start
+one of the OrbFit main programs is to write an option file, which specifies
+where the input data files are.
+<p>As an example, for the <b>fitobs</b> main program, this is an input
+file, named 1978CA.fop:
+</p><pre>! option file for fitobs
+fitobs.
+! input data
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .astna0='1978 CA'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ! full name
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .obsdir0='observations'&nbsp; ! directory of observs. file&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .elefi0='elems/1978CA.eq0'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ! orbital elements file
+!</pre>
+Note that everything after an exclamation mark is just a comment. Thus
+there are in fact only four significant lines, specifying
+<ol>
+<li>
+that options are being given for the fitobs program</li>
+
+<li>
+that the asteroid under consideration is 1978 CA</li>
+
+<li>
+that the observations, if any, are in the subdirectory
+<tt>observations</tt> of the current directory where the program is
+run; the file names are <tt>1978CA.obs</tt> and/or
+<tt>1978CA.rwo</tt></li>
+
+<li>
+that the orbital elements for that asteroid are to be found in a file
+<tt>1978CA.eq0</tt> in the subdirectory <tt>elems</tt> of the current
+directory.</li> 
+</ol> 
+
+Many more options can be set in the .fop file, but these are the only
+ones you need to specify. Do not mind the "0" at the end of the
+variable names (<tt>astna0, obsdir0, elefi0</tt>): this is just
+because fitobs can handle two asteroids at the same time, in which
+case you should specify also <tt>astnap, obsdirp, elefip</tt>.
+<p>Now the instructions to run <b>fitobs</b> for 1978 CA are as
+follows (under UNIX): from the command line type the name of the
+executable: <tt>fitobs.x</tt> and then, when prompted for the
+<i>runname</i>, just type the name of the <tt>.fop</tt> file
+(<b>without</b> the <tt>.fop</tt> extension), in this case:
+<tt>1978CA</tt> (blanks do not matter). Then fitobs is up and running,
+with all the input data read and available: from then on, use the
+menus, making use of the online help at each menu as necessary by
+typing "-1".
+
+</p><p>&nbsp;If the <tt>fitobs.</tt> options are not specified or the
+<tt>*.fop</tt> file is missing, default values will be used. In
+particular, the program will use the run name as the asteroid name,
+looking for an intitial orbit in the file <tt>./ast.cat</tt> and for
+observations in the directory <tt>./obsdata/</tt>.
+
+</p><p>&nbsp;To use the batch mode program <b>orbfit</b> is even simpler:
+the file <tt><i>runname</i>.oop</tt> has both the function of
+specifying the input files and of specifying what you want the program
+to do, but there are default file names and default actions such that
+in many cases you do not need to specify anything. As an example, if
+the file <tt>1978CA.obs</tt> is available in the current directory,
+and you type <tt>orbfit.x</tt> followed, at the prompt for run name,
+by 1978CA, then orbfit will run and compute an orbit for 1978 CA even
+without an <tt>.oop</tt> file: the output orbital elements file will
+have the default name <tt>1978CA.oel</tt>.
+
+</p><p>&nbsp;Both for orbfit and for fitobs the availability of an orbital
+elements file is not mandatory, since both programs can compute an orbit
+from the raw observations only, as the above example shows. Vice versa,
+if an orbit is available from some orbit catalog, the observations are
+not always required: e.g. it is possible to propagate the orbit, to generate
+ephemerides, and so on, although the quality of the results will depend
+upon the quality of the orbit supplied, and it might not be up to the accuracy
+standards of the OrbFit system.
+
+</p><p><a name="inpdata"></a><b>How to procure input data files</b>
+</p><p>&nbsp;For each one of the three types of input data files, there are
+online Internet resources.
+<br>&nbsp;
+</p><ul>
+<li>
+Catalogs of asteroid (and comets) orbits can be obtained from at least
+three sources:</li>
+
+<br>&nbsp; <ol> <li>the Lowell Observatory asteroid orbits data base
+<tt>astorb.dat.gz</tt>, available by anonymous ftp from <tt><a href="ftp://ftp.lowell.edu/pub/elgb/">
+ftp://ftp.lowell.edu/pub/elgb</a></tt>.</li>
+
+<li>the Minor Planet Center Extended Computer Service, with Web access
+at <tt><a href="http://cfa-www.harvard.edu/iau/services/WebCSAccess.html">
+http://cfa-www.harvard.edu/iau/services/WebCSAccess.html</a></tt>.
+However, note that at present this is a service reserved to paying
+customers.</li>
+
+<li>the catalogs of orbits computed by ourselves, using OrbFit, are
+available from <tt><a href="http://hamilton.dm.unipi.it/cgi-bin/astdys/astibo?orbital_elements:0;main">
+AstDyS</a> and from <a href="http://newton.dm.unipi.it/cgi-bin/neodys/neoibo?neaelements:0;main">
+NEODyS
+</a></tt> </li>
+
+<li>individual orbit files, updated daily, for near-Earth asteroids
+may be obtained from the <a href="http://newton.dm.unipi.it/neodys">
+NEODyS</a> online information system.  </li> </ol>
+
+For all three sources described above, the format of the orbit catalog
+files is automatically detected by the OrbFit input routines: you do
+not need to specify the source of the data, but only give
+<tt>elefil</tt>, that is where you have placed the file you have
+downloaded.  <br>&nbsp; <br>&nbsp;
+
+<li> The observations can be
+input in OrbFit in three formats, the <tt>.obs</tt>, <tt>.rwo</tt> and
+<tt>.rad</tt> files.</li>
+
+<ol>
+<li>The <tt>.obs</tt> files, in the format specified by the Minor Planets
+Center, are currently available from the MPC Extended Computer Service
+at <tt><a href="http://cfa-www.harvard.edu/iau/services/WebCSAccess.html">
+http://cfa-www.harvard.edu/iau/services/WebCSAccess.html</a></tt>.
+However, note that at present this is a service reserved to paying
+customers.</li>
+
+<li>The <tt>.rwo</tt> files produced by OrbFit are available from us, 
+through the online information systems 
+<a href="http://hamilton.dm.unipi.it/astdys">AstDyS</a>.
+and <a href="http://newton.dm.unipi.it/neodys">NEODyS</a>.
+All the data on the objects of this class are available, including not
+only the raw data, but the output of our processing.</li>
+
+<li>
+The <tt>.rad</tt> files contain radar astrometry. This data may be
+obtained from JPL at <a href="http://ssd.jpl.nasa.gov/radar_data.html">
+http://ssd.jpl.nasa.gov/radar_data.html</a>.  The data must be
+organized into separate files with the form
+<tt><i>astname</i>.rad</tt> where <i>astname</i> is the number or
+temporary designation of the object.  Each record in the <tt>.rad</tt>
+file should include only the first 100 columns from the file published
+by JPL and blank lines must be removed.  A few examples are provided
+in the <a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/tests/fitobs/obsdata">./tests/fitobs/obsdata</a>
+directory.</li>
+
+<li>Most observers would be willing to provide you with their own observations,
+typically in the MPC format, suitable for <tt>.obs</tt> files.</li>
+</ol>
+
+<p>
+</p><li>The installation of the JPL ephemerides for the planets is
+described under <a href="#jplephunix">installation</a>.  For the
+ephemerides files of the largest asteroids, needed for extreme
+accuracy, see the <a href="#bineph">bineph</a> entry under the 
+<a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/doc/help.html#faq">FAQ</a>.</li> </ul>
+
+<hr>
+<p><a name="cando"></a> </p><h3> What can I do with OrbFit?</h3> 
+
+We need again to stress the different approaches used by
+<tt>fitobs</tt> and <tt>orbfit</tt>.  <tt>Fitobs</tt> is menu driven,
+meant to allow the user do decide interactively what to do with the
+available data, depending upon the results of the previous
+steps. There is an options file <i>runname</i>.fop, but it only
+provides the location of the input data files. <tt>Orbfit</tt> is a
+batch program, in which all the actions are predetermined either by
+the <i>RUNNAME</i>.oop options file, or by defaults depending upon
+which data files are available.
+
+<p>&nbsp;<b>Fitobs</b>
+</p><p>In <tt>fitobs</tt>, after launching the program and supplying the
+<i>runname</i>, the main menu is accessed. Online help is available by
+answering "-1" to each menu: the <a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/doc/mainmenu.help">main menu
+help file</a> proposes a wide choice of possible actions. You are
+advised to often use the status menu item, not to loose the account of
+what you have already done, e.g.  which orbits you have already
+computed, up to which epoch they have been propagated, and so on.
+
+</p><p>&nbsp;Just to give you a feeling of the possibilities, a list of
+possible actions with <tt>fitobs</tt> is as follows:
+
+</p><ul>
+<li>preliminary orbit computation from 3 observations</li>
+<li>differential corrections, that is orbit improvement by least squares fit
+to the observations, with/without automatic outlier rejection</li>
+<li>state propagation and orbital elements time series</li>
+<li>predictions of observations, with confidence boundary</li>
+<li>close approach analysis, with confidence boundary</li>
+<li>identification of two sets of observations with a single object</li>
+</ul>
+
+However, only those actions for which the necessary data are available
+are admitted: e.g., if data are been supplied only for one asteroid
+(the <i>first arc</i> quoted in many menus), then to ask to do
+anything on the second one results in a negative message, followed by
+a return to the menu from which the request was issued. The program
+<tt>fitobs</tt> should almost never crash (if you succeed in crashing
+it, let us know how), but just refuse to do what is not possible.
+
+<p>&nbsp;<b>Orbfit</b>
+
+</p><p>&nbsp;<tt>Orbfit</tt> can do most of the same actions available in
+<tt>fitobs</tt>, e.g. preliminary orbits, differential corrections,
+identifications, ephemerides.  However, the sequence of actions is
+predetermined, the option file can be used to jump some of the
+steps. The list of possible options is huge, as can be seen in the
+commented <a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/doc/readme.options">options file</a>, but in most cases
+a very simple option file is enough, as can be seen in the examples in
+the ./tests/orbfit directory. The file <a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/tests/orbfit/readme.examples">readme.examples</a> discusses
+these examples.
+</p><p>
+</p><hr>
+<p><a name="conven"></a>
+</p><h3>
+Graphical interface.</h3>
+For your convenience we have implemented a graphical interface "OrbFitSoft"
+in Orbfit (Linux only), which is supposed to facilitate usage of the
+entire system. You can run all the programs contained in the package and
+make use of the complete, online help, available even while other programs
+are running.
+
+<p>&nbsp;We assume that you have a Tcl/Tk package installed, and that
+'wish' shell is in '/usr/bin/'. If this is not the case you can either
+set an appropriate link, or you can edit all the executables in the
+'doc/' subdirectory of Orbfit (OrbFitSoft, HELP, ORBFIT, FITOBS,
+BINEPH) and change the first line in each of them to reflect the
+location of 'wish' on your system.
+
+</p><p>&nbsp;This application is developed using version 8.0 of 'wish'. To
+learn more on Tcl/Tk consult either the online 'tclhelp' facility,
+available in '/usr/bin/' on your machine, or the book "Tcl and the Tk
+Toolkit" by J.K.Ousterhout (Adison-Wesley Publ.Comp.).
+</p><p>&nbsp;To use "OrbFitSoft" just invoke it from the command line in your
+working directory. You should, however, first set a couple of links in
+your working directory (links are already provided in all the 'tests/<i>NAME</i>'
+subdirectories); if, for example, the working directory is 'home/zoran/workdir',
+and Orbfit is installed in '/home/zoran/orbfit', then you should:
+
+</p><pre>$ cd /home/zoran/workdir
+$ ln -s ../orbfit/doc/OrbFitSoft
+$ ln -s ../orbfit/src/include/doclib.h</pre>
+Your graphical interface is now fully operational and you can type
+<pre>$ OrbFitSoft</pre>
+to invoke it. If you lose contents of the windows when you drag them from
+one place on the screen to another or overlap one window with another then
+you should not run OrbFitSoft in the background. Usage of the interface
+is simple and essentially self-explanatory (for additional information
+see also "Help on Help" in menu "ABOUT" of the help facility). Note, however,
+that the parent 'xterm' window from which you invoke OrbFitSoft will be
+grabbed by the application and not released until you exit from the graphical
+interface. Thus, all the screen output of the current program is going
+to appear in this window. Also you will not get the prompt back in this
+window after launching any of the jobs, even when the current job ends
+(thus do not wait for the prompt to learn that the job is over, but there
+will be an execution time report), until you release it by exiting the
+interface. Still, you can relaunch the current job, or launch any other
+job by simply clicking on the corresponding menu item in the top-level
+"AstOrb" window. If you need to do something else while the application
+is running, you should open another 'xterm' window.
+
+<p>&nbsp;Help is available even while other programs are running. Other
+programs (orbfit, fitobs, bineph) should preferably run one at a time,
+as their outputs would otherwise be all mixed up in the same window.
+
+</p><p>&nbsp;The automatic placement of the interface windows is optimized
+for a 17-inch screen, with 1024 x 768 resolution. If you have problems
+with the positioning of the window and/or the menus (submenus getting out
+of the screen), just edit the last line of the corresponding file (see
+above for the list of executables), which shoud be something like:
+</p><pre>wm geometry . +160+20</pre>
+and change the numbers (in pixels on the display counting from the upper-left
+corner) until you find an appropriate position for the window on your screen.
+<p>
+</p><hr>
+<p>
+<a name="whatsnew"></a>
+</p><h3>What is new?</h3>
+
+The OrbFit software system is now undergoing a major upgrade. Starting
+from version 3.0 it will be written in a different language, namely
+Fortran90. The change does not only involve the free format of the
+source code: the new versions will exploit the main features of
+Fortran90, especially user defined data types and modules. This change
+is necessary for two reasons: 
+
+<ul> <li> to allow an easier software maintenance, given the serious
+manpower problems of the consortium and the number of requests for
+improvements/bug fixes we receive
+
+</li><li> to allow for substantial generalizations of the code, such as the
+ones required to allow for observation weighing based on statistical
+analysis of past observatory performance, and determination of orbits
+in different coordinate systems.  </li></ul>
+<p>
+
+The procedure will be as follows: the distribution 2.3 will be the
+last in Fortran77. We will keep distributing patches 2.3.x to this
+distribution. The next distribution will be in the new
+language. However, this will be a really big change in the software,
+and it is reasonable to assume that this will imply a difficult testing
+procedure. We need to decide, in consultation with the users, if we
+should release the software version 3.0 at some lower level of
+reliability, as beta-test version, to receive input from the public
+users, rather than waiting for the end of tests performed by a few
+recipients of a private preliminary version.
+</p><p>
+
+The patch 2.3.3 is indeed available for UNIX users. It contains fixes
+to several bugs, either found by us or reported by users, including
+the infamous "polar bug" by which the Orbfit predictions were
+unreliable at declinations close to 90 deg. We are sorry, but we are
+currently not equipped for providing upgrades to the Windows version;
+more exactly, we do not want to be equipped, by paying a tax to
+Microsoft to be allowed to provide free software.
+</p><p>
+
+OrbFit is always a work in progress, to the point that to document what
+has just been done is difficult, not to speak of what is planned. The only
+way to provide you with some reasonably up to date information is to give
+you access to two files that are more or less continuously maintained.
+</p><ul>
+<li>
+<a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/readme.patches">readme.patches</a> is the file where we note the
+most recent corrections and improvements since the previous full distribution,
+plus those not yet incorporated in a full distribution, but already available
+in the last patch.</li>
+
+<li>
+<a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/readme.workinprog">readme.workinprog</a> is the file where we
+write what we are either doing, or planning to do soon. But please do not
+ask how soon, because we would like to know ourselves!</li>
+</ul>
+
+<hr>
+<p><a name="authors"></a>
+</p><h3>
+Who writes OrbFit and why?</h3>
+
+The authors of the OrbFit software are scientists working in the field
+of celestial mechanics, with specific experience of dynamics and orbit
+determination for both natural celestial bodies (asteroids, comets,
+satellites, planets) and artificial spacecraft (satellites,
+interplanetary probes).
+
+<p>&nbsp;We write, and use for our own research, tens of thousands of
+lines of software. We have developed computer programs capable of
+performing many tasks, and these programs are often used only once,
+for a specific research goal. This happens because to export a
+software, writing all the necessary documentation, taking care of the
+possible machine dependencies, and writing the control software
+necessary to build and test, is a significant additional work.
+
+</p><p>There are, however, two good reasons to do this supplementary
+effort.  First, we write software which could be useful to others,
+both researchers and interested amateur astronomers. Our work could
+have more value to the astronomical community if it is used
+extensively. This is important if our software allows some amateur
+astronomers (and possibly some small professional observatories) to
+perform tasks for which they do not have the resources to develop
+their own software. This is especially useful in the field of asteroid
+orbit determination and improvement, where a significant contribution
+to the global flow of observations is given by amateur and small
+professional observatories.
+
+</p><p>Second, one of the main principles of the scientific method is
+reproducibility of all results of the research. In our times, when
+most computations are performed by complex computer programs, to
+outline the algorithm used in papers submitted for publication is
+useful, but is not always enough to enable others to really verify the
+results. The only way to achieve total scientific transparency
+(<i>glasnost</i>) is to make the source code of the computer programs
+open to inspection by other scientists. Thus we follow the principle
+that not only the algorithms, but even the actual subroutines we have
+used in our recent research should become, immediately after
+publication of the results, available to the public. In fact this
+obligation to transparency forces us to raise the level of quality of
+our research, and the reliability of the results.
+
+</p><p><a name="consortium"></a><b>OrbFit consortium</b>
+
+</p><p>The OrbFit software has been created, and is currently being
+maintained and expanded, by a consortium of researchers working in six
+research laboratories:
+
+</p><ul>
+<li>Department of Mathematics, University of Pisa, Italy
+<ul>
+<li>Andrea Milani Comparetti (milani at dm.unipi.it) 
+</li>
+<li>Giovanni F. Gronchi (gronchi at dm.unipi.it)
+</li>
+<li>Giacomo Tommei (tommei at mail.dm.unipi.it)
+</li> 
+<li>Fabrizio Bernardi (bernardi at adams.dm.unipi.it)
+</li>
+<li>Stefano Cicalo' (cicalo.stefano at tiscali.it)
+</li>
+<li>Davide Farnocchia  (farnocchia at mail.dm.unipi.it)
+</li>
+</ul>
+
+
+</li><li>Astronomical Observatory, Belgrade
+<ul>
+<li>Zoran Knezevic (zoran at aob.bg.ac.rs) 
+</li>
+<li>Bojan Novakovic (bnovakovic at aob.bg.ac.rs)
+ </li>
+</ul>
+
+</li><li> E.T.S. Ingenieros Industriales, University of Valladolid, Spain
+<ul>
+<li>Maria Eugenia Sansaturio (marsan at wmatem.eis.uva.es)  
+</li>
+<li>Oscar Arratia (oscarr at wmatem.eis.uva.es)  
+</li>
+</ul>
+
+</li><li>INAF Institute for Space Astrophysics, Rome <ul> 
+
+<li>Giovanni B. Valsecchi (giovanni at iasf-roma.inaf.it)
+
+</li></ul> 
+</li></ul> 
+
+The consortium previously included many other people and institutions,
+which gave a significant impulse in earlier stages of the work, but are
+no longer contributing.
+
+<p>&nbsp;Other researchers involved in some stage of the project were:
+</p><ul>
+<li>Steve Chesley (JPL-Pasadena)
+</li>
+<li>Mario Carpino (Milano-Brera)
+</li>
+<li>Karri Muinonen (Helsinki)
+</li>
+<li>Luisa Cattaneo (Pisa)
+</li>
+<li>Sabrina Baccili (Pisa)
+</li>
+<li>Alessandra La Spina (Pisa)
+</li>
+</ul>
+
+<a name="bug_report"></a><b>How to report bugs, to send comments</b>
+
+<p>Please let us know your comments and opinions, and suggestions for
+improvements.  Please report any problems, unsuccessful installations,
+unexpected crashes, or wrong results, to one of the OrbFit Consortium
+researchers listed above.
+</p><p>
+</p><hr>
+<p><a name="faq"></a>
+</p><h3>
+FAQ (Frequently Asked Questions)</h3>
+
+<dl>
+<dt>
+<a name="bineph"></a><b>How do I use Bineph to generate binary ephemerides
+of the largest asteroids?</b></dt>
+
+<br>&nbsp;
+<dd>
+See the file <a href="http://adams.dm.unipi.it/%7Eorbmaint/orbfit/OrbFit/tests/bineph/readme.bineph">./tests/bineph/readme.bineph</a>
+for instructions.</dd>
+<br>&nbsp;
+
+<dt>
+<b>How do I force statistical weighting of optical astrometry?</b></dt>
+
+<br>&nbsp;
+<dd>
+The default weighting scheme weights most modern optical astrometry at
+1 arc-sec a priori RMS. This can be changed to apply weights based on the
+station's historical performance by adding the following options to the
+option file:</dd>
+
+<pre>! Apply statistical weighting
+&nbsp;&nbsp;&nbsp;&nbsp; .error_model= 'num0301' ! error model files, to be found in ./lib
+!</pre>
+
+<dt>
+<b>I am having trouble with initial orbit determination. What can I
+do?</b></dt>
+
+<br>&nbsp;
+<dd>
+You can edit the *.rwo file and set the SEL (selection) flag (last column)
+to 2 in order to select which three optical observations you wish to use
+in the initial orbit determination. The software tries to select these
+for you, but in some cases it does a poor job. If you find failure with
+the automatically selected observations, you may reset those SEL flags
+to 1 and choose three alternatives, which should be set to 2. Typically
+this works best if the three observations are equally distributed over
+an arc of 7-10 days.</dd>
+
+<br>&nbsp;
+<dt>
+<b>What does the error "ra15v: non convergence with fixed step" mean?</b></dt>
+
+<br>&nbsp; 
+
+<dd> This probably indicates some instability of the the propagator
+during a close approach. This should happen only when the close
+approach is VERY close, well inside the planet (e.g., 10 km from the
+center of the Earth; and even this strange case should have been
+fixed). If this message occurs in any other circumstances, please
+report. The problem could be solved by increasing the value for
+.npoint in the option file (*.fop or *.oop):</dd>
+
+<pre>! Increased discretization at close approach.
+propag.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .npoint=600! minimum number of data points for a deep close appr
+!</pre>
+The default value is 100.</dl>
+
+
+</body></html>

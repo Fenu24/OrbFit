@@ -1,0 +1,102 @@
+#!/usr/bin/wish
+
+# ===========================================================================
+# Learn the path to the doc/ directory
+
+set u [open doclib.h90 r]
+while {[gets $u line] >= 1} {
+  set i1 [string first "'" $line]
+  set i2 [string last "'" $line]
+    if {$i1&&$i2} {
+      set dir [string range $line [expr $i1+1] [expr $i2-1]]
+}   }
+close $u
+
+# ========================================================================
+# Prepare widget
+
+label .mbar
+text .text -bd 2 -width 75 -height 20 -bg cornsilk -yscrollcommand ".scroll set"
+scrollbar .scroll -command ".text yview"
+pack .mbar -side top -fill x 
+pack .scroll -side right -fill y
+pack .text
+
+# =======================================================================
+# Buttons
+
+button .mbar.ext -relief raised -text "Exit" -underline 1 -command exit
+button .mbar.usage -relief ridge  -text "Interface" -underline 0 -command {eval loadFile [join {$dir inter.orbit9} /]} 
+button .mbar.descr -relief ridge  -text "Description" -underline 0 -command {eval loadFile [join {$dir descr.orbit9} /]}
+menubutton .mbar.opt -relief ridge  -text "User Guide" -underline 0 -menu .mbar.opt.menu
+button .mbar.hlp -relief ridge  -text "Help" -underline 0 -command {eval loadFile [join {$dir help.help} /]}
+
+# =======================================================================
+# USER GUIDE
+
+menu .mbar.opt.menu
+.mbar.opt.menu add checkbutton -label "Contents" -underline 0 -command  {eval loadFile [join {$dir usg.orbit9} /]; searchMatches .text "ORBIT9 USER"}
+.mbar.opt.menu add checkbutton -label "Input and task definition" -underline 0 -command  {eval loadFile [join {$dir usg.orbit9} /]; searchMatches .text "Input and task"}
+.mbar.opt.menu add checkbutton -label "Propagation" -underline 1 -command  {eval loadFile [join {$dir usg.orbit9} /]; searchMatches .text "2. Propagation"}
+.mbar.opt.menu add checkbutton -label "Output" -underline 0 -command  {eval loadFile [join {$dir usg.orbit9} /]; searchMatches .text "3. Output"}
+.mbar.opt.menu add checkbutton -label "Postprocessing" -underline 0 -command  {eval loadFile [join {$dir usg.orbit9} /]; searchMatches .text "4. Postprocessing"}
+.mbar.opt.menu add checkbutton -label "Statements" -underline 0 -command  {eval loadFile [join {$dir usg.orbit9} /]; searchMatches .text "A. STATEMENTS"}
+.mbar.opt.menu add cascade -label "Browse HTML" -underline 0 -menu .mbar.opt.menu.browse
+
+menu .mbar.opt.menu.browse
+.mbar.opt.menu.browse add checkbutton -label "Firefox" -underline 0 -command  {eval exec firefox [join {$dir READMEorb/READMEorb.html} /]}
+
+pack .mbar.ext -side left -padx 2m
+pack .mbar.hlp .mbar.opt .mbar.descr .mbar.usage -side right -padx 2m
+
+focus .scroll
+wm title . "HELP"
+
+# =======================================================================
+# Bindings for keyboard controls
+
+bind . <x> exit
+bind .mbar.ext <Return> {exit}
+bind . <h> {eval loadFile [join {$dir help.help} /]}
+bind .mbar.hlp <Return> {eval loadFile [join {$dir help.help} /]}
+bind . <d> {eval loadFile [join {$dir descr.orbit9} /]}
+bind .mbar.descr <Return> {eval loadFile [join {$dir descr.orbit9} /]}
+bind . <u> {eval loadFile [join {$dir usg.orbit9} /]}
+bind .mbar.usage <Return> {eval loadFile [join {$dir usg.orbit9} /]}
+bind . <i> {eval loadFile [join {$dir inter.orbit9} /]}
+bind .mbar.usage <Return> {eval loadFile [join {$dir inter.orbit9} /]}
+
+# ======================================================================
+# Procedure to load a file
+
+proc loadFile file {
+    .text delete 1.0 end
+    set f [open $file]
+    while {![eof $f]} {
+       .text insert end [read $f 1000]
+    }
+close $f
+}
+
+# =========================================================================
+# HYPERTEXT 
+# =========================================================================
+
+# Procedure to display the requested item 
+
+proc searchMatches {w pattern} {
+    scan [$w index end] %d numLines
+    for {set i 1} {$i < $numLines} {incr i} {
+       $w mark set here $i.0
+       if [regexp $pattern [$w get here "here lineend"]] {
+           $w yview [expr $i - 2]
+           return}
+       }
+}
+
+# ======================================================================
+# Display the opening screen
+
+eval loadFile [join {$dir open.orbit9} /]
+
+wm geometry . +160+20

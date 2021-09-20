@@ -1,0 +1,14 @@
+! Copyright (C) 1998-2000 by Mario Carpino (carpino@brera.mi.astro.it)
+! Version: May 30, 2000
+! ---------------------------------------------------------------------
+! Options for Gauss' method
+!
+! errmax      -  Convergency control (max relative error in elements)
+! eccmax      -  Max allowed eccentricity
+! itmax       -  Max number of iterations
+! iicgau      -  Initialization check
+!
+      DOUBLE PRECISION errmax,eccmax
+      INTEGER itmax,iicgau
+      COMMON/cmgau1/errmax,eccmax
+      COMMON/cmgau2/itmax,iicgau

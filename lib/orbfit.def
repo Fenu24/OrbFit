@@ -1,0 +1,24 @@
+INPUT: propag.def
+
+init_orbdet.
+       .methods = Gauss Vaisala ! method for preliminary orbit
+       .verbose = 2             ! verbose
+
+operations.
+	.init_orbdet=0          ! initial orbit determination    
+	.diffcor=0              ! differential correction
+	.ident=0             	! identifications
+	.ephem=0                ! ephemerides
+	.magfit=0               ! magnitude determination
+
+object1.
+	.obs_dir=' '            ! observations directory
+
+object2.
+	.obs_dir=' '		! observations directory	
+	
+output.
+	.elements='EQU'         ! output elements
+
+error_model.
+	.name=' '		! error model

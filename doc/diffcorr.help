@@ -1,0 +1,45 @@
+% help file, orbfit 1.8.0 
+% this is the differential corrections menu
+
+MENU DIFFCORR
+
+Differential correction is an iterative procedure to find the least
+square solution for the orbit fitting a given set of astrometric
+observations. It requires a starting ``first guess'' set of orbital
+elements, to be acquired by using the functions of either menu
+INPUTELE or menu FIRSTGUE; it also requires to have available the
+observtion data (menu INPUTOBS). After performing differential
+corrections, not only the best fitting orbital elements but also the
+normal and covariance matrix, expressing in the linear approximation
+their uncertainty, will be available. The recomputed elements will
+appear on the standard output, but also be written in a file
+ASTNAME.fel; the normal and covaraince matrices are also written in
+the file.
+
+Note that the differential correction algorithm depends not only upon
+the observations to be fitted, but also upon the reference epoch at
+which the orbital elements have to be computed. For the best results,
+use menu PROPAGAT to propagate the available initial conditions to an
+epoch close to the observed arc.
+
+Which arc to correct?
+  
+1 = first arc ...differential corrections fitting the observations
+read from $obsdir0/$nam0.obs, starting from the current value of the
+orbital elements and for the curent initial condition epoch t0 for the
+first arc.
+
+2 = second arc ...same for the second arc, fitting the orbital
+elements at current epoch tp to the data from $obsdirp/$namp.obs.
+
+3 = both ...same as performing first 1 then 2.
+
+4 = identification ...differential correction improvement of the orbit
+fitting both sets of observations, starting from the first guess for
+time tm (typically the arithmetic mean between t0 and tp) obtained
+from menu FIRSTGUE.
+
+0 = exit ...back to main menu.
+
+
+

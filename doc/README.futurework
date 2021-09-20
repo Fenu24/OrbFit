@@ -1,0 +1,45 @@
+
+This contains the plans for the immediate future of ORBFIT, that is
+the improvements we are either working on, or at least thinking to.
+
+Category 0: things being done/tested now:
+
+0) Conversion to f90: vers. 3.3.1 being beta-tested. 
+
+1) Test of new error model with correlation/bias 
+
+2) Cometary version, without support for non gravitational perturbations.
+
+3) verbosity control needs to be generalized 
+
+4) provision for new MPC formats (observations, asteroid 100000, etc.)
+
+5) include orbit9 in the f90 system
+
+Category 1: things needed, not yet scheduled:
+
+1) Multiple solution from Gauss's preliminary orbit. More stable
+   algorithms for preliminary orbits.
+
+2) Yarkovsky effect. Already available non documented feature, not
+   properly tested.
+
+3) More readable output files, in particular the log files,
+   runname.fou, runname.olg, but also runname.fga, etc.
+
+Category 2: algorithms being tested, not yet ready for distribution
+
+1) Uncertainty of predictions from very short arcs.  
+
+2) identification of Very Short Arcs
+
+3) Virtual Impactors from VSA
+
+KNOWN BUGS:
+
+
+Updated 4 October 2005, A. Milani.
+
+
+
+

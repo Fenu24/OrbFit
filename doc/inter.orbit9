@@ -1,0 +1,98 @@
+Graphical interface for Orbit9 consists of a number of entry widgets
+(the single-field windows on the left hand side of the interface), one
+larger text widget (top right) containing the asteroid Id's, a set of
+buttons on the lower right to control the execution of the program,
+and a number of explanatory labels and messages.  Upon invocation all
+the widgets exhibit the values from the previous run (as read from the 
+'orb9.opt' option file). Only the most important options needed to run 
+the program are included in the interface; to see and possibly change
+the others, you should edit the orb9.opt file. 
+
+**********************************************************************
+
+To set an option for the next run (the same holds for the asteroid
+Id's):
+   
+   - click in the field or move the cursor to the field by using 'Tab'
+     to move downwards ('Shift-Tab' to move upwards);
+
+   - set the cursor in front of the first character to be changed and
+     press 'Delete' as many times as necessary (alternatively, mark the
+     entire entry with the mouse and press 'Delete' to remove all at
+     once);
+
+   - type a new value;
+
+   - PRESS 'Return' EVERY TIME YOU CHANGE A FIELD, TO ACCEPT THE
+     CHANGES YOU MAKE. After pressing the 'Return' key, the field will
+     change its background color to confirm that the change was accepted.
+
+Click on 'Save' when all the necessary changes are done. The button will
+change the color, and the label will change to 'Done', to confirm that
+the option file was saved.
+
+Click on 'Redo' if you want either to change an option that you have
+already set in the present session, or start a new run without exiting
+the interface. All the labels, colors and messages are reset to their
+defaults.
+ 
+(*Note*: it is not really necessary to perform 'Redo' to change and
+save again; it is rather needed for the sake of changing colors and
+button titles back to the original setting, in order to keep track of
+the changes. On the contrary, to rerun the program you MUST perform
+'Redo').
+
+Click on 'Go!' to launch the execution of the program; the screen
+output (in fact only the report containing the information on the time
+needed for the run, printed on the screen upon the the completion of
+the execution) will appear in the shell from which the interface
+itself was invoked. The button will change to "Cancel", and clicking
+on it now would stop the execution of the program and change the
+button's color and label to "Idle"; interface will wait for the user's
+action, that is, either 'Redo' or 'Exit'. After the regular completion
+of the run, button will again change its color and label to "Done"
+(this will perform correctly providing you or somebody else on the
+same machine are not running simultaneously two or more integrations,
+or edit files whose names contain string 'orbit9').
+
+{*Note*: if preferred, after setting the options. you can exit the
+interface and run the program in the shell in the usual way, i.e.  by
+typing 'time orbit9.x &' on the command line, running batch job, or
+similar.}
+
+Click on 'Help' to access the Orbit9 online HELP facility.
+
+Click on 'Exit' to leave the interface. 
+
+
+**********************************************************************
+
+
+To use the keyboard controls, press 'Alt + <character underlined on
+the button's label>'. Combination 'Alt + char' is compulsory here to
+avoid invoking the button's command when entering the corresponding
+character as part of the input file names. Alternatively, you can use
+'Tab' ('Shift-Tab') to move to the required button and press 'Return'
+(this does not apply only to 'Cancel'). In the 'HELP' window, type the
+underlined character only to display the corresponding text.
+
+Status field ("STATUS:") above the 'Help' button displays brief
+messages to inform the user on the current status of the session.
+Message "Execution completed" will appear in the status field if 
+there are no other active processes whose names contain string
+'orbit9'.
+
+In some situations (for example, after clicking on 'Cancel') user may
+notice that interface takes short time to perform the requested action
+and set the new button colors and labels. The delay is due to a
+feature of Tcl/Tk to perform certain tasks only at specific times
+during the execution of the script, and to the particular solution
+applied in this interface to check the status of the background job.
+
+Colors of the buttons and frames applied here are "ivory", and
+"PeachPuff". If you prefer some other colors, or do not have these
+default ones in your system (see "rgb.txt" for the list of the
+available colors), simply edit the 'doc/ORBIT9' script and
+replace all the occurences of "-bg defaultcolor" to "-bg
+yourpreference".
+

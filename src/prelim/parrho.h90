@@ -1,0 +1,11 @@
+! ====================================
+! {\bf parrho.h} VAISUB
+! initialisation of the search range
+! initial guess on the interval containing the root
+! lower limit at the Earth's sphere of influence
+      double precision rho2ini1,rho2ini2,zdacc
+      parameter(rho2ini1=0.0002d0)
+      parameter(rho2ini2=50.d0)
+!  accuracy control
+      parameter(zdacc=1.d-6)
+ 

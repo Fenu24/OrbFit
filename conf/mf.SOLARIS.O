@@ -1,0 +1,9 @@
+# Makefile options for SunOS, optimized
+
+# Fortran compiler
+FC=f77
+# Options for Fortran compiler:
+FFLAGS=-O -I../include
+# "ranlib" command: if it is not needed, use "RANLIB=touch"
+RANLIB=ranlib
+VPATH=../include

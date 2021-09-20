@@ -1,0 +1,173 @@
+<HTML>
+
+<HEAD>
+<TITLE>OrbFit Software</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" LINK="#000088" VLINK="#0088AA">
+
+<H1><FONT COLOR="#000088"><B>The OrbFit Software Package</B></FONT></H1>
+
+<P>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD WIDTH=30% VALIGN=TOP><FONT COLOR="#880000">
+<B>Warning</B></FONT></TD> <TD WIDTH=60%>The OrbFit software system is
+growing in complexity and scope: to keep up with this growth, this web
+site also needs to be completely restructured. Please be patient while
+work is in progress.
+<P><BR>
+</TD>
+<TD WIDTH=10%></TD>
+</TR>
+</TABLE>
+</P>
+<P>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD WIDTH=30% VALIGN=TOP><FONT COLOR="#880000">
+<B>Structure</B></FONT></TD> <TD WIDTH=60%>
+<B> OrbFit has undergone two major upgrades. </B>
+
+Starting from version 3.0 it has been written in a different language,
+namely Fortran90/95. The change does not only involve the free format
+of the source code: the new versions deeply exploit the main features
+of Fortran90, especially user defined data types and modules.
+<P>
+
+OrbFit has recently exceeded the 160,000 lines of Fortran95. Also for
+this reason, it has been necessary to split the global system into
+<B> three subsets </B>.
+
+<UL>
+<LI> The <B> Distribution </B> is free
+software, available under GPL; it contains the libraries, and the
+executable programs <B>fitobs</B>, <B> catpro</B> and
+<B>orbfit</B>. This portion provides the main algorithms for orbit propagation, ephemerides
+computation, orbit determination, close approach analysis, and impact
+monitoring. Starting from version 4.0, the OrbFit distribution also
+includes the software previously distributed as ORBIT9. The <B> ORBIT9
+</B> software system used to be a plug in of the Fortran77 version of
+OrbFit, and has been maintained as standalone free software. It has
+now been converted to Fortran95 and has been included in the
+distribution, thus making maintenance and upgrades easier. ORBIT9
+provides long term orbit propagation for asteroids and other solar
+system bodies, computation of Lyapounov exponents, computation of
+proper elements, both analytic and synthetic, and a Graphics
+Interactive Fourier Filtering program for displaying the results. <a
+href="/orbfit/OrbFit4.0.tar.gz"> The OrbFit distribution for UNIX,
+</a> including ORBIT9, amounts to about 86,000 lines of source
+code.
+
+<LI> The <B> OrbFit Server Suite </B> is a set of programs combining
+the OrbFit basic algorithms, as well as new and experimental ones, to
+provide the functionalities needed by a solar system survey to compile
+a catalog of orbits for the discovered objects. It is not free
+software, although it is not commercial either: it is distributed
+under a special <a href="license.pdf"> Scienceware License </a>, by
+which the user are obliged to credit the use of the software in
+whatever publication using its results. One main feature is the use of
+the <a href="PS_DES_v2.02.pdf"> Data Exchange Standard </a>, developed
+originally for the projects Pan-STARRS and LSST, but now more widely
+used, to exchange data relevant for population orbit determination.
+This portion is about 18,500 lines of source code.
+
+<LI> There is a <B> non-distribution </B> part of OrbFit, containing
+the software specifically used to maintain the online information
+systems <a href="http://newton.dm.unipi.it/neodys"> NEODyS </a> and <a
+href="http://hamilton.dm.unipi.it/astdys"> AstDyS </a> and also for
+our research on different topics, such as asteroid identification,
+proper elements for NEA, MOID computation, space debris orbit
+determination, and so on. Some of this software is transferred to the
+distribution part as the research is concluded and published. Other parts
+are specifically connected to some of our long term research programs
+and thus will not be distributed for now. 
+
+</UL>
+
+</TD>
+<TD WIDTH=10%></TD>
+</TR>
+</TABLE>
+</P>
+
+<P>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD WIDTH=30% VALIGN=TOP><FONT COLOR="#880000">
+<B>Requirements</B></FONT></TD> <TD WIDTH=60%> The software we are
+providing has been developed under LINUX and is distributed in a
+package allowing for automatic compilation on whatever target computer
+with a LINUX operating system; compilation is possible under the free
+Fortran95 compiler gfortran, although we also use the commercial
+compilers Intel and Lahey. Installation under some other dialect of
+UNIX should be straightforward for an expert user.  We are sorry, but
+we are currently not equipped for distributing OrbFit in a Windows
+version; more exactly, we do not want to be equipped, by paying a tax
+to Microsoft to be allowed to provide free software.  </TD> <TD
+WIDTH=10%></TD> </TR> </TABLE>
+</P>
+
+<P>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD WIDTH=30% VALIGN=TOP><FONT COLOR="#880000"><B>Where can I learn
+more?</B></FONT></TD>
+
+<TD WIDTH=60%> You can use the online help <a
+href="./OrbFit/doc/help.html"> here</a>, but this document needs to be
+updated. You may also go directly to our online OrbFit <a
+href="OrbFit/"> distribution directory</a>. After compiling the code,
+you can access the OrbFit main programs through the OrbFitSoft
+graphical interface, available in the ./doc directory. <P>
+
+We have abandoned the original idea of writing a mathematical
+specification document for OrbFit, because it would be huge and hard
+to maintain, even assuming we had the time of writing it, which has
+not been the case so far. However, we have written a textbook
+<B> The Theory of Orbit Determination </B>, by A. Milani and
+G.F. Gronchi, to be published soon by Cambridge University Press <a
+href="../orbdet/orbdet_index.pdf"> (index of this book)</a>. The
+content of this book covers most of the subjects which are needed to
+understand the working of OrbFit. (The former ORBIT9 software would
+require a separate textbook, which is being planned.) The copyright
+for this book has been given to the publisher, thus we cannot make the
+full text available on the web: we intend to publish appendixes,
+comments, errata corrige, and other related material on this site <a
+href="../orbdet/"> here.</a> </TD>
+
+<TD WIDTH=10%></TD>
+</TR>
+</TABLE>
+</P>
+
+<P>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD WIDTH=30% VALIGN=TOP><FONT COLOR="#880000"><B>Where can I get
+OrbFit in Fortran 90/95?</B></FONT></TD>
+
+<TD WIDTH=60%>You can download <a href="/orbfit/OrbFit4.0.tar.gz"> the OrbFit distribution for UNIX </a>.
+</TD>
+
+<TD WIDTH=10%></TD>
+</TR>
+</TABLE>
+</P>
+
+<P>
+<TABLE BORDER=0 WIDTH=100%>
+<TR>
+<TD WIDTH=30% VALIGN=TOP><FONT COLOR="#880000"><B>Who maintains
+OrbFit?</B></FONT></TD> <TD WIDTH=60%>The <a
+href="./OrbFit/doc/help.html#authors">OrbFit Consortium</a>.
+</TD>
+<TD WIDTH=10%></TD>
+</TR>
+</TABLE>
+</P>
+
+<EM> Last updated December 27, 2008 </EM>
+
+</BODY></HTML>
+

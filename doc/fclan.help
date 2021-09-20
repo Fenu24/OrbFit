@@ -1,0 +1,29 @@
+% help file, orbfit 1.7.1 and later
+% this is the close approach analysis menu
+
+MENU FCLAN
+
+ Target plane selection
+
+1 = modified target plane (MTP)... a new target plane, normal to the
+geocentric velocity at closest approach (of the last close approach),
+is selected. 
+
+2 = Opik impact plane (b-plane)... a new target plane, normal to the
+incoming asymptote of the geocentric hyperbola osculating at the
+closest approach, is selected.
+
+3 = old MTP, stored previously... the target plane selected during a
+previous passage through the close approach analysis is used. This
+has the purpose of superimposing different orbital solutions, with
+their respective uncertainties, on the same plane.
+
+4 = old b-plane, stored previously... as 3, but using a previously
+selected b-plane.
+
+0 = exit ...back to the main menu.
+
+Warning: in some rare cases, there might be multiple
+minima of the distance to the planet; in this case, one of these
+minima must be selected.
+

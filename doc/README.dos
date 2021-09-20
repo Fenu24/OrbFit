@@ -1,0 +1,16 @@
+WARNING: the DOS version is no longer supported, essentially because we
+found that the FORTRAN code compiled with 32 bit compilers can not run
+under WINDOWS95, not even in the so-called DOS window.
+
+We have now a native WINDOWS version, compiled with
+Digital Visual Fortran 6.0.
+
+February 18, 1999.
+
+The WINDOWS version is not any more supported by the present OrbFit
+consortium. If someone would like to take over the task of maintaining a
+WINDOWS version, we could again distribute a compiled WINDOWS executable
+(but the problem is how many versions are really needed to run on all
+versions of WINDOWS). The same applies to an hypothetical MAC OS version.
+
+October 4, 2005.

@@ -1,0 +1,52 @@
+> ftp navigator.jpl.nasa.gov 
+Connected to navigator.jpl.nasa.gov. 
+Name (navigator.jpl.nasa.gov:zoran): anonymous 
+331 Guest login ok, send your complete e-mail address as password.
+Password: zoran@lagrange.dm.unipi.it
+ftp> cd ephem
+ftp> cd export
+ftp> ls 
+200 PORT command successful.
+150 Opening ASCII mode data connection for file list.
+lost+found
+README
+ascii
+fortran
+test-data
+unix
+usrguide
+.message
+de403.iom
+C-version
+CDROM.notes
+226 Transfer complete.
+ftp> ascii
+
+[sets an ASCII mode for the files to be downloaded]
+
+ftp> get README
+ftp> get usrguide
+ftp> cd ascii 
+ftp> ls
+
+.... [long list of the available files]
+
+ftp> get header.405
+ftp> get ascp1960.405
+ftp> get ascp1980.405
+ftp> cd ..
+ftp> cd fortran
+ftp> ls
+
+.... [list of files]
+
+ftp> get testeph.f
+ftp> get selcon.f
+ftp> get asc2eph.f
+ftp> get binmerge.f
+ftp> get binshort.f
+ftp> cd ..
+ftp> cd test-data 
+ftp> get testpo.405
+ftp> quit
+

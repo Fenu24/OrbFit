@@ -1,0 +1,46 @@
+% help file, orbfit 3.3.1 and later
+% this is the multiple solutions menu
+
+MENU MULTISOL
+
+By multiple solutions we mean solutions along the "bottom valley streamline",
+which is the line along which the RMS of the residuals increases less while
+the orbital elements change with respect to the nominal leats squares fit
+solution. To understand this menu please consult Milani et al., Astronomy &
+Astrophysics 431, 729-746, 2005.
+
+Which orbit?
+
+1 = arc 1 ...starting from nominal solution and covariance of the
+first arc.
+  
+2 = arc 2 ...same for second arc.
+  
+3 = joint computed orbit ...same for the orbit fitted to the
+observations of both arcs.
+ 
+4 = input from file ... containing multiple solutions alreday computed, e.g.,
+the ones computed in a previous run of fitobs and written in the file 'mult.ctc'
+
+0 = exit ...back to the main menu.
+
+After this choice, the user will be prompted for:
+
+use scaling, 1=yes, 0=no?
+
+which LOV, 1=largest eigenv., 2=second
+
+To understand this, please read the above cited paper, Section 2.6; note that
+the LOv definition also depends upon the orbital elements used (use the option
+'coordinate change' from the main menu to change the elements in use). 
+
+  how many sigma?
+
+the value of the sigma parameter: a value between 3 and 5 is often
+reasonable. Please note that the WEAK SIGMA given is the unit to be
+multiplied by the sigma parameter.
+
+  how many steps on each side?
+
+the number of computed solutions will be twice this number.
+

@@ -1,0 +1,26 @@
+! options file specific for occult_sim.x
+
+occult.
+
+!shape and position of the occulting disk
+!     .occ_a=1.d0       ! coefficient of X^2
+!     .occ_b=0.d0       ! coefficient of XY
+!     .occ_c=25.d0      ! coefficient of Y^2
+     .longax= 0.2222d0      ! long semiaxis of ellipse
+     .shortax=0.18d0    ! short semiaxis of ellipse
+     .anglong=45.d0      ! angle between X axis and long axis (degrees)
+     .occ_d=0.70d0        ! displacement along Y
+
+!times of the occultations
+     .occ_v= 1.6d0     ! relative velocity in star radius/day
+     .occ_t0=0.d0      ! reference time (occulter at center)
+     .occ_dt=0.02d0    ! time step for luminosity measurement
+
+! limb darkening parameters: limb_dark=1-limb1*(1-cosf) +limb2*(1-cosf)**2
+     .limb1=-0.3923d0        ! linear term; Sun=-0.3923 F-star=-0.2644 
+     .limb2=-0.2625d0        ! quadratic term; Sun= -0.2625 F-star-0.3303
+! if set to zero: no limb darkening
+
+! numerical accuracy 
+     .npo=100000       ! number of sample points inside the disk
+

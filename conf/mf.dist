@@ -1,0 +1,5 @@
+# Modify the following definitions according to your operating system
+# and compiler, then erase the following lines (up to "######...")
+error:
+	@ echo "Please run the configuration command \"config\" before doing \"make\""
+	@ exit 1

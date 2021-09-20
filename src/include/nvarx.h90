@@ -1,0 +1,4 @@
+! workspace maximum dimensions in propin; suitable for up to 1100 asteroids
+      INTEGER nvar2x,nvarx
+      PARAMETER (nvar2x=6627)
+      PARAMETER (nvarx=2*nvar2x)

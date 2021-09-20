@@ -1,0 +1,7 @@
+
+occ_mod.o: \
+	../suit/fund_const.mod 
+
+occult_sim.o: \
+	../suit/fund_const.mod \
+	occ_mod.o 

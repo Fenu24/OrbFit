@@ -1,0 +1,9 @@
+! JPL ephemerides header common
+  integer ipt(3,13),lpt(3),denum,ncon
+  double precision ss(3),cval(1000),au,emrat
+  common/ephhdr/cval,ss,au,emrat,denum,ncon,ipt,lpt
+  character*6 cnam(1000),ttl(14,3) 
+  common/chrhdr/cnam,ttl
+  double precision pvsun(6) 
+  logical bsave,km,bary 
+  common/stcomx/km,bary,pvsun

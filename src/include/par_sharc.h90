@@ -1,0 +1,1 @@
+INTEGER, PARAMETER :: nobs_shx=50 ! max number of obs for short arc

@@ -1,0 +1,76 @@
+#!	/bin/sh
+
+usage () {
+	echo "Usage: config [options] <configuration>"
+	echo "       where one of the following options must be selected: "
+	echo "          -d  (debug)"
+	echo "          -O  (optimized)"
+	echo "          -p  (profiling)"
+	echo "       and <configuration> is one of the following:"
+        echo "          lf95    (Lahey-Fujitsu fortran95 compiler"
+        echo "          intel   (Intel fortran95 compiler vers. 8 and later)"
+        echo "          MAC     (Intel Fortran95 compiler for MAC)"
+        echo "          gfortran (GNU F95 compiler) requires gcc 4.1 and later "
+        echo "       the program may compile with the following compilers,"
+        echo "       but there are problems: "
+        echo "          HP90    (HP FORTRAN 90)"
+        echo "          g95  (g95 free software, http://g95.sourceforge.net)"
+
+	exit 1
+}
+
+if [ $# -lt 1 ]; then
+	usage
+fi
+
+# Compilation options (debug/optimize)
+opt="d"
+if [ "$1" = "-d" ]; then
+	opt="d"
+	shift
+elif [ "$1" = "-p" ]; then
+	opt="p"
+	shift
+elif [ "$1" = "-O" ]; then
+	opt="O"
+	shift
+fi
+if [ $# -ne 1 ]; then
+	usage
+fi
+
+# Configuration
+conf=$1
+
+mffile=conf/mf.$conf.$opt
+optfile=conf/opt.$conf
+
+if [ ! -f $mffile ]; then
+	usage
+fi
+
+# Makefile options
+cp $mffile src/make.flags
+if [ -f conf/rules ]; then
+	cat conf/rules >> src/make.flags
+fi
+
+# Selection of installation-dependent source files
+if [ -f $optfile ]; then
+. $optfile
+fi
+
+for dir in ephem propag suit orbfit include
+do
+	if [ -d src/$dir ]; then
+		cd src/$dir
+#		../lib/inst_src $SRCSEL
+		if [ -f config.sh ]; then
+			./config.sh
+		fi
+		cd ../..
+	fi
+done
+
+echo $conf $opt > .conf.status
+echo $conf > src/.compiler

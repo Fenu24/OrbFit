@@ -1,0 +1,29 @@
+% help file, orbfit 3.3.1 and later
+% this is the multiple solutions usage menu
+
+MENU MULTIUSE
+
+ what to do with the multiple solutions just computed?
+
+1 = a-e plot of multiple solutions...show a line in the semimajor
+axis/eccentricity plane, which is a projection of the multiple
+solutions line.
+
+2 = multiple predicted observations...for a given time, project the
+line of multiple solutions on the celestial sphere. 
+
+3 = adopt one of the above solution...it replaces the nominal solution.
+
+4= propagate multiple solutions...to use them at some other time, e.g.
+for an a-e plot, to compute multiple observations at times close to a
+new epoch. This option is followed by a request for the new epoch, in
+MJD.
+
+5= close approach analysis...finds future (and past) close approaches
+to the Earth, assessing the minimum possible approach distance to our planet 
+and the probability of a collision, if any.
+
+0 = exit; -1=help
+
+After execution, the control returns to this menu, to allow for
+multiple utilisation. 0=exit must be used to go back to the main menu.

@@ -1,0 +1,32 @@
+Nov. 26, 2008 A. Milani and Z. Knezevic, conversion to f90 of prop9.x
+
+=======Conversions complete and tested:
+
+prop9 - propsynt3big - propsyntwoway
+
+orbit9 (with option replacing orbit9e and orbit9f)
+
+prop_tax (new code for taxonomy)
+
+giff9v 
+
+inbaric - inbarmerc
+
+propert3
+
+secre9
+
+orbselect
+
+========Converted but not yet tested
+
+merg - mergt - magn - selext - selextt - purge
+
+========Converted and tested with problems
+
+orbit9t: results slightly different
+
+========Things to be improved
+
+comnbo.h90 might be eliminated
+

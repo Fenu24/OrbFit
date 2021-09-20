@@ -1,0 +1,14 @@
+! defaults for fitdebris
+fitdeb.
+! bizarre controls
+        .ecclim=0.99d0    ! max eccentricity for non bizarre orbit 
+        .samin=4.37d-5    ! min a for non bizarre orbit h=150 km 
+        .samax=0.01d0     ! max a for non bizarre orbit: Hill's sphere 
+        .phmin=4.25d-5    ! min q for non bizarre orbit: impact 
+        .ahmax=0.02d0     ! max Q for non bizarre orbit 
+
+INPUT: propag.def
+
+init_orbdet.methods = Gauss Vaisala
+init_orbdet.verbose = 2
+

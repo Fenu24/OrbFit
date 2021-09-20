@@ -1,0 +1,52 @@
+% help file, orbfit 3.3.1 and later
+% this is the close approach analysis menu
+
+==========IMPORTANT WARNING=================
+
+Close approach analysis is a delicate problem, both because it is
+mathematically difficult (it amounts to predictions for a chaotic orbit)
+and because it can lead to predictions of an impact by asteroid with
+our planet. 
+
+To spread unjustified panic by announcing a future impact, without having gone
+through the very rigorous verification procedure which is necessary (and is
+requested by the International Astronomical Union, IAU), is an irresponsible
+behavior. See the current IAU policy on possible impact announcements on
+
+http://web.mit.edu/rpb/wgneo/TechComm.html
+
+On the other hand, also denying a future possible impact, already announced by
+others, is critical.
+
+This computer code is provided as free software precisely to make possible
+independent verification of the claims of future possibilities of impact as
+posted in the two professional web sites
+
+http://newton.dm.unipi.it/neodys and http://unicorn.eis.uva.es/neodys
+
+at the Universities of Pisa and Valladolid (service duplicated to guarantee
+availability) and
+
+http://neo.jpl.nasa.gov/
+
+at NASA/Caltech Jet Propulsion Laboratory, Pasadena. 
+
+Thus, if you have little experience in this class of sophisticated Celestial
+Mechanics computations, you are welcome to use this software to understand te
+results and even to learn how to do them yourself. We will try to make this
+software, which is essentially the same we use operationally in NEODyS, more
+and more user friendly (we acknowledge the output is quite obscure now). 
+
+However, we demand that you take a responsible attitude before contradicting
+the impact predictions as posted by NEODyS and/or JPL, and even more before
+making your own announcement of a possible impact. Our experience has shown
+that to do this is very dangerous, and can be handled only by qualified
+personnel with both the necessary scientific knowledge and the communication
+skill, especially in contacting the media.
+
+WARNING: the user will be asked to specify the other extreme of the monitoring
+time interval, in Modified Julian Days (MJD). To convert calendar dates to
+MJD, use the DATE CONVERSION option in the main menu. The other extreme is the
+current epoch of the orbital elements. Search backward is allowed: just give a
+date before the current orbital elements epoch.
+

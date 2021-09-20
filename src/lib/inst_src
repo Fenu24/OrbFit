@@ -1,0 +1,21 @@
+#!	/bin/sh
+
+# Install selected sources in the current directory
+# Usage: inst_src <option1> [ <option2> ... ]
+#        where <option1> ... must correspond to subdirectories of .dist
+
+if [ $# -le 0 ]; then
+	echo "Usage: inst_src <option1> [ <option2> ... ]" 1>&2
+	exit 1
+fi
+
+if [ ! -d .dist ]; then
+	exit 0
+fi
+
+for dir
+do
+	if [ -d .dist/$dir ]; then
+		cp .dist/$dir/* .
+	fi
+done

@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2. INPUT AND TASK DEFINITION</TITLE>
+<META NAME="description" CONTENT="2. INPUT AND TASK DEFINITION">
+<META NAME="keywords" CONTENT="READMEorb">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="READMEorb.css">
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="READMEorb.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html28"
+ HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html26"
+ HREF="READMEorb.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html20"
+ HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html29"
+ HREF="node3.html">3. PROPAGATION</A>
+<B> Up:</B> <A NAME="tex2html27"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<B> Previous:</B> <A NAME="tex2html21"
+ HREF="node1.html">1. INTRODUCTION</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000">
+2. INPUT AND TASK DEFINITION</A>
+</H1>
+
+<P>
+The user interacts with the program Orbit9 -to define what has to be
+done- essentially only by editing the options file <B>orb9.opt</B>.  In
+this section we shall comment on that file line by line.  The option
+file, as well as other input files, is handled through the utility
+routines contained in the file <I>genio.f</I> in such a way that the
+input takes the general format:
+
+<P>
+<BLOCKQUOTE>
+<TT>variable= value ; comment</TT>
+</BLOCKQUOTE>
+<P>
+allowing for comments which in most cases explain all the
+available options.
+
+<P>
+<BLOCKQUOTE>
+<TT>;input control and options file for Orbit9</TT>
+<BR>
+<TT>; 1. input file names</TT>
+</BLOCKQUOTE>
+<P>
+The program needs to find initial conditions both for the planets and
+for the massless bodies (``asteroids'') in two files prepared in a
+suitable format. The first options are just the names of these files:
+
+<P>
+<BLOCKQUOTE>
+<TT>inplan='plan91.inc'; input file for initial conditions of the
+planets </TT>
+</BLOCKQUOTE>
+<P>
+The planets initial condition files has a single possible format,
+regardless of whether the task is to continue a previous integration
+or whether the integration starts from a catalogue of osculating
+orbital elements.  Thus the periodic dump file, <B>orb9.dmp</B>,
+contains the initial conditions for the planets in a format perfectly
+suitable to be used as input.  Sample initial conditions files are
+provided; they must contain a header, specifying which bodies are in
+the file, the reference epoch, the coordinate system, the meaning of
+each coordinate, the planetary masses, and the shift with respect to
+the reference epoch (in years).  To continue an integration
+interrupted for whatever reason, the periodic dump file must be edited
+to remove the dumps until the last complete one, renamed (to avoid
+conflicts between input and output), and that name must be entered in
+the line of <B>orb9.opt</B> shown above; the only option to be changed
+is <TT>nout</TT>, with the understanding that the count of the output
+records includes the ones already done up to the dump used (warning:
+the output files have to be renamed to avoid overwriting; the macro
+<I>o9stor</I> is provided to perform this renaming).  The initial
+data can be supplied in a variety of coordinate systems; although the
+choice for the direct output of Orbit9 is somewhat narrower, by using
+the output conversion program Conv9 it is possible to obtain output
+with the same choices.  For a complete list of these choices see
+section 4.  Nevertheless, the output files different from the dump
+files <B>orb9.dmp, orb9.dma</B> should not be used for continuation of a
+previous integration, because the rounding off of the formatted output
+would result in a significant loss of accuracy in the continuation.
+
+<P>
+<BLOCKQUOTE>
+<TT>ibar= 1; barycentric correction 1=yes 0=no</TT>
+<BR>
+<TT>inbar='barsun91.inc'; file with barycentric correction</TT>
+</BLOCKQUOTE>
+<P>
+When the dynamical model of the motion of the asteroids (and of the
+planets as well) neglects the perturbation produced by some planets,
+the initial conditions have to be corrected to account for the missing
+short periodic perturbations.  As an example, the file
+<I>barsun99.inc</I> contains the vector from the barycenter of the
+inner solar system (Sun and planets up to Mars) to the Sun, in the
+system ECLM00, for the same epoch as the initial conditions file; to
+perform correctly a computation of the orbits of the outer planets,
+and of asteroids perturbed by the outer planets only, this barycentric
+vector must be added to the initial heliocentric positions and
+velocities of all the bodies; the mass of the inner planets is then
+added to the mass of the Sun. Warning: when an integration of the
+outer planets is continued from a dump output <B>orb9.dmp</B>, the
+barycentric correction is already there, and the masses of the inner
+planets are already included in the mass of the Sun (that is, the mass
+of the Sun is not 1 in units of the mass of the Sun!), thus the flag
+<TT>ibar</TT> has to be set to 0.
+
+<P>
+<BLOCKQUOTE>
+<TT>inast='oscel.91'; input file for initial conditions of the
+asteroids </TT>
+</BLOCKQUOTE>
+<P>
+The asteroids initial condition file can be given in either of two
+formats.  The first one is identical to that of the planets, apart
+from the fact that the masses are not given; the periodic dump file
+<B>orb9.dma</B> is in this format, and can be used for continuation in
+the same way discussed above for the planets.  The other format is
+automatically used every time the asteroid input file name contains
+the string <TT>oscel</TT>; then it is assumed that the input file is a
+catalogue given in a format compatible with the computer readable
+catalogues distributed by the Minor Planet Center.  An example of the
+latter is given in the file <I>oscel.test</I>.
+
+<P>
+<BLOCKQUOTE>
+<PRE>
+<TT>; 2. job description: ast.ordered in two lists, with and without LCE
+nvz=  2  ; no. Lyapounov exponents
+     110
+     334
+       1
+       4
+  1998QW
+<I>         (This line empty!)</I> 
+</PRE>         
+</TT>
+</BLOCKQUOTE>
+<P>
+The lines of <B>orb9.opt</B> listed above describe the orbit
+computation which has to be done, by listing the asteroids (from the
+input catalogue specified above) whose orbit has to be computed, and
+the ones for which the maximum Lyapounov exponent has to be estimated.
+The first <TT>nvz</TT> asteroids in the list are computed with
+variational equation, the others without; an empty line terminates the
+list.  Warning: if the asteroid initial conditions are read from a MPC
+format catalogue, it is assumed that in the catalogue they are listed
+in order by number; then it is required that the two sublists, the one
+with LCE and the one without, are also odered by number.  This
+requirement is not there for the other format, e.g. for continuation
+integrations.  Nothing forbids the computation of the orbits of other
+asteroids, including fictitious ones; the user must only copy the
+input format either from <I>oscel.anyextension</I> or from
+<B>orb9.dmp</B>, and give to the file a name either containing, or not
+containing, the string <TT>oscel</TT>. By format I do not mean the
+exact number of decimal digits, since the Fortran read is done in free
+format; I mean the header and the order of the variables.
+
+<P>
+<BLOCKQUOTE>
+<TT>; 3. options: output</TT>
+<BR>
+<TT>dt=  1.0000d+02; time between two outputs</TT>
+<BR>
+<TT>nout=  100; output number at job termination</TT>
+</BLOCKQUOTE>
+<P>
+The output will consist of four files, <B>vast.dat, vpla.dat,
+vast.fil, vpla.fil</B>.  They all begin with a header, explaining what is
+in the file in exactly the same fomat used in the input files, and
+then a time series of orbital elements sampled at regular intervals of
+length <TT>dt</TT> (in years), for a total of <TT>nout+1</TT> data points
+(including one record containing the initial conditions), for a total
+integration time span of <TT>dt*nout</TT> years.  The <B>vast.xxx</B>
+files contain asteroid data, the <B>vpla.xxx</B> the corresponding
+planet data.  The <B>vxxx.dat</B> files contain data purely sampled,
+the <B>vxxx.fil</B> files contain data digitally filtered, then
+decimated in such a way that the output interval is still <TT>dt</TT>;
+the filtered output is in phase with the sampled one, but there are
+two gaps at the beginning and at the end of the integration interval
+due to finite filter length.  For details on the filter options, see
+below and section 4.
+
+<P>
+<BLOCKQUOTE>
+<TT>idump=  10; number of outputs between dump/renormalisation</TT>
+</BLOCKQUOTE>
+<P>
+Two operations are performed not at every output, but periodically
+every <TT>idump</TT> output data points, that is every <TT>dt*idump</TT>
+years: dump of the full precision data to allow to restart the
+integration (this is done for safety, e.g. as protection against power
+failures; under normal job termination conditions, only the last dump
+can be useful for continuation), and renormalisation of the
+variational vector to avoid overflow problem in strongly chaotic cases
+(there is no logical reason for which the periodicity of these two
+operations should be the same, I just try to keep the number of
+options as low as possible).
+
+<P>
+<BLOCKQUOTE>
+<TT>isamp= 100; sampling ratio of the filter; choose 5, 20, 50 or
+100</TT>
+</BLOCKQUOTE>
+<P>
+The digitally smoothed data are obtained by computing the orbital
+elements at a time interval <TT>dt/isamp</TT> and entering them into a
+digital filter which outputs them at the interval <TT>dt</TT>; the
+output is smoothed in the sense that all the oscillations with periods
+between <TT>2*dt/isamp</TT> and <TT>2*dt</TT> are reduced by a large
+(typically between 10<SUP>3</SUP> and 10<SUP>4</SUP>) attenuation
+factor.  Warning: the choice of the filter input interval
+<TT>dt/isamp</TT> is critical in that the oscillations with periods
+close to <TT>dt/isamp</TT> can produce long period aliases which might
+not be filtered (see section 4).  The example above is adequate for a
+computation of the outer planets and of main belt asteroids, since no
+large perturbation occurs with period of about 1 year; for a
+computation including the orbit of the Earth it would be deadly wrong.
+The choice of the sampling ratios <TT>isamp</TT> is limited by the
+actual availability of the filter coefficients, which must be in files
+with file names <I>filter.dxx</I>; for the format of these files, see
+the examples given.  New filters can be designed by the Filgen
+software by M. Carpino; however, there is a limit to the filter length
+which can be reset by editing the file <I>parfil.h</I>.
+
+<P>
+<BLOCKQUOTE>
+<TT>iprqua=    2; how much output: 1 elem. filtr; 2 also sampl.;</TT>
+</BLOCKQUOTE>
+<P>
+This is self explanatory; normally leave 2, unless you want only the
+smoothed data and you are running out of disk space.
+
+<P>
+<BLOCKQUOTE>
+<TT>sysz= 'HEL' ; output system: BAR, HEL, JAC, HEC</TT>
+<BR>
+<TT>refz= 'INVL1B' ; output reference system: INVL1B, ECLM50, EQUM00,
+etc</TT>
+</BLOCKQUOTE>
+<P>
+Here we can choose the coordinate system for the output, and the
+reference system.  As for the sampled data, the transformation to
+whatever coordinate system we want could be done in the output
+conversion stage with Conv9; however, for the filtered output, the
+two operations of filtering and of changing coordinate system do not
+commute, thus it is essential to know in which coordinate system the
+output will be used to perform the correct smoothing. On the contrary
+the change of reference system is a rotation, a linear operation, and
+to do it either before or after filtering does not matter at all. See
+section 4 for a description of the options available.
+
+<P>
+<BLOCKQUOTE>
+<TT>; 4. options: variational equation</TT>
+<BR>
+<TT>v1=  1.00d+03; variation vector norm forcing renormalisation</TT>
+<BR>
+<TT>semim=    3.0; approx. semimajor axis for norm of var.vect.</TT>
+</BLOCKQUOTE>
+<P>
+These options pertain to the calculation of the maximum Lyapounov
+exponent: the renormalisation is forced whenever the periodic check
+(at time intervals  of <TT>dt*idump</TT> years) finds the norm of the
+variation vector increased by a factor <TT>v1</TT>; the norm is computed
+with a metric defined by <TT>semim</TT>, which should be the approximate
+semimajor axis in AU of the asteroid orbit, if you want the orbital
+postion and the orbital velocity on a circular orbit both to have norm
+1. As a matter of principle, the Lyapounov exponents do not depend
+upon the metric; but this is true only at the limit of infinite time,
+so it is better to set this at least approximately correct.
+
+<P>
+<BLOCKQUOTE>
+<TT>; 5. options: propagator      $ = option not yet implemented</TT>
+<BR>
+<TT>h=  0.03; stepsize for multistep (maximum if iauto=1)</TT>
+<BR>
+<TT>iauto= 1; automatic stepsize control 1=yes 0=no</TT>
+<BR>
+<TT>error= 1.d-13: target error in longitude, </TT><I>rad</I>/<I>rev</I><SUP>2</SUP>
+</BLOCKQUOTE>
+<P>
+The propagator options are quite difficult to select unless the
+user has a good understanding of the performance of multistep
+and implicit Runge-Kutta integrators. Therefore the program provides for
+an automatic choice of the most critical integration parameters, which
+is enabled by the flag <TT>iauto</TT>. If the automatic mode is selected,
+the program automatically selects the stepsize in such a way that
+in all the orbits (planets and asteroids) the truncation error
+accumulated in longitude does not exceed <TT>error</TT> radians per
+revolution squared; moreover the stepsize is not longer than <TT>h</TT>,
+in such a way that the user can force a shorter step. It has to be
+taken into account that in the present version (2.1) the prediction
+of the integration error is done on the basis of the initial
+osculating semimajor axis and eccentricity of each orbit; thus an
+orbit which later becomes more eccentric could result in a wrong
+predicition, not to speak of an orbit so unstable that the semimajor
+axis can significantly change during the integration. In practice the
+parameter <TT>error</TT> must be set to a small value, e.g. in the example
+given the target is an error less than 0.1 radians after 1 million
+revolutions, but not too small because otherwise the rounding off
+error might become more important; actually, the program checks the
+local ronding off error of your machine and forces <TT>error</TT> to be
+not smaller than that. Again, there is no protection against the much
+larger errors occuring during fast close approaches; some more reliable
+version might appear later.
+
+<P>
+<BLOCKQUOTE>
+<TT>iord=    12;  order of multistep predictor</TT>
+<BR>
+<TT>epms= 1.0d-12; convergence control for corrector $</TT>
+<BR>
+<TT>iork=   12;  order of starter</TT>
+<BR>
+<TT>eprk= 1.00d-10; convergence control for implicit Runge-Kutta</TT>
+<BR>
+<TT>lit1= 10; iterations for first step</TT>
+<BR>
+<TT>lit2= 4; iterations for following steps</TT>
+<BR>
+<TT>imet= 1; main integration method: 1 multistep 2 symplectic</TT>
+<BR>
+<TT>iusci=10; output of numerical convergence controls 0 no</TT>
+<BR>
+<TT>icha=0; 0 interactive 1 batch, change step</TT>
+</BLOCKQUOTE>
+<P>
+Apparently, there are many more choices on the propagator, but the
+user is warned not to change anything with respect to this example
+unless he knows what he is doing. As an example, it might appear a
+good idea to increase the order of the multistep and to use longer
+steps; unfortunately, there is a stability limit which is not checked
+in the present version, and the use of <TT>iord</TT> larger than 12 is
+likely to result in such an instability; for a discussion of all the
+theory, the user should consult Milani and Nobili, <I>Celestial
+Mechanics <B>43</B></I>, 1-34, 1988, taking into account that the
+algorithm used here is backward difference, second sum, of order
+<TT>iord</TT>. All the other options pertain to the starter or even to
+not yet implemented features.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html28"
+ HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/local/latex2html/icons.gif/next_motif.gif"></A> 
+<A NAME="tex2html26"
+ HREF="READMEorb.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/local/latex2html/icons.gif/up_motif.gif"></A> 
+<A NAME="tex2html20"
+ HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/local/latex2html/icons.gif/previous_motif.gif"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html29"
+ HREF="node3.html">3. PROPAGATION</A>
+<B> Up:</B> <A NAME="tex2html27"
+ HREF="READMEorb.html">ORBIT9 USER GUIDE Version</A>
+<B> Previous:</B> <A NAME="tex2html21"
+ HREF="node1.html">1. INTRODUCTION</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Andrea Milani</I>
+<BR><I>1999-10-31</I>
+</ADDRESS>
+</BODY>
+</HTML>

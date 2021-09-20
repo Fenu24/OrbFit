@@ -1,0 +1,10 @@
+# Makefile options for Lahey fl95 compiler, optimized
+
+# Fortran compiler
+FC=lf95
+# Options for Fortran compiler:
+FFLAGS= -O --staticlink -I../include
+# "ranlib" command: if it is not needed, use "RANLIB=touch"
+RANLIB=ranlib
+VPATH=../include
+

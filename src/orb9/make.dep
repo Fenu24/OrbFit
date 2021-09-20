@@ -1,0 +1,249 @@
+
+angcou.o: \
+	../suit/fund_const.mod 
+
+conv9.o: \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+coord.o: \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+coostd.o: \
+	../propag/massmod.mod 
+
+datinp.o: \
+	../suit/fund_const.mod \
+	parameters_giff.o \
+	prompting.o \
+	var_precision.o 
+
+epsi.o: \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+fir_filters.o: \
+	../suit/fund_const.mod \
+	var_precision.o 
+
+giffan.o: \
+	../suit/fund_const.mod \
+	var_precision.o 
+
+giffv.o: \
+	../suit/fund_const.mod \
+	fir_filters.o \
+	parameters_giff.o \
+	prompting.o \
+	var_precision.o 
+
+gridsel.o: \
+	../suit/fund_const.mod 
+
+headio.o: \
+	parameters_giff.o 
+
+inbaric.o: \
+	../include/jplhdr.h90 \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+inbarmerc.o: \
+	../include/jplhdr.h90 \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+inptro.o: \
+	../suit/fund_const.mod \
+	../suit/name_rules.mod \
+	synthcomp.o 
+
+inptwoway.o: \
+	../suit/fund_const.mod \
+	../suit/name_rules.mod \
+	synthcomp.o 
+
+input9.o: \
+	../include/comnbo.h90 \
+	../propag/close_app.mod \
+	../propag/dyn_param.mod \
+	../propag/force9d.mod \
+	../propag/force_model.mod \
+	../propag/massmod.mod \
+	../propag/propag_state.mod \
+	../propag/yorp_module.mod \
+	../suit/fund_const.mod \
+	../suit/output_control.mod \
+	../suit/planet_masses.mod \
+	fir_filters.o 
+
+input9t.o: \
+	../include/comnbo.h90 \
+	../propag/close_app.mod \
+	../propag/force9d.mod \
+	../propag/force_model.mod \
+	../propag/massmod.mod \
+	../propag/propag_state.mod \
+	../suit/fund_const.mod \
+	../suit/output_control.mod \
+	../suit/planet_masses.mod \
+	fir_filters.o 
+
+inte8.o: \
+	controlmod.o \
+	terms9.o 
+
+integr9.o: \
+	../suit/fund_const.mod 
+
+iolon9.o: \
+	../suit/fund_const.mod 
+
+iosho.o: \
+	../include/comnbo.h90 \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+jobinp9.o: \
+	../propag/massmod.mod 
+
+kepdel.o: \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+keppoinc.o: \
+	../suit/fund_const.mod 
+
+lly76s.o: \
+	controlmod.o 
+
+long9.o: \
+	../suit/fund_const.mod \
+	controlmod.o \
+	terms9.o 
+
+opt9.o: \
+	controlmod.o 
+
+orbit9.o: \
+	../include/comnbo.h90 \
+	../propag/force9d.mod \
+	../propag/massmod.mod \
+	../propag/propag_state.mod \
+	fir_filters.o 
+
+orbit9t.o: \
+	../include/comnbo.h90 \
+	../propag/force9d.mod \
+	../propag/massmod.mod \
+	../propag/propag_state.mod \
+	../suit/fund_const.mod \
+	fir_filters.o \
+	libcen.h90 
+
+orbselect.o: \
+	../suit/fund_const.mod 
+
+outsubt.o: \
+	../suit/fund_const.mod 
+
+outsubv.o: \
+	../suit/fund_const.mod 
+
+plotgnu.o: \
+	char_string.o \
+	var_precision.o 
+
+prop9.o: \
+	../propag/massmod.mod \
+	short9.o 
+
+prop_class.o: \
+	../suit/name_rules.mod \
+	propel_mod.o 
+
+prop_tax.o: \
+	../propag/dyn_param.mod \
+	../propag/orbit_elements.mod \
+	../suit/fund_const.mod \
+	../suit/name_rules.mod \
+	propel_mod.o 
+
+propasub.o: \
+	synthtro.o 
+
+propel_mod.o: \
+	../suit/fund_const.mod \
+	../suit/name_rules.mod 
+
+propert.o: \
+	../suit/fund_const.mod \
+	synthtro.o 
+
+propsyntbig.o: \
+	../suit/name_rules.mod \
+	synthcomp.o 
+
+propsyntwo.o: \
+	../suit/name_rules.mod \
+	synthcomp.o 
+
+reacat9.o: \
+	../include/comnbo.h90 \
+	../propag/massmod.mod \
+	../propag/yorp_module.mod \
+	../suit/fund_const.mod 
+
+reaopt.o: \
+	../include/comnbo.h90 \
+	../propag/massmod.mod 
+
+reaoptt.o: \
+	../include/comnbo.h90 \
+	../propag/dyn_param.mod \
+	../propag/massmod.mod \
+	../suit/fund_const.mod \
+	libcen.h90 
+
+reaout.o: \
+	../include/comnbo.h90 \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+reapla.o: \
+	../propag/massmod.mod \
+	../suit/fund_const.mod 
+
+secre9.o: \
+	../suit/fund_const.mod \
+	controlmod.o 
+
+secthe8.o: \
+	../suit/fund_const.mod \
+	controlmod.o 
+
+selre9.o: \
+	controlmod.o 
+
+short9.o: \
+	../propag/massmod.mod \
+	../suit/fund_const.mod \
+	controlmod.o 
+
+subs9.o: \
+	../suit/fund_const.mod 
+
+synthcomp.o: \
+	../suit/fund_const.mod \
+	fir_filters.o 
+
+synthtro.o: \
+	../suit/fund_const.mod 
+
+terms9.o: \
+	controlmod.o 
+
+vareqi.o: \
+	../include/comnbo.h90 \
+	../propag/massmod.mod 

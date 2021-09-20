@@ -1,0 +1,36 @@
+OSS
+
+panst/attribute_subs.f90:TYPE filt1_ident
+panst/attribute_subs.f90:TYPE filt2_ident
+panst/attribute_subs.f90:TYPE filt3_solution
+panst/des_interfaces.f90:  TYPE tracklet 
+panst/ident_db.f90:  TYPE identification
+panst/ident_db.f90:  TYPE id_metrics
+panst/sec_object.f90:  TYPE sim_obj
+panst/sec_object.f90:  TYPE sim_res
+
+PS simulations
+
+triang/ids_db.f90:  TYPE identif
+triang/secretid2.f90:TYPE simul_obj 
+triang/simobs.f90:TYPE simul_obs
+triang/vsa_db.f90:  TYPE vsa_point
+
+included in distribution
+
+propag/orbit_elements.f90:TYPE orbit_elem
+propag/orbit_elements.f90:TYPE orb_uncert
+propag/orbit_elements.f90:TYPE orb_with_uncert
+propag/virtual_impactor.f90:  TYPE virt_imp
+
+suit/astrometric_observations.f90:TYPE ast_obs
+suit/astrometric_observations.f90:TYPE ast_obs_direct
+suit/astrometric_observations.f90:TYPE ast_wbsr
+suit/attributable.f90:TYPE attrib_c
+suit/attributable.f90:TYPE attrib
+suit/very_short_arc.f90:TYPE vsa
+
+utility programs
+
+util90/to_f90.f90:TYPE :: code
+util90/to_f90.f90:TYPE :: argument

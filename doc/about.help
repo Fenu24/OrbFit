@@ -1,0 +1,92 @@
+The authors of the OrbFit software are scientists working in the field
+of celestial mechanics, with specific experience of dynamics and orbit
+determination for both natural celestial bodies (asteroids, comets,
+satellites, planets) and artificial spacecraft (satellites,
+interplanetary probes).
+
+We write, and use for our own research, tens of thousands of lines of
+software. We have developed computer programs capable of performing
+many tasks, and these programs are often used only once, for a
+specific research goal. This happens because to export a software,
+writing all the necessary documentation, taking care of the possible
+machine dependencies, and writing the control software necessary to
+build and test, is  a significant additional work. 
+
+There are, however, two good reasons to do this supplementary
+effort. First, we write software which could be useful to others, both
+researchers and interested amateur astronomers. Our work could have
+more value to the astronomical community if it is used extensively.
+This is important if our software allows some amateur astronomers (and
+possibly some small professional observatories) to perform tasks for
+which they do not have the resources to develop their own
+software. This is especially useful in the field of asteroid orbit
+determination and improvement, where a significant contribution to the
+global flow of observations is given by amateur and small professional
+observatories. 
+
+Second, one of the main principles of the scientific method is
+reproducibility of all results of the research. In our times, when
+most computations are performed by complex computer programs, to
+outline the algorithm used in papers submitted for publication is
+useful, but is not always enough to enable others to really verify the
+results. The only way to achieve total scientific transparency
+('glasnost') is to make the source code of the computer programs
+open to inspection by other scientists. Thus we follow the principle
+that not only the algorithms, but even the actual subroutines we have
+used in our recent research should become, immediately after
+publication of the results, available to the public. In fact this
+obligation to transparency forces us to raise the level of quality of
+our research, and the reliability of the results.
+
+
+ORBFIT CONSORTIUM 
+
+
+The OrbFit software has been created, and is currently being
+maintained and expanded, by a consortium of researchers working 
+in four research laboratories:
+
+   - Department of Mathematics, University of Pisa 
+
+      * Andrea Milani (mailto: milani@dm.unipi.it, 
+        http://virmap.unipi.it/~milani/homemilani.html)
+
+      * Steven R. Chesley (at the time in Pisa, now in JPL, NASA) 
+	(mailto: steve.chesley@jpl.nasa.gov, http://tycho.dm.unipi.it/~chesley
+
+   - Astronomical Observatory of Brera, Milan 
+      
+      * Mario Carpino (mailto: carpino@brera.mi.astro.it,
+        http://www.brera.mi.astro.it/~carpino)
+
+   - Astronomical Observatory, Belgrade  
+
+      * Zoran Knezevic (mailto: zoran@aob.bg.ac.yu, 
+        http://www.aob.bg.ac.yu/staff/zknezevic)
+
+   - CNR Institute for Space Astrophysics, Rome 
+
+      * Giovanni B. Valsecchi (mailto: giovanni@saturn.ias.rm.cnr.it)
+
+The consortium previously also included the Department of Astronomy,
+University of Helsinki, which gave a significant impulse in the first
+stages of the work, but is no longer contributing.
+
+Other researchers involved in some stage of the project are:
+
+   Karri Muinonen (Helsinki)
+   Luisa Cattaneo (Pisa)
+   Sabrina Baccili (Pisa)
+   Alessandra La Spina (Pisa)
+   Maria Eugenia Sansaturio (Valladolid)
+   Rade Pavlovic (Belgrade)
+
+
+HOW TO REPORT BUGS, TO SEND COMMENTS
+
+
+Please let us know your comments and opinions, and suggestions for
+improvements.  Please report any problems, unsuccessful installations,
+unexpected crashes, or wrong results, to one of the OrbFit Consortium
+researchers listed above.
+

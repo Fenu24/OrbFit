@@ -1,0 +1,102 @@
+
+catpro.o: \
+	../propag/dyn_param.mod \
+	../propag/orbit_elements.mod \
+	../propag/propag_state.mod \
+	../suit/fund_const.mod \
+	../suit/name_rules.mod \
+	../suit/output_control.mod 
+
+fitobs.o: \
+	../include/doclib.h90 \
+	../propag/arc_control.mod \
+	../propag/close_app.mod \
+	../propag/cobweb.mod \
+	../propag/dyn_param.mod \
+	../propag/ephem_prop.mod \
+	../propag/force_model.mod \
+	../propag/least_squares.mod \
+	../propag/multi_store.mod \
+	../propag/multiple_sol.mod \
+	../propag/orbit_elements.mod \
+	../propag/tp_trace.mod \
+	../propag/virtual_impactor.mod \
+	../propag/yark_pert.mod \
+	../suit/astrometric_observations.mod \
+	../suit/attributable.mod \
+	../suit/fund_const.mod \
+	../suit/output_control.mod \
+	../suit/station_coordinates.mod \
+	../suit/triangles.mod \
+	../suit/util_suit.mod \
+	fitobs_mod.o \
+	two_states.o 
+
+fitobs_interfaces.o: \
+	../include/parlib.h90 \
+	../propag/cla_store.mod \
+	../propag/close_app.mod \
+	../propag/dyn_param.mod \
+	../propag/ephem_prop.mod \
+	../propag/eval_risk.mod \
+	../propag/force_model.mod \
+	../propag/least_squares.mod \
+	../propag/multi_store.mod \
+	../propag/multiple_sol.mod \
+	../propag/obssto.mod \
+	../propag/offlov_checktp.mod \
+	../propag/orbit_elements.mod \
+	../propag/pred_obs.mod \
+	../propag/propag_state.mod \
+	../propag/ret_analysistp.mod \
+	../propag/tp_trace.mod \
+	../suit/astrometric_observations.mod \
+	../suit/fund_const.mod \
+	../suit/name_rules.mod \
+	../suit/output_control.mod \
+	../suit/planet_masses.mod \
+	../suit/reference_systems.mod \
+	../suit/station_coordinates.mod \
+	../suit/util_suit.mod \
+	two_states.o 
+
+fitobs_mod.o: \
+	../include/comiod.h90 \
+	../include/parcmc.h90 \
+	../include/pariod.h90 \
+	../include/parlib.h90 \
+	../include/sysdep.h90 \
+	../prelim/iodet.mod \
+	../propag/cla_store.mod \
+	../propag/cobweb.mod \
+	../propag/dyn_param.mod \
+	../propag/eval_risk.mod \
+	../propag/least_squares.mod \
+	../propag/multi_store.mod \
+	../propag/offlov_checktp.mod \
+	../propag/orbit_elements.mod \
+	../propag/tp_trace.mod \
+	../suit/astrometric_observations.mod \
+	../suit/fund_const.mod \
+	../suit/output_control.mod 
+
+identsub.o: \
+	../suit/fund_const.mod 
+
+obs_convert.o: \
+	../suit/astrometric_observations.mod 
+
+stacop.o: \
+	../propag/orbit_elements.mod 
+
+two_states.o: \
+	../include/parobx.h90 \
+	../propag/orbit_elements.mod \
+	../suit/astrometric_observations.mod \
+	../suit/output_control.mod \
+	../suit/util_suit.mod 
+
+twotes.o: \
+	../propag/dyn_param.mod \
+	../propag/orbit_elements.mod \
+	../propag/pred_obs.mod 

@@ -1,0 +1,18 @@
+INPUT: propag.def
+
+init_orbdet.
+	.methods = Gauss Vaisala	
+	.verbose = 2
+
+fitobs.
+	.prob_sampl=.false.
+	.dmeacontr=0.2d0
+! cobweb
+	.propag_geoc_orbit = .FALSE. ! propag geocentric orbits for VI search (def. FALSE)
+        .grid_lev_curve    = .FALSE. ! compute a grid for the level curves in case of cobweb (def. FALSE)
+	.cob_ndir          = 40      ! number of rho values at first iteration (def. 50)	   
+        .cob_np            = 40      ! number of rho_dot values at first iteration (def. 50)  
+        .cob_ndir2         = 80      ! number of rho values at second iteration (def. 100)	   
+        .cob_np2           = 80      ! number of rho_dot values at second iteration (def. 100)
+        .cob_sigx          = 5.d0    ! sigma max in cobweb (def. 5.0)
+        .cob_hmax          = 34.5d0  ! max absolute magnitude

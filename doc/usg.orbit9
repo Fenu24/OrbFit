@@ -1,0 +1,539 @@
+ORBIT9 USER GUIDE
+
+Version 4.0
+
+Andrea Milani, Pisa and Meudon, 1991
+
+
+This User Guide is organised as follows:
+
+
+1. INPUT, that is how to prepare initial conditions and how to
+define the integration task.
+
+2. PROPAGATION, a brief description of what is actually computed
+and how.
+
+3. OUTPUT, explaining the use of different coordinate systems,
+digital filters, and revolution counters.
+
+4. POSTPROCESSING, describing the auxiliary programs to be
+used after the numerical integration (each one also has its own 
+README file).
+
+A. STATEMENTS, copyright notice, author's disclaimer and instructions
+on the modification of the software.
+
+
+1. Input and task definition
+
+The user interacts with the program Orbit9 -to define what has to be
+done- essentially only by editing the options file <orb9.opt>.  In
+this section we shall comment on that file line by line.  The option
+file, as well as other input files, is handled through the
+corresponding utility routines in such a way that the input takes the
+general format:
+
+variable= value ; comment
+
+allowing for comments which in most cases explain all the available
+options.
+
+******************************************************************
+
+;input control and options file for Orbit9 
+; 1. input file names 
+
+The program needs to find initial conditions both for the planets and
+for the massless bodies (``asteroids'') in two files prepared in a
+suitable format. The first options are just the names of these files:
+
+inplan='planxx.inc'; input file for initial conditions of the
+planets 
+
+The file 'planxx.inc' contains initial conditions of the four outer
+planets. In case of seven perturbing planets, Venus to Neptune,
+inplan='pvenexx.inc'. The planets initial condition files have a
+single possible format, regardless of whether the task is to continue
+a previous integration or whether the integration starts from a
+catalogue of osculating orbital elements.  Thus the periodic dump
+file, <orb9.dmp>, contains the initial conditions for the planets in a
+format perfectly suitable to be used as input.  Sample initial
+conditions files are provided; they must contain a header, specifying
+which bodies are in the file, the reference epoch, the coordinate
+system, the meaning of each coordinate, the planetary masses, and the
+shift with respect to the reference epoch (in years).  To continue an
+integration interrupted for whatever reason, the periodic dump file
+must be edited to remove the dumps until the last complete one,
+renamed (to avoid conflicts between input and output), and that name
+must be entered in the line of <orb9.opt> shown above; the only option
+to be changed is ``nout'', with the understanding that the count of
+the output records includes the ones already done up to the dump used
+(warning: the output files have to be renamed to avoid overwriting; we
+provide for this purpose script o9stor in the tests/orbit9
+subdirectory). The initial data can be supplied in a variety of
+coordinate systems; although the choice for the direct output of
+Orbit9 is somewhat narrower, by using the output conversion program
+conv9 it is possible to obtain output with the same choices.  For a
+complete list of these choices see section 3.  Nevertheless, the
+output files different from the dump files <orb9.dmp>, <orb9.dma>
+should not be used for continuation of a previous integration, because
+the rounding off of the formatted output would result in a significant
+loss of accuracy in the continuation.
+
+ibar= 1; barycentric correction 1=yes 0=no 
+inbar='barsunxx.inc'; file with barycentric correction
+
+When the dynamical model of the motion of the asteroids (and of the
+planets as well) neglects the perturbation produced by the inner
+planets, the initial conditions have to be corrected to account for
+the missing indirect short periodic perturbations.  As an example, the
+file 'barsunxx.inc' contains the vector from the barycenter of the
+inner solar system (Sun and planets up to Mars) to the Sun, in the
+system ECLM00, for the same epoch as the initial conditions file; to
+perform correctly a computation of the orbits of the outer planets,
+and of asteroids perturbed by the outer planets only, this barycentric
+vector must be added to the initial heliocentric positions and
+velocities of all the bodies; the mass of the inner planets is then
+added to the mass of the Sun. If the dynamical model neglects the
+perturbation produced by Mercury only, the corresponding file to be
+used is 'barmerxx.inc'. Warning: when an integration of the
+outer planets is continued from a dump output <orb9.dmp>, the
+barycentric correction is already there, and the masses of the inner
+planets are already included in the mass of the Sun (that is, the mass
+of the Sun is not 1 in units of the mass of the Sun!), thus the flag
+"ibar" has to be set to 0. 
+
+inast='chunk.cat'; input file for initial conditions of the asteroids
+
+The asteroids initial condition file can be given in either of two
+formats.  The first one is identical to that of the planets, apart
+from the fact that the masses are not given; the periodic dump file
+<orb9.dma> is in this format, and can be used for continuation in the
+same way discussed above for the planets.  The other format is
+automatically used every time the asteroid input file name contains
+the string 'oscel'; then it is assumed that the input file is a
+catalogue given in a format compatible with the computer readable
+catalogues distributed by the Minor Planet Center. An example of the
+latter is given in the file 'oscel.test'.
+
+; 2. job description: ast.ordered in two lists, with and without LCE
+nvz=  5  ; no. Lyapounov exponents
+     110
+     334
+       1
+       4
+  1998QW
+
+The lines of <orb9.opt> listed above describe the orbit computation
+which has to be done, by listing the asteroids (from the input
+catalogue specified above) whose orbits have to be computed, and the
+ones for which the maximum Lyapounov exponent has to be estimated.
+All the "nvz" asteroids in the list are computed with variational
+equation; an empty line terminates the list.  Warning: if the asteroid
+initial conditions are read from a MPC format catalogue, it is assumed
+that in the catalogue they are listed in order by number, but it is
+not required that the above list is odered by number as well.  This
+holds also for the other format, e.g. for continuation integrations.
+Nothing forbids the computation of the orbits of other bodies,
+including fictitious ones; the user must only copy the input format
+either from 'inputcatalog.anyextension' or from <orb9.dmp>, and give
+to the file a different name. By format we do not mean the exact
+number of decimal digits, since the Fortran read is done in free
+format; we mean the header and the order of the variables.
+
+; 3. options: output
+dt=  1.0000d+02; time between two outputs
+nout=  100; output number at job termination
+
+The output will consist of four files, <vast.dat>, <vpla.dat>,
+<vast.fil>, <vpla.fil>.  They all begin with a header, explaining what
+is in the file in exactly the same format as used in the input files,
+and then a time series of orbital elements sampled at regular
+intervals of length "dt" (in years), for a total of "nout+1" data
+points (including one record containing the initial conditions), for a
+total integration time span of "dt*nout" years.  The <vast.xxx> files
+contain asteroid data, the <vpla.xxx> the corresponding planet data.
+The <vxxx.dat> files contain data purely sampled, the <vxxx.fil> files
+contain data digitally filtered, then decimated in such a way that the
+output interval is still "dt"; the filtered output is in phase with
+the sampled one, but there are two gaps at the beginning and at the
+end of the integration interval due to finite filter length.  For
+details on the filter options, see below and section 3.
+
+idump=  10; number of outputs between dump/renormalisation
+
+Two operations are performed not at every output, but periodically
+every "idump" output data points, that is every "dt*idump" years: dump
+of the full precision data to allow to restart the integration (this
+is done for safety, e.g. as protection against power failures; under
+normal job termination conditions, only the last dump can be useful
+for continuation), and renormalisation of the variational vector to
+avoid overflow problem in strongly chaotic cases (there is no logical
+reason for which the periodicity of these two operations should be the
+same, we just try to keep the number of options as low as possible).
+
+isamp= 100; sampling ratio of the filter; choose 5, 20, 50 or
+100
+
+The digitally smoothed data are obtained by computing the orbital
+elements at a time interval "dt/isamp" and entering them into a
+digital filter which outputs them at the interval "dt"; the output is
+smoothed in the sense that all the oscillations with periods between
+"2*dt/isamp" and "2*dt" are reduced by a large (typically between
+$10^3$ and $10^4$) attenuation factor.  Warning: the choice of the
+filter input interval "dt/isamp" is critical in that the oscillations
+with periods close to "dt/isamp" can produce long period aliases which
+might not be filtered (see section 3).  The above entry is adequate
+for a computation of the outer planets and of main belt asteroids,
+since no large perturbation occurs with period of about 1 year; for a
+computation including the orbit of the Earth it would be deadly wrong.
+The choice of the sampling ratios "isamp" is limited by the actual
+availability of the filter coefficients, which must be in files with
+file names 'filter.dxx'; for the format of these files, see the
+examples given.  New filters can be designed by the Filgen software by
+M. Carpino; however, there is a limit to the filter length which can
+be reset by editing the corresponding part of the file
+'fir_filters.f90'.
+
+iprqua=    2; how much output: 1 elem. filtr; 2 also sampl.;
+
+This is self explanatory; normally leave 2, unless you want only the
+smoothed data, or you are running out of disk space.
+
+sysz= 'HEL' ; output system: BAR, HEL, JAC, HEC
+refz= 'INVL1B' ; output reference system: INVL1B, ECLM50, EQUM00, etc
+
+Here we can choose the coordinate system for the output, and the
+reference system.  As for the sampled data, the transformation to
+whatever coordinate system could be done in the output conversion
+stage with Conv9; however, for the filtered output, the two operations
+of filtering and of changing coordinate system do not commute, thus it
+is essential to know in which coordinate system the output will be
+used to perform the correct smoothing. On the contrary the change of
+reference system is a rotation, a linear operation, and to do it
+either before or after filtering does not matter at all. See section 3
+for a description of the options available.
+
+; 4. options: variational equation
+v1=  1.00d+03; variation vector norm forcing renormalisation
+semim=    3.0; approx. semimajor axis for norm of var.vect.
+
+These options pertain to the calculation of the maximum Lyapounov
+exponent: the renormalisation is forced whenever the periodic check
+(at time intervals of "dt*idump" years) finds the norm of the
+variation vector increased by a factor "v1"; the norm is computed with
+a metric defined by "semim", which should be the approximate semimajor
+axis in AU of the asteroid orbit, if you want the orbital postion and
+the orbital velocity on a circular orbit both to have norm 1. As a
+matter of principle, the Lyapounov exponents do not depend upon the
+metric; but this is true only at the limit of infinite time, so it is
+better to set this at least approximately correct.
+
+; 5. options: propagator   \$ = option not yet implemented
+h=  0.03; stepsize for multistep (maximum if iauto=1)
+iauto= 1; automatic stepsize control 1=yes 0=no
+error= 1.d-13: target error in longitude, rad/rev^2
+
+The propagator options are quite difficult to select unless the user
+has a good understanding of the performance of multistep and implicit
+Runge--Kutta integrators. Therefore the program provides for an
+automatic choice of the most critical integration parameters, which is
+enabled by the flag "iauto". If the automatic mode is selected, the
+program automatically selects the stepsize in such a way that in all
+the orbits (planets and asteroids) the truncation error accumulated in
+longitude does not exceed "error" radians per revolution squared;
+moreover the stepsize is not longer than "h", in such a way that the
+user can force a shorter step. It has to be taken into account that in
+the present version (4.0) the prediction of the integration error is
+done on the basis of the initial osculating semimajor axis and
+eccentricity of each orbit; thus an orbit which later becomes more
+eccentric could result in a wrong predicition, not to speak of an
+orbit so unstable that the semimajor axis can significantly change
+during the integration. In practice the parameter "error" must be set
+to a small value, e.g. in the example given the target is an error
+less than 0.1 radians after 1 million revolutions, but not too small
+because otherwise the rounding off error might become more important;
+actually, the program checks the local rounding off error of your
+machine and forces "error" to be not smaller than that. Again, there
+is no protection against the much larger errors occuring during fast
+close approaches; some more reliable version might appear later.
+
+iord=    12;  order of multistep predictor
+epms= 1.0d-12; convergence control for corrector \$
+iork=   12;  order of starter
+eprk= 1.00d-10; convergence control for implicit Runge-Kutta
+lit1= 10; iterations for first step
+lit2= 4; iterations for following steps
+imet= 1; main integration method: 1 multistep 2 symplectic 3 Everhart
+iusci=10; output of numerical convergence controls 0 no
+icha=0; 0 interactive 1 batch, change step
+ll=12; control for Everhart (>0 automatic stepsize control)
+
+Apparently, there are many more choices on the propagator, but the
+user is warned not to change anything with respect to this example
+unless he knows what he is doing. As an example, it might appear a
+good idea to increase the order of the multistep and to use longer
+steps; unfortunately, there is a stability limit which is not checked
+in the present version, and the use of "iord" larger than 12 is likely
+to result in such an instability; for a discussion of all the theory,
+the user should consult Milani and Nobili, Celestial Mechanics 43,
+1--34, 1988, taking into account that the algorithm used here is
+backward difference, second sum, of order "iord". All the other
+options pertain to the starter or even to not yet implemented
+features.
+
+; 6. control of close approach output
+dmint=0.1; close appr. distance for terrestrial planets
+dminj=1.0; close approach distance for giant planets
+npoint=10; minimum number of data points for a deep close appr.
+
+
+
+; 7. optional perturbations
+irelj2=0; relativistic and J2 perturbations 0=no 1=yes
+
+
+
+; END OF INPUT
+
+Compulsory line to mark the end of input.
+
+
+2. Propagation
+
+The input initial conditions are read and transformed into the
+integration coordinates, which are barycentric cartesian coordinates;
+this is done in the routines contained in the file 'input9.f90'.  The
+output files are initialised by writing a header, then by writing the
+initial conditions as transformed in the output coordinate system;
+after some initialisations, the main program (see the file 'orbit9.f90')
+goes into the main loop, propagating the state vector until the
+next filter input time; the output data are filtered, and when the
+filter output is ready it is written in the filtered output files; the
+sampled data are written in a way which appears asyncronous in the
+program, but which exactly compensates for the filter startup delay in
+such a way that the two time series are in phase. Periodically the
+state vector is dumped to allow for restart without significant loss
+of precision.
+
+All the above is quite straightforward, possibly the most complicated
+pieces of software being the coordinate change library (contained in
+'coord.f90'), apart from the propagator which is anyway well isolated
+and can be considered as a black box.  Let us now discuss some special
+features of this program: the handling of angle variables and the
+variational equations.
+
+As for angle variables, let us take as an example the coordinate types
+EQU, that is equinoctal elements, which is always used in output from
+Orbit9 (The other case, Keplerian elements, can be produced by Conv9,
+see section 3).  The last coordinate is the mean longitude (lambda),
+and it is always written as a principal value (between 0 and 2*pi)
+plus a number of revolutions.  The number of revolutions at the
+initial time is always given in input (it is assumed to be zero in the
+catalogue input case), and the count of the number of revolutions is
+kept up to date; this is true both for the sampled and the filtered
+output.  This is achieved by exploting a 2-body approximation, that
+is the number of revolutions is predicted at each filter input by
+using the mean motion and corrected at most by one; the filter
+preserves the linear trend of the angular variables (because the
+filter coefficients have sum exactly 1 and are symmetric) and removes
+the superimposed short periodic oscillations.  Strongly unstable
+orbits (e.g. undergoing temporary satellite capture, and/or very close
+approaches) can however result in a cycle slip; in this case, the
+filtered output shows the filter response to a step function, which is
+a diffraction pattern; these cases have to be interpreted with some
+caution.
+
+The estimation of the maximum Lyapounov Characteristic Exponent is
+performed by solving the linearized equations of displacement for a
+single variation vector.  Whenever a new LCE estimation is requested,
+a variation vector with random components and unitary norm is used as
+initial condition.  The output then contains a column with, for each
+asteroid, the natural logarithm of the current norm of the vector
+solution of the variational equation (the norm is controlled by the
+input parameter "semim").  The maximum LCE can be estimated (actually,
+this is an upper bound) by a linear fit to this quantity.  However,
+the variation vector is renormalised to avoid possible overflow if the
+integration interval is much longer than the inverse of the maximum
+LCE; this is totally transparent in the output, although the operation
+performed is quite complex, involving the use of the starter (because
+the state vector, including the variation vector, has a
+discontinuity).
+
+These two features require some quirky code to handle the case in
+which the integration is restarted from some dump.  If everything is
+continued without any change of parameters (the only option changed in
+<orb9.opt> is "nout") the revolution count and the LCE estimation are
+just continued.  On the contrary there are some tricky cases when
+something has been changed, e.g. the list of asteroids for which the
+LCE has to be estimated (this would occur if the list of asteroids
+required, as given in <orb9.opt>, was reordered).  If the LCE
+requested in a continuation integration is a new one, then the
+variation vector is initialised in a random way with norm 1. If
+continuation occurs starting not from the dump file, but from some
+other output file, then some strange computations have to be done to
+make sure that the revolution counters are reinitialised properly.
+Hopefully, all this will work automatically and it is difficult to
+make a mistake which actually results in a wrong output.
+
+The propagator-interpolator is described elsewhere (e.g. ``Orbit4''
+mathematical specifications, Milani 1992, Milani and Nobili 1988); in
+essence, it contains a symplectic single step method (implicit
+Runge-Kutta-Gauss) and a multistep predictor/corrector.  The output
+data are not really interpolated: if the output time is not a multiple
+of the stepsize, a short step is performed with the single-step
+method. Thus the filter input interval "dt/isamp" should be a multiple
+of "h" for optimum performance, and an interpolator should be added
+for dense output; if the automatic selection of the stepsize is
+enabled, "h" is automatically selected as a submultiple of the filter
+input interval.  This version (see 'propin9.f'}) has anyway to be
+considered a temporary one, to be replaced by a more user friendly and
+reliable one.
+
+3. Output
+
+The main choices involved in the design of the output are: the
+coodinate type, system, and reference; the filter decimation; and the
+most critical parameter of them all, the quantity of output.
+
+The choices of coordynate types and systems are described in the
+comment on top of 'coord.f90'; at present, you can get output in
+cartesian coordinates (CAR), keplerian elements (KEP) and equinoctal
+non singular elements (EQU), the latter as defined by Broucke and
+Cefola (1982).  Parabolic and hyperbolic elements are not currently
+supported.  To add a new option, modify subroutine 'coocha' in
+suit/orb_els.f90.  The coordinate systems available are currently
+heliocentric (HEL), jacobian (JAC), barycentric (BAR) and heliocentric
+canonical (HEC).  The reference systems are mean ecliptic of B1950.0
+(ECLM50), mean equator of B1950.0 (EQUM50), mean equator of J2000.0
+(EQUM00), mean ecliptic of J2000.0 (ECLM00), invariable plane of the
+outer solar system according to LONGSTOP 1B (INVL1B); in the first
+four cases, the x axis is defined by the corresponding mean gamma
+point.  New reference systems can be added by modifying subroutine
+'refer' in 'coord.f90'.  There is also a choice for the units to be used
+for the angle variables, between radiants (RAD), degrees (DEG) and
+revolutions (REV).  Warning: these units also apply to the inclination
+in keplerian variables, although the inclination is not an angle
+variable.
+
+Not all these choices are available directly in the Orbit9 output,
+which is always EQU RAD; the output has to be converted by running
+Conv9.  The options for Conv9 can be provided in the file <conv9.inp>,
+as well as interactively; the result is either a single file or a
+number of files, each containing the data on one or more orbits, with
+or without header, and in the required coordinate system, reference
+system, etc.
+
+On the contrary, digital filtering has to be performed on line,
+because post-filtering of the output (e.g. from within Giffv) does
+not produce the same effect.  To understand this fully, you should
+read the filtering manual which is in the 'doc' directory and/or
+Carpino, Milani and Nobili (1987).  In short, the filter is capable of
+removing the oscillations with periods between "2*dt/isamp" and
+"2*dt", but may not remove the ones with periods shorter than 
+"2*dt/isamp"; some of these, as a result of sampling with interval 
+"dt/isamp", can generate aliases with comparatively long periods, which
+could well escape the filtering.  To make all this understandable by
+the novice user, let us take an example: suppose that "dt=100" and
+"isamp=100"; then an oscillation with a period of 1.001 years,
+sampled at 1 year interval, will appear at the filter input as an
+oscillation with a period of 1,000 years, and it will be preserved in
+the output.  To correctly filter out the short period effects, we need
+on the contrary to make sure that no significant effect occurs with a
+period shorter than 2 years, or at least not with periods close to 1
+year, 1/2 year, 1/3 year, etc.
+
+Another pitifall of digital filtering is avoided by remembering that
+any nonlinear transformation changes the spectrum of a function; as a
+simple example, if the equinoctal variables $h,k$ contain the
+frequencies $g_5, g_6, g_7, ...$, the eccentricity $e=\sqrt{h^2+k^2}$
+contains the difference of frequencies $g_5-g_6, g_5-g_7, g_6-g_7,
+....$ As long as all these are slow frequencies, there is no problem;
+however, the difference of two fast frequencies can be a slow
+frequency, thus filtering $e$ and filtering $h,k$ does not give the
+same result; in Orbit9 the filter is always applied to the equinoctal
+elements.  Another example of this can be obtained by filtering the
+orbital elements in jacobian coordinates, then converting them to
+heliocentric coordinates: in the filtered jacobian output the short
+periodic perturbations are removed, but in the heliocentric
+transformation they appear again, because it is the transformation
+between jacobian and heliocentric coordinates which contains most of
+the short periodic effects (mostly through the motion of the Sun).
+
+Thus you need to decide before performing a long integration which
+coordinate system is going to be used in the analysis of the output,
+which is the range of short periodic perturbations which you want to
+remove by filtering, and which is the band of interest, that is, which
+frequencies have to be preserved.  This is needed not only for the
+filter, but also for the determination of frequencies and to maintain
+the revolution counters.  As an example, if the output is transformed
+in keplerian coordinates, the number of revolutions of the perihelion
+and of the node can be computed correctly if and only if these two
+angles never change by more than $pi$ in the interval "dt".  If
+this is done correctly, then the frequency of the perihelion can be
+obtained by a linear fit (a menu choice in Giffv); otherwise there
+could be a significant problem in reconstructing the frequency.  Thus
+the filter output interval must be longer than the longest short
+period to be removed and shorter than half the shortest long period to
+be studied.  As an example, "isamp=50" and "dt=50" is good for
+the orbit of a Trojan asteroid computed without the inner planets (but
+do not forget the barycentric correction!) because the oscillations
+with period close to the libration period (~ 150 years) are
+preserved and the short periodic perturbations with periods of the
+order of 1 year are negligible. However, the other constraint, that is
+the size of the output, has to be taken into account, since an
+integration for 1 million years with the above parameters results in
+20,001 output data points and roughly 4 Megabytes per asteroid.
+
+In practice, not even we are able to make all these choices right at the
+first attempt; given a dynamical problem, some test integrations and
+their analysis (e.g. with Giffv) are required to understand the basic
+spectrum and to choose the parameters for a longer integration.
+
+4. Postprocessing
+
+This section should contain a description of Giffv, Mtrap, Ramos,
+Longit; also explanations on Filgen, Gausscoe, TeXfor would be useful.
+
+It is not clear when I will have time to write all this.
+
+
+A. STATEMENTS
+
+1. This is free software, which can be copied and distributed by
+anyone interested, but cannot be sold and cannot be incorporated into
+commercial products. The copyright notice, containing the Free
+Software Foundation standard notice, must not be removed from any
+copy.
+
+2. This software has been developed by A. Milani, who has in turn
+incorporated some free software developed by other people, mostly by
+M. Carpino (Astronomical Observatory, Milano/Brera). The author cannot
+take any responsability for the performance of this software, nor for
+its upgrade; the software maintenance of these codes must result from
+the collaboration of the users, who are kindly requested to report any
+error and/or limitation not already described here.
+
+3.  This software can be modified by the users at their own risk.  The
+best effort has been done to make this not too difficult. We give here
+an example: suppose you want to manufacture a program to compute the
+orbits of the satellites of Saturn.  Then you should 1) modify the
+right hand side of the differenctial equations (file 'fct9.f') to add
+the zonal harmonics of Saturn gravitational field; the latter will
+depend upon some parameters, called e.g. $pj2, pj4$.  2) modify the
+common contained in 'commas.h' by adding $pj2, pj4$. 3) modify the
+routines 'reamas, wrimas' in such a way that they also handle $pj2,
+pj4$ in input and output; there you can also change the choice of the
+units, by replacing Gauss constant $gk$ with something else. 4) add
+new options to 'refer' in 'coord.f90' to be able to refer the results to
+the planet's equatorial plane. 5) prepare suitable initial conditions
+files, in which the so called planets file will contain also the
+initial conditions for the more massive satellites, the so called
+asteroid file will contain the initial conditions for the small
+satellites; the inverse mass of Saturn must replace the inverse mass
+of the Sun, and the mass of the Sun will appear as the mass of a
+perturbing body.  All this might appear complicated, but starting from
+scratch and writing all your own software is more complicated
+(although it is an instructive exercice).
+

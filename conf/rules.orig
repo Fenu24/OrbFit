@@ -1,0 +1,9 @@
+
+# Implicit rule for compiling .f90 files
+.SUFFIXES: .f90
+
+%.o : %.mod
+
+.f90.o:
+	$(FC) $(FFLAGS) -c $*.f90 -o $*.o 
+

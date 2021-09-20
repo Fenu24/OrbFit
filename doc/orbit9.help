@@ -1,0 +1,26 @@
+Assuming that you have downloaded, installed and tested Orbit9
+numerical integrator, as described in the corresponding README.orbit9
+file (click on "Usage" on "Orbit9" menu, or click on "Orbit9"
+item of "Add-on's" selection on "General" menu), you can now use it
+either from '/somewhere/orb40/tests/orbit9' subdirectory (where all
+the necessary links to executables and the other software are already
+provided), or from any other directory outside Orbfit. In the latter
+case, you should set the appropriate links to the executables and to
+the graphical interface:
+
+% ln -s /somewhere/orb40/tests/orbit9/orbit9
+% ln -s /somewhere/orb40/doc/OrbFitSoft
+% ln -s /somewhere/orb40/src/include/doclib.h90
+
+Note that in the above './tests/orbit9' subdirectory there are links
+to two versions of the executable: orbit9e.x and orbit9f.x, and that
+the generic link orbit9 points to the former (default) version. The
+difference between the two is due to effects of the J2 of the Sun and
+to the relativistic correction accounted for in the "d" version.
+
+To use the graphical interface just invoke it by typing 'OrbFitSoft'
+on the command line, and select ORBIT9. The new window will pop-up
+which enables you to set the options, run the program and control its
+execution. It has its own HELP facility, and we recommend you to read
+the instructions provided there in order to use the integrator in a
+correct and efficient manner.

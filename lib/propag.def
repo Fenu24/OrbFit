@@ -1,0 +1,92 @@
+! input options for propagator library, including force model
+!   and numerical integrator options
+propag.
+.output_des=.false. ! to output DES format, .rwo format if false
+.ab_mag=.false.     ! are magnitudes as reported AB magnitudes?
+
+! input options for phisical model! version 1.2 of propagator
+.iast=0             ! 0=no asteroids with mass, n=no. of massive asteroids 
+.ilun=0             ! 0=no moon 1= yes 
+.imerc=1            ! 0=no mercury 1=yes (recommended =1 for asteroids)
+.iplut=0            ! 0=no pluto 1=yes (recommended  0 for asteroids, 1 for Transneptunian)
+.irel=0             ! 0=newtonian 1=gen. relativity 
+.filbe='CPV'        ! name of the asteroid ephemerides file
+
+! Non - gravitational perturbations
+.ngr_opt=.FALSE.    ! non-grav options read from orbit file (TRUE from option file)
+.iyark=0            ! 0=no nograv forces, 1=Yarkovsky
+.det_drp=0          ! how many parameters to solve: 0=none 1=drpa2m 2=dadt 3=both
+.ipa2m=0            ! direct radiation pressure activation
+.drpa2m=0.d0        ! coefficient used in direct radiation pressure,
+                    ! units m^2/ton (1 km=0.001 for density 1.5)
+.A2=0.d0            ! no secular perturbation due to nongrav
+.yark_exp=2.d0      ! A2/r^yark_exp model
+.det_outgas=0       ! outgassing parameters determination 
+.ioutgas=0          ! 0=no nongrav. terms (comet formalism) 1= Symm. model, 2= Asymm. model
+.a1ng=0.d0          ! A1 term contribution (radial component)
+.a2ng=0.d0          ! A2 term contribution (trasvesal component)
+.a3ng=0.d0          ! A3 term contribution (orthogonal component)
+.dtdelay=0.d0       ! no Delta T delay for the asymmetric model
+.iyarpt=0           ! 0=no partials of Yarkovski force
+.yardir='.'         ! directory containing the physical data of all asteroids
+.sep_viol=.false.   ! violation of SEP
+.eta_sep=0.d0       ! amount of violation of SEP, eta (assuming Omega0=-3.52d-6)
+
+!close approaches controls 
+.iclap=1            ! 0=no close approach control 1=yes 
+.iaber=1            ! aberration 0=no 1=yes (recommended 1 always)
+.istat=1            ! 0=no topocentric corr 1= yes (recommended 1 always)
+
+! choice of numerical integration method
+.imet=0           ! 0=smart choice 1=multistep 2=rkimpl 3=Everhart
+
+! input options for numerical integrator (do not change unless you know)
+.deltos=1.d-9     ! must be smaller than the accuracy of observation time
+
+! for multistep
+.error=1.d-13     ! target truncation error (radians/revolution^2)
+.iord=8           ! order of multistep predictor
+.hms=10.d0        ! maximum step for multistep, also initial step for ra15 
+.hmax_me=6.d0     ! maximum step for multistep in case there is Mercury 
+.epms= 1.0d-12    ! convergence control for corrector; if .le.0, no corrector
+
+! for RKG starter
+.iork= 8          ! order of starter
+.eprk= 1.00d-10   ! convergence control for RKG
+.lit1= 10         ! iterations for first step RKG
+.lit2= 4          ! iterations for following steps RKG
+
+! for Radau
+.llev=12          ! control for Everhart method convergence at 10^-llev
+.hev=10.d0        ! Everhart's method: initial (maximum) step
+.eprk_r=1.0d-10   ! convergence control for Radau
+.lit1_r=10        ! iterations for first step Radau
+.lit2_r=4         ! iterations for following steps Radau
+.lit1_rc=10       ! iterations for first step Radau
+.lit2_rc=10       ! iterations for following steps Radau
+
+! RKG used to find closest approach
+.eprk_c=1.00d-8   ! convergence control for implicit RK during close approach
+.lit1_c=10        ! iterations for single step during close approach (RKG)
+
+! numerical convergence controls
+.iusci=0          ! output of numerical convergence controls 0 no
+
+! parameters relatives to compression of close-approach records
+.npoint=100       ! minimum number of data points for a deep close appr
+.dmea=0.1d0       ! min. distance for control of close-app. to the Earth only
+.dmoon=0.d0       ! min. distance for control of close-app. to the moon
+.dmjup=0.7d0      ! min. distance for control of close-app. to giant planets
+.dmast=0.02d0     ! min. distance for control of close-app. to massive asteroids
+.dter=0.1d0       ! min. distance for control close-app. to Mercury,Venus and Mars 
+
+! options applicable only to satellite case
+.ites=4           ! max harmonic degree
+.irad=0           ! radiation pressure 1=spher.sat 2=sec. accel 3=both
+.amrat=0.d0       ! A/M x C_R coefficient of radiation pressure (m^2/kg) 
+.amratsec=0.d0    ! A/M x C_R coefficient of secular acceleration (m^2/kg) 
+.itide=0          ! tidal perturbation 1=k2 no lag
+.ipla=2           ! 0=2-body 2=Sun+Moon
+
+! option for time conversion (SOFA)
+.sofa_tdb=.F.     ! true for SOFA conversion of TDT<->TDB (def=.F.)

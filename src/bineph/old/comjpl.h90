@@ -1,0 +1,5 @@
+! Masses of JPL planets (DE403)
+      INTEGER nbj,jplid
+      DOUBLE PRECISION gmj
+      COMMON/cmjpl1/nbj,jplid(nbjx)
+      COMMON/cmjpl2/gmj(nbjx)

@@ -1,0 +1,9 @@
+! Copyright (C) 1999 by Mario Carpino (carpino@brera.mi.astro.it)
+! Version: November 22, 1999
+! ---------------------------------------------------------------------
+! Max number of classes and dimension of indexes
+      INTEGER ncrmx,crx1nx,crx2nx,crx3nx
+      PARAMETER (ncrmx=10000)
+      PARAMETER (crx1nx=30)
+      PARAMETER (crx2nx=500)
+      PARAMETER (crx3nx=2000)

@@ -1,0 +1,383 @@
+angcou.f90:subroutine numrev(y,nast,x,ng,yold,ngold,coox,cooy) 
+angcou.f90: END subroutine numrev
+angcou.f90: subroutine predicl(pl,ngi,tout,enne,ngip) 
+angcou.f90: END subroutine predicl
+angcou.f90: integer function iround(x) 
+angcou.f90: END function iround
+angcou.f90: subroutine prngup(ang,vang,ng) 
+angcou.f90:  END subroutine prngup
+char_string.f90:MODULE char_string
+char_string.f90:CONTAINS
+char_string.f90:SUBROUTINE remove_spaces(string,length)
+char_string.f90:END SUBROUTINE remove_spaces
+char_string.f90:FUNCTION lench(string)
+char_string.f90:END FUNCTION lench
+char_string.f90:FUNCTION normal_string(string)
+char_string.f90:END FUNCTION normal_string
+char_string.f90:SUBROUTINE get_string_content(string,content,rest,error)
+char_string.f90:END SUBROUTINE get_string_content
+char_string.f90:SUBROUTINE cut_string(string,separator,first_piece,rest)
+char_string.f90:END SUBROUTINE cut_string
+char_string.f90:END MODULE char_string
+controlmod.f90:MODULE controlmod
+controlmod.f90:END MODULE controlmod
+conv9.f90:PROGRAM conv9 
+conv9.f90:  END PROGRAM conv9
+conv9.f90:  SUBROUTINE forma(isup,iall,coo,form,form1,nact,nang)
+conv9.f90: END SUBROUTINE forma
+coord.f90:SUBROUTINE masses(gm,nbod,pmu,rm,rmt,sm,smp) 
+coord.f90: END SUBROUTINE masses
+coord.f90: SUBROUTINE coord(x,sysx,nbod,coox,refx,y,sysy,cooy,refy,enne,bar) 
+coord.f90:  END SUBROUTINE coord
+coord.f90:  SUBROUTINE cooast(x,sysx,nast,coox,refx,bar,nbod,y,sysy,cooy,     &
+coord.f90:  END SUBROUTINE cooast
+coord.f90:  SUBROUTINE coosys(x,coox,refx,nbod,pmu,rm,rmt,cooy,refy,y,b) 
+coord.f90:  END SUBROUTINE coosys
+coord.f90:SUBROUTINE wrimas(iun,nbod) 
+coord.f90:END SUBROUTINE wrimas
+coord.f90:SUBROUTINE reamas(iun,nbod,ibar,pm,npin) 
+coord.f90:END SUBROUTINE reamas
+coord.f90: SUBROUTINE refer(x,nn,refx,y,refy)
+coord.f90: END SUBROUTINE refer
+coord.f90:SUBROUTINE rotyz(x,y,theta) 
+coord.f90:END SUBROUTINE rotyz
+coostd.f90:SUBROUTINE coostp(coox,sysx,refx,nbod,xp,ngp,                     &
+coostd.f90:END SUBROUTINE coostp
+coostd.f90:SUBROUTINE coosta(coox,sysx,refx,nast,xa,nga,                     &
+coostd.f90:END SUBROUTINE coosta
+datinp.f90:      SUBROUTINE datinp (nast, ifo, iast, nia, ilce, sv, tv, nco, nin,  &
+datinp.f90:      END SUBROUTINE datinp                         
+datinp.f90:      SUBROUTINE convun_giff (unitx, unity, uconv, urev,error) 
+datinp.f90:      END SUBROUTINE convun_giff                         
+datinp.f90:      SUBROUTINE jobinv (inter, nast, imas, ifo, number, iast, nia,     &
+datinp.f90:      END SUBROUTINE jobinv                         
+epsi.f90:SUBROUTINE epsi(npla,el,enne) 
+epsi.f90:END SUBROUTINE epsi
+fir_filters.f90:MODULE fir_filters
+fir_filters.f90:CONTAINS
+fir_filters.f90:  SUBROUTINE filter(timin,datin,ndat,nskip,fstep,timout,datout,outdat)
+fir_filters.f90:  END SUBROUTINE filter
+fir_filters.f90:  SUBROUTINE filter2(timin,datin,ndat,nskip2,fstep,timout,datout,outdat)
+fir_filters.f90:  END SUBROUTINE filter2
+fir_filters.f90:  SUBROUTINE filope(nsamp1,ifilt)
+fir_filters.f90:          WRITE (*,*)' filter coeff.file  ',filfil,'  contains  ',nsamp
+fir_filters.f90:          WRITE (*,*)' filter coeff.file  ',filfil,'  contains  ',nsamp2
+fir_filters.f90:  END SUBROUTINE filope
+fir_filters.f90:  SUBROUTINE filter_skip(nskip,nskipa)
+fir_filters.f90:  END SUBROUTINE filter_skip
+fir_filters.f90:  SUBROUTINE legfil(iun)
+fir_filters.f90:  END SUBROUTINE legfil
+fir_filters.f90:  SUBROUTINE legfil2(iun)
+fir_filters.f90:  END SUBROUTINE legfil2
+fir_filters.f90:  SUBROUTINE filtan(timin,radin,nrin,ndat,nskip,fstep,  &
+fir_filters.f90:  END SUBROUTINE filtan
+fir_filters.f90:  SUBROUTINE filtan2(timin,radin,nrin,ndat,nskip2,fstep, &
+fir_filters.f90:  END SUBROUTINE filtan2
+fir_filters.f90:END MODULE fir_filters
+giffan.f90:      SUBROUTINE peri2 (t, yy, n, per, sp, itest, d0, d1, d2)
+giffan.f90:      END SUBROUTINE peri2                          
+giffan.f90:      SUBROUTINE peri1 (t, yy, n, per, sp, itest, d0, d1, d2) 
+giffan.f90:      END SUBROUTINE peri1                          
+giffv.f90:      PROGRAM giff 
+giffv.f90:      END PROGRAM giff                              
+giffv.f90:      SUBROUTINE argsel (nin, nn, nx, nco, x, sv, crit, y, isel, uniy)
+giffv.f90:      END SUBROUTINE argsel                         
+giffv.f90:      SUBROUTINE timsel (nin, tv, x, isel, nn) 
+giffv.f90:      END SUBROUTINE timsel                         
+giffv.f90:      SUBROUTINE traori (iav, crit, y, s, nn) 
+giffv.f90:      END SUBROUTINE traori                         
+gridsel.f90:SUBROUTINE gridsel(ngrid,ita,aa0,deltaa,ite,e0,delte,iti,aai0,delti,aw,ao)
+gridsel.f90:END SUBROUTINE gridsel
+headio.f90:subroutine reahea(iun,numbin,commen,colhea,coo,sys,ref,           &
+headio.f90:END subroutine reahea
+headio.f90:subroutine wrihea(iun,numbin,commen,colhea,                       &
+headio.f90:END subroutine wrihea
+headio.f90:subroutine askhea(numbin,commen,colhea,coox,                      &
+headio.f90:END subroutine askhea
+headio.f90:subroutine asksys(cooy,sysy,refy,uniy) 
+headio.f90:END subroutine asksys
+headio.f90:subroutine radiant(x,coo,unit,dpig) 
+headio.f90:END subroutine radiant
+headio.f90:subroutine radang(x,n,coo,unit,dpig) 
+headio.f90:END subroutine radang
+headio.f90:subroutine unrad(x,n,coo,unit,dpig) 
+headio.f90:END subroutine unrad
+headio.f90:integer function numang(coo) 
+headio.f90:END function numang
+headio.f90:integer function numact(coo) 
+headio.f90:END function numact
+inbaric.f90:PROGRAM inbaric 
+inbaric.f90:END PROGRAM inbaric
+inbarmerc.f90:PROGRAM inbarmerc 
+inbarmerc.f90:END PROGRAM inbarmerc
+inptro.f90:SUBROUTINE inptro(iun,t,el,nt,nbeg,naout,nax,number,jcon)
+inptro.f90:END SUBROUTINE inptro
+inptwoway.f90:SUBROUTINE inptwoway(iun1,iun2,t,el,nt,nbeg,naout,nax,    &
+inptwoway.f90:END SUBROUTINE inptwoway
+input9.f90:SUBROUTINE inpo9(dt,nout,idump,iprqua,                      &
+input9.f90:END SUBROUTINE inpo9
+input9t.f90:SUBROUTINE inpo9t(dt,nout,njump,njump2,idump,              &
+input9t.f90:END SUBROUTINE inpo9t
+inte8.f90:SUBROUTINE inte8(ive,yya,yyb,xi,et,al,aa,g0,s0,                   &
+inte8.f90:END SUBROUTINE inte8
+inte8.f90:SUBROUTINE iterat(yya,yyb,xi,et,al,aa,                            &
+inte8.f90: END SUBROUTINE iterat
+integr9.f90:subroutine euler(el,pel,nam0,tt,inp,h,em,iqc,iun21) 
+integr9.f90:END subroutine euler
+integr9.f90:subroutine rkg2ai(el,pel,nam0,tt,inp,h,em,iqc,it,delta,iun21) 
+integr9.f90:END subroutine rkg2ai
+integr9.f90:subroutine rkg2(el,pel,nam0,tt,inp,h,itmax,epsdel,em,iqc,      &
+integr9.f90:END subroutine rkg2
+integr9.f90:subroutine rk2(el,pel,nam0,tt,inp,h,em,iqc,ierr,iun21) 
+integr9.f90:END subroutine rk2
+integr9.f90:subroutine revers(elz,el,pel,nam0,tt,inp,h,itmax,epsdel,       &
+integr9.f90:END subroutine revers
+integr9.f90:subroutine rkg4(el,pel,nam0,tt,inp,h,itmax,epsdel,em,iqc,      &
+integr9.f90:END subroutine rkg4
+iolon9.f90:SUBROUTINE outpro(inp,t,nam0,aa,pre,prsini,gsy,ssy,iqce,          &
+iolon9.f90:END SUBROUTINE outpro
+iolon9.f90:SUBROUTINE inpfil(iun,tt,em,eof) 
+iolon9.f90:END SUBROUTINE inpfil
+iolon9.f90:SUBROUTINE openfi(inp,t0,filast,filfil,filpro,filpla,filbar       &
+iolon9.f90:END SUBROUTINE openfi
+iolon9.f90:SUBROUTINE selout(inp,t,nam0,                                     &
+iolon9.f90:END SUBROUTINE selout
+iolon9.f90:SUBROUTINE elems8(rho,ani,ami,api,ate,pre,prsini,idisc) 
+iolon9.f90:END SUBROUTINE elems8
+iosho.f90:SUBROUTINE iosho(kr,inp,iun8,iun7,iun17,nam0,t0,tt,el,pel,        &
+iosho.f90:END SUBROUTINE iosho
+jobinp9.f90:SUBROUTINE jobinp(inter,nast,imas,nbod,ifo,number,iast,nia,coox,  &
+jobinp9.f90:END SUBROUTINE jobinp
+kepdel.f90:SUBROUTINE kepdel(el,del)
+kepdel.f90:END SUBROUTINE kepdel
+kepdel.f90:SUBROUTINE delkep(del,el) 
+kepdel.f90:END SUBROUTINE delkep
+keppoinc.f90:SUBROUTINE keppoinc(em,ap0,aq0,ar0,as0,al,a,aa,aunit,sm) 
+keppoinc.f90:END SUBROUTINE keppoinc
+lcder.f90:SUBROUTINE lcder(a,np,excrit,b1,b2,b3,b4,b5,c1,c2,c3,e1) 
+lcder.f90:END SUBROUTINE lcder
+lcder.f90:SUBROUTINE deriv(s,j,dv,alpha,excrit,ider) 
+lcder.f90:END SUBROUTINE deriv
+lcder.f90:SUBROUTINE lapco (a,np,excrit,b,b1,b2,b3,b4,b5,c,c1,c2,c3,e,e1) 
+lcder.f90:END SUBROUTINE lapco
+lcder.f90:SUBROUTINE lc(a,np,excrit,b,c,e) 
+lcder.f90:END SUBROUTINE lc
+lcder.f90:SUBROUTINE lap(s,j,alpha,excrit,v) 
+lcder.f90:END SUBROUTINE lap
+lcder.f90:SUBROUTINE levco(i,b,b1,b2,b3,b4,c,c1,c2,e,a,pai,cl) 
+lcder.f90:END SUBROUTINE levco
+lcder.f90:INTEGER FUNCTION nalfa(a) 
+lcder.f90:END FUNCTION nalfa
+lly76s.f90:SUBROUTINE llyco(a,pa,an,pn,sm,ya,yb,pm,iord)
+lly76s.f90:END SUBROUTINE llyco
+lly76s.f90:SUBROUTINE lly(aa,a,apr,sa,sm,an,pn,np,ya,yb,pm,io)
+lly76s.f90:END SUBROUTINE lly
+lly76s.f90:SUBROUTINE lclong(a,np,b,c,e) 
+lly76s.f90:END SUBROUTINE lclong
+lly76s.f90:SUBROUTINE laplon(s,j,alpha,v) 
+lly76s.f90:END SUBROUTINE laplon
+lly76s.f90:SUBROUTINE lcderlon(a,np,b1,b2,b3,b4,c1,c2) 
+lly76s.f90:END SUBROUTINE lcderlon
+lly76s.f90:SUBROUTINE derivlon(s,j,dv,alpha,ider)
+lly76s.f90:END SUBROUTINE derivlon
+long9.f90:SUBROUTINE long9(em,nam0,tt,t0,inp,                               &
+long9.f90:END SUBROUTINE long9
+magn.f90:PROGRAM magn
+magn.f90:END PROGRAM magn
+merg.f90:PROGRAM merg
+merg.f90:END PROGRAM merg
+mergt.f90:PROGRAM mergt
+mergt.f90:END PROGRAM mergt
+opt9.f90:SUBROUTINE lonopt(inp,ive)
+opt9.f90:END SUBROUTINE lonopt
+opt9.f90:SUBROUTINE select(inp,aa,pre,prsini,gsy,ssy,iqce,iqcf,iqcm,discard)
+opt9.f90:END SUBROUTINE select
+orbit9.f90:PROGRAM orbit9 
+orbit9.f90:END PROGRAM orbit9
+orbit9t.f90:PROGRAM orbit9t
+orbit9t.f90:END PROGRAM orbit9t
+orbit9t.f90:SUBROUTINE sumper(the,y,swy,swc,swc2,sws,sws2,swcs,swcy,swsy,swy2) 
+orbit9t.f90:END SUBROUTINE sumper
+orbit9t.f90:SUBROUTINE sumzer(swy,swc,swc2,sws,sws2,swcs,swcy,swsy,swy2) 
+orbit9t.f90:END SUBROUTINE sumzer
+orbselect.f90:PROGRAM orbselect 
+orbselect.f90:END PROGRAM orbselect
+outsubt.f90:SUBROUTINE outsubt(ip,ia,tf,eqf,angf,ngf,ncof,nangf,na,nvz,fform)
+outsubt.f90:  END SUBROUTINE outsubt
+outsubv.f90:SUBROUTINE outsub(ip,ia,tf,eqf,angf,ngf,ncof,                     &
+outsubv.f90:  END SUBROUTINE outsub
+parameters_giff.f90:MODULE parameters_giff
+parameters_giff.f90:END MODULE parameters_giff
+plotgnu.f90:      SUBROUTINE plotcr (xd, yd, n, xlab, ylab, title, idev, istyle)
+plotgnu.f90:      END SUBROUTINE plotcr                         
+plotgnu.f90:      SUBROUTINE ploflu (idev) 
+plotgnu.f90:      END SUBROUTINE ploflu                         
+plotgnu.f90:      SUBROUTINE newpag (idev, ipag) 
+plotgnu.f90:      END SUBROUTINE newpag                         
+plotgnu.f90:      SUBROUTINE grafcl (idev) 
+plotgnu.f90:      END SUBROUTINE grafcl                         
+plotgnu.f90:      SUBROUTINE grafin (idev) 
+plotgnu.f90:      END SUBROUTINE grafin                         
+prompting.f90:module prompting
+prompting.f90:      module procedure &
+prompting.f90:contains
+prompting.f90:   recursive subroutine integer_prompt(text, value, min, max)
+prompting.f90:   end subroutine integer_prompt
+prompting.f90:   recursive subroutine real_prompt(text, value, min, max)
+prompting.f90:   end subroutine real_prompt
+prompting.f90:   recursive subroutine double_prompt(text, value, min, max)
+prompting.f90:   end subroutine double_prompt
+prompting.f90:   recursive subroutine logical_prompt(text, lvalue, default)
+prompting.f90:   end subroutine logical_prompt
+prompting.f90:   subroutine string_prompt(text, string, length, case)
+prompting.f90:   end subroutine string_prompt
+prompting.f90:end module prompting
+prop9.f90:PROGRAM prop9
+prop9.f90:END PROGRAM prop9
+prop_class.f90:PROGRAM prop_class
+prop_class.f90:END PROGRAM prop_class
+prop_tax.f90:PROGRAM prop_tax
+prop_tax.f90:END PROGRAM prop_tax
+propasub.f90:SUBROUTINE secth(g,s,aj) 
+propasub.f90:END SUBROUTINE secth
+propasub.f90:SUBROUTINE propa(sy,sc,sc2,ss,ss2,scs,scy,ssy,sy2,nt,             &
+propasub.f90:END SUBROUTINE propa
+propasub.f90:SUBROUTINE ferraz(nt,swy,swc,swc2,sws,sws2,swcs,swcy,swsy,swy2,   &
+propasub.f90:END SUBROUTINE ferraz
+propel_mod.f90:MODULE propel_mod
+propel_mod.f90:CONTAINS
+propel_mod.f90: SUBROUTINE input_families(iun,err_line)
+propel_mod.f90:END SUBROUTINE input_families
+propel_mod.f90: SUBROUTINE input_propels(iun,npr,err_line)
+propel_mod.f90: END SUBROUTINE input_propels
+propel_mod.f90:  SUBROUTINE taxostep(ii,pro,nam0,hmag,d_max,n1)
+propel_mod.f90:  CONTAINS
+propel_mod.f90:  SUBROUTINE scan_list(forward)
+propel_mod.f90:  END SUBROUTINE scan_list
+propel_mod.f90:END SUBROUTINE taxostep
+propel_mod.f90:END MODULE propel_mod
+propert.f90:PROGRAM propert 
+propert.f90:CONTAINS
+propert.f90: SUBROUTINE inptro(iun,nt,na)
+propert.f90:END SUBROUTINE inptro
+propert.f90:END PROGRAM propert
+propsyntbig.f90:PROGRAM propsynt 
+propsyntbig.f90: END PROGRAM propsynt
+propsyntwo.f90:PROGRAM propsynt 
+propsyntwo.f90:END PROGRAM propsynt
+purge.f90:        program purge 
+purge.f90:      END program purge
+reacat9.f90:SUBROUTINE reacat(iprqua,sysz,refz,coox,sysx,refx,t0a,t1,xa,nfound)
+reacat9.f90:END SUBROUTINE reacat
+reaopt.f90:SUBROUTINE reaopt(iun,ibar,catalo,                                &
+reaopt.f90:END SUBROUTINE reaopt
+reaoptt.f90:SUBROUTINE reaoptt(iun,ibar,catalo,iprqua,                        &
+reaoptt.f90:END SUBROUTINE reaoptt
+reaout.f90:SUBROUTINE reaout(iprqua,sysz,refz,coox,sysx,refx,t0a,ta          &
+reaout.f90:END SUBROUTINE reaout
+reapla.f90:SUBROUTINE reapla(iunin,iunbar,iunou,ibar,iprqua,                 &
+reapla.f90:END SUBROUTINE reapla
+remove_spaces.f90:SUBROUTINE remove_spaces(string,length)
+remove_spaces.f90:END SUBROUTINE remove_spaces
+secre9.f90:PROGRAM secre8 
+secre9.f90: END PROGRAM secre8
+secthe8.f90:SUBROUTINE secthe(t,t0,pm,pa,pni,pg,pl,pmi,ps,pd,nnl,fnl,pninl,phanl)
+secthe8.f90:END SUBROUTINE secthe
+selext.f90:PROGRAM selext
+selext.f90:END PROGRAM selext
+selextt.f90:PROGRAM selextt
+selextt.f90:END PROGRAM selextt
+selre9.f90:SUBROUTINE selres(amp,de,da,ipas,irfl,irfl2,conv,ires,       &
+selre9.f90:END SUBROUTINE selres
+selre9.f90:SUBROUTINE fmaxi(a,i1,i2,de,conv,divm,j1,jx,ax) 
+selre9.f90:END SUBROUTINE fmaxi
+selre9.f90:SUBROUTINE denom (g,s,pg,ps,de,nde,inl) 
+selre9.f90:END SUBROUTINE denom
+short9.f90:MODULE short9
+short9.f90:CONTAINS
+short9.f90:SUBROUTINE short(el,pel,nam0,tt,inp,em,iqc,it,delta,ierr,        &
+short9.f90:END SUBROUTINE short
+short9.f90:subroutine euler(el,pel,nam0,tt,inp,h,em,iqc,iun21) 
+short9.f90:END subroutine euler
+short9.f90:subroutine rkg2ai(el,pel,nam0,tt,inp,h,em,iqc,it,delta,iun21) 
+short9.f90:END subroutine rkg2ai
+short9.f90:subroutine rkg2(el,pel,nam0,tt,inp,h,itmax,epsdel,em,iqc,      &
+short9.f90:END subroutine rkg2
+short9.f90:subroutine rk2(el,pel,nam0,tt,inp,h,em,iqc,ierr,iun21) 
+short9.f90:END subroutine rk2
+short9.f90:subroutine revers(elz,el,pel,nam0,tt,inp,h,itmax,epsdel,       &
+short9.f90:END subroutine revers
+short9.f90:subroutine rkg4(el,pel,nam0,tt,inp,h,itmax,epsdel,em,iqc,      &
+short9.f90:END subroutine rkg4
+short9.f90:SUBROUTINE iniham 
+short9.f90:END subroutine iniham
+short9.f90:SUBROUTINE dercor(dd,iqc,pel,el,inp,nam0,tt,iun21)
+short9.f90:END SUBROUTINE dercor
+short9.f90:END MODULE short9
+smallsubsn.f90:DOUBLE PRECISION FUNCTION sigma(x,n) 
+smallsubsn.f90:END FUNCTION sigma
+smallsubsn.f90:DOUBLE PRECISION FUNCTION sigmf(x,av,n) 
+smallsubsn.f90:END FUNCTION sigmf
+subdates.f90:SUBROUTINE datjm1(tjm,giorno,mese,anno,ora,cmese) 
+subdates.f90:END subroutine datjm1
+subs9.f90:SUBROUTINE convun(pm,pa,pg,ps,pn,aunit,tunit,pmunit, &
+subs9.f90:END SUBROUTINE convun
+subs9.f90:SUBROUTINE inplda(pa,pmv) 
+subs9.f90:END SUBROUTINE inplda
+subs9.f90:SUBROUTINE gsfour(pm,ya,yb,xi,et,pni,pmi,ani,ami,cg,cs,nplin,nplou)
+subs9.f90:END SUBROUTINE gsfour
+subs9.f90:SUBROUTINE g0s0(al,ya,pm,g0,s0,nplin,nplou) 
+subs9.f90:END SUBROUTINE g0s0
+subs9.f90:SUBROUTINE forcedgs(g0,s0,pg,ps,pm,pni,pmi,ya,al,xi,et,nplin,nplou)
+subs9.f90:END SUBROUTINE forcedgs
+subs9.f90:SUBROUTINE nlforc(nnl,pninl,xinl,nnlx,ya) 
+subs9.f90: END SUBROUTINE nlforc
+subs9.f90:SUBROUTINE propmo(ap,aq,ar,as,al                                  &
+subs9.f90:END SUBROUTINE propmo
+synthcomp.f90:MODULE synthcomp
+synthcomp.f90:CONTAINS
+synthcomp.f90:  SUBROUTINE parprt(inflag,ntx,nbb,nforc,ndap,nshi)
+synthcomp.f90:  END SUBROUTINE parprt
+synthcomp.f90:  SUBROUTINE dosemim(x,y,tf,ntf,proa,dproa,fra,dfra,ph,rmsph,devmax,iwri)
+synthcomp.f90:  END SUBROUTINE dosemim
+synthcomp.f90:  SUBROUTINE doinc(x,y,tf,ntf,sn,klis,pe,dpe,fre,dfre,ang,rms,iwri) 
+synthcomp.f90:  END SUBROUTINE doinc
+synthcomp.f90:  SUBROUTINE secth(g,s,aj,klisg,kliss) 
+synthcomp.f90:  END SUBROUTINE secth
+synthcomp.f90:  SUBROUTINE prop(tf,x,y,ntf,per,sp,amp,damp,ph,cost,sig) 
+synthcomp.f90:  END SUBROUTINE prop
+synthcomp.f90:  SUBROUTINE argum(x,y,tf,ntf,th,rate,per,rms,cost) 
+synthcomp.f90:  END SUBROUTINE argum
+synthcomp.f90:  SUBROUTINE forced(x,y,tf,ntf,gp,klist,fe,feph,fesp,feco,fed) 
+synthcomp.f90:  END SUBROUTINE forced
+synthcomp.f90:  DOUBLE PRECISION FUNCTION sigma(x,n) 
+synthcomp.f90:  END FUNCTION sigma
+synthcomp.f90:  DOUBLE PRECISION FUNCTION sigmf(x,av,n) 
+synthcomp.f90:  END FUNCTION sigmf
+synthcomp.f90:END MODULE synthcomp
+synthtro.f90:MODULE synthtro
+synthtro.f90:CONTAINS
+synthtro.f90:SUBROUTINE parprtt(inflag,nbb,ntt,ndap,nshi,isum,iste)
+synthtro.f90:END SUBROUTINE parprtt
+synthtro.f90:SUBROUTINE doinc(x,y,tf,ntf,sn,klis,pe,dpe,fre,dfre,iwri) 
+synthtro.f90:END SUBROUTINE doinc
+synthtro.f90:SUBROUTINE prop(tf,x,y,ntf,per,sp,amp,damp,ph,cost,sig) 
+synthtro.f90:END SUBROUTINE prop
+synthtro.f90:SUBROUTINE argum(x,y,tf,ntf,th,rate,per,rms,cost) 
+synthtro.f90:END SUBROUTINE argum
+synthtro.f90:SUBROUTINE forced(x,y,tf,ntf,gp,klist,fe,feph,fesp,feco,fed) 
+synthtro.f90:END SUBROUTINE forced
+synthtro.f90:END MODULE synthtro
+terms9.f90:MODULE terms9
+terms9.f90:CONTAINS
+terms9.f90:SUBROUTINE terms(al,r1,r2,s1,s2,n5,n6,m5,m6,x5,x6,e5,e6,          &
+terms9.f90: END SUBROUTINE terms
+terms9.f90: SUBROUTINE trigfu(l5,l6,d5,d6,sld,cld) 
+terms9.f90: END SUBROUTINE trigfu
+terms9.f90: SUBROUTINE rgener(iun)
+terms9.f90: END SUBROUTINE rgener
+terms9.f90:END MODULE terms9
+var_precision.f90:MODULE var_precision
+var_precision.f90:END MODULE var_precision
+vareqi.f90:SUBROUTINE vareqi(ilca,semim,jjin,xv,v0,v1,vvel,vpos,vslog,yv) 
+vareqi.f90:END SUBROUTINE vareqi

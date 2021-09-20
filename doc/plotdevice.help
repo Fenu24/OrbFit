@@ -1,0 +1,23 @@
+% help file, orbfit 2.0
+% this is the gnuplot device selection menu
+
+MENU PLOTDEVICE
+
+Select gnuplot output device:
+
+1 = X Windows (X11)
+2 = MS Windows
+3 = VGA
+4 = Tektronix
+5 = PostScript file (black & white)
+6 = PostScript file (color)
+7 = Pipe to PostScript printer ('|lpr')
+
+If the desired device is not listed you may edit the terminal command
+in the *.gnu file as desired. After making the desired changes
+generate the plot by typing "gnuplot gnufile.gnu" at the command line,
+where gnufile.gnu is the filename of the edited gnuplot command file.
+
+You must have the executable gnuplot program on your search path. See
+the ./doc/help.html for information on how to get gnuplot.
+

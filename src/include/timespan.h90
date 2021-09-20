@@ -1,0 +1,10 @@
+! extremes of time of jpleph
+! units: MJD
+      DOUBLE PRECISION tejpl1,tejpl2
+      COMMON/estjpl/tejpl1,tejpl2
+! boundaries of timespan where ET-UT data are available
+      DOUBLE PRECISION temut1,temut2
+      COMMON/estut1/temut1,temut2
+! allow extrapolation beyond boundaries
+      LOGICAL temute
+      COMMON/estut2/temute

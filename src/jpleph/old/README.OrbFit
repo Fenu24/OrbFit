@@ -1,0 +1,50 @@
+This directory is for creating binary format JPL Epemerides. We have
+provided at our download site binary files covering 1960-2020 for 
+Windows and 1970-2020 for Linux systems. (Point your web browser to
+http://newton.dm.unipi.it/orbfit/JPLEPH/) This time frame should be
+adequate for most uses. However if you need longer, you can use these
+makefiles to create your own as follows.
+
+
+1) Copy the necessary ASCII files into this directory. The files come
+in twenty year chunks and can be obtained from a CD-ROM
+(http://www.willbell.com) or via ftp from
+
+	ftp://ssd.jpl.nasa.gov/pub/eph/export/ascii
+
+To use the make (or batch) file as it is, you need to download the
+following files:
+
+		header.405
+		ascp1960.405
+		ascp1980.405
+		ascp2000.405
+		ascp2020.405
+	
+These files yield a binary file covering 1960 to 2040. If you need
+longer, simply copy the additional files, and then edit one of the
+following to include the additional files in the "input.405"
+file. (The files must be given in order!)
+
+	1) Under UNIX edit the "input" target in "Makefile".
+
+	2) Under WINDOWS with the Digital Visual Fortran compiler edit
+	   the target "winput" in "Makefile".
+
+	3) Under WINDOWS without the Digital Visual Fortran compiler
+	   edit the batch file winephem.bat.
+
+2) Now to actually create the binary file "jpleph" go to the src/jpleph
+directory and give one of the following commands.
+
+	1) Under UNIX use the command "make ephemerides"
+
+	2) Under WINDOWS with the Digital Visual Fortran compiler use
+	   the command "nmake winephem".
+
+	3) Under WINDOWS without the Digital Visual Fortran compiler
+	   use the command "winephem.bat".
+
+3) Now you should transfer the file jpleph to the lib/ directory.
+
+
