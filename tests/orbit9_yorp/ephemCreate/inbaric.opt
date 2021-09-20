@@ -1,0 +1,2 @@
+1    ! 0 = calendar date (day month year hour-of-the-day.fractions [0-24])   1 = MJD
+59200.0

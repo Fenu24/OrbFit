@@ -1,0 +1,12 @@
+format  = 'OEF2.0'       ! file format
+rectype = '1L'           ! record type (1L/ML)
+elem    = 'KEP'          ! type of orbital elements
+refsys  = ECLM J2000     ! default reference system
+END_OF_HEADER
+! Name, Epoch(MJD),    a,    e,      i,     long.    node,    arg. peric., mean anomaly, absolute magnitude, slope param, non-grav param
+clo0    59000.000000   3.1   0.01    1.0    0.0      0.0      0.0          0.0           24.0                0.0          0.0
+clo1    59000.000000   3.1   0.01    1.0    0.0      0.0      0.0          0.0           24.0                0.0          0.0
+clo2    59000.000000   3.1   0.01    1.0    0.0      0.0      0.0          0.0           24.0                0.0          0.0
+clo3    59000.000000   3.1   0.01    1.0    0.0      0.0      0.0          0.0           24.0                0.0          0.0
+clo4    59000.000000   3.1   0.01    1.0    0.0      0.0      0.0          0.0           24.0                0.0          0.0
+clo5    59000.000000   3.1   0.01    1.0    0.0      0.0      0.0          0.0           24.0                0.0          0.0
