@@ -1,0 +1,294 @@
+! The present file describes input options for program orbfit
+! (version 2.1.1)
+! Options are read from two different files:
+! 1) a default option file (../../lib/orbfit.def) which is read by any
+!    run;
+! 2) a specific option file <runname>.oop, which only by run <runname>
+! None of these files is mandatory; however, since there are some
+! options which must be defined, at least one of the two must exist.
+! Options contained in the default option file are default values
+! which can be overridden by a re-definition of the same keyword
+! in the specific option file.
+! Some of the keywords are optional (they do not need to be contianed in
+! any of the option files); in these cases, the DEFAULT value specified
+! refers to the program built-in default, and NOT to the default
+! possibly defined in file ../../lib/orbfit.def
+
+! OPTIONS RELATED TO THE FIRST OBJECT
+object1.
+
+! Object name: used for identification purposes and for composing the
+! names of some of the input and output files (if they are not given
+! explicitly: see below)
+	.name = <character string>
+! (OPTIONAL; the DEFAULT value is the name of the run with which the
+! program is started)
+
+! Name with which the object will be searched in the orbital element
+! (initial condition) file (OPTIONAL; DEFAULT: same as object1.name)
+! This option allows to play several tricks; for instance, have several
+! different runs (runnames) for the same object, or try initial
+! conditions of asteroid X on observations of object Y
+	.inc_name = <character string>
+
+! Name of the file where the program has to read astrometric
+! observations (only the basename, without the ".obs" extension).
+! (OPTIONAL; DEFAULT: the name specified by "object1.name", with
+! possible embedded blanks removed)
+	.obs_fname = <character string>
+
+! Name of the directory where observation file is located (and residual
+! file will be written)
+! (OPTIONAL; DEFAULT: './')
+	.obs_dir = <character string>
+
+! Name orbital elements files where initial conditions for the first
+! object are to be searched (OPTIONAL; DEFAULT: none). Files specified
+! here are scanned BEFORE the generic initial condition files listed
+! in input_files.incond
+	.inc_files = <character string>
+
+! OPTIONS RELATED TO THE FIRST OBJECT
+object2.
+
+! Program orbfit can handle two objects for the sake of trying
+! an identification; options for the second object are optional
+! (the keywords are the same as for the first object)
+
+! OPTIONS ASSIGNING INPUT FILES
+input_files.
+
+! Files containing initial conditions of the asteroid(s), in one of the
+! formats supported by ORBFIT:
+!    OEF   :  ORBFIT internal format
+!    BA    :  E. Bowell's astorb.dat format
+!    MPC-A :  format used for asteroid orbits at the Minor Planet Center
+! More than one file can be specified
+! This keyword is OPTIONAL; if it is not specified, the program looks
+! (in order) for a file <objname>.ele and for a file astorb.dat.
+! The search for the initial condition is sequential (within a file and
+! through different files); the first valid match is used without any
+! further search
+	.incond = <character string>
+! Usually the program should be able to detect automatically the format
+! of the file: it is however possible to specify explicitly the format
+! by adding its codename at the end of the filename (enclosed within
+! square brackets, with no embedded blank); for istance, the option
+!          input_files.incond = orbel.dat[BA]
+! will force the program to read the file orbel.dat assuming it is
+! written in Bowell's astorb.dat format (this is sligthly faster, since
+! the program must not try different formats).
+! Note that additional input files (specific for each object) can be
+! specified through keywords object<n>.inc_files (see below).
+
+! OPTIONS ASSIGNING OUTPUT FILES
+output_files.
+
+! Name of the file where the program will write computed orbital
+! elements (OPTIONAL; DEFAULT: <runname>.oel)
+	.elem = <character string>
+
+! OPTIONS RELATED TO OUTPUT ELEMENTS
+output.
+
+! Epoch at which output orbital elements are required (OPTIONAL: if not
+! specified, the program will select automatically the output epoch).
+! Epochs can be specified in Julian Days, Modified Julian Days or
+! calendar date/time, according to the following examples
+! output.epoch = CAL 1998/Jun/18 22:35:40.00 UTC
+!    or        = CAL 1998/06/18  22:35:40.00 UTC
+!    or        = JD  2450983.44143519 UTC
+!    or        = MJD 50982.94143519 UTC ! MJD with fractional part
+!    or        = MJD 50982 81340.00 UTC ! integer MJD & secs within day)
+	.epoch = <time specification>
+
+! Type of orbital elements:
+!  'CAR' : cartesian positions and velocities
+!  'EQU' : equinoctial elements
+!  'EQP' : equinoctial elements for highly inclined orbits
+!  'KEP' : classical keplerian elements
+! (OPTIONAL; DEFAULT: 'EQU')
+	.elements = <character string>
+
+
+! MODES OF OPERATION
+! The following keywords enable or disable different operations
+! performed by the program; they can take an integer value ranging
+! from 0 to 2, with the following meaning:
+!	0 = operation NOT to be performed
+!	1 = operation to be performed only if necessary (i.e. the
+!           information provided by the operation is not contained
+!           in input files)
+!	2 = operation to be performed ALWAYS (even if the information
+!           provided by the operation is already contained in input
+!           files)
+operations.
+
+! Print residual/weight file immediately after reading astrometric
+! observations.
+	.print_res = 0 or 1         ! OPTIONAL; DEFAULT: 1
+! The option is useful only if the user wishes to see the weights
+! (a priori RMS) of observations assigned by the program and possibly
+! modify them BEFORE trying any orbit computation (a residual/weight
+! file is ALWAYS written after an orbit determination).
+! Note that, if a residual/weight file with the correct name is
+! already present, the program will ALWAYS read it, and use the
+! a-priori RMS and rejection flags contained there instead of
+! computing them internally; if this behaviour is not desired, the
+! user must delete manually the file BEFORE running orbfit.
+! This mechanism supplies also a (admittedly primitive) way of
+! discarding poor observations: after a run of orbfit, the user may
+! examine the weight/residual file (<runname>.orw), set to 0 the
+! selection flag corresponding to observations with large fit
+! residuals, and run orbfit again.
+
+! Compute a preliminary orbit (with Gauss' method).
+! If a value of 1 is specified, the program computes the preliminary
+! orbit only if initial conditions for the object have not been found
+! in input orbital element files (or if no input orbital element file
+! has been specified)
+	.init_orbdet = 0, 1 or 2    ! OPTIONAL; DEFAULT: 1
+
+! Differential correction of orbital elements (least squares fit)
+! If a value of 1 is specified, the program skips the fit if a
+! valid orbit for the object (including its covariance matrix) has
+! been read from input orbital element files (note that, presently,
+! only ORBFIT internal format EOF supports covariance matrix
+! information)
+	.diffcor = 0, 1 or 2        ! OPTIONAL; DEFAULT: 1
+
+! Orbit identification (try to fit a single orbit to the astrometric
+! observations of both objects)
+	.ident = 0 or 1             ! OPTIONAL; DEFAULT: 1
+! Of course, the option is used only if two objects have been
+! specified.
+
+! Ephemeris computation
+	.ephem = 0 or 1             ! OPTIONAL; DEFAULT: 0
+
+! OPTIONS RELATED TO GAUSS' METHOD
+! (better leave them alone if you don't know what you are doing)
+gauss.
+
+! initial estimate of topocentric distance (OPTIONAL; DEFAULT: 10.0)
+	.start_d = <real value>
+
+! tolerance for heliocentric distance (OPTIONAL; DEFAULT: 1.D-12)
+	.dist_tol = <real value>
+
+! number of iterations (OPTIONAL; DEFAULT: 20)
+	.nit = <integer value>
+
+! OPTIONS RELATED TO LEAST SQUARES FIT
+lsfit.
+
+! Max number of iterations (OPTIONAL; DEFAULT: 20)
+	.nit_max = <integer value>
+
+! Max number of iterations with non-decreasing normalized RMS
+! (OPTIONAL; DEFAULT: 5)
+	.nitg_max = <integer value>
+
+! Convergency control: relative reduction of the normalized RMS
+! required for terminating the iterations, assuming the fit has
+! converged (OPTIONAL; DEFAULT: 1.D-5)
+	.conv_cntr = <real value>
+
+! Divergency control: relative increase of the normalized RMS
+! at which the program must assume the iterations are diverging
+! (and therefore the fit is aborted) (OPTIONAL; DEFAULT: 0.999)
+	.div_cntr = <real value>
+
+! OPTIONS RELATED TO ORBIT IDENTIFICATION
+ident.
+
+! Flag requesting that a two-parameter fit, adjusting only the
+! semimajor axis (a) and the mean anomaly (M) of the object, be
+! performed before the full six-parameter fit. It is usually advisable
+! to do in this way, since the initial guess of a and M obtained
+! by combining the orbital elements of the two orbits is often quite
+! far off, and a preliminary adjustment of these two elements alone
+! may avoid convergency problems in the following full least squares
+! fit (OPTIONAL; DEFAULT: .true.)
+	.aM_fit	= .true. or .false.
+
+! Max number of iterations (OPTIONAL; DEFAULT: 20)
+	.nit_max = <integer value>
+
+! Max number of iterations with non-decreasing normalized RMS
+! (OPTIONAL; DEFAULT: 5)
+	.nitg_max = <integer value>
+
+! Convergency control: relative reduction of the normalized RMS
+! required for terminating the iterations, assuming the fit has
+! converged (OPTIONAL; DEFAULT: 1.D-5)
+	.conv_cntr = <real value>
+
+! Divergency control: relative increase of the normalized RMS
+! at which the program must assume the iterations are diverging
+! (and therefore the fit is aborted) (OPTIONAL; DEFAULT: 0.999)
+	.div_cntr = <real value>
+
+! OPTIONS RELATED TO EPHEMERIS COMPUTATION
+ephem.
+
+! List of objects for which ephemeris has to be computed (where 1 and
+! 2 are object1 and object2, a 3 is the result of their identification)
+! (OPTIONAL; DEFAULT: 1 2 3)
+	.objects = <list of integer values ranging from 1 to 3>
+
+! Start epoch for ephemeris (specified according to one of the formats
+! described for keyword output.epoch, see above)
+	.epoch.start = <time specification>
+
+! Ending time for ephemeris (specified according to one of the formats
+! described for keyword output.epoch, see above)
+	.epoch.end = <time specification>
+
+! Ephemeris stepsize in days (OPTIONAL; DEFAULT: 1.0)
+	.step = <real value>
+
+! Observatory code for which ephemeris has to be computed, required
+! for applying topocentric correction (OPTIONAL; DEFAULT: 500, meaning
+! geocentric ephemeris)
+	.obscode =  <integer value>
+! Observatory codes are listed in ../../lib/OBSCODE.dat. An updated
+! copy of the file can be retrieved from the Minor Planet Center
+! (http://cfa-www.harvard.edu/iau/lists/ObsCodes.html)
+
+! Timescale in which the ephemeris has to be produced. Supported
+! timescales are: UT1, TAI, UTC and TDT = ET (OPTIONAL; DEFAULT: TDT)
+	.timescale = UT1, TAI, UTC or TDT
+
+! List of output fields requested for ephemeris; a list of keywords
+! (separated by commas) indicating which quantities the ephemeris
+! has to compute. Supported output fields are:
+!     cal       calendar date
+!     mjd       Modified Julian Day
+!     coord     coordinates (RA and DEC)
+!     mag       magnitude
+!     delta     distance from the Earth
+!     r         distance from the Sun
+!     elong     Sun elongation angle
+!     phase     Sun phase angle
+!     glat      galactic latitude
+!     appmot    apparent motion
+!     skyerr    sky plane error
+! (OPTIONAL; DEFAULT: 'cal,coord,delta,r,elong,phase,mag')
+	.fields = <character string>
+
+! Moreover, program orbfit accepts all the keywords required by the
+! following libraries:
+! - preliminary orbit determination (see ../../lib/prelim.key)
+! - orbital propagation (see ../../lib/propag.key)
+! - timescale conversion (see ../../lib/time.key)
+! - differential correction of orbits (see ../../lib/difcor.key)
+! - outlier rejection (see ../../lib/reject.key)
+
+
+
+
+
+
+
+

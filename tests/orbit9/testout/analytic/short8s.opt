@@ -1,0 +1,5 @@
+; private options file for short
+eps=1.d+0; control for cfac
+epdiv=2.d-1; control for divisor (rad/yr)
+integr=31; version 8.x
+epsdel=1.d-5; control for implicit RKG

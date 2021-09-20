@@ -1,0 +1,48 @@
+object1.
+	.name = '410777'		! Object name
+	.obs_dir = 'mpcobs'	        ! Observations directory
+	.inc_files = 'epoch/410777.eq0' ! Input file
+
+output.
+	.elements='EQU'                    ! Output elements
+
+operations.
+	.init_orbdet = 0	! Initial orbit determination
+		       		! (0 = no, 1 = yes)
+	.diffcor = 1		! Differential correction 
+		   		! (0 = no, 1 = yes)
+	.ident = 0              ! Orbit identification
+	       	 		! (0 = no, 1 = yes)
+	.ephem = 0		! Ephemerides
+	       	 		! (0 = no, 1 = yes)
+
+error_model.
+	.name='fcct14'		! Error model
+
+propag.
+
+	.iast=17	    ! 0=no asteroids with mass, n=no. of massive asteroids (def=0)
+	.filbe='AST17'      ! name of the asteroid ephemerides file (def='CPV')
+	.npoint=600         ! minimum number of data points for a deep close appr (def=100)
+	.dmea=0.2d0         ! min. distance for control of close-app. to the Earth only (def=0.1)
+        .dter=0.05d0        ! min. distance for control of close-app.
+                            ! to terrestrial planets (MVM)(def=0.1)
+	.yark_exp=2.d0      ! A2/r^yark_exp model (def=2) 
+	.ngr_opt=.TRUE.	    ! Reading from option file/orbit file
+	.iyark=3	    ! Including the Yarkovsky effect in the dynamical model
+			    ! (0 = no, 3=secula acceleration) (def=0)
+	.det_drp=2	    ! Solving-for the Yarkovsky effect 
+			    ! (0=no non-grav perturbations, 1=A/M, 2=Yarko, 3=both)
+			    ! (def=0)
+	.irel=2		    ! Relativity
+
+difcor.
+	.yarko_apriori=.TRUE.	! A priori value adopted (def=FALSE)
+	.yarko_nominal=0.d0	! Nominal value (def = 0.d0)
+	.yarko_std=3.25d-4	! Standard deviation (no default)
+
+IERS.
+	.extrapolation=.T.  ! extrapolation of Earth rotation
+
+reject.
+	.rejopp=.FALSE.	    ! reject entire opposition

@@ -1,0 +1,12 @@
+! options specific for catpro
+catpro.
+
+        .tref= 52000.d0          ! reference time for propagation
+        .catnam0='mult.ctc'      ! input orbit catalog
+        .catnam1='multprop.ctc'  ! output orbit catalog
+        .covpro=.true.           ! propagate with covariance?
+                 ! note: if not, output is single line keplerian
+
+! propagator options
+propag.
+        .imet=0 ! automatic selection

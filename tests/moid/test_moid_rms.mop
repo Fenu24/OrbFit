@@ -1,0 +1,5 @@
+! Options for comp_moid_rms.x 
+compmo.
+        .eledir='./'		! directory of orbit elements
+        .wr_screen=.T.          ! write on screen
+        .chk_der=.F.            ! check derivatives in covariance propagation

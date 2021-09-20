@@ -1,0 +1,4 @@
+Since giffv program has an interactive input, test must be done manually.
+An example of what user should type as answers to prompts is given in
+file giff.inp. The output in the form of a data file giffv.tmp can be compared
+with the one provided in this folder. 

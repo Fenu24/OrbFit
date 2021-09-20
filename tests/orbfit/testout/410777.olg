@@ -1,0 +1,41 @@
+Input of observations:
+ input_obs:          303  obs in mpcobs/410777.obs
+      303 observations read for object 410777
+Input of orbital elements:
+     Orbital elements for object 410777:
+     (origin: read from file "epoch/410777.eq0" at record 0)
+        Semimajor axis     =   1.16258579991419E+00 au
+        h [e*sin(w)]       =  -0.460780587309722
+        k [e*cos(w)]       =   0.174893426578777
+        P [tg(i/2)*sin(N)] =   0.004546873094735
+        Q [tg(i/2)*cos(N)] =   0.027005357832081
+        Mean longitude     = 130.2149433096533 deg
+        Epoch of elements  : MJD   56146.36096062 TDT (Aug  7, 2012,  8.663055 h)
+Differential correction for object 410777:
+     Starting orbital elements:
+        Semimajor axis     =   1.16258579991419E+00 au
+        h [e*sin(w)]       =  -0.460780587309722
+        k [e*cos(w)]       =   0.174893426578777
+        P [tg(i/2)*sin(N)] =   0.004546873094735
+        Q [tg(i/2)*cos(N)] =   0.027005357832081
+        Mean longitude     = 130.2149433096533 deg
+        Epoch of elements  : MJD   56146.36096062 TDT (Aug  7, 2012,  8.663055 h)
+     Corrected orbital elements:
+        Semimajor axis     =   1.16258579993316E+00 au
+        h [e*sin(w)]       =  -0.460780590822459
+        k [e*cos(w)]       =   0.174893376262324
+        P [tg(i/2)*sin(N)] =   0.004546860577520
+        Q [tg(i/2)*cos(N)] =   0.027005348647057
+        Mean longitude     = 130.2149393892933 deg
+        Epoch of elements  : MJD   56146.36096062 TDT (Aug  7, 2012,  8.663055 h)
+     Residual norm   =  4.793E-01
+     Correction norm =  2.536E-06
+Propagation of orbital elements:
+     Propagated orbital elements for object 410777 (computed with least squares fit):
+        Semimajor axis     =   1.16377824905415E+00 au
+        h [e*sin(w)]       =  -0.460716631951062
+        k [e*cos(w)]       =   0.175394625880714
+        P [tg(i/2)*sin(N)] =   0.004463589566596
+        Q [tg(i/2)*cos(N)] =   0.026941545573982
+        Mean longitude     =  25.1665935574056 deg
+        Epoch of elements  : MJD   57387.00000000 TDT (Dec 31, 2015,  0.000000 h)

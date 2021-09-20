@@ -1,0 +1,94 @@
+TO GENERATE CPV.bai AND CPV.bep FILES, where CPV is for (1) Ceres, (2) Pallas and (4) Vesta:
+(e.g. in case of different time interval):
+
+MANUALLY
+
+1) Copy observation files .rwo from
+   astdys2@hamilton.dm.unipi.it:~/database/data/mpcobs/numbered/0/1.rwo
+   2.rwo and 4.rwo to the directory obsdata.
+   (scp -p astdys2@hamilton.dm.unipi.it:~/database/data/mpcobs/numbered/0/1.rwo obsdata/)
+   (scp -p astdys2@hamilton.dm.unipi.it:~/database/data/mpcobs/numbered/0/2.rwo obsdata/)
+   (scp -p astdys2@hamilton.dm.unipi.it:~/database/data/mpcobs/numbered/0/4.rwo obsdata/)
+
+2) Copy orbit files 1.eq0, 2.eq0 and 4.eq0 from astdys
+   (astdys2@hamilton.dm.unipi.it:~/database/data/epoch/numbered/0/) to
+   the current folder
+   (scp -p astdys2@hamilton.dm.unipi.it:~/database/data/epoch/numbered/0/1.eq0 .)
+   (scp -p astdys2@hamilton.dm.unipi.it:~/database/data/epoch/numbered/0/2.eq0 .)
+   (scp -p astdys2@hamilton.dm.unipi.it:~/database/data/epoch/numbered/0/4.eq0 .)
+
+3) Run bineph.x using CPV_noiter.bop (see README_bineph to create the file CPV.inc)
+   (ln -s CPV_noiter.bop.orig CPV.bop)
+   This creates the two initial files CPV.bai and CPV.bep.
+
+AUTOMATICALLY
+
+1) Clean the directory:
+   (make clean)
+
+2) Repeate points 1) and 2) as in the previous case (MANUALLY)
+
+3) Run 
+   (make all_noiter)
+
+**********************************************************************************************************
+
+TO GENERATE ITERATED EPHEMERIDES:
+
+MANUALLY 
+
+1) Put initial ephemerides files (e.g., from options_static) in this
+   folder and name them CPV0.bai and CPV0.bep.
+   If it is the first iteration:
+    - copy CPV0_noiter.bai and CPV0_noiter.bep from the folder testout/:
+      (cp -p testout/CPV0_noiter.bai CPV0.bai)
+      (cp -p testout/CPV0_noiter.bep CPV0.bep)
+   If it is not the first iteration:
+    - copy CPV.bai and CPV.bep (the output of your run) 
+      into CPV0.bai and CPV0.bep
+
+2) The .eq0 from ASTDyS for Ceres, Pallas and Vesta to the current
+   folder should be in the work directory from the previous run.  
+   If they are not there, copy them from ASTDyS (see point 2) of the non
+   iterated ephemerides)
+
+3) The .rwo from ASTDyS for Ceres, Pallas and Vesta to the current
+   folder should be in the work directory from the previous run.  
+   If they are not there, copy them from ASTDyS (see point 3) of the non
+   iterated ephemerides)
+
+4) Run bineph.x using CPV_iter.bop as option file 
+   (ln -s CPV_iter.bop CPV.bop)
+
+5) Repeat from 1) using the new bai/bep files generated at step 4).
+   Go on until convergence. The eq0 files are overwritten with the new
+   orbital elements, if a comparison is wanted to check convergence save
+   the old ones somewhere else.
+
+AUTOMATIC
+
+1) Clean the directory:
+   (make clean)
+
+2) Repeat step 1), 2) and 3)
+
+3) Run
+   (make all_iter)
+
+4) See step 5) of MANUALLY
+
+*************************************************************************************************************
+ 
+TO GENERATE A PERTURBER FILE WITH A LARGE NUMBER OF ASTEROIDS:
+
+1) create a bop file similar to AST17.bop, with the desired list of
+asteroids.
+
+2) Make sure that the iterated CPV.bai/bep files are present.
+
+3) Copy .eq0 (to the local folder) and .rwo (to obsdata) files for the
+list of asteroids for which ephemerides have to be generated.
+
+4) Run bineph.x
+
+5) No iterations should be needed for this ephemerides.

@@ -1,0 +1,457 @@
+(cp 2009FD/410777.fop .)
+(cp 2009FD/410777.inp .)
+(cp 2009FD/410777.rwo mpcobs/)
+(cp 2009FD/410777.eq0 epoch/)
+(ln -s ../bineph/testout/AST17.bai_431_fcct AST17.bai)
+Makefile:38: recipe for target '2009FD.fel' failed
+(ln -s ../bineph/testout/AST17.bep_431_fcct AST17.bep)
+Makefile:38: recipe for target '2009FD.fel' failed
+time fitobs.x < 410777.inp
+ Run name =
+ JPL planetary ephemerides DE431
+ number of perturbers =  17
+ binary ephemerides file= AST17
+ perturbing asteroids used: 16 major perturbing asteroids plus Pluto
+ ngr_opt =  T
+    rmodel: overriding the default for ngr_opt, now  T
+ direct radiation pressure in the dynamical model =  0
+ direct radiation pressure coefficient =  0.000000000000000E+00
+ Yarkovsky effect in the dynamical model =  3
+ A2 Yarkovsky parameter =  0.000000000000000E+00
+ solve-for parameters selector (drpa2m, A2, or both) =  2
+ outgassing model =  0
+ A1 outgassing parameter =  0.000000000000000E+00
+ A2 outgassing parameter =  0.000000000000000E+00
+ A3 outgassing parameter =  0.000000000000000E+00
+ delay outgassing parameter =  0.000000000000000E+00
+ outgassing parameter to solve-for =  0
+ determining parameter  2
+ direct radiation pressure a-priori default value  F
+ Yarkovsky a-priori is  T
+ a-priori nominal value for Yarkovsky parameter =  0.000000000000000E+00
+ first arc asteroid name= 410777
+ not a designation default value  F
+ second arc asteroid name default value 
+ error model file= fcct14
+ compute a grid for the level curves in case of cobweb is  F
+ number of rho values at first iteration =  50
+ number of rho_dot values at first iteration =  50
+ number of rho values at second iteration (also for cobweb) =  100
+ number of rho_dot values at second iteration (also for cobwe =  100
+ sigma max for cobweb =  5.000000000000000
+ max absolute magnitude =  34.50000000000000
+ propag geocentric orbits is  F
+ use b-plane as target plane default value  T
+ mass given in a separate file default value  F
+ limit eccentricity =  1.999900000000000
+ max semimajor axis =  2000.000000000000
+ min semimajor axis =  0.3000000000000000
+ max aphelion =  4000.000000000000
+ min perihelion =  1.000000000000000E-03
+ max perihelion default value  0.000000000000000E+00
+ shrink of Earth cross section default value  1.000000000000000
+ use of constant steps in IP is  F
+ max dist. for inclolinctp =  0.2000000000000000
+ flag for ADES output file default value  0
+  INPUT OF OBSERVATIONAL DATA, ARC 1
+ first object obs. file name default value 410777
+ first object obs. directory name= mpcobs/
+ mpcobs/410777 .psv file not found, ALL obs will come from either .obs/.rad files or .rwo file.
+ Using .rwo file, but checking .obs,.rad for update.
+ input_obs:  292  obs from  mpcobs/410777.rwo
+ There are new/changed obs. New numobs= 292
+  INPUT OF OBSERVATIONAL DATA, ARC 2
+ second object obs. file name default value 
+  INPUT OF ORBITAL ELEMENTS, ARC 1
+ first arc asteroid name default value 410777
+ first arc elements file= epoch/410777.eq0
+ input orbit file correctly read
+ EQU 1.162672965326960 -0.4606637871498930 0.1748812772911400 4.551542480933000E-03 2.700498022684700E-02 0.4487852394613559 56013.44013162000 T 22.13000000000000 0.1500000000000000 0 500
+  INPUT OF ORBITAL ELEMENTS, ARC 2
+ What would you like?
+  1 = input of observational data
+  2 = acquire orbital elements
+  3 = differential corrections
+  4 = first guess for identification
+  5 = state propagation
+  6 = predictions of observations
+  7 = multiple solutions
+  8 = coordinate change
+  9 = attributables
+ 10 = status
+ 11 = date conversion
+ 12 = test derivatives
+ 0 = exit; -1=help
+  selection?  
+  DIFFERENTIAL CORRECTIONS
+  ARC 1
+  select correction and reject mode
+  1 = correct all, autoreject
+  2 = correct all, no rejections
+  3 = constrained solution on LOV (no rejections)
+  4 = correct only some elements (no rejections)
+  5 = compute residuals and covariance (no correction)
+ 0 = exit; -1=help
+  selection?  
+  FULL DIFFERENTIAL CORRECTIONS
+ starting values EQU
+    1.162672965   -0.460663787    0.174881277    0.004551542    0.027004980    0.448785239
+Reading IERS time series:
+        EOPC04 data: 17693 points (from MJD=41335 to MJD=59009)
+ Close approach to EARTH on 2014/04/01.38195 56748.38195 MJD at 0.10093073 au
+ Close approach to VENUS on 2011/12/24.03906 55919.03906 MJD at 0.04300792 au
+ Close approach to EARTH on 2010/10/24.62297 55493.62297 MJD at 0.07024719 au
+ Close approach to EARTH on 2009/03/27.64993 54917.64993 MJD at 0.00417283 au
+ gamma( 7 , 7 )= 1.049182890673045E-07
+ sigma= 3.239109276750392E-04
+ difcor iteration   1
+  RMS residuals =  4.3347D-01   norm corr =  7.3977D-01
+  new elem values
+    1.1626730   -0.4606638    0.1748813    0.0045515    0.0270049    0.4487852
+
+ nongrav  -1.699677766702845E-05
+ sigma( 7 )= 3.239109276750392E-04
+ Close approach to EARTH on 2014/04/01.38195 56748.38195 MJD at 0.10093075 au
+ Close approach to VENUS on 2011/12/24.03906 55919.03906 MJD at 0.04300793 au
+ Close approach to EARTH on 2010/10/24.62297 55493.62297 MJD at 0.07024716 au
+ Close approach to EARTH on 2009/03/27.64993 54917.64993 MJD at 0.00417282 au
+ gamma( 7 , 7 )= 1.049182889758337E-07
+ sigma= 3.239109275338418E-04
+ difcor iteration   2
+  RMS residuals =  4.2582D-01   norm corr =  1.1378D-04
+  new elem values
+    1.1626730   -0.4606638    0.1748813    0.0045515    0.0270049    0.4487852
+
+ nongrav  -1.699738342847981E-05
+ sigma( 7 )= 3.239109275338418E-04
+ REJECTING...
+==== OUTLIER REJECTION =======
+Residual norm =  4.25822E-01
+Chi2 threshold =  1.12023E+00
+No. of observations:
+          total     =  292
+          selected  =  292
+          rejected  =    0
+          recovered =    0
+Outlier rejection pass   1 after   2 single differential correction passes.
+There were   0 changes.
+  RMS of weighed residuals is  0.4258218427393831
+Absol Magnitude: Old=22.13 New=22.13
+no. magnitude obs.= 243 with RMS  0.44
+no. rejected obs.=   0 in    1 passes.
+ 
+orb.dist.      dist.n+  dist.n-
+ 0.00248    0 -0.19846 -0.02490
+ 
+ What would you like?
+  1 = input of observational data
+  2 = acquire orbital elements
+  3 = differential corrections
+  4 = first guess for identification
+  5 = state propagation
+  6 = predictions of observations
+  7 = multiple solutions
+  8 = coordinate change
+  9 = attributables
+ 10 = status
+ 11 = date conversion
+ 12 = test derivatives
+ 0 = exit; -1=help
+  selection?  
+(diff 410777.fel testout/410777.fel || echo 'Files differ')
+7c7
+<  EQU   1.1626729655165540E+00  -0.460663793806931   0.174881261191488    0.004551532907294    0.027004949802288  25.7134988605440
+---
+>  EQU   1.16267296550723E+00  -0.460663793658526   0.174881261106719    0.004551532872859    0.027004949765092  25.7134988565409
+12,13c12,13
+< ! Vector of dynamical parameters
+<  NGR   0.00000000000000E+00 -1.69973834284798E-05
+---
+> ! Vector of dynamical parameters.
+>  NGR   0.00000000000000E+00 -1.73259335120942E-05
+19,38c19,38
+<  COV   4.992313090966596E-18 -1.104365739642861E-17  4.780233789149697E-17
+<  COV   1.993882646179704E-18 -6.566388925915368E-18  2.444757726802795E-15
+<  COV   3.618191994085543E-13  1.052272593871530E-15 -1.635436787957600E-15
+<  COV   2.850754524337029E-17 -2.966010783780756E-16 -1.760023599433002E-13
+<  COV   1.504994652268806E-12  3.806545247109242E-15  6.139740262505506E-17
+<  COV   2.793980829028947E-17  3.393763208738010E-13 -1.823533601303816E-12
+<  COV   4.183705055812534E-17  1.598442051067475E-16 -6.681292269859944E-16
+<  COV  -3.478838788578574E-14  2.703306433513596E-15  2.857320485129958E-14
+<  COV   2.237925433365946E-13  3.892245991883306E-11  3.254044991922721E-10
+<  COV   1.061933498528632E-07
+<  NOR   9.862712177302354E+18  6.924193919562700E+17 -6.926005852856300E+17
+<  NOR   1.168043306344066E+17  9.387452339904366E+15  9.244737514507382E+15
+<  NOR  -8.362014331792544E+13  5.786608512288399E+16 -4.710499881516521E+16
+<  NOR  -5.955248100046097E+15  2.206903511481734E+15  6.779364892896785E+14
+<  NOR  -6.072140803021862E+12  5.124152608136689E+16 -1.631030436236866E+16
+<  NOR   1.354060831174478E+14 -6.663593107430691E+14  5.943575673843144E+12
+<  NOR   6.826410681598966E+16 -5.438266441373506E+15  1.208902581066426E+14
+<  NOR  -9.302674153777610E+11  8.755288016632736E+14  8.223407428046054E+12
+<  NOR  -8.976155342344690E+10  8.986131665018387E+12 -8.006250256598592E+10
+<  NOR   7.276599412347144E+08
+---
+>  COV   4.992313017024002E-18 -1.104365695520281E-17  4.780233634249979E-17
+>  COV   1.993882570353555E-18 -6.566388708703608E-18  2.444757629625558E-15
+>  COV   3.618191981524262E-13  1.052272589620976E-15 -1.635436788111896E-15
+>  COV   2.850754420896104E-17 -2.966010717161232E-16 -1.760023592582332E-13
+>  COV   1.504994654201783E-12  3.806545244411359E-15  6.139740249845984E-17
+>  COV   2.793980787171492E-17  3.393763203704438E-13 -1.823533607382067E-12
+>  COV   4.183705074091671E-17  1.598442034052687E-16 -6.681291080331678E-16
+>  COV  -3.478838815112794E-14  2.703306453159056E-15  2.857320409741975E-14
+>  COV   2.237925434776504E-13  3.892245973328332E-11  3.254044984081833E-10
+>  COV   1.061933498433250E-07
+>  NOR   9.862711496113605E+18  6.924193455125687E+17 -6.926005346184204E+17
+>  NOR   1.168043252356657E+17  9.387451346837368E+15  9.244736902927184E+15
+>  NOR  -8.362013746892634E+13  5.786608170399186E+16 -4.710499552572004E+16
+>  NOR  -5.955247220930266E+15  2.206903303231908E+15  6.779364481709268E+14
+>  NOR  -6.072140404232137E+12  5.124152225362621E+16 -1.631030327960201E+16
+>  NOR   1.354060802013605E+14 -6.663592652790155E+14  5.943575241080717E+12
+>  NOR   6.826410193363202E+16 -5.438265906609002E+15  1.208902525964292E+14
+>  NOR  -9.302673751475776E+11  8.755287390407606E+14  8.223406609584484E+12
+>  NOR  -8.976154420694398E+10  8.986131121402449E+12 -8.006249733475658E+10
+>  NOR   7.276598911206015E+08
+Files differ
+(cp fcct14/1862.fop_yarko 1862.fop)
+(cp fcct14/1862.inp .)
+(cp fcct14/1862.rwo mpcobs/)
+(cp fcct14/1862.eq0 epoch/)
+(ln -s ../bineph/testout/AST17.bai_431_fcct AST17.bai)
+Makefile:28: recipe for target '1862.fel_fcct' failed
+(ln -s ../bineph/testout/AST17.bep_431_fcct AST17.bep)
+Makefile:28: recipe for target '1862.fel_fcct' failed
+time fitobs.x < 1862.inp
+ Run name =
+ JPL planetary ephemerides DE431
+ number of perturbers =  17
+ binary ephemerides file= AST17
+ perturbing asteroids used: 16 major perturbing asteroids plus Pluto
+ ngr_opt =  T
+    rmodel: overriding the default for ngr_opt, now  T
+ direct radiation pressure in the dynamical model =  0
+ direct radiation pressure coefficient =  0.000000000000000E+00
+ Yarkovsky effect in the dynamical model =  3
+ A2 Yarkovsky parameter =  0.000000000000000E+00
+ solve-for parameters selector (drpa2m, A2, or both) =  2
+ outgassing model =  0
+ A1 outgassing parameter =  0.000000000000000E+00
+ A2 outgassing parameter =  0.000000000000000E+00
+ A3 outgassing parameter =  0.000000000000000E+00
+ delay outgassing parameter =  0.000000000000000E+00
+ outgassing parameter to solve-for =  0
+ determining parameter  2
+ direct radiation pressure a-priori default value  F
+ Yarkovsky a-priori default value  F
+ first arc asteroid name= 1862
+ not a designation default value  F
+ second arc asteroid name default value 
+ error model file= fcct14
+ compute a grid for the level curves in case of cobweb is  F
+ number of rho values at first iteration =  50
+ number of rho_dot values at first iteration =  50
+ number of rho values at second iteration (also for cobweb) =  100
+ number of rho_dot values at second iteration (also for cobwe =  100
+ sigma max for cobweb =  5.000000000000000
+ max absolute magnitude =  34.50000000000000
+ propag geocentric orbits is  F
+ use b-plane as target plane default value  T
+ mass given in a separate file default value  F
+ limit eccentricity =  1.999900000000000
+ max semimajor axis =  2000.000000000000
+ min semimajor axis =  0.3000000000000000
+ max aphelion =  4000.000000000000
+ min perihelion =  1.000000000000000E-03
+ max perihelion default value  0.000000000000000E+00
+ shrink of Earth cross section default value  1.000000000000000
+ use of constant steps in IP is  F
+ max dist. for inclolinctp =  0.2000000000000000
+ flag for ADES output file default value  0
+  INPUT OF OBSERVATIONAL DATA, ARC 1
+ first object obs. file name default value 1862
+ first object obs. directory name= mpcobs/
+ mpcobs/1862 .psv file not found, ALL obs will come from either .obs/.rad files or .rwo file.
+ Using .rwo file, but checking .obs,.rad for update.
+ input_obs:  1408  obs from  mpcobs/1862.rwo
+ There are new/changed obs. New numobs= 1408
+RADAR: Using radius =   0.89 km from absolute magnitude.
+  INPUT OF OBSERVATIONAL DATA, ARC 2
+ second object obs. file name default value 
+  INPUT OF ORBITAL ELEMENTS, ARC 1
+ first arc asteroid name default value 1862
+ first arc elements file= epoch/1862.eq0
+ input orbit file correctly read
+ EQU 1.470132727771560 -0.3479974907806710 0.4386287571910110 3.242253871942400E-02 4.503862520588600E-02 3.054251466776137 54668.05135440200 T 16.06000000000000 9.000000000000000E-02 0 500
+  INPUT OF ORBITAL ELEMENTS, ARC 2
+ What would you like?
+  1 = input of observational data
+  2 = acquire orbital elements
+  3 = differential corrections
+  4 = first guess for identification
+  5 = state propagation
+  6 = predictions of observations
+  7 = multiple solutions
+  8 = coordinate change
+  9 = attributables
+ 10 = status
+ 11 = date conversion
+ 12 = test derivatives
+ 0 = exit; -1=help
+  selection?  
+  DIFFERENTIAL CORRECTIONS
+  ARC 1
+  select correction and reject mode
+  1 = correct all, autoreject
+  2 = correct all, no rejections
+  3 = constrained solution on LOV (no rejections)
+  4 = correct only some elements (no rejections)
+  5 = compute residuals and covariance (no correction)
+ 0 = exit; -1=help
+  selection?  
+  FULL DIFFERENTIAL CORRECTIONS
+ starting values EQU
+    1.470132728   -0.347997491    0.438628757    0.032422539    0.045038625    3.054251467
+Reading IERS time series:
+        EOPC04 data: 17693 points (from MJD=41335 to MJD=59009)
+ Close approach to EARTH on 2007/05/08.63766 54228.63766 MJD at 0.07142143 au
+ Close approach to EARTH on 2005/11/06.80205 53680.80205 MJD at 0.07524582 au
+ Close approach to EARTH on 1982/05/14.71768 45103.71768 MJD at 0.05869832 au
+ Close approach to EARTH on 1980/11/13.71900 44556.71900 MJD at 0.05548147 au
+ Close approach to EARTH on 1966/05/02.12388 39247.12388 MJD at 0.18631969 au
+ Close approach to EARTH on 1964/10/26.16023 38694.16023 MJD at 0.18543057 au
+ Close approach to VENUS on 1950/06/26.65999 33458.65999 MJD at 0.00994700 au
+ Close approach to EARTH on 1941/05/01.40569 30115.40569 MJD at 0.19845784 au
+ Close approach to EARTH on 1932/05/15.16571 26842.16571 MJD at 0.07500268 au
+ gamma( 7 , 7 )= 2.098093985254416E-11
+ sigma= 4.580495590276685E-06
+ difcor iteration   1
+  RMS residuals =  2.9210D+00   norm corr =  5.6859D+01
+  new elem values
+    1.4701327   -0.3479975    0.4386287    0.0324225    0.0450386    3.0542516
+
+ nongrav  -3.543667699144011E-05
+ sigma( 7 )= 4.580495590276685E-06
+ Close approach to EARTH on 2007/05/08.63764 54228.63764 MJD at 0.07142177 au
+ Close approach to EARTH on 2005/11/06.80202 53680.80202 MJD at 0.07524603 au
+ Close approach to EARTH on 1982/05/14.71766 45103.71766 MJD at 0.05869806 au
+ Close approach to EARTH on 1980/11/13.71898 44556.71898 MJD at 0.05548136 au
+ Close approach to EARTH on 1966/05/02.12388 39247.12388 MJD at 0.18631973 au
+ Close approach to EARTH on 1964/10/26.16023 38694.16023 MJD at 0.18543046 au
+ Close approach to VENUS on 1950/06/26.65997 33458.65997 MJD at 0.00994702 au
+ Close approach to EARTH on 1941/05/01.40571 30115.40571 MJD at 0.19845744 au
+ Close approach to EARTH on 1932/05/15.16576 26842.16576 MJD at 0.07500338 au
+ gamma( 7 , 7 )= 2.098125987294792E-11
+ sigma= 4.580530523088774E-06
+ difcor iteration   2
+  RMS residuals =  5.7451D-01   norm corr =  8.1531D-03
+  new elem values
+    1.4701327   -0.3479975    0.4386287    0.0324225    0.0450386    3.0542516
+
+ nongrav  -3.545280717576732E-05
+ sigma( 7 )= 4.580530523088774E-06
+ REJECTING...
+==== OUTLIER REJECTION =======
+Residual norm =  5.74506E-01
+Chi2 threshold =  2.33694E+00
+No. of observations:
+          total     = 1408
+          selected  = 1388
+          rejected  =    0
+          recovered =    0
+Outlier rejection pass   1 after   2 single differential correction passes.
+There were   0 changes.
+ Final convergence loop after  1  outlier rejection loops.
+ Close approach to EARTH on 2007/05/08.63764 54228.63764 MJD at 0.07142177 au
+ Close approach to EARTH on 2005/11/06.80202 53680.80202 MJD at 0.07524603 au
+ Close approach to EARTH on 1982/05/14.71766 45103.71766 MJD at 0.05869806 au
+ Close approach to EARTH on 1980/11/13.71898 44556.71898 MJD at 0.05548136 au
+ Close approach to EARTH on 1966/05/02.12388 39247.12388 MJD at 0.18631973 au
+ Close approach to EARTH on 1964/10/26.16023 38694.16023 MJD at 0.18543046 au
+ Close approach to VENUS on 1950/06/26.65997 33458.65997 MJD at 0.00994702 au
+ Close approach to EARTH on 1941/05/01.40571 30115.40571 MJD at 0.19845745 au
+ Close approach to EARTH on 1932/05/15.16576 26842.16576 MJD at 0.07500337 au
+ gamma( 7 , 7 )= 2.098125866145241E-11
+ sigma= 4.580530390844755E-06
+ difcor iteration   1
+  RMS residuals =  5.7451D-01   norm corr =  4.4298D-05
+  new elem values
+    1.4701327   -0.3479975    0.4386287    0.0324225    0.0450386    3.0542516
+
+ nongrav  -3.545275443927422E-05
+ Done. Corrections small after  1  passes.
+  RMS of weighed residuals is  0.5745054983299023
+Absol Magnitude: Old=16.06 New=16.06
+no. magnitude obs.= 844 with RMS  0.45
+no. rejected obs.=   2 in   11 passes.
+ 
+orb.dist.      dist.n+  dist.n-
+ 0.02552    0 -0.11729  0.18607
+ 
+ What would you like?
+  1 = input of observational data
+  2 = acquire orbital elements
+  3 = differential corrections
+  4 = first guess for identification
+  5 = state propagation
+  6 = predictions of observations
+  7 = multiple solutions
+  8 = coordinate change
+  9 = attributables
+ 10 = status
+ 11 = date conversion
+ 12 = test derivatives
+ 0 = exit; -1=help
+  selection?  
+(diff 1862.fel testout/1862.fel_yarko_fcct || echo 'Files differ')
+7c7
+<  EQU   1.4701327298389180E+00  -0.347997540729479   0.438628682981754    0.032422473954338    0.045038554603000 174.9957243771021
+---
+>  EQU   1.47013272984140E+00  -0.347997540664214   0.438628682996898    0.032422473899364    0.045038554614418 174.9957243809415
+12,13c12,13
+< ! Vector of dynamical parameters
+<  NGR   0.00000000000000E+00 -3.54527544392742E-05
+---
+> ! Vector of dynamical parameters.
+>  NGR   0.00000000000000E+00 -3.54549247372520E-05
+17,36c17,36
+<  COV   7.272155199948278E-19  1.505413539369470E-17  3.738076044249329E-18
+<  COV  -1.202087508836156E-17  8.759489571017397E-18  7.007962448914485E-16
+<  COV   4.452977987323018E-16  7.788224637514389E-16  1.658140877253283E-16
+<  COV   7.319107286837229E-18  1.576498258802466E-16  6.172793152108460E-14
+<  COV  -7.556384439670483E-14  3.803728103971694E-17  7.657317449287713E-18
+<  COV   6.108558597210833E-17  1.239008138563800E-14 -1.233545365915847E-14
+<  COV   8.944134069497887E-16  3.266556330941779E-16  1.291671468461671E-14
+<  COV  -2.941784430651322E-14  5.537652589302120E-16  4.343931378369926E-15
+<  COV   2.927459538339862E-14  5.467515221971914E-12 -8.197187280733359E-12
+<  COV   2.103462731180301E-11
+<  NOR   1.581199631802378E+20 -1.706185677437588E+19  9.697989224338242E+18
+<  NOR  -1.462020028658149E+17  3.498917344600035E+17  1.467975297303144E+17
+<  NOR  -2.436834639256951E+15  3.129771935965191E+18 -1.706294207788574E+18
+<  NOR   3.394293820151667E+17 -4.070890343506503E+17 -2.958784958088660E+16
+<  NOR   1.147059510799501E+14  1.708621385110448E+18 -1.208153607941459E+17
+<  NOR   1.134895299199967E+17  1.409217718441179E+16 -1.681178023742273E+14
+<  NOR   8.702402658633758E+16 -1.014699868678108E+17 -3.713513862951836E+15
+<  NOR  -3.263363633519195E+13  1.227041106603785E+17  4.482543653766037E+15
+<  NOR   3.090307796399426E+13  2.884603495343950E+14 -1.526813930420080E+11
+<  NOR   2.644537498659998E+11
+---
+>  COV   7.272154881941675E-19  1.505413523645567E-17  3.738075964230358E-18
+>  COV  -1.202087480659775E-17  8.759489198492617E-18  7.007962563690148E-16
+>  COV   4.452975437733427E-16  7.788224628485089E-16  1.658140872893318E-16
+>  COV   7.319108475578761E-18  1.576498246571849E-16  6.172793153763811E-14
+>  COV  -7.556384403531787E-14  3.803728085369732E-17  7.657318320761212E-18
+>  COV   6.108558550447437E-17  1.239008140192860E-14 -1.233545388074916E-14
+>  COV   8.944134067160914E-16  3.266556331590648E-16  1.291671465937215E-14
+>  COV  -2.941783714354262E-14  5.537652586684872E-16  4.343931449208262E-15
+>  COV   2.927459251586655E-14  5.467515215096425E-12 -8.197186969878074E-12
+>  COV   2.103462600909010E-11
+>  NOR   1.581199573773921E+20 -1.706185665699811E+19  9.697989174712521E+18
+>  NOR  -1.462021683886514E+17  3.498919454968639E+17  1.467975294463734E+17
+>  NOR  -2.436834670691118E+15  3.129771928016847E+18 -1.706294204818111E+18
+>  NOR   3.394293854459630E+17 -4.070890383250178E+17 -2.958784952987410E+16
+>  NOR   1.147059467192406E+14  1.708621390442504E+18 -1.208153627515701E+17
+>  NOR   1.134895324012760E+17  1.409217714965387E+16 -1.681178044553908E+14
+>  NOR   8.702402228848872E+16 -1.014699812975920E+17 -3.713513878984258E+15
+>  NOR  -3.263364115072646E+13  1.227041035650701E+17  4.482543668901874E+15
+>  NOR   3.090308361920548E+13  2.884603491681353E+14 -1.526813710136340E+11
+>  NOR   2.644537283066270E+11
+Files differ

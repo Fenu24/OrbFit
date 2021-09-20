@@ -1,0 +1,95 @@
+Input of observations:
+ input_obs:           17  obs in mpcobs/2015TF202_1.obs
+       17 observations read for object 2015TF202_1
+ input_obs:           11  obs in mpcobs/2015TF202_2.obs
+       11 observations read for object 2015TF202_2
+Preliminary orbit for object 2015TF202_1:
+    Trying observations:     1    10    17 (DT=      1.01      1.08 d)
+    RMS check observations:     1 -    17 (DT=      2.09 d)
+        Gauss(2015TF202_1): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015TF202_1#1): a=   2.1880 e=   0.4170 RMS=  1.14E-01 arcsec
+    IOD(2015TF202_1) STAT:     1     1     3     1     1     0     0 SEL:     1    10    17 IR:     1    17 DT:      1.01      1.08      2.09
+    IOD(2015TF202_1): solution with Gauss method (no noise): RMS=  1.14E-01 arcsec
+        KepElem(2015TF202_1/Gauss):  2.1880299E+00   0.41703895   7.14747   8.50426 308.07590  29.29781 (T= 57306.322)
+Preliminary orbit for object 2015TF202_2:
+    Trying observations:     1     8    11 (DT=      0.97      3.38 d)
+    RMS check observations:     1 -    11 (DT=      4.35 d)
+        Gauss(2015TF202_2): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015TF202_2#1): a=   2.1611 e=   0.4104 RMS=  5.71E-01 arcsec
+    IOD(2015TF202_2) STAT:     1     1     3     1     1     0     0 SEL:     1     8    11 IR:     1    11 DT:      0.97      3.38      4.35
+    IOD(2015TF202_2): solution with Gauss method (no noise): RMS=  5.71E-01 arcsec
+        KepElem(2015TF202_2/Gauss):  2.1610508E+00   0.41041164   7.07307   8.41005 308.26001  30.98080 (T= 57310.347)
+Differential correction for object 2015TF202_1:
+     Starting orbital elements:
+        Semimajor axis     =   2.18802993863053E+00 au
+        h [e*sin(w)]       =  -0.286647163531122
+        k [e*cos(w)]       =   0.302910698508537
+        P [tg(i/2)*sin(N)] =   0.009235956889150
+        Q [tg(i/2)*cos(N)] =   0.061767789145029
+        Mean longitude     = 345.8779667740882 deg
+        Epoch of elements  : MJD   57306.32231295 TDT (Oct 11, 2015,  7.735511 h)
+     Corrected orbital elements:
+        Semimajor axis     =   2.17211478864658E+00 au
+        h [e*sin(w)]       =  -0.282291228567499
+        k [e*cos(w)]       =   0.297249679643931
+        P [tg(i/2)*sin(N)] =   0.009366591498171
+        Q [tg(i/2)*cos(N)] =   0.062173277483365
+        Mean longitude     = 346.4088356433466 deg
+        Epoch of elements  : MJD   57306.32231295 TDT (Oct 11, 2015,  7.735511 h)
+     Residual norm   =  9.598E-02
+     Correction norm =  5.386E-06
+Differential correction for object 2015TF202_2:
+     Starting orbital elements:
+        Semimajor axis     =   2.16105075360142E+00 au
+        h [e*sin(w)]       =  -0.281623893420312
+        k [e*cos(w)]       =   0.298539270796735
+        P [tg(i/2)*sin(N)] =   0.009039039523291
+        Q [tg(i/2)*cos(N)] =   0.061138062936629
+        Mean longitude     = 347.6508574947198 deg
+        Epoch of elements  : MJD   57310.34748370 TDT (Oct 15, 2015,  8.339609 h)
+     Corrected orbital elements:
+        Semimajor axis     =   2.15666342764821E+00 au
+        h [e*sin(w)]       =  -0.280213292184556
+        k [e*cos(w)]       =   0.297181077159688
+        P [tg(i/2)*sin(N)] =   0.009038891898530
+        Q [tg(i/2)*cos(N)] =   0.061160705636054
+        Mean longitude     = 347.8164992473266 deg
+        Epoch of elements  : MJD   57310.34748370 TDT (Oct 15, 2015,  8.339609 h)
+     Residual norm   =  4.584E-01
+     Correction norm =  8.523E-04
+Orbit identification:
+     Starting orbital elements for object 2015TF202_1:
+        Semimajor axis     =   2.17211478864658E+00 au
+        h [e*sin(w)]       =  -0.282291228567499
+        k [e*cos(w)]       =   0.297249679643931
+        P [tg(i/2)*sin(N)] =   0.009366591498171
+        Q [tg(i/2)*cos(N)] =   0.062173277483365
+        Mean longitude     = 346.4088356433466 deg
+        Epoch of elements  : MJD   57306.32231295 TDT (Oct 11, 2015,  7.735511 h)
+     Starting orbital elements for object 2015TF202_2:
+        Semimajor axis     =   2.15666342764821E+00 au
+        h [e*sin(w)]       =  -0.280213292184556
+        k [e*cos(w)]       =   0.297181077159688
+        P [tg(i/2)*sin(N)] =   0.009038891898530
+        Q [tg(i/2)*cos(N)] =   0.061160705636054
+        Mean longitude     = 347.8164992473266 deg
+        Epoch of elements  : MJD   57310.34748370 TDT (Oct 15, 2015,  8.339609 h)
+     Starting orbital elements for object 2015TF202_1=2015TF202_2:
+        Semimajor axis     =   1.99523015747936E+00 au
+        h [e*sin(w)]       =  -0.281252260376028
+        k [e*cos(w)]       =   0.297215378401810
+        P [tg(i/2)*sin(N)] =   0.009202741698350
+        Q [tg(i/2)*cos(N)] =   0.061666991559709
+        Mean longitude     = 347.1126674453378 deg
+        Epoch of elements  : MJD   57308.33489832 TDT (Oct 13, 2015,  8.037560 h)
+Differential correction for object 2015TF202_1=2015TF202_2:
+     Corrected orbital elements:
+        Semimajor axis     =   2.15587793494586E+00 au
+        h [e*sin(w)]       =  -0.278692414021299
+        k [e*cos(w)]       =   0.294112323275235
+        P [tg(i/2)*sin(N)] =   0.009245941726174
+        Q [tg(i/2)*cos(N)] =   0.061834555741436
+        Mean longitude     = 347.4229945029236 deg
+        Epoch of elements  : MJD   57308.33489832 TDT (Oct 13, 2015,  8.037560 h)
+     Residual norm   =  3.154E-01
+     Correction norm =  7.120E-04

@@ -1,0 +1,59 @@
+**************************
+*   How to test fitobs.  *
+**************************
+
+You can test different functionalities of fitobs, depending on
+different configuration of the option file.
+
+1) Differential corrections: error model (fcct14), AST17 (created with
+   DE431 and fcct14), only 6 parameters (initial conditions)
+
+   This is just to check that the software does not change in the six
+   dimensional case.
+   We use (1862) Apollo without solving for the Yarkovsky effect.
+
+   make test_6dim
+
+2) Yakovsky effect (with both error models: cbm10 and fcct14)
+
+   Decide the error model: cbm10 or fcct14.
+   In both cases, the test case is (1862) Apollo
+      - If cbm10:
+      	a) pay attention that the ephemerides must be the DE405
+      	b) go to the directory orbfit/orb43/lib and check that
+      	   jpleph --> jpleph.405
+      	c) if not:
+      	   rm jpleph 
+	   and: 
+	   ln -s ~/orbfit/jpleph.405 jpleph
+ 
+      	make test_yarko_cbm10
+
+      - If fcct14 run
+        make test_yarko_fcct14 (the ephemerides must be DE431)
+
+3) Yarkovsky a priori
+   Run:
+   make test_apriori
+
+   (410777) 2009 FD is the asteroid used as an example.
+   The options are:
+   error model = 'fcct14'
+   filbe       = 'AST17' (16 perturbers + Pluto)
+   a priori    = 0 +/- 32.5 (10^(-15) au/d^2)
+ 
+   All the input files are in the folder 2009FD/.
+
+
+3) Direct radiation pressure and Yarkovsky effect
+   Run:
+   make test_drpa2m
+
+   2009 BD is the asteroid used as an example.
+   The options are:
+   error model = 'fcct14'
+   filbe       = 'AST17' (16 perturbers + Pluto)
+
+   All the input files are in the folder 2009BD/
+
+

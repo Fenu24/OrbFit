@@ -1,0 +1,22 @@
+; orbit9 vers. c, output file
+ in input            4  planets: KEP HEL ECLM00
+barycenter corr.flag  1 no. inner pla.   4
+; planetary inverse masses as used
+  9.9999402303776952D-01  1.0473486254633374D+03  3.4979017677866345D+03
+  2.2902981613087039D+04  1.9412259775973071D+04
+  planetary initial conditions as read
+   2  asteroids required,   2  with LCE; numbers:
+  1          3        
+  asteroid 1          OK
+  asteroid 3          OK
+  file end looking for 20                  record           21
+  Selection of the best stepsize, maximum= -0.200000000000000     
+ orbit no.  1 sugg.step= 0.1216 a,e= 5.203  0.0487
+ orbit no.  2 sugg.step= 0.2000 a,e= 9.581  0.0509
+ orbit no.  3 sugg.step= 0.2000 a,e=19.169  0.0469
+ orbit no.  4 sugg.step= 0.2000 a,e=30.181  0.0096
+ orbit no.  5 sugg.step= 0.0291 a,e= 2.770  0.1776
+ orbit no.  6 sugg.step= 0.0219 a,e= 2.669  0.3341
+ min. step required  0.021858 selected -0.021739 nn=    92
+  input complete, starting from t=  0.000000000000000E+000
+ end orbit8v, time =        -20000.0000

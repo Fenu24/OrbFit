@@ -1,0 +1,93 @@
+bineph.x is used to prepare binary files of ephemerides files in order
+to include asteroid perturbations in OrbFit. You need an option file
+and an initial conditions file. See the /lib/propag.def file to learn
+how to include these ephemerides in the Orbfit force model.
+
+The option file (*.bop) should look something like the included CPV_noiter.bop:
+
+======== CPV_noiter.bop ===============
+input_files.
+	.incond = CPV.inc
+bineph.
+	.eph_obj= 1 2 4
+	.epoch.start = CAL 1989/Jan/01 0:0:0 TDT
+	.epoch.end   = CAL 1991/Jan/01 0:0:0 TDT
+	.step = 50
+force.JPLDE.
+	.planets = Mercury Venus Earth+Moon Mars Jupiter Saturn Uranus Neptune
+	.error_model='cbm10'    ! error model for observational data
+	.obsdir='obsdata'       ! observation directory
+	.diffcor_bineph=.T.     ! differential corrections for bineph
+JPLDE.
+
+propag.
+	.imet=0                 !   numerical method automatic choice
+        .irel=2                 !   general relativistic correction
+        .epms=1.d-12            !   corrector: ON
+        .hmax_me=6.d0           !   max stepsize if Mercury is included: ON
+	.imerc=1
+	.ilun=1
+================================
+
+or CPV_iter.bop:
+
+======== CPV_iter.bop ===============
+input_files.
+	.incond = CPV.inc
+bineph.
+	.eph_obj= 1 2 4
+	.epoch.start = CAL 1989/Jan/01 0:0:0 TDT
+	.epoch.end   = CAL 1991/Jan/01 0:0:0 TDT
+	.step = 50
+force.JPLDE.
+	.planets = Mercury Venus Earth+Moon Mars Jupiter Saturn Uranus Neptune
+	.error_model='cbm10'    ! error model for observational data
+	.obsdir='obsdata'       ! observation directory
+	.diffcor_bineph=.T.     ! differential corrections for bineph
+JPLDE.
+
+propag.
+	.imet=0                 !   numerical method automatic choice
+	.iast=3                 !   number of perturbers
+	.filbe='CPV'            !   name of the perturbers file
+        .irel=2                 !   general relativistic correction
+        .epms=1.d-12            !   corrector: ON
+        .hmax_me=6.d0           !   max stepsize if Mercury is included: ON
+	.imerc=1
+	.ilun=1
+================================
+
+The initial conditions should use the format of the provided CPV.inc:
+
+======== CPV.inc ===============
+epoch   = MJD 50400 0.0 TDT	! default epoch for orbital elements
+END_OF_HEADER
+! Masses from Hilton, J. L. 1997, New Asteroid Ephemerides for the Astronomical Almanac 
+! Equinoctial elements: a, e*sin(LP), e*cos(LP), tan(i/2)*sin(LN), tan(i/2)*cos(LN), mean long.
+1
+ EQU   2.76631590052686E+00  0.033823261311183 -0.070635432794886  0.091349541631034  0.015294663043386 151.0612901075936
+ MJD     51500.00000000 TDT
+ MAS 4.39E-10
+2
+ EQU   2.77234888473739E+00  0.191595784551661 -0.126599547078213  0.037170922216568 -0.311614268928292 106.9190539088706
+ MJD     51500.00000000 TDT
+ MAS 1.59E-10
+4
+ EQU   2.36152588381342E+00 -0.086346234034798 -0.025489655628321  0.060495991416170 -0.015030268530582 222.4788623611247
+ MJD     51500.00000000 TDT
+ MAS 1.69E-10
+================================
+
+Running bineph, and giving 'CPV' as the run name, will produce the two
+files CPV.bep, and CPV.bai. These binary ephemerides are required for
+the OrbFit propagator to include asteroid perturbations. In order to
+incorporate these perturbers into the model you need to add the proper
+options to the *.fop or *.oop option file:
+
+! Asteroid perturbations
+propag.
+	.iast=3      !  0=no asteroids with mass n=no. of massive asteroids, 17=16 perturbers+Pluto
+	.filbe='CPV' ! name of the asteroid ephemerides file (if iast=17, filbe must be equal to 'AST17')
+!
+
+

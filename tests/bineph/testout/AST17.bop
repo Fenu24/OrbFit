@@ -1,0 +1,23 @@
+input_files.
+	.incond = AST17.inc
+bineph.
+	.eph_obj= 1 2 3 4 6 7 10 15 16 29 52 65 87 88 511 704 134340
+        .epoch.start = CAL 1801/Jan/01 0:0:0 TDT
+        .epoch.end   = CAL 3000/Jan/01 0:0:0 TDT
+	.step = 50
+!force.JPLDE.
+	.planets = Mercury Venus Earth+Moon Mars Jupiter Saturn Uranus Neptune
+	.error_model='fcct14'   ! error model for observational data
+	.obsdir='obsdata'       ! observation directory
+	.diffcor_bineph=.T.     ! differential corrections for bineph
+JPLDE.
+
+propag.
+	.imet=0                 !   numerical method automatic choice
+        .iast=3                 !   massive asteroids number
+        .irel=2                 !   general relativistic correction
+        .epms=1.d-12            !   corrector: ON
+        .hmax_me=6.d0           !   max stepsize if Mercury is included: ON
+	.filbe='CPV'		! name of the asteroid ephemerides file
+	.imerc=1
+	.ilun=1

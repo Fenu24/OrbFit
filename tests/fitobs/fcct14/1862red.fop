@@ -1,0 +1,35 @@
+! input file for fitobs
+fitobs.
+! first arc
+        .astna0='1862red'           ! full name, first arc
+        .obsdir0='mpcobs/'         ! directory of observs. file, first arc 
+!        .elefi0='epoch/1862red.eq0' ! first arc elements file
+
+! second arc
+!        .astnap=''            ! full name, second arc
+!        .obsdirp='mpcobs'     ! directory of observs. file, second arc 
+! bizarre  control; 
+        .ecclim=     1.9999d0    ! max eccentricity for non bizarre orbit 
+        .samin=      0.3d0       ! min a for non bizarre orbit 
+        .samax=      2000.d0     ! max a for non bizarre orbit 
+        .phmin=      0.001d0     ! min q for non bizarre orbit 
+        .ahmax=     4000.d0      ! max Q for non bizarre orbit
+	.error_model='fcct14'     ! error model 
+
+propag.
+        .iast=17            ! 0=no asteroids with mass, n=no. of massive asteroids (def=0)
+        .filbe='AST17'      ! name of the asteroid ephemerides file (def='CPV')
+        .npoint=600         ! minimum number of data points for a deep close appr (def=100)
+	.dmea=0.2d0         ! min. distance for control of close-app. to the Earth only (def=0.1)
+        .dter=0.05d0        ! min. distance for control of close-app.
+                            ! to terrestrial planets (MVM)(def=0.1)
+	.yark_exp=2.d0      ! A2/r^yark_exp model (def=2) 
+
+
+difcor.
+
+IERS.
+        .extrapolation=.T. ! extrapolation of Earth rotation
+
+reject.
+        .rejopp=.false.    ! reject entire opposition

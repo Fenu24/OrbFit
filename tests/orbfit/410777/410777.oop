@@ -1,0 +1,36 @@
+object1.
+	.name = '410777'	        ! Object name
+	.obs_dir = 'mpcobs'	        ! Observations directory
+	.inc_files = 'epoch/410777.eq0' ! Input file
+
+output.
+	.elements='EQU'                    ! Output elements
+	.epoch= CAL 2015/Dec/31 0:0:0 TDT  ! Calendar date for propagation
+
+operations.
+	.init_orbdet = 0	! Initial orbit determination
+		       		! (0 = no, 1 = yes)
+	.diffcor = 1		! Differential correction 
+		   		! (0 = no, 1 = yes)
+	.ident = 0              ! Orbit identification
+	       	 		! (0 = no, 1 = yes)
+	.ephem = 0		! Ephemerides
+	       	 		! (0 = no, 1 = yes)
+
+error_model.
+	.name='fcct14'		! Error model
+
+propag.
+
+	.iast=17	    ! 0=no asteroids with mass, n=no. of massive asteroids (def=0)
+	.filbe='AST17'      ! name of the asteroid ephemerides file (def='CPV')
+	.npoint=600         ! minimum number of data points for a deep close appr (def=100)
+	.dmea=0.2d0         ! min. distance for control of close-app. to the Earth only (def=0.1)
+        .dter=0.05d0        ! min. distance for control of close-app.
+                            ! to terrestrial planets (MVM)(def=0.1)
+
+IERS.
+	.extrapolation=.T.  ! extrapolation of Earth rotation
+
+reject.
+	.rejopp=.FALSE.	    ! reject entire opposition

@@ -1,0 +1,4 @@
+;  PRIVATE OPTIONS FILE FOR LONG
+eps    = 3.d-03;    control for output of "large" amplitudes
+deps   = 0.5d+00;    control for "small" divisors
+ive=  -2; ive=-1 for version 7.7, 3 vers. 8.3, -2 vers. 7.6, 31 vers 8.3.1

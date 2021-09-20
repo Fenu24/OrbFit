@@ -1,0 +1,44 @@
+! input file for fitobs
+fitobs.
+! first arc
+        .astna0='1862'           ! full name, first arc
+        .obsdir0='mpcobs/'         ! directory of observs. file, first arc 
+        .elefi0='epoch/1862.eq0' ! first arc elements file
+
+! second arc
+!        .astnap=''            ! full name, second arc
+!        .obsdirp='mpcobs'     ! directory of observs. file, second arc 
+! bizarre  control; 
+        .ecclim=     1.9999d0    ! max eccentricity for non bizarre orbit 
+        .samin=      0.3d0       ! min a for non bizarre orbit 
+        .samax=      2000.d0     ! max a for non bizarre orbit 
+        .phmin=      0.001d0     ! min q for non bizarre orbit 
+        .ahmax=     4000.d0      ! max Q for non bizarre orbit
+	.error_model='cbm10'     ! error model 
+
+propag.
+        .iast=17            ! 0=no asteroids with mass, n=no. of massive asteroids (def=0)
+        .filbe='AST17'      ! name of the asteroid ephemerides file (def='CPV')
+        .npoint=600         ! minimum number of data points for a deep close appr (def=100)
+	.dmea=0.2d0         ! min. distance for control of close-app. to the Earth only (def=0.1)
+        .dter=0.05d0        ! min. distance for control of close-app.
+                            ! to terrestrial planets (MVM)(def=0.1)
+	.yark_exp=2.d0      ! A2/r^yark_exp model (def=2) 
+        .ngr_opt=.TRUE.     ! read options for non-gravitational perturbations from the option file
+	.irel=2             ! 0=newtonian 1=gen. relativity, sun 2=gen. rel. all planets 
+                            !          (def=0, 1 for NEA, 2 for radar)
+        .iaber=2            ! aberration 0=no 1=yes 2=(def=1)
+	.ilun=1             ! 0=no moon 1= yes (def=0, 1 for NEA)
+	.iyark=3            ! 0=no Yarkovsky, 1=Yark diurnal, 2=Yark seasonal
+                            !    3=secular nongravitational perturbations (including Yark) (def=0)
+        .ipa2m=0           ! 0=no drpa2m, 1=yes spherical direct radiation pressure (def=0)
+      	.det_drp=2	    ! how many parameters to solve: 0=none 1=drpa2m 2=dadt 3=both (def=0)
+	.det_outgas=0       ! det outgassing for comets
+
+difcor.
+
+IERS.
+        .extrapolation=.T. ! extrapolation of Earth rotation
+
+reject.
+        .rejopp=.false.    ! reject entire opposition

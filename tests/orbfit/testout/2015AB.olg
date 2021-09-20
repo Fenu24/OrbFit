@@ -1,0 +1,464 @@
+Input of observations:
+ input_obs:           37  obs in mpcobs/2015AB.obs
+       37 observations read for object 2015AB
+Preliminary orbit for object 2015AB:
+    Trying observations:    24    25    34 (DT=     20.75     14.75 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.31E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  7.04E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.62E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  1.02E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8012 e=   0.2835 RMS=  2.52E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8014 e=   0.2836 RMS=  1.92E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8012 e=   0.2835 RMS=  2.67E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8014 e=   0.2836 RMS=  2.07E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.16E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  5.54E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2836 RMS=  3.13E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8018 e=   0.2837 RMS=  3.01E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  1.07E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.67E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8016 e=   0.2835 RMS=  9.10E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  3.09E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.52E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  9.18E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8020 e=   0.2836 RMS=  1.05E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.65E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.59E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  9.91E+02 arcsec
+    Trying observations:    23    25    34 (DT=     20.77     14.75 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.20E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  5.97E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2835 RMS=  2.73E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8018 e=   0.2836 RMS=  3.48E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  2.01E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.40E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.69E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  1.08E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2836 RMS=  2.08E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8019 e=   0.2837 RMS=  4.13E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.90E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.30E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  9.24E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.54E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.93E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.33E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8010 e=   0.2834 RMS=  3.86E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8011 e=   0.2835 RMS=  3.26E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  5.82E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8020 e=   0.2837 RMS=  1.19E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.46E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  8.57E+02 arcsec
+    Trying observations:    22    25    34 (DT=     20.78     14.75 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8016 e=   0.2835 RMS=  9.69E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  3.56E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.62E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  1.00E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8024 e=   0.2837 RMS=  3.32E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8025 e=   0.2838 RMS=  3.95E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8021 e=   0.2836 RMS=  1.75E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8022 e=   0.2837 RMS=  2.38E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8016 e=   0.2835 RMS=  9.39E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  3.27E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2835 RMS=  2.74E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8018 e=   0.2836 RMS=  3.53E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8020 e=   0.2836 RMS=  1.25E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.88E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.32E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8014 e=   0.2836 RMS=  1.71E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.04E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.43E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8022 e=   0.2837 RMS=  2.35E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8024 e=   0.2838 RMS=  2.98E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8016 e=   0.2835 RMS=  8.45E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  2.32E+02 arcsec
+    Trying observations:    24    25    33 (DT=     20.75     14.73 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.63E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  1.02E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8012 e=   0.2834 RMS=  2.86E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.26E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8018 e=   0.2836 RMS=  1.98E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8019 e=   0.2837 RMS=  8.04E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2835 RMS=  1.84E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8019 e=   0.2836 RMS=  4.41E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8026 e=   0.2838 RMS=  4.32E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8028 e=   0.2839 RMS=  4.94E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.09E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  4.81E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8006 e=   0.2833 RMS=  5.73E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8008 e=   0.2834 RMS=  5.14E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.03E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.42E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.37E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8014 e=   0.2836 RMS=  1.76E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8016 e=   0.2835 RMS=  7.46E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  1.43E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.23E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  6.25E+02 arcsec
+    Trying observations:    24    26    34 (DT=     20.77     14.73 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.18E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  5.71E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8018 e=   0.2836 RMS=  4.30E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8020 e=   0.2837 RMS=  1.05E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8018 e=   0.2836 RMS=  5.91E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8020 e=   0.2837 RMS=  1.21E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.55E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  9.40E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  7.40E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8020 e=   0.2837 RMS=  1.36E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8010 e=   0.2834 RMS=  3.80E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8011 e=   0.2835 RMS=  3.20E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  2.00E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.39E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2836 RMS=  6.93E+01 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8019 e=   0.2837 RMS=  5.86E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2836 RMS=  1.85E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8019 e=   0.2837 RMS=  4.43E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.77E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.16E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8009 e=   0.2834 RMS=  4.16E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8011 e=   0.2835 RMS=  3.56E+03 arcsec
+    Trying observations:    21    25    34 (DT=     20.79     14.75 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.21E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  5.91E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.88E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.27E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.21E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  5.89E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8012 e=   0.2834 RMS=  2.84E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.22E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.69E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  1.07E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.65E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  1.03E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8010 e=   0.2834 RMS=  3.52E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8012 e=   0.2835 RMS=  2.91E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8011 e=   0.2834 RMS=  3.09E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.47E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8006 e=   0.2833 RMS=  5.53E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8008 e=   0.2834 RMS=  4.93E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8012 e=   0.2834 RMS=  2.88E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.26E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2836 RMS=  3.15E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8018 e=   0.2837 RMS=  3.17E+02 arcsec
+    Trying observations:    23    25    33 (DT=     20.77     14.73 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.53E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  9.14E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2836 RMS=  1.10E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8019 e=   0.2837 RMS=  5.24E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8023 e=   0.2837 RMS=  2.67E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8024 e=   0.2838 RMS=  3.30E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8020 e=   0.2836 RMS=  1.13E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.75E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8012 e=   0.2835 RMS=  2.86E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.25E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.30E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8014 e=   0.2836 RMS=  1.69E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.27E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  6.58E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8011 e=   0.2834 RMS=  3.04E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.43E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.50E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  8.85E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8010 e=   0.2834 RMS=  3.91E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8011 e=   0.2835 RMS=  3.30E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8009 e=   0.2834 RMS=  4.08E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8011 e=   0.2835 RMS=  3.47E+03 arcsec
+    Trying observations:    23    26    34 (DT=     20.78     14.73 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.08E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8017 e=   0.2836 RMS=  4.64E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  5.41E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8020 e=   0.2837 RMS=  1.16E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.89E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8023 e=   0.2838 RMS=  2.52E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.87E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.25E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8020 e=   0.2836 RMS=  1.08E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.71E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8012 e=   0.2834 RMS=  2.62E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8014 e=   0.2835 RMS=  2.00E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  1.03E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.65E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8009 e=   0.2833 RMS=  4.18E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8010 e=   0.2834 RMS=  3.57E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  6.41E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8020 e=   0.2837 RMS=  1.26E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  6.00E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8020 e=   0.2837 RMS=  1.22E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8011 e=   0.2834 RMS=  3.42E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8012 e=   0.2835 RMS=  2.81E+03 arcsec
+    Trying observations:    22    25    33 (DT=     20.78     14.73 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8015 e=   0.2835 RMS=  1.29E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8016 e=   0.2836 RMS=  6.69E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2836 RMS=  4.56E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8018 e=   0.2837 RMS=  1.78E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8012 e=   0.2834 RMS=  2.98E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.36E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8020 e=   0.2836 RMS=  1.47E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8022 e=   0.2837 RMS=  2.10E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.38E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8014 e=   0.2836 RMS=  1.76E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8014 e=   0.2835 RMS=  1.85E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.23E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8017 e=   0.2836 RMS=  2.15E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8019 e=   0.2837 RMS=  4.20E+02 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8019 e=   0.2836 RMS=  9.57E+02 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8021 e=   0.2837 RMS=  1.58E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.37E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8014 e=   0.2836 RMS=  1.76E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8011 e=   0.2834 RMS=  3.24E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.62E+03 arcsec
+        Gauss(2015AB): NR=3 NC=1 NK=1 (OK)
+            Gauss(2015AB#1): a=   1.8013 e=   0.2835 RMS=  2.21E+03 arcsec
+        Vaisala(2015AB): NR=1 NC=1 NK=1
+            Vaisala(2015AB#1): a=   1.8015 e=   0.2836 RMS=  1.59E+03 arcsec
+    Trying observations:    35    36    37 (DT=      0.01      0.01 d)
+    RMS check observations:     1 -    37 (DT=   1981.03 d)
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+        Gauss(2015AB): NR=1 NC=0 NK=0 (NoAccSol)
+        Vaisala(2015AB): NR=0 NC=0 NK=0
+    IOD(2015AB) STAT:    10   110   308    99    99   110    99 SEL:    24    26    34 IR:     1    37 DT:     20.77     14.73   1981.03
+    IOD(2015AB): solution with Gauss method (with noise): RMS=  6.93E+01 arcsec
+        KepElem(2015AB/Gauss):  1.8017360E+00   0.28355913  11.61235   0.45585  71.34442  25.24142 (T= 57049.242)
+Differential correction for object 2015AB:
+     Starting orbital elements:
+        Semimajor axis     =   1.80173599487815E+00 au
+        h [e*sin(w)]       =   0.269373661895470
+        k [e*cos(w)]       =   0.088564157252487
+        P [tg(i/2)*sin(N)] =   0.000809000992141
+        Q [tg(i/2)*cos(N)] =   0.101682005809301
+        Mean longitude     =  97.0416907745246 deg
+        Epoch of elements  : MJD   57049.24233457 TDT (Jan 27, 2015,  5.816030 h)
+     Corrected orbital elements:
+        Semimajor axis     =   1.80171502745527E+00 au
+        h [e*sin(w)]       =   0.269386851221066
+        k [e*cos(w)]       =   0.088597186537322
+        P [tg(i/2)*sin(N)] =   0.000821630528515
+        Q [tg(i/2)*cos(N)] =   0.101671038102696
+        Mean longitude     =  97.0385774280482 deg
+        Epoch of elements  : MJD   57049.24233457 TDT (Jan 27, 2015,  5.816030 h)
+     Residual norm   =  4.642E-01
+     Correction norm =  2.648E-05

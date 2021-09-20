@@ -1,0 +1,60 @@
+object1.
+	.name = '2009FD'	     ! Object name
+	.obs_dir = 'mpcobs'	     ! Observations directory
+	.inc_files = '2009FD.eq0' ! Input file
+!object2.
+!	.name = '2009FD_2'	     ! Object name
+!	.obs_dir = 'mpcobs'          ! Observations directory
+!	.inc_files = '2009FD_2.eq0' ! Input file
+
+!input_files.
+!	.incond =		     ! Input orbital element file (catalog)
+
+
+output.
+	.elements='EQU'                    ! Output elements
+	.epoch= CAL 2015/Dec/31 0:0:0 TDT  ! Calendar date for propagation
+
+operations.
+	.init_orbdet = 0	! Initial orbit determination
+		       		! (0 = no, 1 = yes)
+	.diffcor = 1		! Differential correction 
+		   		! (0 = no, 1 = yes)
+	.ident = 0              ! Orbit identification
+	       	 		! (0 = no, 1 = yes)
+	.ephem = 1		! Ephemerides
+	       	 		! (0 = no, 1 = yes)
+
+error_model.
+	.name='fcct14'		! Error model
+
+propag.
+
+	.iast=17	    ! 0=no asteroids with mass, n=no. of massive asteroids (def=0)
+	.filbe='AST17'      ! name of the asteroid ephemerides file (def='CPV')
+	.npoint=600         ! minimum number of data points for a deep close appr (def=100)
+	.dmea=0.2d0         ! min. distance for control of close-app. to the Earth only (def=0.1)
+        .dter=0.05d0        ! min. distance for control of close-app.
+                            ! to terrestrial planets (MVM)(def=0.1)
+	.yark_exp=2.d0      ! A2/r^yark_exp model (def=2) 
+	.ngr_opt=.FALSE.
+	.iyark=3
+	.det_drp=2
+	.irel=2
+
+difcor.
+	.yarko_apriori=.FALSE.
+	.yarko_nominal=0.d0
+	.yarko_std=3.25d-4
+
+ephem.
+!	.epoch.start = CAL 2015/Oct/23 0:0:0 TDT
+!	.epoch.end   = CAL 2015/Oct/24 0:0:0 TDT
+	.epoch.start = CAL 2015/Oct/28 0:0:0 UTC
+	.epoch.end   = CAL 2015/Dec/31 0:0:0 UTC
+
+IERS.
+	.extrapolation=.T.  ! extrapolation of Earth rotation
+
+reject.
+	.rejopp=.FALSE.	    ! reject entire opposition

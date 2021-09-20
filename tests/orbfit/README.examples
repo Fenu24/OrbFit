@@ -1,0 +1,157 @@
+The following directory contains some examples of usage of program
+orbfit, having mainly the purpose of showing the different possible
+modes of operation. Input options for each example are contained in
+the file <astname>.oop. A log of all the operations performed during
+the run is written in <astname>.olg.
+
+If you want to run all the cases togher, the command is:
+
+make
+
+2015AB
+=======
+
+The simplest case: no specific option file is supplied, but only a
+file 2015AB.obs containing astrometric observations. As a default
+procedure, the program computes starting values of the orbital
+elements , then refines them with iterative differential corrections
+(including automatic rejection of bad observations).
+
+The input files are in the folder 2015AB/.
+To run this case:
+
+make clean
+make simple_noeq0
+
+410777
+=======
+
+Two input files are supplied: an observation file (410777.obs) and an
+orbital element file (410777.eq0, written in NEODyS format). The
+program reads the orbital elements and refines them with iterative
+differential corrections.
+
+The input files are in the folder 410777/.
+To run this case:
+
+make clean
+make simple_eq0
+
+410777_yarko1 and 410777_yarko2
+================================
+
+Two input files are supplied: an observation file (410777.obs) and an
+orbital element file (410777.eq0). The option file contains the
+non-gravitational parameters, including the a-priori for the
+computation of the Yarkovsky effect. The program reads the option and
+the orbital elements and refines them with iterative differential
+corrections (including the non-gravitational in the dynamical model)
+and solves-for the Yarkovsky effect as well.
+
+Note: the option file contains the parameter ngr_opt.
+ngr_opt is a logical, thus it can assume the values .TRUE. or .FALSE.
+
+ngr_opt=.true. --> the software reads the parameters contained in the
+option file and use them to compute the orbit / the ephemerides and so
+on. For example, if the orbit file contains only the six orbital
+parameters, and the option file contains some information about the
+use or the inclusion in the dynamical model of the non-grav
+parameters, the SW is able to solve-for the non-grav parameters or to
+include them in the dynamical model.
+
+ngr_opt=.false. --> The orbit file has the priority over the option
+file. If the option file doen not contain the non-gravitational
+parameters, but the orbit has been computes including
+non-gravitational effects, the SW recomputes the orbit including the
+same non-gravitational perturbations into the dynamical model and
+solve for them.
+
+The default for the ngr_opt option is .false..
+
+The input files are in the folder 410777_yarko/.
+To run this case:
+
+make clean
+make yarko1
+
+or 
+
+make clean
+make yarko2
+
+1996RO13_ephem1
+===============
+
+Run performing only ephemeris generation, reading initial conditions
+from the output of 1996RO13_diffcor (1996RO13_diffcor.oel); since
+an orbit for the object (complete with covariance matrix information)
+is contained in the input file, no differential correction is
+performed.
+
+1996RO13_ephem2
+===============
+
+Same options as for run "1996RO13_ephem1", but in this case the input
+orbital element file is a subset of Ted Bowell's "astorb.dat" file
+(astorb.sub); since no covariance information is supplied in input,
+the program performs also a least squares fit.
+
+1996RO13_ephem3
+===============
+
+Same options and input file for run "1996RO13_ephem2", but in this
+case the program is forced to skip the differential correction by
+setting "operations.diffcor = 0". The output ephemeris is based
+directly on the orbital elements found in file "astorb.sub" and
+does not contain sky plane error information (even though it is
+requested by option "ephem.fields"), since no covariance information
+is available.
+
+2015TF202_ident
+===============
+
+Example of orbit identication: the observations of one object
+(2015TF202) have been splitted in two files: 2015TF202_1 and
+2015TF202_2. The initial conditions are computed by the orbfit
+software, separately for the two objects. Then the program computes
+separately orbital fits for the two objects, and a final orbital fit
+adjusting a single set of orbital elements to the observations of both
+objects. Residuals are written to the file
+2015TF202_1=2015TF202_2.rwo. The final orbit is written to the file
+2015TF202.oel. 
+
+The input files are in the folder identification/.
+To run this case:
+
+make clean
+make ident
+
+1996RO13_ident1
+===============
+
+Example of orbit identification: two objects are specified (1996 RO13
+and 1220 T-2). Initial conditions are read from file astorb.sub:
+since asteroid 1220 T-2 does not appear there, its initial conditions
+are computed with Gauss' method. The program computes separately
+orbital fits for the two objects, and a final orbital fit adjusting
+a single set of orbital elements to the observations of both objects;
+residuals are written to file 1996RO1=1220T-2.rwo, which is renamed
+afterwards 1996RO1=1220T-2.ident1.rwo by the instruction
+"mv 1996RO1=1220T-2.rwo 1996RO1=1220T-2.ident1.rwo" contained in the
+Makefile (this is necessary in order to play the trick described in the
+next example). Automatic outlier rejection is disabled
+(reject.auto = F).
+
+1996RO13_ident2
+===============
+
+Example of orbit identification as above, using (as input orbital
+elements for the two objects) the result of the previous example
+(read from file 1996RO13_ident1.oel), but preparing a residual/weight
+file for the identified orbit (1996RO1=1220T-2.rwo) by editing the
+otuput residual/weight file of the previous example and discarding
+all the observations leading to an orbital residual
+sqrt(dRA**2+dDEC**2) larger than 2.5 arcsec (this operation is
+performed by the Perl script "discard"). In order to avoid that
+the program overrides the selection of outliers made by the user,
+automatic outlier rejection is disabled (reject.auto = F).

@@ -1,0 +1,45 @@
+;input control and options file for orbit8
+; 1. input file names
+inplan= 'planxx.inc' ; input file name for initial conditions of the planets
+ibar= 1 ; barycentric correction 1=yes 0=no
+inbar='barsunxx.inc'; file containing the barycentric correction
+inast='chunk.cat'; input file name for initial conditions of the asteroids
+; 2. job description: ast. are ordered in two list, with and without LCE
+nvz= 2 ; no. Lyapounov exponents
+ 1
+ 3
+
+; 3. options: output           $ = option not yet implemented
+dt= -200 ; time between two outputs
+nout= 10000 ; output number at job termination
+idump= 1000; number of outputs between dump/renormalisation
+nsamp= 100; sampling ratio of the filter; choose 5, 20,50 or 100
+iprqua= 2 ; how much output: 1 elem. filtr; 2 also sampl.;
+sysz= 'HEL' ; output system: BAR, HEL, JAC, HEC
+refz= 'INVL1B' ; output reference system: INVL1B, ECLM50, EQUM00, etc
+; 4. options: variational equation
+v1=  1.00d+06; variation vector norm forcing renormalisation
+semim=    3.0; approx. semimajor axis for norm of var.vect.
+; 5. options: propagator
+h=  0.2; stepsize for multistep (maximum stepsize if automatic)
+iauto= 1; automatic stepsize control 1=on 0=off
+error= 1.d-13; target integration error, radiants/revolution^2
+iord=  12;  order of multistep predictor
+epms= 1.0d-12; convergence control for corrector $
+iork=   12;  order of starter
+eprk= 1.00d-10; convergence control for implicit Runge-Kutta
+lit1= 10; iterations for first step
+lit2= 4; iterations for following steps
+imet= 1; main integration method: 1 multistep 2  symplectic
+iusci=10; output of numerical convergence controls 0 no
+icha=0; what to do if non convergent 0 interactive 1 batch, change step $
+ll=12; control for Everhart (>0 automatic stepsize control)
+; 6. control of close approach output
+dmint=0.1; close appr. distance for terrestrial planets
+dminj=1.0; close approach distance for giant planets
+npoint=10; minimum number of data points for a deep close appr.
+; 7. optional perturbations
+irelj2=0; relativistic and J2 perturbations 0=no 1=yes
+iyark=0; Yarkovsky effect as secular drift in a 0=no 3=yes 1,2=not in use
+
+; END OF INPUT

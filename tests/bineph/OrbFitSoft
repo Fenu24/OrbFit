@@ -1,0 +1,46 @@
+#!/usr/bin/wish
+
+# Learn the path to the doc/ directory
+set u [open doclib.h r]
+while {[gets $u line] >= 1} {
+  set i1 [string first "'" $line]
+  set i2 [string last "'" $line]
+    if {$i1&&$i2} {
+      set dir [string range $line [expr $i1+1] [expr $i2-1]]
+}   }
+close $u
+#gets $u rec
+#set dir $rec
+#set dir [join {.. .. doc} /]
+
+# Widgets
+radiobutton .orbfit -text "ORBFIT" -underline 0 \
+	-width 12 -anchor w -bg cornsilk -command "exec [join {$dir ORBFIT} /] &"
+radiobutton .fitobs -text "FITOBS" -underline 0 \
+	-width 12 -anchor w -bg cornsilk  -command "exec [join {$dir FITOBS} /] &"
+radiobutton .bineph -text "BINEPH" -underline 0 \
+	-width 12 -anchor w -bg cornsilk  -command "exec [join {$dir BINEPH} /] &"
+radiobutton .orbit9 -text "ORBIT9" -underline 1 \
+	-width 12 -anchor w -bg cornsilk  -command "exec [join {$dir ORBIT9} /] &"
+checkbutton .help -text "HELP" -underline 0 -width 12 \
+	-bg lavender -anchor w -command "exec [join {$dir HELP} /] &"
+#checkbutton .help -text "HELP" -underline 0 -width 12 \
+#	-bg lavender -anchor w -command "exec  HELP &"
+checkbutton .out -text "EXIT" -underline 1 -width 12 \
+	-bg LightSteelBlue3 -anchor w -command "exit"
+
+# Packer
+pack .orbfit .fitobs .bineph .orbit9 .help .out -side top -fill x -padx 2m -pady 1m
+
+
+# Bindings 
+bind . <o> {eval exec [join {$dir ORBFIT} /] &}
+bind . <f> {eval exec [join {$dir FITOBS} /] &}
+bind . <b> {eval exec [join {$dir BINEPH} /] &}
+bind . <r> {eval exec [join {$dir ORBIT9} /] &}
+bind . <h> {eval exec [join {$dir HELP} /] &}
+bind . <x> {exit}
+
+# Window manager
+wm title . "AstOrb" 
+wm geometry . +20+150

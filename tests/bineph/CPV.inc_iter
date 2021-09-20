@@ -1,0 +1,19 @@
+format  = 'OEF1.1'		! file format
+rectype = ML			! record type: 1L = one line; ML = multi line
+refsys  = ECLM J2000		! default reference system (optional)
+epoch   = MJD 50400 0.0 TDT	! default epoch for orbital elements
+END_OF_HEADER
+! Masses from Hilton, J. L. 1997, New Asteroid Ephemerides for the Astronomical Almanac 
+! Equinoctial elements: a, e*sin(LP), e*cos(LP), tan(i/2)*sin(LN), tan(i/2)*cos(LN), mean long.
+1
+ EQU   2.76654656368514E+00   0.035878809664685  -0.069892220408038    0.091340444419174    0.015483347778745 352.1439766191155
+ MJD     55800.000000000 TDT
+ MAS 4.76E-10
+2
+ EQU   2.77114876228654E+00   0.193517278082726  -0.126584959686288    0.037552764198649   -0.311524449553577 304.8911951250637
+ MJD     55800.000000000 TDT
+ MAS 1.08E-10
+4
+ EQU   2.36121638017320E+00  -0.084799978990222  -0.024658851765235    0.060515089569893   -0.014980774579566 310.1889471837920
+ MJD     55800.000000000 TDT
+ MAS 1.34E-10

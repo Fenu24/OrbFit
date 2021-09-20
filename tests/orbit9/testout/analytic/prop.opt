@@ -1,0 +1,10 @@
+; Options file for short and long
+inp= 1; input from 1=catalogue 2=sampled output orb9 3=filtered output orb9
+nmax=600; maximum number of records processed
+filast='chunk.cat'; input file for asteroid elements
+filfil = 'vast.fil'; input file with mean/filtered elements (only inp=3)
+filpro = 'v9' ; output file for proper and mean elements
+; input for planet data
+filpla='planxx.inc'; input file for planetary elements
+filbar='barsunxx.inc'; file containing barycenter inner sol.syst.
+
