@@ -28,3 +28,5 @@ We suggest the final user to choose the optimization flags, by
 At this point, the code can be compiled by typing 
 
         make
+
+**Note.** This operation may take several minutes to complete.
