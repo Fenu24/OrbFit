@@ -5,6 +5,7 @@
       step_user = 50.0,
      enable_out = 1,
          dt_out = 50.0,
+         P_peak = 10.d0,
          c_YORP = 0.7d0,
          c_REOR = 0.9d0,
          c_STOC = 0.75d0,

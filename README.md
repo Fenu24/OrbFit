@@ -125,8 +125,22 @@ We suggest the user to run each simulation in a separate folder, that can be pla
 **Note.** You may want to run the program in background for long-term integrations.
    
 ### Run the test simulation
+The folder *tests/orbit9_yorp* contains the files to test a simulation that includes
+the Yarkovsky and YORP effects in the model. To run the simulation, move into the 
+*tests/orbit9_yorp* folder, and run orbit9 with
+
+      ./orbit9.x
+
+The simulation is set up for the integration of 6 asteroids over a timespan of 1 My, using
+the static YORP model. Once the simulation has completed, you can convert the output files
+by executing
+
+      ./conv9.x
+
+and choose 0 as input.
 
 ## Refereces
-- *Mercury and OrbFit packages for numerical integration of planetary systems: implementations of the Yarkovsky and YORP effects*, M. Fenucci and B. Novaković
+- M. Fenucci and B. Novaković: 2022. *Mercury and OrbFit packages for numerical integration of planetary systems:
+implementation of the Yarkovsky and YORP effects*, Serbian Astronomical Journal
 
 

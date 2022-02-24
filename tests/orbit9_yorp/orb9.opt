@@ -15,7 +15,7 @@ clo5
 
 ; 3. options: output           $ = option not yet implemented                             
 dt= 100.d0 ; time between two outputs                                                    
-nout= 1000000; output number at job termination                                             
+nout= 10000; output number at job termination                                             
 idump= 50; number of outputs between dump/renormalisation                                
 nsamp= 100; sampling ratio of the filter; choose 5, 20,50 or 100                          
 iprqua=  2; how much output: 1 elem. filtr; 2 also sampl.;                                
