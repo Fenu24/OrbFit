@@ -1,2 +1,2 @@
 ! Default library directory
-CHARACTER(LEN=100), PARAMETER :: dlibd = '/orbfit/orb50/lib'
+CHARACTER(LEN=100), PARAMETER :: dlibd = '/home/marco/Work/Software/OrbFit_wYorp/lib'

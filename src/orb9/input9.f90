@@ -284,7 +284,7 @@ contains
       integer          :: j, k
       ! Name list for YORP input file
       namelist /yorp_param/ yorp_flag, stoc_yorp_flag, step_auto, &
-         &   step_user, enable_out, dt_out, c_YORP, c_REOR, c_STOC
+         &   step_user, enable_out, dt_out, P_peak, c_YORP, c_REOR, c_STOC
       nfound = 0
       ! Open the input file
       open(unit=100,file='yarkovsky.in',action='read')

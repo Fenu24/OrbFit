@@ -268,9 +268,13 @@ SUBROUTINE force9(x,v,t,f,nd,idc,xxpla,ips,imem)
         Pnew   = 1.d0/y_yorp(j, 1)*d2h
         gamnew = y_yorp(j, 2)*rad2deg
         ! Update Yarkovsky drift
-        call dadt_comp(rho_ast(j), K_ast(j), C_ast(j), &
-                       0.5d0*D_ast(j), sma, gamnew,    &
-                       Pnew, alpha, epsi, dadt)
+        if(energy.lt.0.d0)then
+           call dadt_comp(rho_ast(j), K_ast(j), C_ast(j), &
+                          0.5d0*D_ast(j), sma, gamnew,    &
+                          Pnew, alpha, epsi, dadt)
+        else
+           dadt = 0.d0
+        endif
         dadt_My(j) = dadt
      enddo
      ! If output was performed, increase the variable keeping track

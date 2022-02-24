@@ -88,6 +88,8 @@ module yorp_module
    real(kind=dkind) :: h_yorp
    real(kind=dkind) :: y_yorp(nmax, 2)
    integer          :: enable_out
+   ! Mean of the Maxwellian distribution for the spin period
+   real(kind=dkind) :: P_peak
    ! Parameter for spin-up mass shedding
    real(kind=dkind), parameter :: K_fact=20.d0*pi*uGc*2000.d0/6.d0/s2d**2.d0
    ! Copy of the names of the bodies
@@ -102,7 +104,7 @@ module yorp_module
    public :: dadt_MY, rho_ast, K_ast, C_ast, D_ast, gamma_ast, omega_ast, P_ast, sma_ast, &
           &  alpha_ast, epsi_ast, yorp_flag, dt_out, time_out, stoc_yorp_flag, last_stoc_event, &
           &  K_fact, enable_out, c_YORP, c_REOR, c_STOC
-   public :: t_yorp, h_yorp, y_yorp, id_copy, tstart_copy, coeff_ast
+   public :: t_yorp, h_yorp, y_yorp, id_copy, tstart_copy, coeff_ast, P_peak
    public :: h2s, s2h, d2s, s2d, y2d, d2y, y2s, s2y, yr2my, s2my, my2s, h2d, d2h, deg2rad, rad2deg
    contains
 
@@ -442,7 +444,7 @@ module yorp_module
 
    ! PURPOSE: generate a new initial condition for the spin state.
    !          The obliquity is such that cos\gamma is equidistributed,
-   !          while the rotation period is Gaussian with peak at 6 h and
+   !          while the rotation period is Gaussian with peak at 10 h and
    !          standard deviation of 4 h. Values smaller than 4 h and larger than 24 h 
    !          are discarded
    ! OUTPUT:
@@ -455,7 +457,6 @@ module yorp_module
       real(kind=dkind)              :: rand_num
       real(kind=dkind)              :: rand_gauss(3)
       real(kind=dkind)              :: P
-      real(kind=dkind), parameter   :: P_peak = 10.d0
       ! Generate a new value of gamma
       call random_number(rand_num)
       gamma_new = acos(2.d0*rand_num - 1.d0)

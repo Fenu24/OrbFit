@@ -7,7 +7,7 @@ PROGRAM conv9
   USE fund_const
   USE massmod
   IMPLICIT NONE
-  INTEGER, PARAMETER :: ndatx=100001 
+  INTEGER, PARAMETER :: ndatx=10000001 
 !      parameter (nastx=100)                                            
 !      parameter (nbodx=10)                                             
   INTEGER, PARAMETER :: nelex=6 

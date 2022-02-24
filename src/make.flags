@@ -1,5 +1,19 @@
-# Modify the following definitions according to your operating system
-# and compiler, then erase the following lines (up to "######...")
-error:
-	@ echo "Please run the configuration command \"config\" before doing \"make\""
-	@ exit 1
+# Makefile options for the INTEL compiler, optimized
+
+# Fortran compiler
+FC=ifort
+# Options for Fortran compiler:
+FFLAGS= -warn nousage -O -mp1 -shared-intel -mcmodel=medium -save -assume byterecl -I../include 
+# "ranlib" command: if it is not needed, use "RANLIB=touch"
+RANLIB=ranlib
+VPATH=../include
+
+
+# Implicit rule for compiling .f90 files
+.SUFFIXES: .f90
+
+%.o : %.mod
+
+.f90.o:
+	$(FC) $(FFLAGS) -c $*.f90 -o $*.o 
+
