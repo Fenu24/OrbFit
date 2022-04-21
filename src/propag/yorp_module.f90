@@ -491,7 +491,7 @@ module yorp_module
       C = 100.d0
       ! Compute the critical rotation period with the formula by Hu et al. 2021
       ! Here D is in m and C in Pa, hence we have to convert it in hours
-      T_c = duepi*sqrt(rho*k/C/5.d0)*D*s2h
+      T_c = pi*sqrt(rho*k/C/5.d0)*D*s2h
       if(T_c.gt.2.44d0)then
          crit_period = 2.44d0
       else
