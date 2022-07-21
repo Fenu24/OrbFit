@@ -154,7 +154,7 @@ SUBROUTINE force9(x,v,t,f,nd,idc,xxpla,ips,imem)
   !
   ! Check if we need to make a step in (\omega, \gamma)
   out_flag = .false.
-  if(iyark.eq.3.and.yorp_flag.eq.1.and.abs(t*y2d-t_yorp).gt.h_yorp)then
+  if(iyark.eq.3.and.yorp_flag.eq.1.and.abs(t*y2d-t_yorp).gt.abs(h_yorp))then
      ! Update the time first
      t_yorp = t_yorp + h_yorp
      ! If we have to make a step, update the states of (\omega,
@@ -229,8 +229,8 @@ SUBROUTINE force9(x,v,t,f,nd,idc,xxpla,ips,imem)
         ! ===========================================
         !        CHECK FOR REQUIRED OUTPUT           
         ! ===========================================
-        if(  time_out .le. (t_yorp-tstart_copy)*d2y        .and. &
-         &   time_out .ge. (t_yorp-h_yorp-tstart_copy)*d2y .and. &
+        if(  abs(time_out) .le. abs((t_yorp-tstart_copy)*d2y)        .and. &
+         &   abs(time_out) .ge. abs((t_yorp-h_yorp-tstart_copy)*d2y) .and. &
          & enable_out .eq. 1)then
            ! If that is the case, write the current integration
            ! in the file. First of all, compute the output value

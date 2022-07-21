@@ -245,7 +245,7 @@ SUBROUTINE inpo9(dt,nout,idump,iprqua,                      &
 !        CLOSE(99)
         id_copy     = ida
         tstart_copy = 0.d0
-        call yarko_in(ida, na)
+        call yarko_in(ida, na, dt)
      ENDIF
   ELSE
      velo_req=.false.
@@ -261,13 +261,14 @@ SUBROUTINE inpo9(dt,nout,idump,iprqua,                      &
 
 contains
 
-   subroutine yarko_in(id, nast)
+   subroutine yarko_in(id, nast, dt)
       use yorp_module
       use fund_const
       use massmod,      only: nastx
       implicit none
       character*9,      intent(in)  :: id(nastx)
       integer,          intent(in)  :: nast 
+      double precision, intent(in)  :: dt
       ! end interface
       integer          :: nfound
       logical          :: found
@@ -299,7 +300,7 @@ contains
             if(id(k).eq.astname)then
                ! If I find the asteroid, add it in the correspondig
                ! index of the ID
-               found = .true.
+               found  = .true.
                nfound = nfound + 1
                ! Assign the global variables
                rho_ast(k)   = xxx(1)
@@ -378,6 +379,13 @@ contains
             ! Set the timestep for YORP evolution to 50 years
             ! NOTE: the unit for the time in mercury is days
             h_yorp = step_user*y2d
+         endif
+         ! If the propagation is backwards in time, use
+         ! a negative step for the YORP integration.
+         ! Change also the sign for the output
+         if(dt.lt.0.d0)then
+            h_yorp = -h_yorp
+            dt_out = -dt_out
          endif
          ! =========================================
          ! Set initial conditions for YORP evolution
