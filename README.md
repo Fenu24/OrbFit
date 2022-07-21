@@ -1,7 +1,7 @@
 # Manual for the augmented orbit9 integrator
 
 The [OrbFit](http://adams.dm.unipi.it/orbfit/) software was originally developed by Prof.
-Andrea Milani Comparetti (University of Pisa), and it is currently maintained and
+[Andrea Milani Comparetti](http://copernico.dm.unipi.it/~milani/) (University of Pisa), and it is currently maintained and
 developed by the OrbFit consortium. OrbFit offers many tools to the user, including
 programs for orbit determination, orbit propagation, and ephemeris computation.
 
@@ -15,8 +15,8 @@ the spin-axis evolution due to the YORP effect is integrated together with the o
 dynamics. Technical details of the equations and of the implementation can be found in the
 paper
 
-M. Fenucci and B. Novaković: 2022. *Mercury and OrbFit packages for numerical integration of planetary systems:
-implementation of the Yarkovsky and YORP effects*, Serbian Astronomical Journal
+M. Fenucci and B. Novaković: 2022. [*Mercury and OrbFit packages for numerical integration of planetary systems:
+implementation of the Yarkovsky and YORP effects*](https://ui.adsabs.harvard.edu/abs/2022SerAJ.204...51F/abstract), Serbian Astronomical Journal 204, pp. 51-63
 
 If you publish results using this version of the integrator, please refer to the package
 using the above paper. 
@@ -31,7 +31,7 @@ this version of the integrator.
 
 ## Compilation
 
-The compilation is the same as for the OrbFit version sdistributed by the OrbFit
+The compilation works the same as for the OrbFit version distributed by the OrbFit
 Consortium. The distribution comes with a bash script called config, that permits to
 choose the compilation settings for several FORTRAN compilers. By running the script
 without any option, the user will receive a help message. The most popular FORTRAN
@@ -49,10 +49,11 @@ At this point, the code can be compiled by typing
 
 ## Files preparation
 
-To run simulations that include the Yarkovsky/YORP effect in the model, some additional input files are needed. 
+To run simulations that include the Yarkovsky/YORP effects in the model, some additional input files are needed. 
    1. **yorp_f.txt**, **yorp_g.txt**: these are files containing a discretization of the mean torques shown in Fig. 1 of the reference paper. They are supposed to be placed in a subfolder called *input*. A copy of these files can be found in the *dat* folder of the distribution.
    2. **yorp.in**: this is a file containing parameters for the integration of the spin-axis
-     dynamics. This file is also supposed to be contained in a subfolder called *input*. An example of this input file can be found in the *test* folder.
+     dynamics. This file is also supposed to be contained in a subfolder called
+     *input*. An example of this input file can be found in the *tests/orbit9_yorp/input* folder.
      Here you have to provide:
          - if you want to include the YORP effect in the model
          - if you want to use a stochastic YORP model (see reference paper)
@@ -67,8 +68,7 @@ To run simulations that include the Yarkovsky/YORP effect in the model, some add
      
    3. **yarkovsky.in**: this file contains physical and thermal parameters of the asteroids.
      This file is supposed to be contained in the folder where the mercury integrator is
-     running. Make sure that all the objects contained in the small.in file are also here.
-     Here you have to provide, on each row:
+     running. Here you have to provide, on each row:
          - the name of the asteroid
          - the density &rho; (kg/m^3)
          - the thermal conductivity K (W/m/K)
@@ -79,9 +79,10 @@ To run simulations that include the Yarkovsky/YORP effect in the model, some add
          - the absorption coefficient &alpha; (usually set to 1)
          - the emissivity &epsilon; (usually set to 1)
 
-**NOTE 1.** When writing real numbers, please make sure they are written with at least a decimal digit, or by using the d0 FORTRAN notation.
 
-**NOTE 2.** To add the Yarkovsky effect to the model, make sure that the option iyark in the orb9.opt file is set to 3.
+**NOTE 1.** To add the Yarkovsky effect to the model, make sure that the option iyark in the orb9.opt file is set to 3.
+
+**NOTE 2.** When writing real numbers, please make sure they are written with at least a decimal digit, or by using the d0 FORTRAN notation.
 
 ## How to run a simulation and tests
 We suggest the user to run each simulation in a separate folder, that can be placed in the *tests* directory. This directory contains also some test runs that you can use as a guide for the file preparation. To run a simulation, we suggest to follow these steps:
@@ -122,7 +123,7 @@ We suggest the user to run each simulation in a separate folder, that can be pla
 
             ./orbit9.x
             
-**Note.** You may want to run the program in background for long-term integrations.
+**NOTE.** You may want to run the program in background for long-term integrations.
    
 ### Run the test simulation
 The folder *tests/orbit9_yorp* contains the files to test a simulation that includes
@@ -140,7 +141,6 @@ by executing
 and choose 0 as input.
 
 ## Refereces
-- M. Fenucci and B. Novaković: 2022. *Mercury and OrbFit packages for numerical integration of planetary systems:
-implementation of the Yarkovsky and YORP effects*, Serbian Astronomical Journal
-
+- M. Fenucci and B. Novaković: 2022. [*Mercury and OrbFit packages for numerical integration of planetary systems:
+implementation of the Yarkovsky and YORP effects*](https://ui.adsabs.harvard.edu/abs/2022SerAJ.204...51F/abstract), Serbian Astronomical Journal 204, pp. 51-63
 
