@@ -124,6 +124,22 @@ We suggest the user to run each simulation in a separate folder, that can be pla
             ./orbit9.x
             
 **NOTE.** You may want to run the program in background for long-term integrations.
+
+
+### Output files
+The output files for the orbital integration of the asteroids are the same as the one provided by the 
+original orbit9 code.
+
+In addition to the orbital integration, the modified orbit9 code provides the output files for the spin-axis 
+dynamics when the flag *enable_out* is set to 1. The output files are called 
+
+         <astname>.yorp
+
+and it provides 4 columns, representing:
+1. the output time (in years)
+2. the rotation period (in hours)
+3. the obliquity (in degrees)
+4. the semi-major axis drift due to Yarkovsky (in au/My).
    
 ### Run the test simulation
 The folder *tests/orbit9_yorp* contains the files to test a simulation that includes
