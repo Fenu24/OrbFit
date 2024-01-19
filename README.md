@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10532811.svg)](https://doi.org/10.5281/zenodo.10532811)
+
+
 # Manual for the augmented orbit9 integrator
 
 The [OrbFit](http://adams.dm.unipi.it/orbfit/) software was originally developed by Prof.
